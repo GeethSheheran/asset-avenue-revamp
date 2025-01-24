@@ -5,45 +5,45 @@ const InvestingMode = () => {
     {
       title: "Crypto",
       description: "Invest in Real Estate worldwide without exchanging your crypto into fiat money.",
-      icon: "./house.png", // Replace with your actual path
+      icon: "./investing/iconOne.png", 
     },
     {
       title: "Security",
       description: "Enjoy the highest security through blockchain technology and DAO governance.",
-      icon: "./house.png", // Replace with your actual path
+      icon: "./investing/iconTwo.png", 
     },
     {
       title: "Transferability",
       description: "Easily transfer your assets to anyone you choose.",
-      icon: "./house.png", // Replace with your actual path
+      icon: "./investing/iconThree.png", 
     },
     {
       title: "Liquidity",
       description: "Buy and sell your shares in Real Estate Assets with ease.",
-      icon: "./house.png", // Replace with your actual path
+      icon: "./investing/iconFour.png", 
     },
     {
       title: "AI",
       description: "Analyze worldwide Real Estate deals and markets with AI.",
-      icon: "./house.png", // Replace with your actual path
+      icon: "./investing/iconOne.png", 
     },
   ];
 
   return (
     <div className="bg-black text-white py-20 px-4">
-      <h2 className="text-3xl font-bold text-center mb-12">
+      {/* <h2 className="text-3xl font-bold text-center mb-12">
         Real Estate Investing Made Easy on the Blockchain
-      </h2>
+      </h2> */}
       <div className="grid grid-cols-1 xl:px-20 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 justify-center">
         {cards.map((card, index) => (
           <div
             key={index}
-            className="bg-[#161D27] border border-gray-700 rounded-2xl shadow-md shadow-[#FAFAFA5E] p-6 text-center flex flex-col items-center transform transition-transform hover:-translate-y-5 hover:shadow-lg hover:shadow-[#3FAC55]"
+            className="bg-[#161D27] border border-gray-700 rounded-xl shadow-md shadow-[#FAFAFA5E] p-6 text-center flex flex-col items-center transform transition-transform hover:-translate-y-5 hover:shadow-lg hover:shadow-[#3FAC55]"
           >
             <img
               src={card.icon}
               alt={card.title}
-              className="w-20 h-20 mb-4 object-cover"
+              className="w-16 h-16 mb-4 object-cover"
             />
             <h3 className="text-xl font-semibold mb-2">{card.title}</h3>
             <p className="text-sm">{card.description}</p>
