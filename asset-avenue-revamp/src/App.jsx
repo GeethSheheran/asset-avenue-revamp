@@ -7,6 +7,8 @@ import Revolutionizing from './components/home/Revolutionizing'
 import PassiveIncome from './components/home/PassiveIncome'
 import HowToBuy from './components/home/howtobuy'
 import { HouseDetails } from './components/home/roadmap'
+import Logos from './components/home/logos'
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
       <PassiveIncome/>
       {/* <HowToBuy/> */}
       <HouseDetails/>
+      <Logos/>
+      <Footer/>
     </div>
   )
 }
