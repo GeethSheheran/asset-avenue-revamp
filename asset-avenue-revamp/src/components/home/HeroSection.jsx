@@ -6,12 +6,19 @@ const HeroSection = () => {
     <div className="relative bg-black text-white min-h-screen flex flex-col md:flex-row items-center justify-center px-4 md:px-24 overflow-hidden">
       {/* Background Video */}
       <video className="absolute top-0 left-0 w-full h-full object-cover opacity-50" autoPlay loop muted>
-        <source src="/background-video.mp4" type="video/mp4" />
+        <source src="video/bars.mp4" type="video/mp4" />
       </video>
+
+      {/* Image Below Video */}
+      <img 
+        src="hero/left hero.png" 
+        alt="Image Below Video"
+        className="absolute top-2 left-1/2 transform -translate-x-1/2 mb-8 w-4/5 z-20"
+      />
 
       {/* Center Image Over Video */}
       <img 
-        src="hero//centerImg.png" 
+        src="hero/centerImg.png" 
         alt="Center Graphic" 
         className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 w-1/5" 
       />
@@ -19,8 +26,8 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-20 flex w-full max-w-7xl">
         {/* Left Section */}
-        <div className="w-full md:w-2/3 mt-24 items-center justify-center space-y-6 text-center md:text-left">
-          <h1 className="text-4xl md:text-6xl font-bold">Asset Avenue <br/><span className="text-[#22C55E]">Presale</span></h1>
+        <div className="w-full md:w-2/3 mt-16 items-center justify-center space-y-6 text-center md:text-left">
+          <h1 className="text-6xl md:text-[90px] font-bold">Asset Avenue <br/><span className="text-[#22C55E]">Presale</span></h1>
           <p className="text-lg md:text-xl font-light">Redefining Real Estate with Blockchain</p>
           {/* Image Slider */}
           <div className="flex items-center justify-center md:justify-start space-x-8 mt-6 pt-16">
@@ -86,13 +93,13 @@ const HeroSection = () => {
           <div className="relative flex flex-row justify-between space-x-4 z-10">
             <div className="relative w-1/2">
               <img src="/hero/buycard.png" alt="Visa" className="absolute inset-0 w-full h-full object-contain opacity-30 z-0" />
-              <button className="relative z-10 bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg w-full">
+              <button className="relative z-10 bg-[#3FAC55] hover:bg-green-600 text-white py-2 px-4 rounded-lg w-full">
                 Buy With Card
               </button>
             </div>
             <div className="relative w-1/2">
               <img src="/crypto-logo.png" alt="Crypto" className="absolute inset-0 w-full h-full object-contain opacity-30 z-0" />
-              <button className="relative z-10 bg-green-800 hover:bg-green-900 text-white py-2 px-4 rounded-lg w-full">
+              <button className="relative z-10 bg-[#958648] hover:bg-[#FBE279] text-white py-2 px-4 rounded-lg w-full">
                 Buy With Crypto
               </button>
             </div>
