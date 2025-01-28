@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';  // Import motion
 
 const projects = [
   {
@@ -38,21 +39,36 @@ const projects = [
 
 const PassiveIncome = () => {
   return (
-    <div className="bg-black text-white py-10 xl:px-24 px-4">
-      <h1 className="text-center text-3xl md:text-4xl font-bold mb-8">
+    <div className="bg-black text-white py-0 xl:px-24 px-4">
+      {/* Apply motion to the h1 */}
+      <motion.h1
+        className="text-center text-3xl md:text-4xl font-bold mb-8"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
         Available <span className="text-[#3FAC55]">Passive Income</span> Projects
-      </h1>
+      </motion.h1>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects.map((project) => (
-          <div
+          <motion.div
             key={project.id}
-            className="bg-[#3FAC55]  rounded-tl-none text-black rounded-[70px] shadow-md overflow-hidden"
+            className="bg-[#3FAC55] rounded-tl-none text-black rounded-[70px] shadow-md overflow-hidden"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 0.8,
+              ease: "easeOut",
+            }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
           >
             <div className="relative">
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-80 object-cover rounded-[70px]  rounded-tl-none border-8 border-[#000000]"
+                className="w-full h-80 object-cover rounded-[70px] rounded-tl-none border-8 border-[#000000]"
               />
               <span className="absolute top-4 rounded-xl left-4 bg-black text-white text-xs font-bold px-2 py-1 rounded">
                 UPCOMING
@@ -60,7 +76,7 @@ const PassiveIncome = () => {
             </div>
             <div className="p-4">
               <h2 className="font-semibold text-white text-lg mb-2 text-center">{project.title}</h2>
-              <p className="text-sm text-white mb-4  text-center">{project.location}</p>
+              <p className="text-sm text-white mb-4 text-center">{project.location}</p>
               <div className="grid grid-cols-4 gap-2 text-sm mb-4 text-center">
                 <div>
                   <p className="font-bold text-white">Price:</p>
@@ -95,14 +111,21 @@ const PassiveIncome = () => {
                 Coming Soon
               </p>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
-      <div className="text-center mt-8">
+
+      {/* Motion applied to the button */}
+      <motion.div
+        className="text-center mt-8"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
         <button className="bg-[#3FAC55] text-white px-6 py-2 rounded-xl hover:bg-green-600">
           BUY SHARES
         </button>
-      </div>
+      </motion.div>
     </div>
   );
 };

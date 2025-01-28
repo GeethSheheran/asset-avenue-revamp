@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const HowToBuy = () => {
   return (
@@ -17,16 +18,37 @@ const HowToBuy = () => {
         />
       </div>
 
-      <h1 className="text-3xl font-bold mb-8 text-center">How To Buy</h1>
-      <p className="mb-6 text-center">
+      {/* Animated Title */}
+      <motion.h1
+        className="text-3xl font-bold mb-8 text-center"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        How To Buy
+      </motion.h1>
+
+      {/* Animated Paragraph */}
+      <motion.p
+        className="mb-6 text-center"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
         The Contract Address:{" "}
         <span className="font-mono">
           0fHK5q6vvBy6r7rBQJhynxJYiUoYzoC5D9XcCkvtS6
         </span>
-      </p>
+      </motion.p>
+
       <div className="flex flex-col md:flex-row items-center justify-center gap-6 w-full">
         {/* Card 1 */}
-        <div className="bg-[#161D27]/80 rounded-2xl border-4 border-[#3FAC55] rounded-tl-none shadow-[0_4px_21px_-2px_#3FAC55] p-6 relative w-full max-w-sm">
+        <motion.div
+          className="bg-[#161D27]/80 rounded-2xl border-4 border-[#3FAC55] rounded-tl-none shadow-[0_4px_21px_-2px_#3FAC55] p-6 relative w-full max-w-sm"
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
           <div
             className="absolute -left-3 top-4 bg-no-repeat bg-cover w-12 h-12"
             style={{ backgroundImage: `url('/lable.png')` }}
@@ -46,10 +68,15 @@ const HowToBuy = () => {
             You’re gonna need a wallet to hold your $AAV. We recommend Phantom
             Solana and Metamask for otherchains.
           </p>
-        </div>
+        </motion.div>
 
         {/* Card 2 */}
-        <div className="bg-[#161D27]/80 rounded-2xl border-4 border-[#3FAC55] rounded-tl-none shadow-[0_4px_21px_-2px_#3FAC55] p-6 relative w-full max-w-sm">
+        <motion.div
+          className="bg-[#161D27]/80 rounded-2xl border-4 border-[#3FAC55] rounded-tl-none shadow-[0_4px_21px_-2px_#3FAC55] p-6 relative w-full max-w-sm"
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
           <div
             className="absolute -left-3 top-4 bg-no-repeat bg-cover w-12 h-12"
             style={{ backgroundImage: `url('/lable.png')` }}
@@ -68,10 +95,15 @@ const HowToBuy = () => {
             Buy and send some SOL, ETH, USDT or BNB to pay for your $AAV tokens.
             Send a little extra for gas fees.
           </p>
-        </div>
+        </motion.div>
 
         {/* Card 3 */}
-        <div className="bg-[#161D27]/80 rounded-2xl border-4 border-[#3FAC55] rounded-tl-none shadow-[0_4px_21px_-2px_#3FAC55] p-6 relative w-full max-w-sm">
+        <motion.div
+          className="bg-[#161D27]/80 rounded-2xl border-4 border-[#3FAC55] rounded-tl-none shadow-[0_4px_21px_-2px_#3FAC55] p-6 relative w-full max-w-sm"
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
           <div
             className="absolute -left-3 top-4 bg-no-repeat bg-cover w-12 h-12"
             style={{ backgroundImage: `url('/lable.png')` }}
@@ -90,7 +122,7 @@ const HowToBuy = () => {
             To purchase $AAV, connect your wallet to the site, select a payment
             method, and confirm the transaction.
           </p>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

@@ -1,38 +1,75 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const Revolutionizing = () => {
   return (
-    <div className="relative bg-black text-white p-8 px-4 md:px-24 pt-28">
+    <motion.div
+      className="relative bg-black text-white p-8 px-4 md:px-24 pt-28"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.8 }}
+    >
       {/* Background Images */}
       <div className="absolute inset-0 z-10 flex justify-center items-center">
-        <img
+        <motion.img
           src="/Ellipse.png"
           alt="Background Left"
           className="absolute left-0 w-1/2 opacity-100"
+          initial={{ x: -200, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 0.5 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 1 }}
         />
-        <img
+        <motion.img
           src="/Ellipse.png"
           alt="Background Right"
-          className="absolute right-0 -top-1/4 w-1/2 opacity-100"
+          className="absolute right-0 -top-1/3 w-1/2 opacity-100"
+          initial={{ x: 200, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 0.5 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 1 }}
         />
       </div>
 
       {/* Main Content */}
       <div className="relative z-10">
-        <h1 className="text-3xl md:text-4xl font-bold text-center mb-4">
+        <motion.h1
+          className="text-3xl md:text-4xl font-bold text-center mb-4"
+          initial={{ opacity: 0, y: -50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 1 }}
+        >
           Revolutionizing{" "}
           <span className="text-[#3FAC55]">Real Estate Investment</span> With{" "}
           <span className="text-[#3FAC55]">Blockchain & AI</span>
-        </h1>
-        <p className="text-center text-gray-300 mb-8 max-w-3xl mx-auto">
+        </motion.h1>
+        <motion.p
+          className="text-center text-gray-300 mb-8 max-w-3xl mx-auto"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 1.2 }}
+        >
           Asset Avenue transforms real estate investing by integrating
           blockchain and AI for a seamless, transparent experience. Fractional
           ownership and real-time insights make it simple to invest in premium
           properties worldwide, all while reducing fees and enhancing liquidity.
-        </p>
-        <div className="grid gap-8 md:grid-cols-3 grid-cols-1">
+        </motion.p>
+
+        <motion.div
+          className="grid gap-8 md:grid-cols-3 grid-cols-1"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 1.5 }}
+        >
           {/* Column 1 */}
-          <div className="bg-[#161D27] p-6 rounded-xl shadow-[0_4px_21px_-2px_#3FAC55] border border-[#3FAC55] rounded-tl-none">
+          <motion.div
+            className="bg-[#161D27] p-6 rounded-xl shadow-[0_4px_21px_-2px_#3FAC55] border border-[#3FAC55] rounded-tl-none"
+            whileHover={{ scale: 1.05 }}
+          >
             <img
               src="./state/stateOne.png"
               alt="Traditional Real Estate"
@@ -45,10 +82,13 @@ const Revolutionizing = () => {
               Traditional methods keep this valuable asset class suppressed and
               inaccessible.
             </p>
-          </div>
+          </motion.div>
 
           {/* Column 2 */}
-          <div className="bg-[#161D27] p-6 rounded-xl shadow-[0_4px_21px_-2px_#3FAC55] border border-[#3FAC55] rounded-tl-none">
+          <motion.div
+            className="bg-[#161D27] p-6 rounded-xl shadow-[0_4px_21px_-2px_#3FAC55] border border-[#3FAC55] rounded-tl-none"
+            whileHover={{ scale: 1.05 }}
+          >
             <img
               src="./state/stateTwo.png"
               alt="Modern Real Estate"
@@ -61,10 +101,13 @@ const Revolutionizing = () => {
               and real-time insights, we simplify investing and unlock global
               opportunities for all.
             </p>
-          </div>
+          </motion.div>
 
           {/* Column 3 */}
-          <div className="bg-[#161D27] p-6 rounded-xl shadow-[0_4px_21px_-2px_#3FAC55] border border-[#3FAC55] rounded-tl-none">
+          <motion.div
+            className="bg-[#161D27] p-6 rounded-xl shadow-[0_4px_21px_-2px_#3FAC55] border border-[#3FAC55] rounded-tl-none"
+            whileHover={{ scale: 1.05 }}
+          >
             <img
               src="./state/stateThree.png"
               alt="AI and Real Estate"
@@ -76,10 +119,10 @@ const Revolutionizing = () => {
               Invest in premium properties, earn passive income, and trade
               assets seamlessly, all powered by the $AAV ecosystem.
             </p>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

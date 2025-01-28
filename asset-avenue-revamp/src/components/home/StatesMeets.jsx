@@ -9,7 +9,7 @@ const StatesMeets = () => {
           <img
             src="/Ellipse.png"
             alt="Background Left"
-            className="absolute left-40 w-100 opacity-100"
+            className="absolute left-0 w-full opacity-100"
           />
         </div>
         <h1 className="text-4xl font-bold mb-4 text-center lg:text-left">
