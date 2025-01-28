@@ -2,7 +2,7 @@ import React from "react";
 
 const Revolutionizing = () => {
   return (
-    <div className="relative bg-black text-white p-8 px-24 pt-28">
+    <div className="relative bg-black text-white p-8 px-4 md:px-24 pt-28">
       {/* Background Images */}
       <div className="absolute inset-0 z-10 flex justify-center items-center">
         <img
@@ -30,7 +30,7 @@ const Revolutionizing = () => {
           ownership and real-time insights make it simple to invest in premium
           properties worldwide, all while reducing fees and enhancing liquidity.
         </p>
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-3 grid-cols-1">
           {/* Column 1 */}
           <div className="bg-[#161D27] p-6 rounded-xl shadow-[0_4px_21px_-2px_#3FAC55] border border-[#3FAC55] rounded-tl-none">
             <img

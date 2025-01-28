@@ -12,6 +12,7 @@ import Logos from './components/home/logos'
 import Footer from './components/Footer'
 import HeroSection from './components/home/HeroSection'
 import PieChart from './components/home/pieChart';
+import ImageSlider from './components/home/ImageSlider';
 
 function App() {
   return (

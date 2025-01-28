@@ -3,17 +3,17 @@ import React from "react";
 const HowToBuy = () => {
   return (
     <div className="relative bg-black text-white flex flex-col items-center py-40 px-6 md:px-24 overflow-hidden">
-      {/* Background Images */}
-      <div className="absolute inset-0 flex justify-center items-center">
+      {/* Background Images - Hidden on mobile */}
+      <div className="absolute inset-0 flex justify-center items-center sm:block hidden">
         <img
           src="/Ellipse.png"
           alt="Background Left"
-          className="absolute left-0 w-1/2 opacity-100"
+          className="absolute left-0 top-16 w-1/3 opacity-100"
         />
         <img
           src="/Ellipse.png"
           alt="Background Right"
-          className="absolute right-0 w-1/3 opacity-100"
+          className="absolute right-16 -top-0 w-1/3 opacity-100"
         />
       </div>
 

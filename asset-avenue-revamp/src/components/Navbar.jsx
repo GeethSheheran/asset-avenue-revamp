@@ -8,18 +8,14 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-black z-50 dark:bg-black fixed w-full z-20 top-0 start-0 ">
+    <nav className="bg-black z-50 dark:bg-black fixed w-full z-20 top-0 start-0">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-6">
-        <a
-          href="/"
-          className="flex items-center space-x-3 rtl:space-x-reverse"
-        >
+        <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img
             src="https://assetavenue.capital/images/logo.webp"
             className="h-8"
             alt="Asset Avenue"
           />
-         
         </a>
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           <button
@@ -54,9 +50,9 @@ const Navbar = () => {
           </button>
         </div>
         <div
-          className={`items-center justify-between ${
-            isMenuOpen ? "block" : "hidden"
-          } w-full h-full md:flex md:w-auto md:order-1`}
+          className={`${
+            isMenuOpen ? "flex" : "hidden"
+          } flex-col items-center justify-between w-full md:flex md:w-auto md:order-1`}
           id="navbar-sticky"
         >
           <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-800 md:space-x-2 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-black dark:bg-black md:dark:bg-black dark:border-gray-700 text-sm md:text-base text-white">
@@ -114,7 +110,7 @@ const Navbar = () => {
                 href="#"
                 className="block py-2 px-3 text-white text-xs ml-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0 md:dark:hover:text-[#3FAC55] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               >
-               CONTACT US
+                CONTACT US
               </a>
             </li>
             <li>
@@ -122,7 +118,7 @@ const Navbar = () => {
                 href="#"
                 className="block py-2 px-3 text-white text-xs ml-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0 md:dark:hover:text-[#3FAC55] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               >
-               DASHBOARD
+                DASHBOARD
               </a>
             </li>
             <li>
@@ -130,7 +126,7 @@ const Navbar = () => {
                 href="#"
                 className="block py-2 px-3 text-white text-xs ml-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0 md:dark:hover:text-[#3FAC55] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               >
-               DAO
+                DAO
               </a>
             </li>
           </ul>

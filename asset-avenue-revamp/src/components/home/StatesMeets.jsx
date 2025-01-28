@@ -2,38 +2,38 @@ import React from "react";
 
 const StatesMeets = () => {
   return (
-    <div className="flex flex-col lg:flex-row items-center justify-between px-24 gap-4 py-12 bg-black text-white">
+    <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between px-4 lg:px-24 gap-4 py-12 bg-black text-white">
       {/* Left Column */}
-      <div className="relative lg:w-1/2 mb-8 lg:mb-0 flex flex-col items-start">
+      <div className="relative lg:w-1/2 w-full mb-8 lg:mb-0 flex flex-col items-center lg:items-start">
         <div className="absolute inset-0 flex justify-center items-center">
           <img
             src="/Ellipse.png"
             alt="Background Left"
-            className="absolute left-40 w-12vw opacity-100"
+            className="absolute left-40 w-100 opacity-100"
           />
         </div>
-        <h1 className="text-4xl font-bold mb-4">
+        <h1 className="text-4xl font-bold mb-4 text-center lg:text-left">
           Asset Avenue <span className="text-[#16A34A]">DAO</span>
         </h1>
-        <p className="text-lg mb-6">
+        <p className="text-lg mb-6 text-center lg:text-left">
           Facilitating worldwide real estate transactions with cryptocurrency,
           ensuring the highest level of security and complete transparency in
           ownership and investment opportunities through blockchain technology.
         </p>
-        <ul className="list-disc list-inside space-y-2 text-lg">
+        <ul className="list-disc list-inside space-y-2 text-lg text-center lg:text-left">
           <li>NFT Property Rights</li>
           <li>Staking for Governance</li>
           <li>Smart Contract Payouts</li>
           <li>Decentralized Decisions</li>
           <li>Legal Compliance</li>
         </ul>
-        <button className="mt-6 px-6 py-2 bg-[#16A34A] text-white font-semibold rounded-md hover:bg-green-600 transition self-end">
+        <button className="mt-6 px-6 py-2 bg-[#16A34A] text-white font-semibold rounded-md hover:bg-green-600 transition self-center lg:self-end">
           ACCESS DAO
         </button>
       </div>
 
       {/* Right Column */}
-      <div className="lg:w-1/2 w-full">
+      <div className="lg:w-1/2 w-full flex justify-center">
         <video
           src="/public/world.mp4"
           autoPlay

@@ -6,7 +6,7 @@ export const HouseDetails = () => {
   return (
     <Container className="z-10">
       <h1 className="header text-4xl font-bold mt-16">Roadmap</h1>
-      <Wrap>
+      <Wrap className="relative">
         <Left>
           <Image src="/roadmap/Finished Building.png" alt="How it works" />
         </Left>
@@ -24,13 +24,17 @@ export const HouseDetails = () => {
                   <h3 className="ms-5 py-5 px-6 text-sm text-white bg-[#161D27] rounded-[10px]">
                     <strong>Q1 2025</strong> <br />
                     <br />
-                    <span className="pl-8">aa</span>
+                    <span className="pl-8">Launch Presale</span>
                     <br />
-                    <span className="pl-8">aa</span>
+                    <span className="pl-8">
+                      DAO Integration of Backend with Frontend
+                    </span>
                     <br />
-                    <span className="pl-8">aa</span>
+                    <span className="pl-8">
+                      Launch a Beta Version of the Platform
+                    </span>
                     <br />
-                    <span className="pl-8">aa</span>
+                    <span className="pl-8">TGE(Token Generation Event)</span>
                     <br />
                   </h3>
                 </motion.li>
@@ -47,13 +51,19 @@ export const HouseDetails = () => {
                   <h3 className="ms-5 py-5 px-6 text-sm text-white bg-[#161D27] rounded-[10px]">
                     <strong>Q2 2025</strong> <br />
                     <br />
-                    <span className="pl-8">aa</span>
+                    <span className="pl-8">
+                      Launch Global Marketing Campaigns
+                    </span>
                     <br />
-                    <span className="pl-8">aa</span>
+                    <span className="pl-8">Launch CEX Partnerships </span>
                     <br />
-                    <span className="pl-8">aa</span>
+                    <span className="pl-8">
+                      Real Estate Agency Partnerships{" "}
+                    </span>
                     <br />
-                    <span className="pl-8">aa</span>
+                    <span className="pl-8">
+                      Launch AI Market Analysis (Beta)
+                    </span>
                     <br />
                   </h3>
                 </motion.li>
@@ -70,13 +80,21 @@ export const HouseDetails = () => {
                   <h3 className="ms-5 py-5 px-6 text-sm text-white bg-[#161D27] rounded-[10px]">
                     <strong>Q3 2025</strong> <br />
                     <br />
-                    <span className="pl-8">aa</span>
+                    <span className="pl-8">
+                      Launch Mobile App on IOS & Android
+                    </span>
                     <br />
-                    <span className="pl-8">aa</span>
+                    <span className="pl-8">
+                      Phase 2 Global Marketing Campaign
+                    </span>
                     <br />
-                    <span className="pl-8">aa</span>
+                    <span className="pl-8">
+                      Launch AI Based Property Valuation
+                    </span>
                     <br />
-                    <span className="pl-8">aa</span>
+                    <span className="pl-8">
+                      Collaboration With Lending Institutions
+                    </span>
                     <br />
                   </h3>
                 </motion.li>
@@ -93,24 +111,37 @@ export const HouseDetails = () => {
                   <h3 className="ms-5 py-5 px-6 text-sm text-white bg-[#161D27] rounded-[10px]">
                     <strong>Q4 2025</strong> <br />
                     <br />
-                    <span className="pl-8">aa</span>
+                    <span className="pl-8">
+                      Launch NFT Property Market Place
+                    </span>
                     <br />
-                    <span className="pl-8">aa</span>
+                    <span className="pl-8">
+                      Integrate Decentralized Finance (DeFi) Options
+                    </span>
                     <br />
-                    <span className="pl-8">aa</span>
+                    <span className="pl-8">
+                      Phase 3 Global Marketing Campaign
+                    </span>
                     <br />
-                    <span className="pl-8">aa</span>
+                    <span className="pl-8">Launch Ambassador Program</span>
                     <br />
                   </h3>
                 </motion.li>
               </div>
 
               <button className="mt-12 px-6 item-center py-2 bg-[#16A34A] text-white font-semibold rounded-md hover:bg-green-600 transition self-end">
-                    ACCESS DAO
-                  </button>
+                ACCESS DAO
+              </button>
             </ul>
           </RightWrap>
         </Right>
+        <div className="absolute inset-0">
+        <img
+          src="/Ellipse2.png"
+          alt="Background Left"
+          className="absolute  w-1/2 right-0 bottom-1 z-10 opacity-100"
+        />
+      </div>
       </Wrap>
     </Container>
   );
@@ -144,27 +175,26 @@ const Wrap = styled.div`
 `;
 
 const Left = styled.div`
-  flex: 3; 
+  flex: 3;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative; 
+  position: relative;
   overflow: hidden;
 `;
 
 const Image = styled.img`
-   position: absolute; 
-    top: 50%; 
-    left: 60%; 
-    transform: translate(-50%, -50%) scale(1.2); 
-    width: auto;
-    height: 100%; 
-    object-fit: cover;
-
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%) scale(1.2);
+  width: auto;
+  height: 100%;
+  object-fit: cover;
 `;
 
 const Right = styled.div`
-  flex: 2; 
+  flex: 2;
 
   @media only screen and (max-width: 1200px) {
     width: 100%;
