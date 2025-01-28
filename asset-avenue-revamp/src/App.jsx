@@ -10,8 +10,8 @@ import HowToBuy from './components/home/howtobuy'
 import { HouseDetails } from './components/home/roadmap'
 import Logos from './components/home/logos'
 import Footer from './components/Footer'
-import PieChart from './components/home/pieChart'
 import HeroSection from './components/home/HeroSection'
+import PieChart from './components/home/pieChart';
 
 function App() {
   return (
@@ -22,9 +22,9 @@ function App() {
       <InvestingMode/>
       <StatesMeets/>
       <PassiveIncome/>
-      {/* <HowToBuy/> */}
-      <HouseDetails/>
+      <HowToBuy/>
       <PieChart/>
+      <HouseDetails/>
       <Logos/>
       <Footer/>
     </div>

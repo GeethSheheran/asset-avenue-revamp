@@ -1,87 +1,95 @@
-import React, { useState } from 'react';
-import styles from './howtobuy.module.css';
+import React from "react";
 
 const HowToBuy = () => {
-  const [activeStep, setActiveStep] = useState(0);
-
-  const handleStepClick = (step) => {
-    setActiveStep(step);
-  };
-
   return (
-    <div className={`${styles.container} bg-[#161D27] p-8 rounded-lg shadow-md`}>
-      <h2 className="text-2xl font-bold text-center text-white mb-6">How To Buy</h2>
-      <div className="grid grid-cols-3 gap-6">
-        <div
-          className={`${styles.stepContainer} ${
-            activeStep === 0 ? styles.activeStep : ''
-          } border-4 border-[#3FAC55] rounded-lg p-6 relative`}
-          onClick={() => handleStepClick(0)}
-        >
-          <div className="absolute top-0 right-0 m-4 bg-gradient-to-r from-[#FBE279] to-[#B8934D] rounded-full w-8 h-8 flex justify-center items-center">
-            <p className="text-white font-bold">01</p>
+    <div className="relative bg-black text-white flex flex-col items-center py-40 px-6 md:px-24 overflow-hidden">
+      {/* Background Images */}
+      <div className="absolute inset-0 flex justify-center items-center">
+        <img
+          src="/Ellipse.png"
+          alt="Background Left"
+          className="absolute left-0 w-1/2 opacity-100"
+        />
+        <img
+          src="/Ellipse.png"
+          alt="Background Right"
+          className="absolute right-0 w-1/3 opacity-100"
+        />
+      </div>
+
+      <h1 className="text-3xl font-bold mb-8 text-center">How To Buy</h1>
+      <p className="mb-6 text-center">
+        The Contract Address:{" "}
+        <span className="font-mono">
+          0fHK5q6vvBy6r7rBQJhynxJYiUoYzoC5D9XcCkvtS6
+        </span>
+      </p>
+      <div className="flex flex-col md:flex-row items-center justify-center gap-6 w-full">
+        {/* Card 1 */}
+        <div className="bg-[#161D27]/80 rounded-2xl border-4 border-[#3FAC55] rounded-tl-none shadow-[0_4px_21px_-2px_#3FAC55] p-6 relative w-full max-w-sm">
+          <div
+            className="absolute -left-3 top-4 bg-no-repeat bg-cover w-12 h-12"
+            style={{ backgroundImage: `url('/lable.png')` }}
+          >
+            <span className="flex justify-center items-center h-full w-full text-xl font-bold">
+              01
+            </span>
           </div>
-          <h3 className="text-white font-bold">Get a Wallet</h3>
-          <p className="text-center text-gray-400">
-            You're gonna need a wallet to hold your SAAV. There are lots of great
-            ones that are compatible! We recommend Phantom for Solana and
-            Metamask for other chains.
+          <div className="flex items-center justify-center mb-4">
+            <img src="/phantom.png" alt="Phantom" className="w-12 h-12 mr-4" />
+            <img src="/metamask.png" alt="Metamask" className="w-12 h-12" />
+          </div>
+          <h2 className="text-xl text-center font-semibold mb-2">
+            Get a wallet
+          </h2>
+          <p className="text-sm text-center">
+            You’re gonna need a wallet to hold your $AAV. We recommend Phantom
+            Solana and Metamask for otherchains.
           </p>
-          <img
-            src="/wallet.png" // Replace with the actual path to your image
-            alt="Wallet Image"
-            className="mx-auto mt-4" // Center the image
-            width={50}
-            height={50}
-          />
         </div>
 
-        <div
-          className={`${styles.stepContainer} ${
-            activeStep === 1 ? styles.activeStep : ''
-          } border-4 border-[#3FAC55] rounded-lg p-6 relative`}
-          onClick={() => handleStepClick(1)}
-        >
-          <div className="absolute top-2 left-[-40] m-4 bg-gradient-to-r from-[#FBE279] to-[#B8934D] rounded-full w-8 h-8 flex justify-center items-center">
-            <p className="text-white font-bold">02</p>
+        {/* Card 2 */}
+        <div className="bg-[#161D27]/80 rounded-2xl border-4 border-[#3FAC55] rounded-tl-none shadow-[0_4px_21px_-2px_#3FAC55] p-6 relative w-full max-w-sm">
+          <div
+            className="absolute -left-3 top-4 bg-no-repeat bg-cover w-12 h-12"
+            style={{ backgroundImage: `url('/lable.png')` }}
+          >
+            <span className="flex justify-center items-center h-full w-full text-xl font-bold">
+              02
+            </span>
           </div>
-          <h3 className="text-white font-bold">Fund Wallet</h3>
-          <p className="text-center text-gray-400">
+          <div className="flex items-center justify-center mb-4">
+            <img src="/solana.png" alt="Solana" className="w-12 h-12" />
+          </div>
+          <h2 className="text-xl text-center font-semibold mb-2">
+            Fund Wallet
+          </h2>
+          <p className="text-sm text-center">
             Buy and send some SOL, ETH, USDT or BNB to pay for your $AAV tokens.
-            Send a little extra to pay for gas fees. If you don't understand,
-            please use our card payment instead.
+            Send a little extra for gas fees.
           </p>
-          <img
-            src="/wallet.png" // Replace with the actual path to your image
-            alt="Wallet Image"
-            className="mx-auto mt-4" // Center the image
-            width={50}
-            height={50}
-          />
         </div>
 
-        <div
-          className={`${styles.stepContainer} ${
-            activeStep === 2 ? styles.activeStep : ''
-          } border-4 border-[#3FAC55] rounded-lg p-6 relative`}
-          onClick={() => handleStepClick(2)}
-        >
-          <div className="absolute left-0 right-0 m-4 bg-gradient-to-r from-[#FBE279] to-[#B8934D] rounded-full w-8 h-8 flex justify-center items-center">
-            <p className="text-white font-bold">03</p>
+        {/* Card 3 */}
+        <div className="bg-[#161D27]/80 rounded-2xl border-4 border-[#3FAC55] rounded-tl-none shadow-[0_4px_21px_-2px_#3FAC55] p-6 relative w-full max-w-sm">
+          <div
+            className="absolute -left-3 top-4 bg-no-repeat bg-cover w-12 h-12"
+            style={{ backgroundImage: `url('/lable.png')` }}
+          >
+            <span className="flex justify-center items-center h-full w-full text-xl font-bold">
+              03
+            </span>
           </div>
-          <h3 className="text-white font-bold">Buy & Stake</h3>
-          <p className="text-center text-gray-400">
-            To purchase SAAV, connect your wallet to the site. Select payment
-            method and amount to buy. Confirm the transaction. Stake your SAAV to
-            earn huge rewards right away.
+          <div className="flex items-center justify-center mb-4">
+            <img src="/stake.png" alt="Stake" className="w-12 h-12" />
+          </div>
+          <h2 className="text-xl text-center font-semibold mb-2">
+            Buy & Stake
+          </h2>
+          <p className="text-sm text-center">
+            To purchase $AAV, connect your wallet to the site, select a payment
+            method, and confirm the transaction.
           </p>
-          <img
-            src="/wallet.png" // Replace with the actual path to your image
-            alt="Wallet Image"
-            className="mx-auto mt-4" // Center the image
-            width={50}
-            height={50}
-          />
         </div>
       </div>
     </div>

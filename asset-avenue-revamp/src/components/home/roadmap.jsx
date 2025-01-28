@@ -4,7 +4,7 @@ import { outToInVariantsRight } from "../home/animations";
 
 export const HouseDetails = () => {
   return (
-    <Container>
+    <Container className="z-10">
       <h1 className="header text-4xl font-bold mt-16">Roadmap</h1>
       <Wrap>
         <Left>

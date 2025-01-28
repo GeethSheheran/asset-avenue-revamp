@@ -34,7 +34,11 @@ const InvestingMode = () => {
       {/* <h2 className="text-3xl font-bold text-center mb-12">
         Real Estate Investing Made Easy on the Blockchain
       </h2> */}
-      <div className="grid grid-cols-1 xl:px-20 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 justify-center">
+      <div className="relative grid grid-cols-1 xl:px-20 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 justify-center">
+      <div className="absolute inset-0 flex justify-center items-center">
+        <img src="/Ellipse.png" alt="Background Left" className="absolute left-0 w-1/2 opacity-100" />
+        <img src="/Ellipse.png" alt="Background Right" className="absolute right-0 w-1/2 opacity-100" />
+      </div>
         {cards.map((card, index) => (
           <div
             key={index}
