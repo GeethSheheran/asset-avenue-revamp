@@ -8,7 +8,7 @@ const StatesMeets = () => {
 
       {/* Left Column */}
       <div className="relative lg:w-1/2 w-full mb-8 lg:mb-0 flex flex-col items-center lg:items-start">
-        <h1 className="text-4xl font-bold mb-4 font-helvetica text-center lg:text-left">
+        <h1 className="text-[50px] font-bold mb-4 font-helvetica text-center lg:text-left">
           Asset Avenue <span className="text-[#16A34A]">DAO</span>
         </h1>
         <p className="text-lg mb-6 text-center lg:text-left">

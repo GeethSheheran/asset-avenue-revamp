@@ -42,7 +42,7 @@ const PassiveIncome = () => {
     <div className="bg-black text-white py-0 xl:px-24 px-4">
       {/* Apply motion to the h1 */}
       <motion.h1
-        className="text-center text-3xl font-helvetica md:text-4xl font-bold mb-8"
+        className="text-center text-3xl font-helvetica md:text-[50px] font-bold mb-12"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}

@@ -21,7 +21,7 @@ const HowToBuy = () => {
 
       {/* Animated Title */}
       <motion.h1
-        className="text-4xl font-helvetica font-bold mb-8 text-center"
+        className="text-[50px] font-helvetica font-bold mb-2 text-center"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -31,7 +31,7 @@ const HowToBuy = () => {
 
       {/* Animated Paragraph */}
       <motion.p
-        className="mb-6 text-center"
+        className="mb-12 text-center text-[20px]"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -45,13 +45,13 @@ const HowToBuy = () => {
       <div className="flex flex-col md:flex-row items-center justify-center gap-6 w-full">
         {/* Card 1 */}
         <motion.div
-          className="bg-[#161D27]/80 rounded-2xl border-4 border-[#3FAC55] rounded-tl-none shadow-[0_4px_21px_-2px_#3FAC55] p-6 relative w-full max-w-sm"
+          className="bg-[#161D27]/80 rounded-2xl border-4 border-[#3FAC55] rounded-tl-none shadow-[0_4px_21px_-2px_#3FAC55] p-6 py-16 relative w-full max-w-sm"
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
           <div
-            className="absolute -left-3 top-4 bg-no-repeat bg-cover w-12 h-12"
+            className="absolute -left-3 top-16 bg-no-repeat bg-cover w-12 h-12"
             style={{ backgroundImage: `url('/lable.png')` }}
           >
             <span className="flex justify-center items-center h-full w-full text-xl font-bold">
@@ -59,8 +59,8 @@ const HowToBuy = () => {
             </span>
           </div>
           <div className="flex items-center justify-center mb-4">
-            <img src="logo/phantom.png" alt="Phantom" className="w-12 h-12 mr-4" />
-            <img src="logo/metamask.webp" alt="Metamask" className="w-12 h-12" />
+            <img src="logo/phantom.png" alt="Phantom" className="w-16 h-16 mr-4" />
+            <img src="logo/metamask.webp" alt="Metamask" className="w-16 h-16" />
           </div>
           <h2 className="text-xl text-center font-semibold mb-2">
             Get a wallet
@@ -73,13 +73,13 @@ const HowToBuy = () => {
 
         {/* Card 2 */}
         <motion.div
-          className="bg-[#161D27]/80 rounded-2xl border-4 border-[#3FAC55] rounded-tl-none shadow-[0_4px_21px_-2px_#3FAC55] p-6 relative w-full max-w-sm"
+          className="bg-[#161D27]/80 rounded-2xl border-4 border-[#3FAC55] py-16 rounded-tl-none shadow-[0_4px_21px_-2px_#3FAC55] p-6 relative w-full max-w-sm"
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
           <div
-            className="absolute -left-3 top-4 bg-no-repeat bg-cover w-12 h-12"
+            className="absolute -left-3 top-16 bg-no-repeat bg-cover w-12 h-12"
             style={{ backgroundImage: `url('/lable.png')` }}
           >
             <span className="flex justify-center items-center h-full w-full text-xl font-bold">
@@ -87,7 +87,7 @@ const HowToBuy = () => {
             </span>
           </div>
           <div className="flex items-center justify-center mb-4">
-            <img src="logo/solana.png" alt="Solana" className="w-12 h-12" />
+            <img src="logo/solana.png" alt="Solana" className="w-16 h-16" />
           </div>
           <h2 className="text-xl text-center font-semibold mb-2">
             Fund Wallet
@@ -100,13 +100,13 @@ const HowToBuy = () => {
 
         {/* Card 3 */}
         <motion.div
-          className="bg-[#161D27]/80 rounded-2xl border-4 border-[#3FAC55] rounded-tl-none shadow-[0_4px_21px_-2px_#3FAC55] p-6 relative w-full max-w-sm"
+          className="bg-[#161D27]/80 rounded-2xl border-4 py-16 border-[#3FAC55] rounded-tl-none shadow-[0_4px_21px_-2px_#3FAC55] p-6 relative w-full max-w-sm"
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
           <div
-            className="absolute -left-3 top-4 bg-no-repeat bg-cover w-12 h-12"
+            className="absolute -left-3 top-16 bg-no-repeat bg-cover w-12 h-12"
             style={{ backgroundImage: `url('/lable.png')` }}
           >
             <span className="flex justify-center items-center h-full w-full text-xl font-bold">
@@ -114,7 +114,7 @@ const HowToBuy = () => {
             </span>
           </div>
           <div className="flex items-center justify-center mb-4">
-            <img src="logo/asset.png" alt="Stake" className="w-12 h-12" />
+            <img src="logo/asset.png" alt="Stake" className="w-16 h-16" />
           </div>
           <h2 className="text-xl text-center font-semibold mb-2">
             Buy & Stake
