@@ -35,7 +35,7 @@ const Revolutionizing = () => {
       {/* Main Content */}
       <div className="relative z-10">
         <motion.h1
-          className="text-3xl font-helvetica md:text-[40px] font-bold text-center mb-4"
+          className="text-3xl font-helvetica md:text-[40px] leading-normal font-bold text-center mb-4"
           initial={{ opacity: 0, y: -50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
