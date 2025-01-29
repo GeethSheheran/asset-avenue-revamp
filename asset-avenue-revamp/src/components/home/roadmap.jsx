@@ -104,7 +104,7 @@ export const HouseDetails = () => {
                 </motion.li>
               </div>
 
-              <div className="pb-8">
+              <div className="pb-0">
                 <motion.li
                   variants={outToInVariantsRight}
                   initial="hidden"
@@ -132,11 +132,13 @@ export const HouseDetails = () => {
                   </h3>
                 </motion.li>
               </div>
-
-              <button className="mt-12 px-6 item-center py-2 bg-[#16A34A] text-white font-semibold rounded-[10px] hover:bg-[#11823B] transition self-end">
+            </ul>
+            <div className="flex justify-center mb-8">
+              {" "}
+              <button className="mt-0 px-6 item-center py-2 bg-[#16A34A] text-white font-semibold rounded-[10px] hover:bg-[#11823B] transition self-end">
                 MORE INFO
               </button>
-            </ul>
+            </div>
           </RightWrap>
         </Right>
         {/* <div className="absolute inset-0">

@@ -125,7 +125,7 @@ const HeroSection = ({ language }) => {
           </div>
         </div>
 
-        <div className="w-full md:w-1/3 bg-[#003000] p-8 rounded-[36px] rounded-tl-none shadow-[0_4px_145px_0_#56C46C9C] mt-10 md:mt-0 relative md:ml-auto">
+        <div className="w-full md:w-1/3 bg-[#003000] p-8 rounded-[36px] rounded-tl-none shadow-[0_4px_145px_0_#56C46C9C] mt-0 md:mt-0 relative md:ml-auto">
           <h2 className="text-3xl md:text-[36px] text-center font-helvetica font-semibold mb-4">
             {translations.presaleButton || "BUY $AAV TOKEN PRESALE!"}
           </h2>

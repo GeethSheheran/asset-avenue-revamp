@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const HowToBuy = () => {
   return (
-    <div className="relative bg-black text-white flex flex-col items-center py-40 px-6 md:px-24 overflow-hidden">
+    <div className="relative bg-black text-white flex flex-col items-center py-24 px-6 md:px-24 overflow-hidden">
       {/* Background Images - Hidden on mobile */}
       {/* <div className="absolute inset-0 flex justify-center items-center sm:block hidden">
         <img
@@ -31,7 +31,7 @@ const HowToBuy = () => {
 
       {/* Animated Paragraph */}
       <motion.p
-        className="mb-12 text-center text-[20px]"
+        className="mb-12 text-center text-[12px] md:text-[20px]"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}

@@ -15,7 +15,7 @@ import ImageSlider from './components/home/ImageSlider';
 
 function App() {
   return (
-    <div className='bg-black'>
+    <div className='bg-black overflow-x-hidden'>
       <Navbar/>
       <HeroSection/>
       <Revolutionizing/>

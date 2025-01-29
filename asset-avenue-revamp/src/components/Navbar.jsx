@@ -16,16 +16,12 @@ const Navbar = () => {
     <nav className="bg-black z-50 dark:bg-black fixed w-full z-20 top-0 start-0">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-6">
         <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <img
-            src="logo/logo.webp"
-            className="h-8"
-            alt="Asset Avenue"
-          />
+          <img src="logo/logo.webp" className="h-8" alt="Asset Avenue" />
         </a>
         <div className="flex md:order-2 font-helvetica space-x-3 md:space-x-4 rtl:space-x-reverse">
           <button
             type="button"
-            className="text-white bg-[#3FAC55] hover:bg-[#11823B] focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-[10px] px-8 py-2 text-center dark:bg-[#3FAC55] dark:hover:bg-[#3FAC55] dark:focus:ring-green-800"
+            className="text-white bg-[#3FAC55] hover:bg-[#11823B] focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-[10px] px-8 py-2 text-center dark:bg-[#3FAC55] dark:hover:bg-[#3FAC55] dark:focus:ring-green-800 hidden sm:block"
           >
             CONNECT WALLET
           </button>
@@ -69,15 +65,59 @@ const Navbar = () => {
           id="navbar-sticky"
         >
           <ul className="flex flex-col p-4 md:p-0 mt-4 font-bold rounded-lg bg-black md:space-x-0 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-black dark:bg-black md:dark:bg-black dark:border-gray-700 text-sm md:text-base text-white">
-            <li><a href="#" className="block py-2 px-3 text-white font-helvetica text-[10px] ml-3 bg-[#3FAC55] rounded md:bg-transparent md:text-[#3FAC55] md:p-0 md:dark:text-[#3FAC55]">SEED SALE</a></li>
-            <li><a href="#" className="block py-2 px-3 text-white font-helvetica text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">HOME</a></li>
-            <li><a href="#" className="block py-2 px-3 text-white font-helvetica text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">PASSIVE INCOME ASSET</a></li>
-            <li><a href="#" className="block py-2 px-3 text-white font-helvetica text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">INVESTOR RESALE ASSET</a></li>
-            <li><a href="#" className="block py-2 px-3 text-white font-helvetica text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">MY HOUSE</a></li>
-            <li><a href="#" className="block py-2 px-3 text-white font-helvetica text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">STAKING</a></li>
-            <li><a href="#" className="block py-2 px-3 text-white font-helvetica text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">CONTACT US</a></li>
-            <li><a href="#" className="block py-2 px-3 text-white font-helvetica text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">DASHBOARD</a></li>
-            <li><a href="#" className="block py-2 px-3 text-white font-helvetica text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">DAO</a></li>
+            <li>
+              <a href="#" className="block py-2 px-3 text-white font-helvetica text-[10px] ml-3 bg-[#3FAC55] rounded md:bg-transparent md:text-[#3FAC55] md:p-0 md:dark:text-[#3FAC55]">
+                SEED SALE
+              </a>
+            </li>
+            <li>
+              <a href="#" className="block py-2 px-3 text-white font-helvetica text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">
+                HOME
+              </a>
+            </li>
+            <li>
+              <a href="#" className="block py-2 px-3 text-white font-helvetica text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">
+                PASSIVE INCOME ASSET
+              </a>
+            </li>
+            <li>
+              <a href="#" className="block py-2 px-3 text-white font-helvetica text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">
+                INVESTOR RESALE ASSET
+              </a>
+            </li>
+            <li>
+              <a href="#" className="block py-2 px-3 text-white font-helvetica text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">
+                MY HOUSE
+              </a>
+            </li>
+            <li>
+              <a href="#" className="block py-2 px-3 text-white font-helvetica text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">
+                STAKING
+              </a>
+            </li>
+            <li>
+              <a href="#" className="block py-2 px-3 text-white font-helvetica text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">
+                CONTACT US
+              </a>
+            </li>
+            <li>
+              <a href="#" className="block py-2 px-3 text-white font-helvetica text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">
+                DASHBOARD
+              </a>
+            </li>
+            <li>
+              <a href="#" className="block py-2 px-3 text-white font-helvetica text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">
+                DAO
+              </a>
+            </li>
+            <li className="md:hidden">
+              <button
+                type="button"
+                className="text-white bg-[#3FAC55] hover:bg-[#11823B] focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-[10px] px-8 py-2 text-center dark:bg-[#3FAC55] dark:hover:bg-[#3FAC55] dark:focus:ring-green-800 w-full mt-2"
+              >
+                CONNECT WALLET
+              </button>
+            </li>
           </ul>
         </div>
       </div>
