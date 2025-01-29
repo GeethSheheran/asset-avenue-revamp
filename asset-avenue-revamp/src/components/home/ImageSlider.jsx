@@ -38,7 +38,7 @@ const ImageSlider = () => {
             <img
               src={image.src}
               alt={image.alt}
-              className="w-28 h-6"
+              className="w-28 h-8"
             />
           </div>
         ))}
