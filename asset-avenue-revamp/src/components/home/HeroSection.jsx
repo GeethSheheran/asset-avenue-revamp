@@ -154,7 +154,7 @@ const HeroSection = ({ language }) => {
               <img
                 src="/hero/1.png"
                 alt="Visa"
-                className="absolute top-[-30px] -left-10 right-0 w-full h-[30px] object-contain z-0 hidden sm:block"
+                className="absolute top-[-30px] -left-6 right-0 w-full h-[30px] object-contain z-0 hidden sm:block"
               />
               <button className="relative z-10 bg-[#3FAC55] hover:bg-[#11823B] text-white py-2 px-4 rounded-[10px] w-full">
                 {translations.buyWithCard || "Buy With Card"}
@@ -165,7 +165,7 @@ const HeroSection = ({ language }) => {
               <img
                 src="hero/2.png"
                 alt="Crypto"
-                className="absolute top-[-30px] left-10 right-0 w-full h-[30px] object-contain z-0 hidden sm:block"
+                className="absolute top-[-30px] md:left-10 lg:left-6 right-0 w-full h-[30px] object-contain z-0 hidden sm:block"
               />
               <button
                 className="relative z-10 text-black py-2 px-4 rounded-[10px] w-full bg-gradient-to-br from-[#958648] to-[#FBE279] hover:opacity-80"
