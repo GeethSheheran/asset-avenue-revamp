@@ -69,15 +69,15 @@ const Navbar = () => {
           id="navbar-sticky"
         >
           <ul className="flex flex-col p-4 md:p-0 mt-4 font-bold rounded-lg bg-black md:space-x-0 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-black dark:bg-black md:dark:bg-black dark:border-gray-700 text-sm md:text-base text-white">
-            <li><a href="#" className="block py-2 px-3 text-white text-[10px] ml-3 bg-[#3FAC55] rounded md:bg-transparent md:text-[#3FAC55] md:p-0 md:dark:text-[#3FAC55]">SEED SALE</a></li>
-            <li><a href="#" className="block py-2 px-3 text-white text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">HOME</a></li>
-            <li><a href="#" className="block py-2 px-3 text-white text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">PASSIVE INCOME ASSET</a></li>
-            <li><a href="#" className="block py-2 px-3 text-white text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">INVESTOR RESALE ASSET</a></li>
-            <li><a href="#" className="block py-2 px-3 text-white text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">MY HOUSE</a></li>
-            <li><a href="#" className="block py-2 px-3 text-white text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">STAKING</a></li>
-            <li><a href="#" className="block py-2 px-3 text-white text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">CONTACT US</a></li>
-            <li><a href="#" className="block py-2 px-3 text-white text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">DASHBOARD</a></li>
-            <li><a href="#" className="block py-2 px-3 text-white text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">DAO</a></li>
+            <li><a href="#" className="block py-2 px-3 text-white font-helvetica text-[10px] ml-3 bg-[#3FAC55] rounded md:bg-transparent md:text-[#3FAC55] md:p-0 md:dark:text-[#3FAC55]">SEED SALE</a></li>
+            <li><a href="#" className="block py-2 px-3 text-white font-helvetica text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">HOME</a></li>
+            <li><a href="#" className="block py-2 px-3 text-white font-helvetica text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">PASSIVE INCOME ASSET</a></li>
+            <li><a href="#" className="block py-2 px-3 text-white font-helvetica text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">INVESTOR RESALE ASSET</a></li>
+            <li><a href="#" className="block py-2 px-3 text-white font-helvetica text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">MY HOUSE</a></li>
+            <li><a href="#" className="block py-2 px-3 text-white font-helvetica text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">STAKING</a></li>
+            <li><a href="#" className="block py-2 px-3 text-white font-helvetica text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">CONTACT US</a></li>
+            <li><a href="#" className="block py-2 px-3 text-white font-helvetica text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">DASHBOARD</a></li>
+            <li><a href="#" className="block py-2 px-3 text-white font-helvetica text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">DAO</a></li>
           </ul>
         </div>
       </div>
