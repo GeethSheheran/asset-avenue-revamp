@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="flex w-full flex-col justify-between text-white gap-y-10 z-10 bg-black px-24 pt-40 pb-20 sm:flex-row">
+    <footer className="flex w-full flex-col justify-between text-white gap-y-10 z-10 bg-black px-24 pt-10 pb-20 sm:flex-row">
       <div className="flex w-full flex-col items-center sm:w-fit text-white">
         <img src="https://assetavenue.capital/images/logo.webp" alt="logo" className="mb-2 w-36" />
         <p className="mb-px text-xs">Asset Avenue Pille tn 7/5-13</p>
