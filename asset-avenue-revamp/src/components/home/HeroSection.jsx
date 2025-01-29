@@ -3,14 +3,17 @@ import ImageSlider from "./ImageSlider";
 import axios from "axios";
 
 const HeroSection = ({ language }) => {
-  // State for translations
   const [translations, setTranslations] = useState({});
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
 
-  // Google Translate API Configuration
   const API_KEY = "YOUR_GOOGLE_API_KEY"; // Replace with your Google API key
   const API_URL = "https://translation.googleapis.com/language/translate/v2";
 
-  // Default text content for translation
   const defaultText = {
     presaleButton: "BUY $AAV TOKEN PRESALE!",
     priceInfo: "Price will increase gradually.",
@@ -27,6 +30,33 @@ const HeroSection = ({ language }) => {
     buyWithCrypto: "Buy With Crypto",
     dontHaveWallet: "Don't have a wallet?",
   };
+
+  // Target date for the countdown (set this to your desired date)
+  const targetDate = new Date("2025-12-31T00:00:00Z");
+
+  // Function to calculate the time remaining
+  const calculateTimeLeft = () => {
+    const now = new Date();
+    const difference = targetDate - now;
+
+    if (difference > 0) {
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+      setTimeLeft({ days, hours, minutes, seconds });
+    } else {
+      // Handle the case when the countdown has finished
+      setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+    }
+  };
+
+  // Update the countdown every second
+  useEffect(() => {
+    const interval = setInterval(calculateTimeLeft, 1000);
+    return () => clearInterval(interval); // Clean up interval on component unmount
+  }, []);
 
   // Function to translate text using Google Translate API
   const translateText = async (text, targetLang) => {
@@ -65,33 +95,23 @@ const HeroSection = ({ language }) => {
 
   return (
     <div className="relative bg-black text-white min-h-screen flex flex-col md:flex-row items-center justify-center py-16 px-4 md:px-24 overflow-hidden">
-      {/* Background Video */}
-      <video
-        className="absolute top-0 left-0 w-full h-full object-cover opacity-50"
-        autoPlay
-        loop
-        muted
-      >
+      <video className="absolute top-0 left-0 w-full h-full object-cover opacity-50" autoPlay loop muted>
         <source src="video/bars.mp4" type="video/mp4" />
       </video>
 
-      {/* Image Below Video */}
       <img
         src="hero/left hero.png"
         alt="Image Below Video"
         className="absolute top-2 left-1/2 transform -translate-x-1/2 mb-8 w-[90%] sm:w-[80%] md:w-4/5 z-20 "
       />
 
-      {/* Center Image Over Video */}
       <img
         src="hero/centerImg.png"
         alt="Center Graphic"
         className="absolute top-1/2 right-1/4 transform -translate-x-1/2 -translate-y-1/2 z-10 w-3/5 sm:w-2/5 md:w-[250px] hidden sm:block"
       />
 
-      {/* Content */}
       <div className="relative z-20 flex flex-col md:flex-row w-full max-w-7xl">
-        {/* Left Section */}
         <div className="w-full md:w-2/3 mt-16 items-center justify-center space-y-6 text-center md:text-left">
           <h1 className="text-[40px] font-helvetica sm:text-6xl md:text-[90px] font-bold">
             Asset Avenue <br />
@@ -100,13 +120,11 @@ const HeroSection = ({ language }) => {
           <p className="text-lg md:text-[32px] font-light">
             Redefining Real Estate with Blockchain
           </p>
-          {/* Image Slider */}
           <div className="flex items-center justify-center md:justify-start space-x-8">
             <ImageSlider />
           </div>
         </div>
 
-        {/* Right Section */}
         <div className="w-full md:w-1/3 bg-[#003000] p-8 rounded-[36px] rounded-tl-none shadow-[0_4px_145px_0_#56C46C9C] mt-10 md:mt-0 relative md:ml-auto">
           <h2 className="text-3xl md:text-[36px] text-center font-helvetica font-semibold mb-4">
             {translations.presaleButton || "BUY $AAV TOKEN PRESALE!"}
@@ -119,19 +137,19 @@ const HeroSection = ({ language }) => {
           <div className="grid grid-cols-4 gap-4 text-center font-medium mb-6 border border-[#22C55E] border-[4px] rounded-[30px] rounded-tl-none p-4">
             <div>
               <span className="font-thin text-sm">{translations.countdown?.days || "Days"}</span>
-              <p className="text-2xl font-bold">01</p>
+              <p className="text-2xl font-bold">{timeLeft.days}</p>
             </div>
             <div>
               <span className="font-thin text-sm">{translations.countdown?.hours || "Hours"}</span>
-              <p className="text-2xl font-bold">21</p>
+              <p className="text-2xl font-bold">{timeLeft.hours}</p>
             </div>
             <div>
               <span className="font-thin text-sm">{translations.countdown?.minutes || "Minutes"}</span>
-              <p className="text-2xl font-bold">49</p>
+              <p className="text-2xl font-bold">{timeLeft.minutes}</p>
             </div>
             <div>
               <span className="font-thin text-sm">{translations.countdown?.seconds || "Seconds"}</span>
-              <p className="text-2xl font-bold">18</p>
+              <p className="text-2xl font-bold">{timeLeft.seconds}</p>
             </div>
           </div>
 
@@ -147,10 +165,8 @@ const HeroSection = ({ language }) => {
             <hr className="absolute w-1/4 right-0 border-t border-gray-600" />
           </div>
 
-          {/* Buttons */}
           <div className="relative pt-4 flex flex-col md:flex-row justify-between space-y-4 md:space-y-0 md:space-x-4 z-10">
             <div className="relative w-full  md:w-1/2">
-              {/* Image Above Button */}
               <img
                 src="/hero/1.png"
                 alt="Visa"
@@ -161,7 +177,6 @@ const HeroSection = ({ language }) => {
               </button>
             </div>
             <div className="relative w-full md:w-1/2">
-              {/* Image Above Button */}
               <img
                 src="hero/2.png"
                 alt="Crypto"
@@ -183,7 +198,6 @@ const HeroSection = ({ language }) => {
             {translations.dontHaveWallet || "Don't have a wallet?"}
           </p>
 
-          {/* Centered Image */}
           <div className="flex justify-center mt-4">
             <img
               src="/logo/contract.png"
