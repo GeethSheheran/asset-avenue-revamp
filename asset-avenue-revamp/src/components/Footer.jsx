@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="flex w-full flex-col justify-between text-white gap-y-10 z-10 bg-black px-24 pt-10 pb-20 sm:flex-row">
       <div className="flex w-full flex-col items-center sm:w-fit text-white">
-        <img src="https://assetavenue.capital/images/logo.webp" alt="logo" className="mb-2 w-36" />
+        <img src="logo/logo.webp" alt="logo" className="mb-2 w-36" />
         <p className="mb-px text-xs">Asset Avenue Pille tn 7/5-13</p>
         <p className="mb-px text-xs">10135 Kesklinna linnaosa</p>
         <p className="mb-px text-xs">Tallin, Harju maakond</p>
@@ -13,8 +13,8 @@ const Footer = () => {
       <div className="flex gap-x-10">
         <div className="flex flex-col">
           <div className="mb-2 flex gap-x-2">
-            <img src="https://assetavenue.capital/images/telegram.svg" alt="telegram" className="w-6" />
-            <img src="https://assetavenue.capital/images/twitter.svg" alt="twitter" className="w-6" />
+            <img src="logo/telegram.svg" alt="telegram" className="w-6" />
+            <img src="logo/twitter.svg" alt="twitter" className="w-6" />
           </div>
           <p className="mb-1 text-xs">Whitepaper</p>
           <p className="text-xs">Privacy and Legal Terms</p>
