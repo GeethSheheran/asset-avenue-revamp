@@ -111,12 +111,12 @@ const HeroSection = ({ language }) => {
           <h2 className="text-3xl md:text-[36px] text-center font-helvetica font-semibold mb-4">
             {translations.presaleButton || "BUY $AAV TOKEN PRESALE!"}
           </h2>
-          <p className="text-sm md:text-base text-center bg-gradient-to-r from-yellow-400 to-yellow-600 py-1 w-full rounded-lg inline-block mb-4">
+          <p className="text-sm md:text-base text-center bg-gradient-to-l from-[#B8934D] to-[#FBE279] py-1 w-full rounded-lg inline-block mb-4">
             {translations.priceInfo || "Price will increase gradually."}
           </p>
 
           {/* Countdown Timer */}
-          <div className="grid grid-cols-4 gap-4 text-center font-medium mb-6 border border-[#22C55E] border-[4px] rounded-xl rounded-tl-none p-4">
+          <div className="grid grid-cols-4 gap-4 text-center font-medium mb-6 border border-[#22C55E] border-[4px] rounded-[30px] rounded-tl-none p-4">
             <div>
               <span className="font-thin text-sm">{translations.countdown?.days || "Days"}</span>
               <p className="text-2xl font-bold">01</p>
@@ -135,7 +135,7 @@ const HeroSection = ({ language }) => {
             </div>
           </div>
 
-          <div className="flex justify-between text-xs md:text-sm mb-2">
+          <div className="flex justify-between text-xs md:text-sm mb-6">
             <span>{translations.minBuy || "Min buy: 0.5 SOL"}</span>
             <span>{translations.maxBuy || "Max buy: 200 SOL"}</span>
           </div>
@@ -148,22 +148,24 @@ const HeroSection = ({ language }) => {
           </div>
 
           {/* Buttons */}
-          <div className="relative flex flex-col md:flex-row justify-between space-y-4 md:space-y-0 md:space-x-4 z-10">
-            <div className="relative w-full md:w-1/2">
+          <div className="relative pt-4 flex flex-col md:flex-row justify-between space-y-4 md:space-y-0 md:space-x-4 z-10">
+            <div className="relative w-full  md:w-1/2">
+              {/* Image Above Button */}
               <img
-                src="/hero/buycard.png"
+                src="/hero/1.png"
                 alt="Visa"
-                className="absolute inset-0 w-full h-full object-contain opacity-30 z-0"
+                className="absolute top-[-30px] -left-10 right-0 w-full h-[30px] object-contain z-0 hidden sm:block"
               />
               <button className="relative z-10 bg-[#3FAC55] hover:bg-[#11823B] text-white py-2 px-4 rounded-[10px] w-full">
                 {translations.buyWithCard || "Buy With Card"}
               </button>
             </div>
             <div className="relative w-full md:w-1/2">
+              {/* Image Above Button */}
               <img
-                src="/crypto-logo.png"
+                src="hero/2.png"
                 alt="Crypto"
-                className="absolute inset-0 w-full h-full object-contain opacity-30 z-0"
+                className="absolute top-[-30px] left-10 right-0 w-full h-[30px] object-contain z-0 hidden sm:block"
               />
               <button
                 className="relative z-10 text-black py-2 px-4 rounded-[10px] w-full bg-gradient-to-br from-[#958648] to-[#FBE279] hover:opacity-80"
