@@ -20,7 +20,7 @@ const HowToBuy = () => {
 
       {/* Animated Title */}
       <motion.h1
-        className="text-3xl font-bold mb-8 text-center"
+        className="text-4xl font-helvetica font-bold mb-8 text-center"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -58,8 +58,8 @@ const HowToBuy = () => {
             </span>
           </div>
           <div className="flex items-center justify-center mb-4">
-            <img src="/phantom.png" alt="Phantom" className="w-12 h-12 mr-4" />
-            <img src="/metamask.png" alt="Metamask" className="w-12 h-12" />
+            <img src="logo/phantom.png" alt="Phantom" className="w-12 h-12 mr-4" />
+            <img src="logo/metamask.webp" alt="Metamask" className="w-12 h-12" />
           </div>
           <h2 className="text-xl text-center font-semibold mb-2">
             Get a wallet
@@ -86,7 +86,7 @@ const HowToBuy = () => {
             </span>
           </div>
           <div className="flex items-center justify-center mb-4">
-            <img src="/solana.png" alt="Solana" className="w-12 h-12" />
+            <img src="logo/solana.png" alt="Solana" className="w-12 h-12" />
           </div>
           <h2 className="text-xl text-center font-semibold mb-2">
             Fund Wallet
@@ -113,7 +113,7 @@ const HowToBuy = () => {
             </span>
           </div>
           <div className="flex items-center justify-center mb-4">
-            <img src="/stake.png" alt="Stake" className="w-12 h-12" />
+            <img src="logo/asset.png" alt="Stake" className="w-12 h-12" />
           </div>
           <h2 className="text-xl text-center font-semibold mb-2">
             Buy & Stake

@@ -12,7 +12,7 @@ const StatesMeets = () => {
             className="absolute left-0 w-full opacity-100"
           />
         </div>
-        <h1 className="text-4xl font-bold mb-4 text-center lg:text-left">
+        <h1 className="text-4xl font-bold mb-4 font-helvetica text-center lg:text-left">
           Asset Avenue <span className="text-[#16A34A]">DAO</span>
         </h1>
         <p className="text-lg mb-6 text-center lg:text-left">
@@ -27,7 +27,7 @@ const StatesMeets = () => {
           <li>Decentralized Decisions</li>
           <li>Legal Compliance</li>
         </ul>
-        <button className="mt-6 px-6 py-2 bg-[#16A34A] text-white font-semibold rounded-md hover:bg-green-600 transition self-center lg:self-end">
+        <button className="mt-6 px-6 py-2 bg-[#16A34A] text-white font-semibold rounded-[10px] hover:bg-green-600 transition self-center lg:self-end">
           ACCESS DAO
         </button>
       </div>

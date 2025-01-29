@@ -5,7 +5,7 @@ import { outToInVariantsRight } from "../home/animations";
 export const HouseDetails = () => {
   return (
     <Container className="z-10">
-      <h1 className="header text-4xl font-bold mt-16">Roadmap</h1>
+      <h1 className="header text-4xl font-bold  font-helvetica mt-16">Roadmap</h1>
       <Wrap className="relative">
         <Left>
           <Image src="/roadmap/Finished Building.png" alt="How it works" />
@@ -129,7 +129,7 @@ export const HouseDetails = () => {
                 </motion.li>
               </div>
 
-              <button className="mt-12 px-6 item-center py-2 bg-[#16A34A] text-white font-semibold rounded-md hover:bg-green-600 transition self-end">
+              <button className="mt-12 px-6 item-center py-2 bg-[#16A34A] text-white font-semibold rounded-[10px] hover:bg-green-600 transition self-end">
                 ACCESS DAO
               </button>
             </ul>

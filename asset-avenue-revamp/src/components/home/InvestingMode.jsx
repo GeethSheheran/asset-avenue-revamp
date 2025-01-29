@@ -26,7 +26,7 @@ const InvestingMode = () => {
     {
       title: "AI",
       description: "Analyze worldwide Real Estate deals and markets with AI.",
-      icon: "./investing/iconOne.png",
+      icon: "./investing/iconFive.png",
     },
   ];
 

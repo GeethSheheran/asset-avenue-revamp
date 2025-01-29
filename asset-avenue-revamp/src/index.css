@@ -3,3 +3,11 @@
 @tailwind utilities;
 
 @import "flowbite";
+
+@layer base {
+    @font-face {
+      font-family: "Helvetica";
+      font-style: normal;
+      font-weight: 700;
+      src: url("/fonts/Helvetica-Bold.ttf") format("truetype");
+    }}
