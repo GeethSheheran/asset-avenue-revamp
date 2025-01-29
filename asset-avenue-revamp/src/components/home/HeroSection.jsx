@@ -129,7 +129,7 @@ const HeroSection = ({ language }) => {
           <h2 className="text-3xl md:text-[36px] text-center font-helvetica font-semibold mb-4">
             {translations.presaleButton || "BUY $AAV TOKEN PRESALE!"}
           </h2>
-          <p className="text-sm md:text-base text-center bg-gradient-to-l from-[#B8934D] to-[#FBE279] py-1 w-full rounded-lg inline-block mb-4">
+          <p className="text-sm md:text-base text-center bg-gradient-to-l from-[#B8934D] to-[#FBE279] py-1 w-full text-black rounded-lg inline-block mb-4">
             {translations.priceInfo || "Price will increase gradually."}
           </p>
 
