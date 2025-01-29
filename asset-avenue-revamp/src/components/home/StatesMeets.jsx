@@ -23,7 +23,7 @@ const StatesMeets = () => {
           <li>Decentralized Decisions</li>
           <li>Legal Compliance</li>
         </ul>
-        <button className="mt-6 px-6 py-2 bg-[#16A34A] text-white font-semibold rounded-[10px] hover:bg-green-600 transition self-center lg:self-end">
+        <button className="mt-6 px-6 py-2 bg-[#16A34A] text-white font-semibold rounded-[10px] hover:bg-[#11823B] transition self-center lg:self-end">
           ACCESS DAO
         </button>
       </div>

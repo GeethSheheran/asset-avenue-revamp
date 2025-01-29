@@ -133,7 +133,7 @@ export const HouseDetails = () => {
                 </motion.li>
               </div>
 
-              <button className="mt-12 px-6 item-center py-2 bg-[#16A34A] text-white font-semibold rounded-[10px] hover:bg-green-600 transition self-end">
+              <button className="mt-12 px-6 item-center py-2 bg-[#16A34A] text-white font-semibold rounded-[10px] hover:bg-[#11823B] transition self-end">
                 ACCESS DAO
               </button>
             </ul>

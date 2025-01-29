@@ -25,7 +25,7 @@ const HeroSection = () => {
       <img
         src="hero/centerImg.png"
         alt="Center Graphic"
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 w-3/5 sm:w-2/5 md:w-1/5 hidden sm:block"
+        className="absolute top-1/2 right-1/4 transform -translate-x-1/2 -translate-y-1/2 z-10 w-3/5 sm:w-2/5 md:w-[250px] hidden sm:block"
       />
 
       {/* Content */}
@@ -36,7 +36,7 @@ const HeroSection = () => {
             Asset Avenue <br />
             <span className="text-[#22C55E]">Presale</span>
           </h1>
-          <p className="text-lg md:text-xl font-light">
+          <p className="text-lg md:text-[32px] font-light">
             Redefining Real Estate with Blockchain
           </p>
           {/* Image Slider */}
@@ -94,7 +94,7 @@ const HeroSection = () => {
                 alt="Visa"
                 className="absolute inset-0 w-full h-full object-contain opacity-30 z-0"
               />
-              <button className="relative z-10 bg-[#3FAC55] hover:bg-green-600 text-white py-2 px-4 rounded-[10px] w-full">
+              <button className="relative z-10 bg-[#3FAC55] hover:bg-[#11823B] text-white py-2 px-4 rounded-[10px] w-full">
                 Buy With Card
               </button>
             </div>

@@ -2,9 +2,14 @@ import React, { useState } from "react";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState("EN");
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleLanguageChange = (event) => {
+    setSelectedLanguage(event.target.value);
   };
 
   return (
@@ -17,13 +22,23 @@ const Navbar = () => {
             alt="Asset Avenue"
           />
         </a>
-        <div className="flex md:order-2 font-helvetica space-x-3 md:space-x-0 rtl:space-x-reverse">
+        <div className="flex md:order-2 font-helvetica space-x-3 md:space-x-4 rtl:space-x-reverse">
           <button
             type="button"
-            className="text-white bg-[#3FAC55] hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-[#3FAC55] dark:hover:bg-[#3FAC55] dark:focus:ring-green-800"
+            className="text-white bg-[#3FAC55] hover:bg-[#11823B] focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-[10px] px-8 py-2 text-center dark:bg-[#3FAC55] dark:hover:bg-[#3FAC55] dark:focus:ring-green-800"
           >
             CONNECT WALLET
           </button>
+          <select
+            value={selectedLanguage}
+            onChange={handleLanguageChange}
+            className="bg-[#FBE279] text-black font-medium rounded-lg text-[10px] px-4 py-2"
+          >
+            <option value="EN">EN 🇬🇧</option>
+            <option value="ES">ES 🇪🇸</option>
+            <option value="FR">FR 🇫🇷</option>
+            <option value="AR">AR 🇦🇪</option>
+          </select>
           <button
             type="button"
             onClick={toggleMenu}
@@ -50,85 +65,19 @@ const Navbar = () => {
           </button>
         </div>
         <div
-          className={`${
-            isMenuOpen ? "flex" : "hidden"
-          } flex-col items-center justify-between w-full md:flex md:w-auto md:order-1`}
+          className={`${isMenuOpen ? "flex" : "hidden"} flex-col items-right justify-between w-full md:flex md:w-auto md:order-1`}
           id="navbar-sticky"
         >
-          <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-800 md:space-x-2 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-black dark:bg-black md:dark:bg-black dark:border-gray-700 text-sm md:text-base text-white">
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-white text-xs ml-3 bg-[#3FAC55] rounded md:bg-transparent md:text-[#3FAC55] md:p-0 md:dark:text-[#3FAC55]"
-                aria-current="page"
-              >
-                SEED SALE
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-white text-xs ml-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0 md:dark:hover:text-[#3FAC55] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >
-                HOME
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-white text-xs ml-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0 md:dark:hover:text-[#3FAC55] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >
-                PASSIVE INCOME ASSET
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-white rounded text-xs ml-3 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0 md:dark:hover:text-[#3FAC55] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >
-                INVESTOR RESALE ASSET
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-white text-xs ml-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0 md:dark:hover:text-[#3FAC55] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >
-                MY HOUSE
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-white text-xs ml-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0 md:dark:hover:text-[#3FAC55] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >
-                STAKING
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-white text-xs ml-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0 md:dark:hover:text-[#3FAC55] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >
-                CONTACT US
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-white text-xs ml-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0 md:dark:hover:text-[#3FAC55] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >
-                DASHBOARD
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-white text-xs ml-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0 md:dark:hover:text-[#3FAC55] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >
-                DAO
-              </a>
-            </li>
+          <ul className="flex flex-col p-4 md:p-0 mt-4 font-bold rounded-lg bg-black md:space-x-0 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-black dark:bg-black md:dark:bg-black dark:border-gray-700 text-sm md:text-base text-white">
+            <li><a href="#" className="block py-2 px-3 text-white text-[10px] ml-3 bg-[#3FAC55] rounded md:bg-transparent md:text-[#3FAC55] md:p-0 md:dark:text-[#3FAC55]">SEED SALE</a></li>
+            <li><a href="#" className="block py-2 px-3 text-white text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">HOME</a></li>
+            <li><a href="#" className="block py-2 px-3 text-white text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">PASSIVE INCOME ASSET</a></li>
+            <li><a href="#" className="block py-2 px-3 text-white text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">INVESTOR RESALE ASSET</a></li>
+            <li><a href="#" className="block py-2 px-3 text-white text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">MY HOUSE</a></li>
+            <li><a href="#" className="block py-2 px-3 text-white text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">STAKING</a></li>
+            <li><a href="#" className="block py-2 px-3 text-white text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">CONTACT US</a></li>
+            <li><a href="#" className="block py-2 px-3 text-white text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">DASHBOARD</a></li>
+            <li><a href="#" className="block py-2 px-3 text-white text-[10px] ml-3 rounded hover:bg-[#3FAC55] md:hover:bg-transparent md:hover:text-[#3FAC55] md:p-0">DAO</a></li>
           </ul>
         </div>
       </div>
