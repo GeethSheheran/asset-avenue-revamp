@@ -7,7 +7,7 @@ const ImageSlider = () => {
     { src: "logo/logo2.png", alt: "Solana" },
     { src: "logo/logo3.png", alt: "Techopedia" },
     { src: "logo/logo4.png", alt: "Ethereum" },
-    { src: "logo/logo5.webp", alt: "Polygon" },
+    { src: "logo/logo5.png", alt: "Polygon" },
   ];
 
   const sliderRef = useRef(null);
