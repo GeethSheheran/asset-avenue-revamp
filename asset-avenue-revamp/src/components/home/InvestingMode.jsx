@@ -48,6 +48,7 @@ const InvestingMode = () => {
 
       {/* Cards Section */}
       <div className="relative grid grid-cols-1 xl:px-20 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 justify-center">
+
         {cards.map((card, index) => (
           <motion.div
             key={index}

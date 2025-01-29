@@ -2,16 +2,12 @@ import React from "react";
 
 const StatesMeets = () => {
   return (
-    <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between px-4 lg:px-24 gap-4 py-12 bg-black text-white">
+    <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between px-4 lg:px-24 gap-4 py-12 bg-black text-white relative">
+      {/* Background Radial Gradient */}
+      <div className="absolute left-1/6 top-1/2 -translate-y-1/2 lg:w-1/2 w-full h-[400px] lg:h-[700px] bg-[#3FAC55] rounded-full blur-3xl opacity-20"></div>
+
       {/* Left Column */}
       <div className="relative lg:w-1/2 w-full mb-8 lg:mb-0 flex flex-col items-center lg:items-start">
-        <div className="absolute inset-0 flex justify-center items-center">
-          <img
-            src="/Ellipse.png"
-            alt="Background Left"
-            className="absolute left-0 w-full opacity-100"
-          />
-        </div>
         <h1 className="text-4xl font-bold mb-4 font-helvetica text-center lg:text-left">
           Asset Avenue <span className="text-[#16A34A]">DAO</span>
         </h1>

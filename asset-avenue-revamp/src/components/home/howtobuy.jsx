@@ -5,7 +5,7 @@ const HowToBuy = () => {
   return (
     <div className="relative bg-black text-white flex flex-col items-center py-40 px-6 md:px-24 overflow-hidden">
       {/* Background Images - Hidden on mobile */}
-      <div className="absolute inset-0 flex justify-center items-center sm:block hidden">
+      {/* <div className="absolute inset-0 flex justify-center items-center sm:block hidden">
         <img
           src="/Ellipse.png"
           alt="Background Left"
@@ -16,7 +16,8 @@ const HowToBuy = () => {
           alt="Background Right"
           className="absolute right-16 -top-0 w-1/3 opacity-100"
         />
-      </div>
+      </div> */}
+      <div className="absolute left-1/6 z-10 top-1/2 -translate-y-1/2 lg:w-full w-full h-[400px] lg:h-[400px] bg-[#3FAC55] rounded-full blur-3xl opacity-20"></div>
 
       {/* Animated Title */}
       <motion.h1

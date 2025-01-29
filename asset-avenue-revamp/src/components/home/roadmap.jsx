@@ -5,12 +5,16 @@ import { outToInVariantsRight } from "../home/animations";
 export const HouseDetails = () => {
   return (
     <Container className="z-10">
-      <h1 className="header text-4xl font-bold  font-helvetica mt-16">Roadmap</h1>
+      <h1 className="header text-4xl font-bold  font-helvetica mt-16">
+        Roadmap
+      </h1>
       <Wrap className="relative">
         <Left>
           <Image src="/roadmap/Finished Building.png" alt="How it works" />
         </Left>
-        <Right className="pr-24 pb-8">
+        <Right className="pr-24 pb-8 relative">
+          <div className="absolute left-1/6 z-10 top-1/2 -translate-y-1/2 lg:w-full w-full h-[400px] lg:h-[700px] bg-[#3FAC55] rounded-full blur-3xl opacity-20"></div>
+
           <RightWrap>
             <ul className="customList ">
               <div className="pb-8">
@@ -135,13 +139,13 @@ export const HouseDetails = () => {
             </ul>
           </RightWrap>
         </Right>
-        <div className="absolute inset-0">
+        {/* <div className="absolute inset-0">
         <img
           src="/Ellipse2.png"
           alt="Background Left"
           className="absolute  w-1/2 right-0 bottom-1 z-10 opacity-100"
         />
-      </div>
+      </div> */}
       </Wrap>
     </Container>
   );
