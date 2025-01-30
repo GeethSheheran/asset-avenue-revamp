@@ -78,6 +78,7 @@ const Navbar = () => {
         </button>
 
         <ul className="flex flex-col items-center space-y-6">
+        <img src="logo/logo.webp" className="h-16 mb-12" alt="Asset Avenue" />
           <li><a href="#" className="block text-lg font-bold hover:text-[#3FAC55]">SEED SALE</a></li>
           <li><a href="#" className="block text-lg font-bold hover:text-[#3FAC55]">HOME</a></li>
           <li><a href="#" className="block text-lg font-bold hover:text-[#3FAC55]">PASSIVE INCOME ASSET</a></li>
