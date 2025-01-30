@@ -25,6 +25,7 @@ const HeroSection = ({ language }) => {
     },
     minBuy: "Min buy: 0.5 SOL",
     maxBuy: "Max buy: 200 SOL",
+    totalSOL: "TOTAL SOL RAISED: 0,000414747 SOL",
     price: "1 AAV = 0.000368664 SOL",
     buyWithCard: "Buy With Card",
     buyWithCrypto: "Buy With Crypto",
@@ -41,7 +42,9 @@ const HeroSection = ({ language }) => {
 
     if (difference > 0) {
       const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const hours = Math.floor(
+        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
       const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
@@ -95,7 +98,12 @@ const HeroSection = ({ language }) => {
 
   return (
     <div className="relative bg-black text-white min-h-screen flex flex-col md:flex-row items-center justify-center py-16 px-4 md:px-24 overflow-hidden">
-      <video className="absolute top-0 left-0 w-full h-full object-cover opacity-50" autoPlay loop muted>
+      <video
+        className="absolute top-0 left-0 w-full h-full object-cover opacity-50"
+        autoPlay
+        loop
+        muted
+      >
         <source src="video/bars.mp4" type="video/mp4" />
       </video>
 
@@ -136,19 +144,27 @@ const HeroSection = ({ language }) => {
           {/* Countdown Timer */}
           <div className="grid grid-cols-4 gap-4 text-center font-medium mb-6 border border-[#22C55E] border-[4px] rounded-[30px] rounded-tl-none p-4">
             <div>
-              <span className="font-thin text-sm">{translations.countdown?.days || "Days"}</span>
+              <span className="font-thin text-sm">
+                {translations.countdown?.days || "Days"}
+              </span>
               <p className="text-2xl font-bold">{timeLeft.days}</p>
             </div>
             <div>
-              <span className="font-thin text-sm">{translations.countdown?.hours || "Hours"}</span>
+              <span className="font-thin text-sm">
+                {translations.countdown?.hours || "Hours"}
+              </span>
               <p className="text-2xl font-bold">{timeLeft.hours}</p>
             </div>
             <div>
-              <span className="font-thin text-sm">{translations.countdown?.minutes || "Minutes"}</span>
+              <span className="font-thin text-sm">
+                {translations.countdown?.minutes || "Minutes"}
+              </span>
               <p className="text-2xl font-bold">{timeLeft.minutes}</p>
             </div>
             <div>
-              <span className="font-thin text-sm">{translations.countdown?.seconds || "Seconds"}</span>
+              <span className="font-thin text-sm">
+                {translations.countdown?.seconds || "Seconds"}
+              </span>
               <p className="text-2xl font-bold">{timeLeft.seconds}</p>
             </div>
           </div>
@@ -156,6 +172,11 @@ const HeroSection = ({ language }) => {
           <div className="flex justify-between text-xs md:text-sm mb-6">
             <span>{translations.minBuy || "Min buy: 0.5 SOL"}</span>
             <span>{translations.maxBuy || "Max buy: 200 SOL"}</span>
+          </div>
+          <div className="flex justify-center text-xs md:text-sm mb-6">
+            <span>
+              {translations.totalSOL || "TOTAL SOL RAISED: 0,000414747 SOL"}
+            </span>
           </div>
           <div className="relative flex items-center justify-center mb-6">
             <hr className="absolute w-1/4 left-0 border-t border-gray-600" />

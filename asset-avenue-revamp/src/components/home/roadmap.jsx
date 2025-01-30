@@ -28,17 +28,17 @@ export const HouseDetails = () => {
                   <h3 className="ms-5 py-5 px-6 text-sm text-white bg-[#161D27] rounded-[10px]">
                     <strong>Q1 2025</strong> <br />
                     <br />
-                    <span className="pl-8">Launch Presale</span>
+                    <span className="md:pl-8">Launch Presale</span>
                     <br />
-                    <span className="pl-8">
+                    <span className="md:pl-8">
                       DAO Integration of Backend with Frontend
                     </span>
                     <br />
-                    <span className="pl-8">
+                    <span className="md:pl-8">
                       Launch a Beta Version of the Platform
                     </span>
                     <br />
-                    <span className="pl-8">TGE(Token Generation Event)</span>
+                    <span className="md:pl-8">TGE(Token Generation Event)</span>
                     <br />
                   </h3>
                 </motion.li>
@@ -55,17 +55,17 @@ export const HouseDetails = () => {
                   <h3 className="ms-5 py-5 px-6 text-sm text-white bg-[#161D27] rounded-[10px]">
                     <strong>Q2 2025</strong> <br />
                     <br />
-                    <span className="pl-8">
+                    <span className="md:pl-8">
                       Launch Global Marketing Campaigns
                     </span>
                     <br />
-                    <span className="pl-8">Launch CEX Partnerships </span>
+                    <span className="md:pl-8">Launch CEX Partnerships </span>
                     <br />
-                    <span className="pl-8">
+                    <span className="md:pl-8">
                       Real Estate Agency Partnerships{" "}
                     </span>
                     <br />
-                    <span className="pl-8">
+                    <span className="md:pl-8">
                       Launch AI Market Analysis (Beta)
                     </span>
                     <br />
@@ -84,19 +84,19 @@ export const HouseDetails = () => {
                   <h3 className="ms-5 py-5 px-6 text-sm text-white bg-[#161D27] rounded-[10px]">
                     <strong>Q3 2025</strong> <br />
                     <br />
-                    <span className="pl-8">
+                    <span className="md:pl-8">
                       Launch Mobile App on IOS & Android
                     </span>
                     <br />
-                    <span className="pl-8">
+                    <span className="md:pl-8">
                       Phase 2 Global Marketing Campaign
                     </span>
                     <br />
-                    <span className="pl-8">
+                    <span className="md:pl-8">
                       Launch AI Based Property Valuation
                     </span>
                     <br />
-                    <span className="pl-8">
+                    <span className="md:pl-8">
                       Collaboration With Lending Institutions
                     </span>
                     <br />
@@ -115,19 +115,19 @@ export const HouseDetails = () => {
                   <h3 className="ms-5 py-5 px-6 text-sm text-white bg-[#161D27] rounded-[10px]">
                     <strong>Q4 2025</strong> <br />
                     <br />
-                    <span className="pl-8">
+                    <span className="md:pl-8">
                       Launch NFT Property Market Place
                     </span>
                     <br />
-                    <span className="pl-8">
+                    <span className="md:pl-8">
                       Integrate Decentralized Finance (DeFi) Options
                     </span>
                     <br />
-                    <span className="pl-8">
+                    <span className="md:pl-8">
                       Phase 3 Global Marketing Campaign
                     </span>
                     <br />
-                    <span className="pl-8">Launch Ambassador Program</span>
+                    <span className="md:pl-8">Launch Ambassador Program</span>
                     <br />
                   </h3>
                 </motion.li>
