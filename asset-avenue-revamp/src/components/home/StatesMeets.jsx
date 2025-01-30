@@ -8,7 +8,7 @@ const StatesMeets = () => {
 
       {/* Left Column */}
       <div className="relative lg:w-1/2 w-full mb-8 lg:mb-0 flex flex-col items-center lg:items-start">
-        <h1 className="md:text-[50px] text-3xl font-bold mb-4 font-helvetica text-center lg:text-left">
+        <h1 className="md:text-[36px] text-3xl font-bold mb-4 font-helvetica text-center lg:text-left">
           Asset Avenue <span className="text-[#16A34A]">DAO</span>
         </h1>
         <p className="text-[18px] mb-6 text-center tracking-normal lg:text-left">
@@ -23,7 +23,7 @@ const StatesMeets = () => {
           <li>Decentralized Decisions</li>
           <li>Legal Compliance</li>
         </ul>
-        <button className="mt-6 px-6 py-2 bg-[#16A34A] text-white font-semibold rounded-[10px] hover:bg-[#11823B] transition self-center lg:self-end">
+        <button className="mt-6 uppercase px-6 py-3 bg-[#16A34A] md:text-[11px] text-white font-semibold rounded-[10px] hover:bg-[#11823B] transition self-center lg:self-end">
           ACCESS DAO
         </button>
       </div>

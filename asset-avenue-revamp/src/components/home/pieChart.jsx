@@ -6,7 +6,7 @@ const PieChart = () => {
     <div className="min-h-screen bg-black flex flex-col justify-center items-center relative z-10 py-0">
       {/* Topic Header Animation */}
       <motion.h1
-        className="text-white font-helvetica text-[50px] font-bold mb-4"
+        className="text-white font-helvetica text-[36px] font-bold mb-4"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}

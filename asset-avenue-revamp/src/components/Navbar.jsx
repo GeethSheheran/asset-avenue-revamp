@@ -22,28 +22,28 @@ const Navbar = () => {
 
         {/* Desktop Menu - Always Visible */}
         <ul className="hidden md:flex space-x-3 text-white text-[10px] font-bold">
-          <li><a href="#" className="hover:text-[#3FAC55]">SEED SALE</a></li>
-          <li><a href="#" className="hover:text-[#3FAC55]">HOME</a></li>
-          <li><a href="#" className="hover:text-[#3FAC55]">PASSIVE INCOME ASSET</a></li>
-          <li><a href="#" className="hover:text-[#3FAC55]">INVESTOR RESALE ASSET</a></li>
-          <li><a href="#" className="hover:text-[#3FAC55]">MY HOUSE</a></li>
-          <li><a href="#" className="hover:text-[#3FAC55]">STAKING</a></li>
-          <li><a href="#" className="hover:text-[#3FAC55]">CONTACT US</a></li>
-          <li><a href="#" className="hover:text-[#3FAC55]">DASHBOARD</a></li>
-          <li><a href="#" className="hover:text-[#3FAC55]">DAO</a></li>
+          <li><a href="#" className="hover:text-[#3FAC55] md:text-[11px] ">SEED SALE</a></li>
+          <li><a href="#" className="hover:text-[#3FAC55] md:text-[11px]">HOME</a></li>
+          <li><a href="#" className="hover:text-[#3FAC55] md:text-[11px]">PASSIVE INCOME ASSET</a></li>
+          <li><a href="#" className="hover:text-[#3FAC55] md:text-[11px]">INVESTOR RESALE ASSET</a></li>
+          <li><a href="#" className="hover:text-[#3FAC55] md:text-[11px]">MY HOUSE</a></li>
+          <li><a href="#" className="hover:text-[#3FAC55] md:text-[11px]">STAKING</a></li>
+          <li><a href="#" className="hover:text-[#3FAC55] md:text-[11px]">CONTACT US</a></li>
+          <li><a href="#" className="hover:text-[#3FAC55] md:text-[11px]">DASHBOARD</a></li>
+          <li><a href="#" className="hover:text-[#3FAC55] md:text-[11px]">DAO</a></li>
         </ul>
 
         {/* Right Side - Language Selector & Buttons */}
-        <div className="flex items-center space-x-3 md:space-x-4">
+        <div className="flex items-center space-x-3 md:space-x-2">
         <button
             type="button"
-            className="hidden sm:block text-white bg-[#3FAC55] hover:bg-[#11823B] font-bold  rounded-lg text-sm px-6 py-2"
+            className="hidden sm:block uppercase text-white bg-[#3FAC55] hover:bg-[#11823B] font-bold  md:text-[11px] rounded-lg text-sm px-6 py-2"
           >
             Buy & Stake Now
           </button>
           <button
             type="button"
-            className="hidden sm:block text-white bg-[#3FAC55] hover:bg-[#11823B] font-bold  rounded-lg text-sm px-6 py-2"
+            className="hidden sm:block uppercase text-white bg-[#3FAC55] hover:bg-[#11823B] font-bold md:text-[11px] rounded-lg text-sm px-6 py-2"
           >
             CONNECT WALLET
           </button>
@@ -97,7 +97,7 @@ const Navbar = () => {
           <li>
             <button
               type="button"
-              className="text-white bg-[#3FAC55] hover:bg-[#11823B] font-medium rounded-lg text-lg px-6 py-2 font-bold "
+              className="text-white uppercase bg-[#3FAC55] hover:bg-[#11823B] font-medium rounded-lg text-lg px-6 py-2 font-bold "
             >
               CONNECT WALLET
             </button>

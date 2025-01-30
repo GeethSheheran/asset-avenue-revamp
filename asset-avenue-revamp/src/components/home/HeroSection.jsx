@@ -116,41 +116,42 @@ const HeroSection = ({ language }) => {
 <img
   src="hero/token.png"
   alt="Center Graphic"
-  className="absolute top-1/3 right-[40%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-3/5 sm:w-2/5 md:w-[250px] hidden sm:block animate-rotateY"
+  className="absolute top-1/3 right-[40%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-3/5 sm:w-2/5 md:w-[250px] hidden sm:block animate-floating"
+/>
+
+<img
+  src="hero/token.png"
+  alt="Center Graphic"
+  className="absolute top-[65%] right-[38%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-1/2 sm:w-2/5 md:w-[100px] hidden sm:block animate-floating"
 />
 <img
   src="hero/token.png"
   alt="Center Graphic"
-  className="absolute top-[65%] right-[38%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-1/2 sm:w-2/5 md:w-[100px] hidden sm:block animate-rotateY"
-/>
-<img
-  src="hero/token.png"
-  alt="Center Graphic"
-  className="absolute top-[20%] right-[36%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-1/2 sm:w-2/5 md:w-[100px] hidden sm:block animate-rotateY"
+  className="absolute top-[20%] right-[36%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-1/2 sm:w-2/5 md:w-[100px] hidden sm:block animate-floating"
 />
 
 
       <div className="relative z-20 flex flex-col md:flex-row w-full max-w-7xl">
-        <div className="w-full md:w-2/3 mt-16 items-center justify-center space-y-6 text-center md:text-left">
-          <h1 className="text-[40px] font-helvetica sm:text-6xl md:text-[90px] font-bold">
+        <div className="w-full md:w-2/3 mt-16 items-center justify-center space-y-6 text-center md:pt-16 md:text-left">
+          <h1 className="text-[40px] font-helvetica sm:text-6xl md:text-[60px] font-bold">
             Asset Avenue <br />
-            <span className="text-[#22C55E]">Presale</span>
+            <span className="text-[#22C55E] md:text-[60px]">Presale</span>
           </h1>
-          <p className="text-lg md:text-[25px] font-light">
+          <p className="text-lg md:text-[20px] font-light">
             Redefining Real Estate with Blockchain
           </p>{" "}
-          <button
+          {/* <button
             type="button"
-            className="text-white bg-[#3FAC55] font-bold hover:bg-[#11823B] rounded-lg text-[16px] px-6 py-2"
+            className="text-white bg-[#3FAC55] md:text-[11px] font-bold hover:bg-[#11823B] rounded-lg text-[16px] px-6 py-2"
           >
             Buy & Stake Now
-          </button>
-          <div className="flex items-center justify-center md:justify-start space-x-8">
+          </button> */}
+          <div className="flex items-center justify-center md:justify-start space-x-8 pt-16">
             <ImageSlider />
           </div>
         </div>
 
-        <div className="w-full md:w-1/3 bg-gradient-to-l from-[#05350F] to-[#05350F] p-8 rounded-[36px] rounded-tl-none shadow-[0_4px_145px_0_#56C46C9C] mt-0 md:mt-0 relative md:ml-auto">
+        <div className="w-full md:w-1/3 bg-gradient-to-l from-[#05350F] to-[#05350F] p-8 rounded-[36px] rounded-tl-none shadow-[0_4px_145px_0_#56C46C9C] mt-0 md:mt-16 relative md:ml-auto">
           {/* Image Background */}
           <img
             src="hero/widget.png"
@@ -158,7 +159,7 @@ const HeroSection = ({ language }) => {
             className="absolute top-0 right-0 w-full h-full object-cover rounded-[36px] z-0"
           />
 
-          <h2 className="text-3xl md:text-[36px] text-center font-helvetica font-semibold mb-4 z-10 relative">
+          <h2 className="text-3xl md:text-[36px] text-center font-helvetica font-semibold mb-4  z-10 relative">
             {translations.presaleButton || "BUY $AAV TOKEN PRESALE!"}
           </h2>
           <p className="text-sm md:text-base text-center bg-gradient-to-l from-[#B8934D] to-[#FBE279] py-1 w-full text-black rounded-lg inline-block mb-4 z-10 relative">
@@ -166,7 +167,7 @@ const HeroSection = ({ language }) => {
           </p>
 
           {/* Countdown Timer */}
-          <div className="grid grid-cols-4 gap-4 text-center font-medium mb-6 border border-[#22C55E] border-[4px] rounded-[30px] rounded-tl-none p-4 z-10 relative">
+          <div className="grid grid-cols-4 gap-4 text-center  font-medium mb-6 border border-[#22C55E] border-[4px] rounded-[30px] rounded-tl-none p-4 z-10 relative">
             <div>
               <span className="font-thin text-sm">
                 {translations.countdown?.days || "Days"}
@@ -215,9 +216,9 @@ const HeroSection = ({ language }) => {
               <img
                 src="/hero/1.png"
                 alt="Visa"
-                className="absolute top-[-30px] -left-10 right-0 w-full h-[30px] object-contain z-0 hidden sm:block"
+                className="absolute top-[-30px] -left-10 -md:left-[100px] right-0 w-full h-[30px] object-contain z-0 hidden sm:block"
               />
-              <button className="relative z-10 font-bold bg-[#3FAC55] hover:bg-[#11823B] text-white py-2 px-4 rounded-[10px] w-full">
+              <button className="relative uppercase z-10 font-bold md:text-[11px] bg-[#3FAC55] hover:bg-[#11823B] text-white py- px-4 rounded-[10px] w-full">
                 {translations.buyWithCard || "Buy With Card"}
               </button>
             </div>
@@ -225,10 +226,10 @@ const HeroSection = ({ language }) => {
               <img
                 src="hero/2.png"
                 alt="Crypto"
-                className="absolute top-[-30px] md:left-10 lg:left-10 right-0 w-full h-[30px] object-contain z-0 hidden sm:block"
+                className="absolute top-[-30px] md:left-[30px]  left-10 right-0 w-full h-[30px] object-contain z-0 hidden sm:block"
               />
               <button
-                className="relative z-10 text-black font-bold py-2 px-4 rounded-[10px] w-full bg-gradient-to-br from-[#958648] to-[#FBE279] hover:opacity-80"
+                className="relative uppercase z-10  md:text-[11px] text-black font-bold py-3 px-6 rounded-[10px] w-full bg-gradient-to-br from-[#958648] to-[#FBE279] hover:opacity-80"
                 style={{
                   background:
                     "linear-gradient(212.98deg, #958648 -92.97%, #FBE279 187.71%)",

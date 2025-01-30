@@ -21,7 +21,7 @@ const HowToBuy = () => {
 
       {/* Animated Title */}
       <motion.h1
-        className="text-[50px] font-helvetica font-bold mb-2 text-center"
+        className="text-[36px] font-helvetica font-bold mb-2 text-center"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}

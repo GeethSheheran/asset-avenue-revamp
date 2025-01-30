@@ -5,7 +5,7 @@ import { outToInVariantsRight } from "../home/animations";
 export const HouseDetails = () => {
   return (
     <Container className="z-10">
-      <h1 className="header text-[50px] font-bold  font-helvetica mt-0">
+      <h1 className="header text-[36px] font-bold  font-helvetica mt-0">
         Roadmap
       </h1>
       <Wrap className="relative">
@@ -135,7 +135,7 @@ export const HouseDetails = () => {
             </ul>
             <div className="flex justify-center mb-8">
               {" "}
-              <button className="mt-0 px-6 item-center py-2 bg-[#16A34A] text-white font-semibold rounded-[10px] hover:bg-[#11823B] transition self-end">
+              <button className="mt-0 uppercase px-6 md:text-[11px] item-center py-3 bg-[#16A34A] text-white font-semibold rounded-[10px] hover:bg-[#11823B] transition self-end">
                 MORE INFO
               </button>
             </div>

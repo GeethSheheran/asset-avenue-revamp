@@ -13,6 +13,7 @@ module.exports = {
       animation: {
         'fade-in': 'fadeIn 1s ease-out forwards',
         rotateY: "10s linear infinite rotateY",
+        floating: "floating 3s ease-in-out infinite",
       },
       keyframes: {
         fadeIn: {
@@ -22,6 +23,11 @@ module.exports = {
         rotateY: {
           "0%": { transform: "rotateY(0deg)" },
           "100%": { transform: "rotateY(360deg)" },
+        },
+        floating: {
+          "0%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-10px)" },
+          "100%": { transform: "translateY(0px)" },
         },
       },
     },

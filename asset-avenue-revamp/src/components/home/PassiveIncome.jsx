@@ -44,7 +44,7 @@ const PassiveIncome = () => {
 
       {/* Apply motion to the h1 */}
       <motion.h1
-        className="text-center text-3xl font-helvetica md:text-[50px] font-bold mb-12"
+        className="text-center text-3xl font-helvetica md:text-[36px] font-bold mb-12"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
@@ -123,7 +123,7 @@ const PassiveIncome = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        <button className="bg-[#3FAC55] font-bold text-white px-6 py-2  rounded-[10px] hover:bg-green-600">
+        <button className="bg-[#3FAC55] uppercase md:text-[11px] font-bold text-white px-6 py-3  rounded-[10px] hover:bg-green-600">
           BUY SHARES
         </button>
       </motion.div>
