@@ -218,7 +218,7 @@ const HeroSection = ({ language }) => {
                 alt="Visa"
                 className="absolute top-[-30px] -left-10 -md:left-[100px] right-0 w-full h-[30px] object-contain z-0 hidden sm:block"
               />
-              <button className="relative uppercase z-10 font-bold md:text-[11px] bg-[#3FAC55] hover:bg-[#11823B] text-white py- px-4 rounded-[10px] w-full">
+              <button className="relative uppercase z-10 font-bold md:text-[11px] bg-[#3FAC55] hover:bg-[#11823B] text-white py-3 px-4 rounded-[10px] w-full">
                 {translations.buyWithCard || "Buy With Card"}
               </button>
             </div>
