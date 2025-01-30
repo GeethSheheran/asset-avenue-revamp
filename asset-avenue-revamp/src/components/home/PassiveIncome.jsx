@@ -51,18 +51,17 @@ const PassiveIncome = () => {
       </motion.h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {projects.map((project) => (
+        {projects.map((project, index) => (
           <motion.div
             key={project.id}
             className="bg-[#3FAC55] rounded-tl-none text-black rounded-[70px] shadow-md overflow-hidden"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{
-              duration: 0.8,
-              ease: "easeOut",
+              duration: 0.6,
+              delay: index * 0.1, // Stagger the animation delay for each card
             }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
           >
             <div className="relative">
               <img
