@@ -31,7 +31,7 @@ const Revolutionizing = () => {
           Revolutionizing <span className="text-[#3FAC55]">Real Estate Investment</span> With <span className="text-[#3FAC55]">Blockchain & AI</span>
         </motion.h1>
         <motion.p
-          className="text-center text-gray-300 mb-8 max-w-3xl mx-auto"
+          className="text-center md:text-[] text-gray-300 mb-8 max-w-6xl mx-auto"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.2 }}

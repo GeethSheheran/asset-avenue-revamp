@@ -14,7 +14,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-black fixed w-full z-50 top-0">
-      <div className="max-w-screen-xl flex items-center justify-between mx-auto p-4">
+      <div className="max-w-screen-xl flex items-center justify-between mx-auto py-4">
         {/* Logo */}
         <a href="/" className="flex items-center">
           <img src="logo/logo.webp" className="h-8" alt="Asset Avenue" />
@@ -37,7 +37,13 @@ const Navbar = () => {
         <div className="flex items-center space-x-3 md:space-x-4">
         <button
             type="button"
-            className="hidden sm:block text-white bg-[#3FAC55] hover:bg-[#11823B] font-medium rounded-lg text-sm px-6 py-2"
+            className="hidden sm:block text-white bg-[#3FAC55] hover:bg-[#11823B] font-bold  rounded-lg text-sm px-6 py-2"
+          >
+            Buy & Stake Now
+          </button>
+          <button
+            type="button"
+            className="hidden sm:block text-white bg-[#3FAC55] hover:bg-[#11823B] font-bold  rounded-lg text-sm px-6 py-2"
           >
             CONNECT WALLET
           </button>
@@ -91,7 +97,7 @@ const Navbar = () => {
           <li>
             <button
               type="button"
-              className="text-white bg-[#3FAC55] hover:bg-[#11823B] font-medium rounded-lg text-lg px-8 py-3"
+              className="text-white bg-[#3FAC55] hover:bg-[#11823B] font-medium rounded-lg text-lg px-6 py-2 font-bold "
             >
               CONNECT WALLET
             </button>

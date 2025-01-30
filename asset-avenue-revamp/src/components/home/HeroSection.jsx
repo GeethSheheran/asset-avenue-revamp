@@ -116,7 +116,7 @@ const HeroSection = ({ language }) => {
       <img
         src="hero/centerImg.png"
         alt="Center Graphic"
-        className="absolute top-1/2 right-1/4 transform -translate-x-1/2 -translate-y-1/2 z-10 w-3/5 sm:w-2/5 md:w-[250px] hidden sm:block"
+        className="absolute top-1/2 right-[30%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-3/5 sm:w-2/5 md:w-[250px] hidden sm:block"
       />
 
       <div className="relative z-20 flex flex-col md:flex-row w-full max-w-7xl">
@@ -127,22 +127,35 @@ const HeroSection = ({ language }) => {
           </h1>
           <p className="text-lg md:text-[32px] font-light">
             Redefining Real Estate with Blockchain
-          </p>
+          </p>{" "}
+          <button
+            type="button"
+            className="text-white bg-[#3FAC55] font-bold hover:bg-[#11823B] rounded-lg text-[16px] px-6 py-2"
+          >
+            Buy & Stake Now
+          </button>
           <div className="flex items-center justify-center md:justify-start space-x-8">
             <ImageSlider />
           </div>
         </div>
 
-        <div className="w-full md:w-1/3 bg-[#003000] p-8 rounded-[36px] rounded-tl-none shadow-[0_4px_145px_0_#56C46C9C] mt-0 md:mt-0 relative md:ml-auto">
-          <h2 className="text-3xl md:text-[36px] text-center font-helvetica font-semibold mb-4">
+        <div className="w-full md:w-1/3 bg-gradient-to-l from-[#05350F] to-[#05350F] p-8 rounded-[36px] rounded-tl-none shadow-[0_4px_145px_0_#56C46C9C] mt-0 md:mt-0 relative md:ml-auto">
+          {/* Image Background */}
+          <img
+            src="hero/widget.png"
+            alt="Card Background"
+            className="absolute top-0 right-0 w-full h-full object-cover rounded-[36px] z-0"
+          />
+
+          <h2 className="text-3xl md:text-[36px] text-center font-helvetica font-semibold mb-4 z-10 relative">
             {translations.presaleButton || "BUY $AAV TOKEN PRESALE!"}
           </h2>
-          <p className="text-sm md:text-base text-center bg-gradient-to-l from-[#B8934D] to-[#FBE279] py-1 w-full text-black rounded-lg inline-block mb-4">
+          <p className="text-sm md:text-base text-center bg-gradient-to-l from-[#B8934D] to-[#FBE279] py-1 w-full text-black rounded-lg inline-block mb-4 z-10 relative">
             {translations.priceInfo || "Price will increase gradually."}
           </p>
 
           {/* Countdown Timer */}
-          <div className="grid grid-cols-4 gap-4 text-center font-medium mb-6 border border-[#22C55E] border-[4px] rounded-[30px] rounded-tl-none p-4">
+          <div className="grid grid-cols-4 gap-4 text-center font-medium mb-6 border border-[#22C55E] border-[4px] rounded-[30px] rounded-tl-none p-4 z-10 relative">
             <div>
               <span className="font-thin text-sm">
                 {translations.countdown?.days || "Days"}
@@ -169,31 +182,31 @@ const HeroSection = ({ language }) => {
             </div>
           </div>
 
-          <div className="flex justify-between text-xs md:text-sm mb-6">
+          <div className="flex justify-between text-xs md:text-sm mb-6 z-10 relative">
             <span>{translations.minBuy || "Min buy: 0.5 SOL"}</span>
             <span>{translations.maxBuy || "Max buy: 200 SOL"}</span>
           </div>
-          <div className="flex justify-center text-xs md:text-sm mb-6">
+          <div className="flex justify-center text-xs md:text-sm mb-6 z-10 relative">
             <span>
               {translations.totalSOL || "TOTAL SOL RAISED: 0,000414747 SOL"}
             </span>
           </div>
-          <div className="relative flex items-center justify-center mb-6">
-            <hr className="absolute w-1/4 left-0 border-t border-gray-600" />
-            <p className="z-10 bg-[#003000] px-2 text-xs md:text-sm">
+          <div className="relative flex items-center justify-center mb-6 z-10">
+            <hr className="absolute w-1/6 left-0 border-t border-white" />
+            <p className="z-10 px-2 text-xs md:text-sm">
               {translations.price || "1 AAV = 0.000368664 SOL"}
             </p>
-            <hr className="absolute w-1/4 right-0 border-t border-gray-600" />
+            <hr className="absolute w-1/6 right-0 border-t border-white" />
           </div>
 
-          <div className="relative pt-4 flex flex-col md:flex-row justify-between space-y-4 md:space-y-0 md:space-x-4 z-10">
+          <div className="relative pt-4 flex flex-col md:flex-row justify-between space-y-4 md:space-y-0 md:space-x-4 z-10 relative">
             <div className="relative w-full  md:w-1/2">
               <img
                 src="/hero/1.png"
                 alt="Visa"
-                className="absolute top-[-30px] -left-6 right-0 w-full h-[30px] object-contain z-0 hidden sm:block"
+                className="absolute top-[-30px] -left-10 right-0 w-full h-[30px] object-contain z-0 hidden sm:block"
               />
-              <button className="relative z-10 bg-[#3FAC55] hover:bg-[#11823B] text-white py-2 px-4 rounded-[10px] w-full">
+              <button className="relative z-10 font-bold bg-[#3FAC55] hover:bg-[#11823B] text-white py-2 px-4 rounded-[10px] w-full">
                 {translations.buyWithCard || "Buy With Card"}
               </button>
             </div>
@@ -201,10 +214,10 @@ const HeroSection = ({ language }) => {
               <img
                 src="hero/2.png"
                 alt="Crypto"
-                className="absolute top-[-30px] md:left-10 lg:left-6 right-0 w-full h-[30px] object-contain z-0 hidden sm:block"
+                className="absolute top-[-30px] md:left-10 lg:left-10 right-0 w-full h-[30px] object-contain z-0 hidden sm:block"
               />
               <button
-                className="relative z-10 text-black py-2 px-4 rounded-[10px] w-full bg-gradient-to-br from-[#958648] to-[#FBE279] hover:opacity-80"
+                className="relative z-10 text-black font-bold py-2 px-4 rounded-[10px] w-full bg-gradient-to-br from-[#958648] to-[#FBE279] hover:opacity-80"
                 style={{
                   background:
                     "linear-gradient(212.98deg, #958648 -92.97%, #FBE279 187.71%)",
@@ -215,11 +228,11 @@ const HeroSection = ({ language }) => {
             </div>
           </div>
 
-          <p className="text-xs text-center mt-6">
+          <p className="text-xs text-center mt-6 z-10 relative">
             {translations.dontHaveWallet || "Don't have a wallet?"}
           </p>
 
-          <div className="flex justify-center mt-4">
+          <div className="flex justify-center mt-4 z-10 relative">
             <img
               src="/logo/contract.png"
               alt="Auditor Logo"
