@@ -12,6 +12,7 @@ import Footer from './components/Footer'
 import HeroSection from './components/home/HeroSection'
 import PieChart from './components/home/pieChart';
 import ImageSlider from './components/home/ImageSlider';
+import TokenPresalePopup from './components/home/presalePopup';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
       <HouseDetails/>
       <Logos/>
       <Footer/>
+      {/* <TokenPresalePopup/> */}
     </div>
   )
 }

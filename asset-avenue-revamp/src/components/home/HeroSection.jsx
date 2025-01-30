@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ImageSlider from "./ImageSlider";
 import axios from "axios";
+import TokenPresalePopup from "./presalePopup";
+import PresalePopup from "./presalePopup";
 
 const HeroSection = ({ language }) => {
   const [translations, setTranslations] = useState({});
@@ -10,6 +12,7 @@ const HeroSection = ({ language }) => {
     minutes: 0,
     seconds: 0,
   });
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to control the modal visibility
 
   const API_KEY = "YOUR_GOOGLE_API_KEY"; // Replace with your Google API key
   const API_URL = "https://translation.googleapis.com/language/translate/v2";
@@ -96,6 +99,16 @@ const HeroSection = ({ language }) => {
     fetchTranslations();
   }, [language]);
 
+  // Function to handle modal close
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  // Function to handle modal open
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
   return (
     <div className="relative bg-black text-white min-h-screen flex flex-col md:flex-row items-center justify-center py-16 px-4 md:px-24 overflow-hidden">
       <video
@@ -113,23 +126,22 @@ const HeroSection = ({ language }) => {
         className="absolute top-2 left-1/2 transform -translate-x-1/2 mb-8 w-[90%] sm:w-[80%] md:w-4/5 z-20 "
       />
 
-<img
-  src="hero/token.png"
-  alt="Center Graphic"
-  className="absolute top-1/3 right-[40%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-3/5 sm:w-2/5 md:w-[250px] hidden sm:block animate-floating"
-/>
+      <img
+        src="hero/token.png"
+        alt="Center Graphic"
+        className="absolute top-1/3 right-[40%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-3/5 sm:w-2/5 md:w-[250px] hidden sm:block animate-floating"
+      />
 
-<img
-  src="hero/token.png"
-  alt="Center Graphic"
-  className="absolute top-[65%] right-[38%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-1/2 sm:w-2/5 md:w-[100px] hidden sm:block animate-floating"
-/>
-<img
-  src="hero/token.png"
-  alt="Center Graphic"
-  className="absolute top-[20%] right-[36%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-1/2 sm:w-2/5 md:w-[100px] hidden sm:block animate-floating"
-/>
-
+      <img
+        src="hero/token.png"
+        alt="Center Graphic"
+        className="absolute top-[65%] right-[38%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-1/2 sm:w-2/5 md:w-[100px] hidden sm:block animate-floating"
+      />
+      <img
+        src="hero/token.png"
+        alt="Center Graphic"
+        className="absolute top-[20%] right-[36%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-1/2 sm:w-2/5 md:w-[100px] hidden sm:block animate-floating"
+      />
 
       <div className="relative z-20 flex flex-col md:flex-row w-full max-w-7xl">
         <div className="w-full md:w-2/3 mt-16 items-center justify-center space-y-6 text-center md:pt-16 md:text-left">
@@ -139,20 +151,13 @@ const HeroSection = ({ language }) => {
           </h1>
           <p className="text-lg md:text-[20px] font-light">
             Redefining Real Estate with Blockchain
-          </p>{" "}
-          {/* <button
-            type="button"
-            className="text-white bg-[#3FAC55] md:text-[11px] font-bold hover:bg-[#11823B] rounded-lg text-[16px] px-6 py-2"
-          >
-            Buy & Stake Now
-          </button> */}
+          </p>
           <div className="flex items-center justify-center md:justify-start space-x-8 pt-16">
             <ImageSlider />
           </div>
         </div>
 
         <div className="w-full md:w-1/3 bg-gradient-to-l from-[#05350F] to-[#05350F] p-8 rounded-[36px] rounded-tl-none shadow-[0_4px_145px_0_#56C46C9C] mt-0 md:mt-16 relative md:ml-auto">
-          {/* Image Background */}
           <img
             src="hero/widget.png"
             alt="Card Background"
@@ -166,8 +171,7 @@ const HeroSection = ({ language }) => {
             {translations.priceInfo || "Price will increase gradually."}
           </p>
 
-          {/* Countdown Timer */}
-          <div className="grid grid-cols-4 gap-4 text-center  font-medium mb-6 border border-[#22C55E] border-[4px] rounded-[30px] rounded-tl-none p-4 z-10 relative">
+          <div className="grid grid-cols-4 gap-4 text-center font-medium mb-6 border border-[#22C55E] border-[4px] rounded-[30px] rounded-tl-none p-4 z-10 relative">
             <div>
               <span className="font-thin text-sm">
                 {translations.countdown?.days || "Days"}
@@ -229,6 +233,7 @@ const HeroSection = ({ language }) => {
                 className="absolute top-[-30px] md:left-[30px]  left-10 right-0 w-full h-[30px] object-contain z-0 hidden sm:block"
               />
               <button
+                onClick={handleOpenModal} // Trigger modal on click
                 className="relative uppercase z-10  md:text-[11px] text-black font-bold py-3 px-6 rounded-[10px] w-full bg-gradient-to-br from-[#958648] to-[#FBE279] hover:opacity-80"
                 style={{
                   background:
@@ -253,6 +258,29 @@ const HeroSection = ({ language }) => {
           </div>
         </div>
       </div>
+
+      {/* Modal Component */}
+      {isModalOpen && (
+        <div
+          className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-80 flex justify-center items-center z-50"
+          onClick={handleCloseModal}
+        >
+          <div
+            className=" p-8 rounded-xl w-full md:w-1/3"
+            onClick={(e) => e.stopPropagation()} // Prevent modal close when clicking inside the modal
+          >
+            <PresalePopup/>
+            <div className="flex justify-center space-x-4 mt-4">
+              {/* <button
+                className="bg-[#22C55E] text-white py-2 px-4 rounded-md"
+                onClick={handleCloseModal}
+              >
+                Close
+              </button> */}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
