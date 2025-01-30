@@ -3,6 +3,7 @@ import ImageSlider from "./ImageSlider";
 import axios from "axios";
 import TokenPresalePopup from "./presalePopup";
 import PresalePopup from "./presalePopup";
+import WalletPopup from "./walletPop";
 
 const HeroSection = ({ language }) => {
   const [translations, setTranslations] = useState({});
@@ -13,6 +14,7 @@ const HeroSection = ({ language }) => {
     seconds: 0,
   });
   const [isModalOpen, setIsModalOpen] = useState(false); // State to control the modal visibility
+  const [isCardModalOpen, setIsCardModalOpen] = useState(false);
 
   const API_KEY = "YOUR_GOOGLE_API_KEY"; // Replace with your Google API key
   const API_URL = "https://translation.googleapis.com/language/translate/v2";
@@ -108,6 +110,9 @@ const HeroSection = ({ language }) => {
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
+
+  const handleOpenCardModal = () => setIsCardModalOpen(true);
+  const handleCloseCardModal = () => setIsCardModalOpen(false);
 
   return (
     <div className="relative bg-black text-white min-h-screen flex flex-col md:flex-row items-center justify-center py-16 px-4 md:px-24 overflow-hidden">
@@ -245,7 +250,9 @@ const HeroSection = ({ language }) => {
             </div>
           </div>
 
-          <p className="text-xs text-center mt-6 z-10 relative">
+          <p 
+                onClick={handleOpenCardModal} // Trigger modal on click
+          className="text-xs text-center mt-6 z-10 relative cursor-pointer">
             {translations.dontHaveWallet || "Don't have a wallet?"}
           </p>
 
@@ -269,7 +276,28 @@ const HeroSection = ({ language }) => {
             className=" p-8 rounded-xl w-full md:w-1/3"
             onClick={(e) => e.stopPropagation()} // Prevent modal close when clicking inside the modal
           >
-            <PresalePopup/>
+            <PresalePopup />
+            <div className="flex justify-center space-x-4 mt-4">
+              {/* <button
+                className="bg-[#22C55E] text-white py-2 px-4 rounded-md"
+                onClick={handleCloseModal}
+              >
+                Close
+              </button> */}
+            </div>
+          </div>
+        </div>
+      )}
+       {isCardModalOpen && (
+        <div
+          className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-80 flex justify-center items-center z-50"
+          onClick={handleCloseCardModal}
+        >
+          <div
+            className=" p-8 rounded-xl w-full md:w-1/3"
+            onClick={(e) => e.stopPropagation()} // Prevent modal close when clicking inside the modal
+          >
+            <WalletPopup/>
             <div className="flex justify-center space-x-4 mt-4">
               {/* <button
                 className="bg-[#22C55E] text-white py-2 px-4 rounded-md"
