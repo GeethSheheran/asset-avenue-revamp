@@ -31,7 +31,7 @@ const Revolutionizing = () => {
           Revolutionizing <span className="text-[#3FAC55]">Real Estate Investment</span> With <span className="text-[#3FAC55]">Blockchain & AI</span>
         </motion.h1>
         <motion.p
-          className="text-center md:text-[] text-gray-300 mb-8 max-w-6xl mx-auto"
+          className="text-center md:text-[18px] text-gray-300 mb-8 max-w-6xl mx-auto"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.2 }}
@@ -51,19 +51,19 @@ const Revolutionizing = () => {
           {["stateOne.png", "stateTwo.png", "stateThree.png"].map((img, index) => (
             <motion.div
               key={index}
-              className="relative bg-[#161D27] p-6 rounded-xl shadow-[0_4px_21px_-2px_#3FAC55] border border-[#3FAC55] rounded-tl-none"
+              className="relative bg-[#161D27] p-6 rounded-[30px] shadow-[0_4px_21px_-2px_#3FAC55] border border-[#3FAC55] rounded-tl-none"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <div className="absolute -z-10 inset-0 bg-[#3FAC55] opacity-30 rounded-full w-[120%] h-[120%] -top-1/2 -left-1/5 blur-3xl"></div>
+              <div className="absolute -z-20 inset-0 bg-[#3FAC55] opacity-20 rounded-full w-[120%] h-[250%] top-1/6 -left-1/5 blur-3xl"></div>
               <img
                 src={`./state/${img}`}
                 alt="Real Estate"
-                className="w-80 h-40 object-cover mb-4 rounded-lg rounded-tl-none mx-auto"
+                className="w-full h-40 object-cover mb-4 rounded-[20px] rounded-tl-none mx-auto"
               />
-              <h2 className="text-xl font-bold mb-2">
+              <h2 className="text-[18px] font-bold mb-2">
                 {index === 0 ? "The Problem" : index === 1 ? "Our Vision" : "The Power of $AAV"}
               </h2>
               <p className="text-gray-300">

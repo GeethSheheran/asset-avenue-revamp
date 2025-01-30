@@ -39,7 +39,9 @@ const projects = [
 
 const PassiveIncome = () => {
   return (
-    <div className="bg-black text-white py-0 xl:px-24 px-4">
+    <div className="relative bg-black text-white py-0 xl:px-24 px-4">
+      <div className="absolute -right-1/4 z-10 -bottom-1/2 -translate-y-1/2 lg:w-[800px] w-full h-[300px] lg:h-[400px] bg-[#3FAC55] rounded-full blur-3xl opacity-20"></div>
+
       {/* Apply motion to the h1 */}
       <motion.h1
         className="text-center text-3xl font-helvetica md:text-[50px] font-bold mb-12"
@@ -121,7 +123,7 @@ const PassiveIncome = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        <button className="bg-[#3FAC55] text-white px-6 py-2  rounded-[10px] hover:bg-green-600">
+        <button className="bg-[#3FAC55] font-bold text-white px-6 py-2  rounded-[10px] hover:bg-green-600">
           BUY SHARES
         </button>
       </motion.div>

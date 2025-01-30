@@ -113,11 +113,22 @@ const HeroSection = ({ language }) => {
         className="absolute top-2 left-1/2 transform -translate-x-1/2 mb-8 w-[90%] sm:w-[80%] md:w-4/5 z-20 "
       />
 
-      <img
-        src="hero/centerImg.png"
-        alt="Center Graphic"
-        className="absolute top-1/2 right-[30%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-3/5 sm:w-2/5 md:w-[250px] hidden sm:block"
-      />
+<img
+  src="hero/token.png"
+  alt="Center Graphic"
+  className="absolute top-1/3 right-[40%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-3/5 sm:w-2/5 md:w-[250px] hidden sm:block animate-rotateY"
+/>
+<img
+  src="hero/token.png"
+  alt="Center Graphic"
+  className="absolute top-[65%] right-[38%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-1/2 sm:w-2/5 md:w-[100px] hidden sm:block animate-rotateY"
+/>
+<img
+  src="hero/token.png"
+  alt="Center Graphic"
+  className="absolute top-[20%] right-[36%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-1/2 sm:w-2/5 md:w-[100px] hidden sm:block animate-rotateY"
+/>
+
 
       <div className="relative z-20 flex flex-col md:flex-row w-full max-w-7xl">
         <div className="w-full md:w-2/3 mt-16 items-center justify-center space-y-6 text-center md:text-left">
@@ -125,7 +136,7 @@ const HeroSection = ({ language }) => {
             Asset Avenue <br />
             <span className="text-[#22C55E]">Presale</span>
           </h1>
-          <p className="text-lg md:text-[32px] font-light">
+          <p className="text-lg md:text-[25px] font-light">
             Redefining Real Estate with Blockchain
           </p>{" "}
           <button

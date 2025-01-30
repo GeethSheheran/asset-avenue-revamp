@@ -11,12 +11,12 @@ const StatesMeets = () => {
         <h1 className="md:text-[50px] text-3xl font-bold mb-4 font-helvetica text-center lg:text-left">
           Asset Avenue <span className="text-[#16A34A]">DAO</span>
         </h1>
-        <p className="text-lg mb-6 text-center lg:text-left">
+        <p className="text-[18px] mb-6 text-center tracking-normal lg:text-left">
           Facilitating worldwide real estate transactions with cryptocurrency,
           ensuring the highest level of security and complete transparency in
           ownership and investment opportunities through blockchain technology.
         </p>
-        <ul className="list-disc list-inside space-y-2 text-lg text-center lg:text-left">
+        <ul className="list-disc list-inside space-y-2 text-[18px] text-center lg:text-left">
           <li>NFT Property Rights</li>
           <li>Staking for Governance</li>
           <li>Smart Contract Payouts</li>

@@ -31,23 +31,11 @@ const InvestingMode = () => {
   ];
 
   return (
-    <div className="relative bg-black text-white py-20 px-4 overflow-hidden">
-      {/* Background Images */}
-      <div className="absolute inset-0 -z-10">
-        <img
-          src="/Ellipse.png"
-          alt="Decorative Background Left"
-          className="absolute left-0 top-1/4 w-1/2 opacity-30"
-        />
-        <img
-          src="/Ellipse.png"
-          alt="Decorative Background Right"
-          className="absolute right-0 bottom-1/4 w-1/2 opacity-30"
-        />
-      </div>
+    <div className="relative  bg-black text-white py-20 px-4 overflow-hidden">
+     
 
       {/* Cards Section */}
-      <div className="relative grid grid-cols-1 xl:px-20 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 justify-center justify-items-center">
+      <div className="relative z-10 grid grid-cols-1 xl:px-20 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 justify-center justify-items-center">
 
         {cards.map((card, index) => (
           <motion.div
@@ -63,8 +51,8 @@ const InvestingMode = () => {
               alt={`Icon for ${card.title}`}
               className="w-16 h-16 mb-4 object-cover"
             />
-            <h3 className="text-xl font-semibold mb-2">{card.title}</h3>
-            <p className="text-sm text-gray-300">{card.description}</p>
+            <h3 className="text-[18px] font-semibold mb-2">{card.title}</h3>
+            <p className="text-[16px] text-gray-300">{card.description}</p>
           </motion.div>
         ))}
       </div>

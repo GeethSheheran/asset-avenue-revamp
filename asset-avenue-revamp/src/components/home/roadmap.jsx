@@ -5,7 +5,7 @@ import { outToInVariantsRight } from "../home/animations";
 export const HouseDetails = () => {
   return (
     <Container className="z-10">
-      <h1 className="header text-[50px] font-bold  font-helvetica mt-16">
+      <h1 className="header text-[50px] font-bold  font-helvetica mt-0">
         Roadmap
       </h1>
       <Wrap className="relative">
@@ -16,7 +16,7 @@ export const HouseDetails = () => {
           <div className="absolute left-1/6 z-10 top-1/2 -translate-y-1/2 lg:w-full w-full h-[400px] lg:h-[700px] bg-[#3FAC55] rounded-full blur-3xl opacity-20"></div>
 
           <RightWrap>
-            <ul className="customList ">
+            <ul className="customList  ">
               <div className="pb-8">
                 <motion.li
                   variants={outToInVariantsRight}
@@ -25,20 +25,20 @@ export const HouseDetails = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
                 >
-                  <h3 className="ms-5 py-5 px-6 text-sm text-white bg-[#161D27] rounded-[10px]">
-                    <strong>Q1 2025</strong> <br />
+                  <h3 className="ms-5 py-5 md:text-[16px]  px-6 text-sm text-white bg-[#161D27] leading-[32px] rounded-[10px]">
+                    <strong>Q1 2025</strong> 
                     <br />
-                    <span className="md:pl-8">Launch Presale</span>
+                    <span className="md:pl-16 ">Launch Presale</span>
                     <br />
-                    <span className="md:pl-8">
+                    <span className="md:pl-16">
                       DAO Integration of Backend with Frontend
                     </span>
                     <br />
-                    <span className="md:pl-8">
+                    <span className="md:pl-16">
                       Launch a Beta Version of the Platform
                     </span>
                     <br />
-                    <span className="md:pl-8">TGE(Token Generation Event)</span>
+                    <span className="md:pl-16">TGE(Token Generation Event)</span>
                     <br />
                   </h3>
                 </motion.li>
@@ -52,20 +52,20 @@ export const HouseDetails = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
                 >
-                  <h3 className="ms-5 py-5 px-6 text-sm text-white bg-[#161D27] rounded-[10px]">
-                    <strong>Q2 2025</strong> <br />
+                  <h3 className="ms-5 py-5 px-6 md:text-[16px]  text-sm text-white bg-[#161D27] leading-[32px] rounded-[10px]">
+                    <strong>Q2 2025</strong>
                     <br />
-                    <span className="md:pl-8">
+                    <span className="md:pl-16">
                       Launch Global Marketing Campaigns
                     </span>
                     <br />
-                    <span className="md:pl-8">Launch CEX Partnerships </span>
+                    <span className="md:pl-16">Launch CEX Partnerships </span>
                     <br />
-                    <span className="md:pl-8">
+                    <span className="md:pl-16">
                       Real Estate Agency Partnerships{" "}
                     </span>
                     <br />
-                    <span className="md:pl-8">
+                    <span className="md:pl-16">
                       Launch AI Market Analysis (Beta)
                     </span>
                     <br />
@@ -81,22 +81,22 @@ export const HouseDetails = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
                 >
-                  <h3 className="ms-5 py-5 px-6 text-sm text-white bg-[#161D27] rounded-[10px]">
-                    <strong>Q3 2025</strong> <br />
+                  <h3 className="ms-5 py-5 px-6 text-sm md:text-[16px]  text-white bg-[#161D27] leading-[32px] rounded-[10px]">
+                    <strong>Q3 2025</strong> 
                     <br />
-                    <span className="md:pl-8">
+                    <span className="md:pl-16">
                       Launch Mobile App on IOS & Android
                     </span>
                     <br />
-                    <span className="md:pl-8">
+                    <span className="md:pl-16">
                       Phase 2 Global Marketing Campaign
                     </span>
                     <br />
-                    <span className="md:pl-8">
+                    <span className="md:pl-16">
                       Launch AI Based Property Valuation
                     </span>
                     <br />
-                    <span className="md:pl-8">
+                    <span className="md:pl-16">
                       Collaboration With Lending Institutions
                     </span>
                     <br />
@@ -112,22 +112,22 @@ export const HouseDetails = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
                 >
-                  <h3 className="ms-5 py-5 px-6 text-sm text-white bg-[#161D27] rounded-[10px]">
-                    <strong>Q4 2025</strong> <br />
+                  <h3 className="ms-5 py-5 px-6 md:text-[16px] text-sm leading-[32px] text-white bg-[#161D27] rounded-[10px]">
+                    <strong>Q4 2025</strong> 
                     <br />
-                    <span className="md:pl-8">
+                    <span className="md:pl-16">
                       Launch NFT Property Market Place
                     </span>
                     <br />
-                    <span className="md:pl-8">
+                    <span className="md:pl-16">
                       Integrate Decentralized Finance (DeFi) Options
                     </span>
                     <br />
-                    <span className="md:pl-8">
+                    <span className="md:pl-16">
                       Phase 3 Global Marketing Campaign
                     </span>
                     <br />
-                    <span className="md:pl-8">Launch Ambassador Program</span>
+                    <span className="md:pl-16">Launch Ambassador Program</span>
                     <br />
                   </h3>
                 </motion.li>

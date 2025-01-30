@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const HowToBuy = () => {
   return (
-    <div className="relative bg-black text-white flex flex-col items-center py-24 px-6 md:px-24 overflow-hidden">
+    <div className="relative bg-black text-white flex flex-col items-center pt-24 px-6 md:px-24 overflow-hidden">
       {/* Background Images - Hidden on mobile */}
       {/* <div className="absolute inset-0 flex justify-center items-center sm:block hidden">
         <img
@@ -42,7 +42,7 @@ const HowToBuy = () => {
         </span>
       </motion.p>
 
-      <div className="flex flex-col md:flex-row items-center justify-center gap-6 w-full">
+      <div className="flex flex-col md:flex-row items-center justify-center gap-12 w-full">
         {/* Card 1 */}
         <motion.div
           className="bg-[#161D27]/80 rounded-2xl border-4 border-[#3FAC55] rounded-tl-none shadow-[0_4px_21px_-2px_#3FAC55] p-6 py-16 relative w-full max-w-sm"
