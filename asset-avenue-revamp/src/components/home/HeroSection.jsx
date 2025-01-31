@@ -183,7 +183,7 @@ const HeroSection = ({ language }) => {
             />
 
             <h2 className="text-3xl md:text-[36px] text-center font-helvetica font-semibold mb-4  z-10 relative">
-              {translations.presaleButton || "BUY $AAV TOKEN PRESALE!"}
+             BUY $AAV<br/>TOKEN PRESALE!
             </h2>
             
 
@@ -219,12 +219,7 @@ const HeroSection = ({ language }) => {
                 </div>
               </div>
             </div>
-
-            <div className="flex justify-between text-xs md:text-sm mb-3 z-10 relative">
-              <span>{translations.minBuy || "Min buy: 0.5 SOL"}</span>
-              <span>{translations.maxBuy || "Max buy: 200 SOL"}</span>
-            </div>
-            <div className="flex justify-center text-xs md:text-sm mb-3 z-10 relative">
+            <div className="flex justify-center text-xs font-bold md:text-sm mb-3 z-10 relative">
               <span>
                 {translations.totalSOL || "TOTAL SOL RAISED: 0,000414747 SOL"}
               </span>
@@ -235,6 +230,12 @@ const HeroSection = ({ language }) => {
               style={{ width: `${progress}%` }}
             ></div>
           </div>
+            <div className="flex justify-between text-xs md:text-sm mb-3 z-10 relative">
+              <span>{translations.minBuy || "Min buy: 0.5 SOL"}</span>
+              <span>{translations.maxBuy || "Max buy: 200 SOL"}</span>
+            </div>
+            
+         
             <div className="relative flex items-center justify-center mb-3 z-10">
               <hr className="absolute w-1/6 left-0 border-t border-white" />
               <p className="z-10 px-2 text-xs md:text-sm">
