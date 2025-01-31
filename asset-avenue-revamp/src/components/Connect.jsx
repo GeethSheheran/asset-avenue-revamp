@@ -22,25 +22,25 @@ const WalletConnect = () => {
       </p>
       
       <div className="space-y-3">
-        <button className="flex items-center justify-between w-full bg-[#3FAC55] text-white font-semibold py-3 px-4 rounded-lg">
+        <button className="flex items-center justify-between w-full bg-[#3FAC55] text-white font-semibold py-3 px-8 rounded-lg">
           Phantom
-          <img src="popup/image 65.png" alt="Phantom" className="w-6 h-6" />
+          <img src="popup/image 65.png" alt="Phantom" className="w-8 h-8" />
         </button>
-        <button className="flex items-center justify-between w-full bg-[#3FAC55] text-white font-semibold py-3 px-4 rounded-lg">
+        <button className="flex items-center justify-between w-full bg-[#3FAC55] text-white font-semibold py-3 px-8 rounded-lg">
           Solflare
-          <img src="popup/image 66.png" alt="Solflare" className="w-6 h-6" />
+          <img src="popup/image 66.png" alt="Solflare" className="w-8 h-8" />
         </button>
-        <button className="flex items-center justify-between w-full bg-[#3FAC55] text-white font-semibold py-3 px-4 rounded-lg">
+        <button className="flex items-center justify-between w-full bg-[#3FAC55] text-white font-semibold py-3 px-8 rounded-lg">
           Jupiter
-          <img src="popup/image 67.png" alt="Jupiter" className="w-6 h-6" />
+          <img src="popup/image 67.png" alt="Jupiter" className="w-8 h-8" />
         </button>
-        <button className="flex items-center justify-between w-full bg-[#3FAC55] text-white font-semibold py-3 px-4 rounded-lg">
+        <button className="flex items-center justify-between w-full bg-[#3FAC55] text-white font-semibold py-3 px-8 rounded-lg">
           Coinbase Wallet
-          <img src="popup/image 68.png" alt="Coinbase" className="w-6 h-6" />
+          <img src="popup/image 68.png" alt="Coinbase" className="w-8 h-8" />
         </button>
-        <button className="flex items-center justify-between w-full bg-[#3FAC55] text-white font-semibold py-3 px-4 rounded-lg">
+        <button className="flex items-center justify-between w-full bg-[#3FAC55] text-white font-semibold py-3 px-8 rounded-lg">
           Trust Wallet
-          <img src="popup/image 69.png" alt="Trust Wallet" className="w-6 h-6" />
+          <img src="popup/image 69.png" alt="Trust Wallet" className="w-8 h-8" />
         </button>
       </div>
 
