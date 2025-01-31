@@ -2,7 +2,7 @@ import React from "react";
 
 const WalletPopup = () => {
   return (
-    <div className="w-full md:w-full bg-[#05350F] p-8 rounded-[36px] shadow-[0_4px_145px_0_#56C46C9C] relative text-white text-center">
+    <div className="w-full md:w-full bg-[#05350F] p-8 rounded-[36px] rounded-tl-none shadow-[0_4px_145px_0_#56C46C9C] relative text-white text-center">
       
       {/* Header */}
       <h2 className="text-3xl md:text-[36px] font-bold mb-4">Need A Wallet</h2>
