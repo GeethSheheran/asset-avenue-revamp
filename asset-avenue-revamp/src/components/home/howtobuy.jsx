@@ -25,6 +25,8 @@ const HowToBuy = () => {
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+
       >
         How To Buy
       </motion.h1>
@@ -35,6 +37,8 @@ const HowToBuy = () => {
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+
       >
         The Contract Address:{" "}
         <span className="font-mono text-[16px]">
@@ -49,6 +53,8 @@ const HowToBuy = () => {
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+
         >
           <div
             className="absolute -left-3 top-16 bg-no-repeat bg-cover w-12 h-12"
@@ -77,6 +83,8 @@ const HowToBuy = () => {
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+
         >
           <div
             className="absolute -left-3 top-16 bg-no-repeat bg-cover w-12 h-12"
@@ -104,6 +112,8 @@ const HowToBuy = () => {
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+
         >
           <div
             className="absolute -left-3 top-16 bg-no-repeat bg-cover w-12 h-12"

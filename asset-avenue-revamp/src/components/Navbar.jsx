@@ -49,14 +49,14 @@ const Navbar = () => {
         <ul className="hidden md:flex space-x-6 text-white text-[10px] font-bold">
           {["HOME", "PRESALE", "STAKING", "MY HOUSE", "DASHBOARD", "DAO"].map((item) => (
             <li key={item}>
-              <a href="#" className="hover:text-[#3FAC55] md:text-[12px]">{item}</a>
+              <a href="#" className="hover:text-[#3FAC55] md:text-[10px]">{item}</a>
             </li>
           ))}
           <li className="relative group">
-            <a href="#" className="hover:text-[#3FAC55] md:text-[12px] flex items-center">
+            <a href="#" className="hover:text-[#3FAC55] md:text-[10px] flex items-center">
               MORE <span className="ml-1">▼</span>
             </a>
-            <ul className="absolute -left-16 mt-1 hidden group-hover:block bg-black text-white text-[12px] font-bold space-y-2 p-2 shadow-lg rounded-lg  w-64">
+            <ul className="absolute -left-16 mt-1 hidden group-hover:block bg-black text-white text-[10px] font-bold space-y-2 p-2 shadow-lg rounded-lg  w-64">
               {["PASSIVE INCOME ASSETS", "INVESTOR RESELL ASSETS", "CONTACT US"].map((item) => (
                 <li key={item}>
                   <a href="#" className="block px-8 py-2 hover:text-[#3FAC55]">{item}</a>

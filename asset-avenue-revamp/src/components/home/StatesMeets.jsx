@@ -1,13 +1,17 @@
 import React from "react";
+import { motion } from "framer-motion"; // Import framer-motion
 
 const StatesMeets = () => {
   return (
     <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between px-4 lg:px-24 gap-4 py-12 md:py-4 bg-black text-white relative">
-      {/* Background Radial Gradient */}
-      {/* <div className="absolute left-1/6 top-1/3 z-30 -translate-y-1/2 lg:w-1/2 w-full h-[400px] lg:h-[700px] bg-[#3FAC55] rounded-full blur-3xl opacity-20"></div> */}
-
       {/* Left Column */}
-      <div className="relative lg:w-1/2 w-full mb-8 lg:mb-0 flex flex-col items-center lg:items-start">
+      <motion.div 
+        className="relative lg:w-1/2 w-full mb-8 lg:mb-0 flex flex-col items-center lg:items-start"
+        whileInView={{ opacity: 1, x: 0 }} // Trigger animation when in view
+        initial={{ opacity: 0, x: -100 }} // Initial state (before the animation)
+        transition={{ duration: 1 }} // Transition duration
+        viewport={{ once: true }} // Animation happens once when it enters the viewport
+      >
         <h1 className="md:text-[36px] text-3xl font-bold mb-4 font-helvetica text-center lg:text-left">
           Asset Avenue <span className="text-[#16A34A]">DAO</span>
         </h1>
@@ -23,21 +27,33 @@ const StatesMeets = () => {
           <li>Decentralized Decisions</li>
           <li>Legal Compliance</li>
         </ul>
-        <button className="mt-6 uppercase px-6 py-3 bg-[#16A34A] md:text-[11px] text-white font-semibold rounded-[10px] hover:bg-[#11823B] transition self-center lg:self-end">
+        <motion.button
+          className="mt-6 uppercase px-6 py-3 bg-[#16A34A] md:text-[11px] text-white font-semibold rounded-[10px] hover:bg-[#11823B] transition self-center lg:self-end"
+          whileInView={{ opacity: 1 }} // Fade-in when in view
+          initial={{ opacity: 0, x: 0 }} // Initially hidden
+          transition={{ delay: 0.5, duration: 1 }} // Delay for better timing
+        >
           ACCESS DAO
-        </button>
-      </div>
+        </motion.button>
+      </motion.div>
 
       {/* Right Column */}
-      <div className="lg:w-[500px] w-full flex justify-center">
-        <video
+      <motion.div
+        className="lg:w-[500px] w-full flex justify-center"
+        whileInView={{ opacity: 1, scale: 1 }} // Fade-in and scale when in view
+        initial={{ opacity: 0, scale: 0.9 }} // Start hidden and slightly scaled
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+      >
+        <motion.video
           src="/public/world.mp4"
           autoPlay
           loop
           muted
           className="w-full h-full aspect-square rounded-lg shadow-lg mb-4"
+          
         />
-      </div>
+      </motion.div>
     </div>
   );
 };
