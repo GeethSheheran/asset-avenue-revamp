@@ -43,7 +43,7 @@ const Navbar = () => {
     <nav className="bg-black fixed w-full z-50 top-0">
       <div className="max-w-screen-xl flex items-center justify-between mx-auto py-4">
         <a href="/" className="flex items-center">
-          <img src="logo/logo.webp" className="h-12" alt="Asset Avenue" />
+          <img src="logo/logo.webp" className="h-10" alt="Asset Avenue" />
         </a>
 
         <ul className="hidden md:flex space-x-6 text-white text-[10px] font-bold">
