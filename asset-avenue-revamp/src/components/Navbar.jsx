@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import WalletConnect from "./Connect";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("EN");
+  const [isWalletPopupOpen, setIsWalletPopupOpen] = useState(false);
+  const walletPopupRef = useRef(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -12,37 +15,54 @@ const Navbar = () => {
     setSelectedLanguage(event.target.value);
   };
 
+  const toggleWalletPopup = () => {
+    setIsWalletPopupOpen(!isWalletPopupOpen);
+  };
+
+  const handleCloseWalletPopup = () => setIsWalletPopupOpen(false);
+
+  // Close wallet popup when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (walletPopupRef.current && !walletPopupRef.current.contains(event.target)) {
+        setIsWalletPopupOpen(false);
+      }
+    };
+
+    if (isWalletPopupOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isWalletPopupOpen]);
+
   return (
     <nav className="bg-black fixed w-full z-50 top-0">
       <div className="max-w-screen-xl flex items-center justify-between mx-auto py-4">
-        {/* Logo */}
         <a href="/" className="flex items-center">
           <img src="logo/logo.webp" className="h-8" alt="Asset Avenue" />
         </a>
 
-        {/* Desktop Menu - Always Visible */}
         <ul className="hidden md:flex space-x-3 text-white text-[10px] font-bold">
-          <li><a href="#" className="hover:text-[#3FAC55] md:text-[11px] ">SEED SALE</a></li>
-          <li><a href="#" className="hover:text-[#3FAC55] md:text-[11px]">HOME</a></li>
-          <li><a href="#" className="hover:text-[#3FAC55] md:text-[11px]">PASSIVE INCOME ASSET</a></li>
-          <li><a href="#" className="hover:text-[#3FAC55] md:text-[11px]">INVESTOR RESALE ASSET</a></li>
-          <li><a href="#" className="hover:text-[#3FAC55] md:text-[11px]">MY HOUSE</a></li>
-          <li><a href="#" className="hover:text-[#3FAC55] md:text-[11px]">STAKING</a></li>
-          <li><a href="#" className="hover:text-[#3FAC55] md:text-[11px]">CONTACT US</a></li>
-          <li><a href="#" className="hover:text-[#3FAC55] md:text-[11px]">DASHBOARD</a></li>
-          <li><a href="#" className="hover:text-[#3FAC55] md:text-[11px]">DAO</a></li>
+          {["SEED SALE", "HOME", "PASSIVE INCOME ASSET", "INVESTOR RESALE ASSET", "MY HOUSE", "STAKING", "CONTACT US", "DASHBOARD", "DAO"].map((item) => (
+            <li key={item}>
+              <a href="#" className="hover:text-[#3FAC55] md:text-[11px]">{item}</a>
+            </li>
+          ))}
         </ul>
 
-        {/* Right Side - Language Selector & Buttons */}
         <div className="flex items-center space-x-3 md:space-x-2">
-        <button
+          <button
             type="button"
-            className="hidden sm:block uppercase text-white bg-[#3FAC55] hover:bg-[#11823B] font-bold  md:text-[11px] rounded-lg text-sm px-6 py-2"
+            className="hidden sm:block uppercase text-white bg-[#3FAC55] hover:bg-[#11823B] font-bold md:text-[11px] rounded-lg text-sm px-6 py-2"
           >
             Buy & Stake Now
           </button>
           <button
             type="button"
+            onClick={toggleWalletPopup}
             className="hidden sm:block uppercase text-white bg-[#3FAC55] hover:bg-[#11823B] font-bold md:text-[11px] rounded-lg text-sm px-6 py-2"
           >
             CONNECT WALLET
@@ -50,16 +70,14 @@ const Navbar = () => {
           <select
             value={selectedLanguage}
             onChange={handleLanguageChange}
-            className="bg-[#FBE279] text-black font-medium rounded-lg text-sm px-4 py-2 " 
+            className="bg-[#FBE279] text-black font-medium rounded-lg text-sm px-4 py-2"
           >
             <option value="EN">EN 🇬🇧</option>
             <option value="ES">ES 🇪🇸</option>
             <option value="FR">FR 🇫🇷</option>
             <option value="AR">AR 🇦🇪</option>
           </select>
-          
 
-          {/* Mobile Menu Button */}
           <button
             type="button"
             onClick={toggleMenu}
@@ -72,11 +90,9 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu - Drops Down with Motion */}
       <div className={`fixed top-0 left-0 w-full bg-black text-white z-40 transition-transform duration-500 ease-in-out ${
         isMenuOpen ? "translate-y-0" : "-translate-y-full"
       } md:hidden h-screen flex flex-col items-center justify-center space-y-6`}>
-        {/* Close Button */}
         <button onClick={toggleMenu} className="absolute top-5 right-5 p-2">
           <svg className="w-8 h-8" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -84,26 +100,34 @@ const Navbar = () => {
         </button>
 
         <ul className="flex flex-col items-center space-y-6">
-        <img src="logo/logo.webp" className="h-16 mb-12" alt="Asset Avenue" />
-          <li><a href="#" className="block text-lg font-bold hover:text-[#3FAC55]">SEED SALE</a></li>
-          <li><a href="#" className="block text-lg font-bold hover:text-[#3FAC55]">HOME</a></li>
-          <li><a href="#" className="block text-lg font-bold hover:text-[#3FAC55]">PASSIVE INCOME ASSET</a></li>
-          <li><a href="#" className="block text-lg font-bold hover:text-[#3FAC55]">INVESTOR RESALE ASSET</a></li>
-          <li><a href="#" className="block text-lg font-bold hover:text-[#3FAC55]">MY HOUSE</a></li>
-          <li><a href="#" className="block text-lg font-bold hover:text-[#3FAC55]">STAKING</a></li>
-          <li><a href="#" className="block text-lg font-bold hover:text-[#3FAC55]">CONTACT US</a></li>
-          <li><a href="#" className="block text-lg font-bold hover:text-[#3FAC55]">DASHBOARD</a></li>
-          <li><a href="#" className="block text-lg font-bold hover:text-[#3FAC55]">DAO</a></li>
+          <img src="logo/logo.webp" className="h-16 mb-12" alt="Asset Avenue" />
+          {["SEED SALE", "HOME", "PASSIVE INCOME ASSET", "INVESTOR RESALE ASSET", "MY HOUSE", "STAKING", "CONTACT US", "DASHBOARD", "DAO"].map((item) => (
+            <li key={item}>
+              <a href="#" className="block text-lg font-bold hover:text-[#3FAC55]">{item}</a>
+            </li>
+          ))}
           <li>
             <button
+              onClick={toggleWalletPopup}
               type="button"
-              className="text-white uppercase bg-[#3FAC55] hover:bg-[#11823B] font-medium rounded-lg text-lg px-6 py-2 font-bold "
+              className="text-white uppercase bg-[#3FAC55] hover:bg-[#11823B] font-medium rounded-lg text-lg px-6 py-2 font-bold"
             >
               CONNECT WALLET
             </button>
           </li>
         </ul>
       </div>
+
+      {isWalletPopupOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
+          <div ref={walletPopupRef} className=" px-6 rounded-lg shadow-lg md:w-1/3 w-full text-center">
+            <WalletConnect />
+            {/* <button className="w-full py-2 mt-4 bg-red-500 text-white rounded-lg" onClick={toggleWalletPopup}>
+              Cancel
+            </button> */}
+          </div>
+        </div>
+      )}
     </nav>
   );
 };

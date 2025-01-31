@@ -114,6 +114,7 @@ const HeroSection = ({ language }) => {
   const handleOpenCardModal = () => setIsCardModalOpen(true);
   const handleCloseCardModal = () => setIsCardModalOpen(false);
 
+
   return (
     <div className="relative bg-black text-white min-h-screen flex flex-col md:flex-row items-center justify-center py-16 px-4 md:px-24 overflow-hidden">
       <video
