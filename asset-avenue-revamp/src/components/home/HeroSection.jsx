@@ -257,9 +257,9 @@ const HeroSection = ({ language }) => {
               </div>
               <div className="relative w-full md:w-1/2">
                 <img
-                  src="hero/2.png"
+                  src="hero/3.png"
                   alt="Crypto"
-                  className="absolute top-[-30px] md:left-[30px]  left-10 right-0 w-full h-[30px] object-contain z-0 hidden sm:block"
+                  className="absolute top-[-25px] md:left-[40px]  left-10 right-0 w-full h-[30px] object-contain z-0 hidden sm:block"
                 />
                 <button
                   onClick={handleOpenModal} // Trigger modal on click
