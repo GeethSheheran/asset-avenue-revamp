@@ -9,7 +9,7 @@ const WalletPopup = () => {
       
       {/* Description */}
       <p className="text-sm md:text-base max-w-l mx-auto mb-6">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+      Phantom Wallet is secure, easy to use, and essential for Web3 presales. It lets you store tokens, connect to platforms, and participate seamlessly on Solana.
       </p>
       
       {/* Image */}
@@ -18,8 +18,9 @@ const WalletPopup = () => {
       </div>
       
       {/* Steps */}
-      <div className="flex flex-col space-y-4 md:space-y-0 md:flex-col md:items-start md:space-x-0 mb-6">
-  {["Download the Best wallet app", "Create your account", "Buy in-app with card or crypto"].map((text, index) => (
+      <div className="flex justify-center ">
+      <div className="flex flex-col  pl-0 space-y-4 md:space-y-0 md:flex-col md:items-start md:space-x-0 mb-6">
+  {["Download the Phantom app", "Create your account", "Buy in-app with card or crypto"].map((text, index) => (
     <div key={index} className="flex items-center space-x-2 py-2 ">
       <span className="w-6 h-6 flex items-center justify-center rounded-full bg-white border border-[#22C55E] text-black text-sm">
         {index + 1}
@@ -28,12 +29,12 @@ const WalletPopup = () => {
     </div>
   ))}
 </div>
-
+</div>
 
       
       {/* Button */}
       <button className="bg-[#3FAC55] hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg text-[11px] uppercase">
-        Download Best Wallet
+      download Phantom wallet
       </button>
     </div>
   );

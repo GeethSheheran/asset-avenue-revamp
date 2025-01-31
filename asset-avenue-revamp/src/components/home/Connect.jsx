@@ -9,7 +9,7 @@ const WalletConnect = () => {
   return (
     <>
       {showWalletPopup ? (
-        <div className="w-full md:w-full bg-gradient-to-l rounded-tl-none from-[#05350F] to-[#05350F] p-8 rounded-[36px] rounded-tl-none shadow-[0_4px_145px_0_#56C46C9C] mt-0 md:mt-16 relative md:ml-auto z-10">
+        <div className="w-full md:w-full bg-gradient-to-l from-[#05350F] to-[#05350F] p-8 rounded-[36px] rounded-tl-none shadow-[0_4px_145px_0_#56C46C9C] mt-0 md:mt-16 relative md:ml-auto z-10">
           {/* Background Image */}
           <img
             src="hero/widget.png"
