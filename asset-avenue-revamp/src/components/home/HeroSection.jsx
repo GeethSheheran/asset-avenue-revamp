@@ -3,7 +3,8 @@ import ImageSlider from "./ImageSlider";
 import axios from "axios";
 import TokenPresalePopup from "./presalePopup";
 import PresalePopup from "./presalePopup";
-import WalletPopup from "./walletPop";import { motion } from "framer-motion";
+import WalletPopup from "./walletPop";
+import { motion } from "framer-motion";
 
 const HeroSection = ({ language }) => {
   const [translations, setTranslations] = useState({});
@@ -22,6 +23,7 @@ const HeroSection = ({ language }) => {
   const defaultText = {
     presaleButton: "BUY $AAV TOKEN PRESALE!",
     priceInfo: "Price will increase gradually.",
+    priceInfo2: "304% Staking Rewards",
     countdown: {
       days: "Days",
       hours: "Hours",
@@ -80,6 +82,9 @@ const HeroSection = ({ language }) => {
       return text; // Fallback to original text if translation fails
     }
   };
+  useEffect(() => {
+    setProgress(30); // Simulate progress update, replace with real logic
+  }, []);
 
   // Fetch translations for all the required text
   useEffect(() => {
@@ -113,7 +118,8 @@ const HeroSection = ({ language }) => {
 
   const handleOpenCardModal = () => setIsCardModalOpen(true);
   const handleCloseCardModal = () => setIsCardModalOpen(false);
-
+  const [progress, setProgress] = useState(0);
+  
 
   return (
     <div className="relative bg-black text-white min-h-screen flex flex-col md:flex-row items-center justify-center py-16 px-4 md:px-24 overflow-hidden">
@@ -163,106 +169,124 @@ const HeroSection = ({ language }) => {
           </div>
         </div>
 
-        <div className="w-full md:w-1/3 bg-gradient-to-l from-[#05350F] to-[#05350F] p-8 rounded-[36px] rounded-tl-none shadow-[0_4px_145px_0_#56C46C9C] mt-0 md:mt-16 relative md:ml-auto">
-          <img
-            src="hero/widget.png"
-            alt="Card Background"
-            className="absolute top-0 right-0 w-full h-full object-cover rounded-[36px] z-0"
-          />
-
-          <h2 className="text-3xl md:text-[36px] text-center font-helvetica font-semibold mb-4  z-10 relative">
-            {translations.presaleButton || "BUY $AAV TOKEN PRESALE!"}
-          </h2>
-          <p className="text-sm md:text-base text-center bg-gradient-to-l from-[#B8934D] to-[#FBE279] py-1 w-full text-black rounded-lg inline-block mb-4 z-10 relative">
-            {translations.priceInfo || "Price will increase gradually."}
-          </p>
-
-          <div className="grid grid-cols-4 gap-4 text-center font-medium mb-6 border border-[#22C55E] border-[4px] rounded-[30px] rounded-tl-none p-4 z-10 relative">
-            <div>
-              <span className="font-thin text-sm">
-                {translations.countdown?.days || "Days"}
-              </span>
-              <p className="text-2xl font-bold">{timeLeft.days}</p>
-            </div>
-            <div>
-              <span className="font-thin text-sm">
-                {translations.countdown?.hours || "Hours"}
-              </span>
-              <p className="text-2xl font-bold">{timeLeft.hours}</p>
-            </div>
-            <div>
-              <span className="font-thin text-sm">
-                {translations.countdown?.minutes || "Minutes"}
-              </span>
-              <p className="text-2xl font-bold">{timeLeft.minutes}</p>
-            </div>
-            <div>
-              <span className="font-thin text-sm">
-                {translations.countdown?.seconds || "Seconds"}
-              </span>
-              <p className="text-2xl font-bold">{timeLeft.seconds}</p>
-            </div>
-          </div>
-
-          <div className="flex justify-between text-xs md:text-sm mb-6 z-10 relative">
-            <span>{translations.minBuy || "Min buy: 0.5 SOL"}</span>
-            <span>{translations.maxBuy || "Max buy: 200 SOL"}</span>
-          </div>
-          <div className="flex justify-center text-xs md:text-sm mb-6 z-10 relative">
-            <span>
-              {translations.totalSOL || "TOTAL SOL RAISED: 0,000414747 SOL"}
-            </span>
-          </div>
-          <div className="relative flex items-center justify-center mb-6 z-10">
-            <hr className="absolute w-1/6 left-0 border-t border-white" />
-            <p className="z-10 px-2 text-xs md:text-sm">
-              {translations.price || "1 AAV = 0.000368664 SOL"}
+        <div className="w-full md:w-1/3 mt-0 md:mt-16 ">
+          <div className="flex justify-center items-center ">
+            <p className="text-sm md:text-[20px] text-center shadow-[0_2px_85px_#56C46C9C]  bg-gradient-to-l from-[#B8934D] to-[#FBE279] p-2 w-4/5 text-white italic font-bold rounded-[20px] rounded-tl-none inline-block mb-8 z-10 relative ">
+              {translations.priceInfo2 || "304% Staking Rewards"}
             </p>
-            <hr className="absolute w-1/6 right-0 border-t border-white" />
           </div>
-
-          <div className="relative pt-4 flex flex-col md:flex-row justify-between space-y-4 md:space-y-0 md:space-x-4 z-10 relative">
-            <div className="relative w-full  md:w-1/2">
-              <img
-                src="/hero/1.png"
-                alt="Visa"
-                className="absolute top-[-30px] -left-10 -md:left-[100px] right-0 w-full h-[30px] object-contain z-0 hidden sm:block"
-              />
-              <button className="relative uppercase z-10 font-bold md:text-[11px] bg-[#3FAC55] hover:bg-[#11823B] text-white py-3 px-4 rounded-[10px] w-full">
-                {translations.buyWithCard || "Buy With Card"}
-              </button>
-            </div>
-            <div className="relative w-full md:w-1/2">
-              <img
-                src="hero/2.png"
-                alt="Crypto"
-                className="absolute top-[-30px] md:left-[30px]  left-10 right-0 w-full h-[30px] object-contain z-0 hidden sm:block"
-              />
-              <button
-                onClick={handleOpenModal} // Trigger modal on click
-                className="relative uppercase z-10  md:text-[11px] text-black font-bold py-3 px-6 rounded-[10px] w-full bg-gradient-to-br from-[#958648] to-[#FBE279] hover:opacity-80"
-                style={{
-                  background:
-                    "linear-gradient(212.98deg, #958648 -92.97%, #FBE279 187.71%)",
-                }}
-              >
-                {translations.buyWithCrypto || "Buy With Crypto"}
-              </button>
-            </div>
-          </div>
-
-          <p 
-                onClick={handleOpenCardModal} // Trigger modal on click
-          className="text-xs text-center mt-6 z-10 relative cursor-pointer">
-            {translations.dontHaveWallet || "Don't have a wallet?"}
-          </p>
-
-          <div className="flex justify-center mt-4 z-10 relative">
+          <div className="bg-gradient-to-l from-[#05350F] to-[#05350F] p-8 rounded-[36px] rounded-tl-none shadow-[0_4px_145px_0_#56C46C9C] relative md:ml-auto">
             <img
-              src="/logo/contract.png"
-              alt="Auditor Logo"
-              className="w-1/3 h-auto object-contain"
+              src="hero/widget.png"
+              alt="Card Background"
+              className="absolute top-0 right-0 w-full h-full object-cover rounded-[36px] z-0"
             />
+
+            <h2 className="text-3xl md:text-[36px] text-center font-helvetica font-semibold mb-4  z-10 relative">
+              {translations.presaleButton || "BUY $AAV TOKEN PRESALE!"}
+            </h2>
+            
+
+            <div className="text-center font-medium mb-6 border border-[#22C55E] border-[4px] rounded-[30px] rounded-tl-none p-0 z-10 relative">
+              <p className="text-sm md:text-base text-center bg-gradient-to-l from-[#B8934D] to-[#FBE279] py-2 w-full text-black rounded-[20px] rounded-tl-none inline-block mb-0 z-10 relative">
+                {translations.priceInfo || "Price will increase gradually."}
+              </p>
+              <div className="grid grid-cols-4  gap-4 px-4 ">
+                <div>
+                  <span className="font-thin text-sm">
+                    {translations.countdown?.days || "Days"}
+                  </span>
+                  <p className="text-2xl font-bold">{timeLeft.days}</p>
+                </div>
+                <div>
+                  <span className="font-thin text-sm">
+                    {translations.countdown?.hours || "Hours"}
+                  </span>
+                  <p className="text-2xl font-bold">{timeLeft.hours}</p>
+                </div>
+                <div>
+                  <span className="font-thin text-sm">
+                    {translations.countdown?.minutes || "Minutes"}
+                  </span>
+                  <p className="text-2xl font-bold">{timeLeft.minutes}</p>
+                </div>
+
+                <div>
+                  <span className="font-thin text-sm">
+                    {translations.countdown?.seconds || "Seconds"}
+                  </span>
+                  <p className="text-2xl font-bold">{timeLeft.seconds}</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex justify-between text-xs md:text-sm mb-3 z-10 relative">
+              <span>{translations.minBuy || "Min buy: 0.5 SOL"}</span>
+              <span>{translations.maxBuy || "Max buy: 200 SOL"}</span>
+            </div>
+            <div className="flex justify-center text-xs md:text-sm mb-3 z-10 relative">
+              <span>
+                {translations.totalSOL || "TOTAL SOL RAISED: 0,000414747 SOL"}
+              </span>
+            </div>
+            <div className="relative w-full bg-white rounded-full h-2.5 mb-3">
+            <div
+              className="bg-[#22C55E] h-2.5 rounded-full"
+              style={{ width: `${progress}%` }}
+            ></div>
+          </div>
+            <div className="relative flex items-center justify-center mb-3 z-10">
+              <hr className="absolute w-1/6 left-0 border-t border-white" />
+              <p className="z-10 px-2 text-xs md:text-sm">
+                {translations.price || "1 AAV = 0.000368664 SOL"}
+              </p>
+              <hr className="absolute w-1/6 right-0 border-t border-white" />
+            </div>
+
+            <div className="relative pt-4 flex flex-col md:flex-row justify-between space-y-4 md:space-y-0 md:space-x-4 z-10 relative">
+              <div className="relative w-full  md:w-1/2">
+                <img
+                  src="/hero/1.png"
+                  alt="Visa"
+                  className="absolute top-[-30px] -left-10 -md:left-[100px] right-0 w-full h-[30px] object-contain z-0 hidden sm:block"
+                />
+                <button className="relative uppercase z-10 font-bold md:text-[11px] bg-[#3FAC55] hover:bg-[#11823B] text-white py-3 px-4 rounded-[10px] w-full">
+                  {translations.buyWithCard || "Buy With Card"}
+                </button>
+              </div>
+              <div className="relative w-full md:w-1/2">
+                <img
+                  src="hero/2.png"
+                  alt="Crypto"
+                  className="absolute top-[-30px] md:left-[30px]  left-10 right-0 w-full h-[30px] object-contain z-0 hidden sm:block"
+                />
+                <button
+                  onClick={handleOpenModal} // Trigger modal on click
+                  className="relative uppercase z-10  md:text-[11px] text-black font-bold py-3 px-6 rounded-[10px] w-full bg-gradient-to-br from-[#958648] to-[#FBE279] hover:opacity-80"
+                  style={{
+                    background:
+                      "linear-gradient(212.98deg, #958648 -92.97%, #FBE279 187.71%)",
+                  }}
+                >
+                  {translations.buyWithCrypto || "Buy With Crypto"}
+                </button>
+              </div>
+            </div>
+
+            <p
+              onClick={handleOpenCardModal} // Trigger modal on click
+              className="text-xs text-center mt-6 z-10 relative cursor-pointer"
+            >
+              {translations.dontHaveWallet || "Don't have a wallet?"}
+            </p>
+
+            <div className="flex justify-center mt-4 z-10 relative">
+              <img
+                src="/logo/contract.png"
+                alt="Auditor Logo"
+                className="w-[100px] h-auto object-contain"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -289,12 +313,12 @@ const HeroSection = ({ language }) => {
           </div>
         </div>
       )}
-       {isCardModalOpen && (
+      {isCardModalOpen && (
         <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
           className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-80 flex justify-center items-center z-50"
           onClick={handleCloseCardModal}
         >
@@ -302,7 +326,7 @@ const HeroSection = ({ language }) => {
             className=" p-8 rounded-xl w-full md:w-1/3"
             onClick={(e) => e.stopPropagation()} // Prevent modal close when clicking inside the modal
           >
-            <WalletPopup/>
+            <WalletPopup />
             <div className="flex justify-center space-x-4 mt-4">
               {/* <button
                 className="bg-[#22C55E] text-white py-2 px-4 rounded-md"
