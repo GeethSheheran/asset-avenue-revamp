@@ -102,14 +102,14 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className={`fixed top-0 left-0 w-full bg-black text-white z-40 transition-transform duration-500 ease-in-out ${isMenuOpen ? "translate-y-0" : "-translate-y-full"} md:hidden h-screen flex flex-col items-center justify-center space-y-6`}>
+      <div className={`fixed top-0 left-0 w-full bg-black text-white z-40 transition-transform duration-500 ease-in-out ${isMenuOpen ? "translate-y-0" : "-translate-y-full"} md:hidden h-screen flex flex-col items-center justify-center space-y-0`}>
         <button onClick={toggleMenu} className="absolute top-5 right-5 p-2">
           <svg className="w-8 h-8" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
-        <ul className="flex flex-col items-center space-y-6">
-          <img src="logo/logo.webp" className="h-16 mb-12" alt="Asset Avenue" />
+        <ul className="flex flex-col items-center space-y-4">
+          <img src="logo/logo.webp" className="h-16 mb-2" alt="Asset Avenue" />
           {["HOME", "PRESALE", "STAKING", "MY HOUSE", "DASHBOARD", "DAO", "PASSIVE INCOME ASSETS", "INVESTOR RESELL ASSETS", "CONTACT US"].map((item) => (
             <li key={item}>
               <a href="#" className="block text-lg font-bold hover:text-[#3FAC55]">{item}</a>
