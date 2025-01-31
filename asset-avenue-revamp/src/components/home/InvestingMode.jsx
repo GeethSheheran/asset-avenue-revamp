@@ -49,7 +49,7 @@ const InvestingMode = () => {
             <img
               src={card.icon}
               alt={`Icon for ${card.title}`}
-              className="w-16 h-16 mb-4 object-cover"
+              className="w-auto h-16 mb-4 object-cover"
             />
             <h3 className="text-[18px] font-semibold mb-2">{card.title}</h3>
             <p className="text-[16px] text-gray-300">{card.description}</p>
