@@ -59,7 +59,7 @@ const PresalePopup = ({ translations, onClose }) => {
           </h2>
 
           <div className="border border-[#22C55E] border-[4px] rounded-[25px] rounded-tl-none">
-            <p className="text-sm md:text-base text-center bg-gradient-to-l from-[#B8934D] to-[#FBE279] py-2 text-black rounded-[50px] inline-block mb-0 w-full rounded-tl-none relative z-10">
+            <p className="text-sm md:text-[16px] text-center bg-gradient-to-l from-[#B8934D] to-[#FBE279] py-2 text-black rounded-[50px] inline-block mb-0 w-full rounded-tl-none relative z-10">
               {translations?.priceInfo || "Price will increase gradually."}
             </p>
             <div className="grid grid-cols-4 gap-4 text-center font-medium p-4 relative z-10">
@@ -78,18 +78,18 @@ const PresalePopup = ({ translations, onClose }) => {
             </div>
           </div>
 
-          <div className="flex justify-between text-xs md:text-sm mb-3 relative z-10">
+          <div className="flex justify-between text-xs md:text-[12px] mb-3 relative z-10">
             <span>{translations?.minBuy || "Min buy: 0.5 SOL"}</span>
             <span>{translations?.maxBuy || "Max buy: 200 SOL"}</span>
           </div>
 
-          <div className="flex justify-center text-xs md:text-sm mb-3 relative z-10">
+          <div className="flex justify-center font-bold py-1 text-xs md:text-[16px] mb-3 relative z-10">
             <span>{translations?.totalSOL || "TOTAL SOL RAISED: 0,000414747 SOL"}</span>
           </div>
 
           <div className="relative flex items-center justify-center mb-3 z-10">
             <hr className="absolute w-1/6 left-0 border-t border-white" />
-            <p className="z-10 px-2 text-xs md:text-sm">
+            <p className="z-10 px-2 text-xs md:text-[12px]">
               {translations?.price || "1 AAV = 0.000368664 SOL"}
             </p>
             <hr className="absolute w-1/6 right-0 border-t border-white" />
@@ -98,17 +98,17 @@ const PresalePopup = ({ translations, onClose }) => {
           <div className="relative pt-4 flex flex-col space-y-4 z-10">
             <button
               onClick={() => setIsWalletPopupOpen(true)} // Open Wallet Popup & Close PresalePopup
-              className="uppercase z-10 text-black font-bold py-3 px-6 rounded-[10px] w-full bg-gradient-to-br from-[#958648] to-[#FBE279] hover:opacity-80"
+              className="uppercase z-10 text-black text-[12px] font-bold py-3 px-6 rounded-[10px] w-full bg-gradient-to-br from-[#958648] to-[#FBE279] hover:opacity-80"
             >
               {translations?.buyWithCrypto || "STAKE FOR 509% REWARDS"}
             </button>
 
-            <button className="uppercase z-10 font-bold bg-[#3FAC55] hover:bg-[#11823B] text-white py-3 px-4 rounded-[10px] w-full">
+            <button className="uppercase z-10 font-bold bg-[#3FAC55] text-[12px] hover:bg-[#11823B] text-white py-3 px-4 rounded-[10px] w-full">
               {translations?.buyWithCard || "BUY $AAV"}
             </button>
           </div>
 
-          <p onClick={() => setIsWalletPopupOpen(true)} className="text-xs underline font-thin text-center mt-6 cursor-pointer z-10 relative">
+          <p onClick={() => setIsWalletPopupOpen(true)} className="text-[11px] underline font-thin text-center mt-6 cursor-pointer z-10 relative">
             {translations?.dontHaveWallet || "Don't have a wallet?"}
           </p>
 

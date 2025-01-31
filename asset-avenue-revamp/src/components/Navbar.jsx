@@ -43,20 +43,20 @@ const Navbar = () => {
     <nav className="bg-black fixed w-full z-50 top-0">
       <div className="max-w-screen-xl flex items-center justify-between mx-auto py-4">
         <a href="/" className="flex items-center">
-          <img src="logo/logo.webp" className="h-8" alt="Asset Avenue" />
+          <img src="logo/logo.webp" className="h-12" alt="Asset Avenue" />
         </a>
 
         <ul className="hidden md:flex space-x-6 text-white text-[10px] font-bold">
           {["HOME", "PRESALE", "STAKING", "MY HOUSE", "DASHBOARD", "DAO"].map((item) => (
             <li key={item}>
-              <a href="#" className="hover:text-[#3FAC55] md:text-[11px]">{item}</a>
+              <a href="#" className="hover:text-[#3FAC55] md:text-[12px]">{item}</a>
             </li>
           ))}
           <li className="relative group">
-            <a href="#" className="hover:text-[#3FAC55] md:text-[11px] flex items-center">
+            <a href="#" className="hover:text-[#3FAC55] md:text-[12px] flex items-center">
               MORE <span className="ml-1">▼</span>
             </a>
-            <ul className="absolute -left-12 mt-1 hidden group-hover:block bg-black text-white text-[10px] font-bold space-y-2 p-2 shadow-lg rounded-lg  w-56">
+            <ul className="absolute -left-16 mt-1 hidden group-hover:block bg-black text-white text-[12px] font-bold space-y-2 p-2 shadow-lg rounded-lg  w-64">
               {["PASSIVE INCOME ASSETS", "INVESTOR RESELL ASSETS", "CONTACT US"].map((item) => (
                 <li key={item}>
                   <a href="#" className="block px-8 py-2 hover:text-[#3FAC55]">{item}</a>
@@ -86,9 +86,39 @@ const Navbar = () => {
             className="bg-[#FBE279] text-black font-medium rounded-lg text-sm px-4 py-2"
           >
             <option value="EN">EN 🇬🇧</option>
-            <option value="ES">ES 🇪🇸</option>
-            <option value="FR">FR 🇫🇷</option>
-            <option value="AR">AR 🇦🇪</option>
+<option value="ES">ES 🇪🇸</option>
+<option value="FR">FR 🇫🇷</option>
+<option value="AR">AR 🇦🇪</option>
+<option value="DE">DE 🇩🇪</option>
+<option value="IT">IT 🇮🇹</option>
+<option value="PT">PT 🇵🇹</option>
+<option value="RU">RU 🇷🇺</option>
+<option value="ZH">ZH 🇨🇳</option>
+<option value="JP">JP 🇯🇵</option>
+<option value="KR">KR 🇰🇷</option>
+<option value="TR">TR 🇹🇷</option>
+<option value="NL">NL 🇳🇱</option>
+<option value="PL">PL 🇵🇱</option>
+<option value="ID">ID 🇮🇩</option>
+<option value="TH">TH 🇹🇭</option>
+<option value="VN">VN 🇻🇳</option>
+<option value="HI">HI 🇮🇳</option>
+<option value="FA">FA 🇮🇷</option>
+<option value="HE">HE 🇮🇱</option>
+<option value="SW">SW 🇰🇪</option>
+<option value="BN">BN 🇧🇩</option>
+<option value="UK">UK 🇺🇦</option>
+<option value="RO">RO 🇷🇴</option>
+<option value="HU">HU 🇭🇺</option>
+<option value="CS">CS 🇨🇿</option>
+<option value="DA">DA 🇩🇰</option>
+<option value="FI">FI 🇫🇮</option>
+<option value="SV">SV 🇸🇪</option>
+<option value="NO">NO 🇳🇴</option>
+<option value="EL">EL 🇬🇷</option>
+<option value="MS">MS 🇲🇾</option>
+<option value="TL">TL 🇵🇭</option>
+
           </select>
           <button
             type="button"

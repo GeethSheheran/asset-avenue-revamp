@@ -157,11 +157,11 @@ const HeroSection = ({ language }) => {
 
       <div className="relative z-20 flex flex-col md:flex-row w-full max-w-7xl">
         <div className="w-full md:w-2/3 mt-16 items-center justify-center space-y-6 text-center md:pt-16 md:text-left">
-          <h1 className="text-[40px] font-helvetica sm:text-6xl md:text-[80px] font-bold">
+          <h1 className="text-[40px] font-helvetica sm:text-6xl md:text-[64px] font-bold">
             Asset Avenue <br />
-            <span className="text-[#22C55E] md:text-[80px]">Presale</span>
+            <span className="text-[#22C55E] md:text-[64px]">Presale</span>
           </h1>
-          <p className="text-lg md:text-[32px] font-light">
+          <p className="text-lg md:text-[26px] font-light">
             Redefining Real Estate with Blockchain
           </p>
           <div className="flex items-center justify-center md:justify-start space-x-8 md:pt-16">
@@ -169,9 +169,9 @@ const HeroSection = ({ language }) => {
           </div>
         </div>
 
-        <div className="w-full md:w-1/3 mt-0 md:mt-16 ">
+        <div className="w-full md:w-1/3 mt-0 md:mt-16  ">
           <div className="flex justify-center items-center ">
-            <p className="text-sm md:text-[20px] text-center shadow-[0_2px_85px_#56C46C9C]  bg-gradient-to-l from-[#B8934D] to-[#FBE279] p-3 w-4/5 text-white italic font-bold rounded-[20px] rounded-tl-none inline-block mb-8 z-10 relative ">
+            <p className="text-sm md:text-[24px] text-center shadow-[0_2px_85px_#56C46C9C]  bg-gradient-to-l from-[#B8934D] to-[#FBE279] p-3 w-4/5 text-white italic font-bold rounded-[20px] rounded-tl-none inline-block mb-4 z-10 relative ">
               {translations.priceInfo2 || "304% Staking Rewards"}
             </p>
           </div>
@@ -182,44 +182,44 @@ const HeroSection = ({ language }) => {
               className="absolute top-0 right-0 w-full h-full object-cover rounded-[36px] z-0"
             />
 
-            <h2 className="text-3xl md:text-[36px] text-center font-helvetica font-semibold mb-4  z-10 relative">
+            <h2 className="text-3xl md:text-[32px] text-center font-helvetica font-semibold mb-4  z-10 relative">
              BUY $AAV<br/>TOKEN PRESALE!
             </h2>
             
 
             <div className="text-center font-medium mb-6 border border-[#22C55E] border-[4px] rounded-[30px] rounded-tl-none pb-2 z-10 relative">
-              <p className="text-sm md:text-base text-center bg-gradient-to-l from-[#B8934D] to-[#FBE279] py-2 w-full text-black rounded-[20px] rounded-tl-none inline-block mb-0 z-10 relative">
+              <p className="text-sm md:text-[16px] text-center bg-gradient-to-l from-[#B8934D] to-[#FBE279] py-2 w-full text-black rounded-[20px] rounded-tl-none inline-block mb-0 z-10 relative">
                 {translations.priceInfo || "Price will increase gradually."}
               </p>
               <div className="grid grid-cols-4  gap-4 px-4 ">
                 <div>
-                  <span className="font-thin text-sm">
+                  <span className="font-thin text-[12px]">
                     {translations.countdown?.days || "Days"}
                   </span>
                   <p className="text-2xl font-bold">{timeLeft.days}</p>
                 </div>
                 <div>
-                  <span className="font-thin text-sm">
+                  <span className="font-thin text-[12px]">
                     {translations.countdown?.hours || "Hours"}
                   </span>
                   <p className="text-2xl font-bold">{timeLeft.hours}</p>
                 </div>
                 <div>
-                  <span className="font-thin text-sm">
+                  <span className="font-thin text-[12px]">
                     {translations.countdown?.minutes || "Minutes"}
                   </span>
                   <p className="text-2xl font-bold">{timeLeft.minutes}</p>
                 </div>
 
                 <div>
-                  <span className="font-thin text-sm">
+                  <span className="font-thin text-[12px]">
                     {translations.countdown?.seconds || "Seconds"}
                   </span>
                   <p className="text-2xl font-bold">{timeLeft.seconds}</p>
                 </div>
               </div>
             </div>
-            <div className="flex justify-center text-xs font-bold md:text-sm mb-3 z-10 relative">
+            <div className="flex justify-center text-[16px] font-bold md:text-sm mb-3 z-10 relative">
               <span>
                 {translations.totalSOL || "TOTAL SOL RAISED: 0,000414747 SOL"}
               </span>
@@ -230,7 +230,7 @@ const HeroSection = ({ language }) => {
               style={{ width: `${progress}%` }}
             ></div>
           </div>
-            <div className="flex justify-between text-xs md:text-sm mb-3 z-10 relative">
+            <div className="flex justify-between text-[16px] md:text-sm mb-3 z-10 relative">
               <span>{translations.minBuy || "Min buy: 0.5 SOL"}</span>
               <span>{translations.maxBuy || "Max buy: 200 SOL"}</span>
             </div>
@@ -238,7 +238,7 @@ const HeroSection = ({ language }) => {
          
             <div className="relative flex items-center justify-center mb-3 z-10">
               <hr className="absolute w-1/6 left-0 border-t border-white" />
-              <p className="z-10 px-2 text-xs md:text-sm">
+              <p className="z-10 px-2 text-[16px] md:text-sm">
                 {translations.price || "1 AAV = 0.000368664 SOL"}
               </p>
               <hr className="absolute w-1/6 right-0 border-t border-white" />
@@ -276,7 +276,7 @@ const HeroSection = ({ language }) => {
 
             <p
               onClick={handleOpenCardModal} // Trigger modal on click
-              className="text-xs text-center underline font-thin mt-6 z-10 relative cursor-pointer"
+              className="text-[12px] text-center underline font-thin mt-6 z-10 relative cursor-pointer"
             >
               {translations.dontHaveWallet || "Don't have a wallet?"}
             </p>

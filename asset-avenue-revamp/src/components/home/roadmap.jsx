@@ -5,19 +5,21 @@ import { outToInVariantsRight } from "../home/animations";
 export const HouseDetails = () => {
   return (
     <Container className="z-10">
-      <h1 className="header text-[36px] font-bold  font-helvetica mt-16 md:mt-0">
+      <h1 className="header text-[36px] z-20 font-bold  font-helvetica mt-16 md:mt-0">
         Roadmap
       </h1>
       <Wrap className="relative">
-        <Left>
+      <div className="absolute left-1/4 z-10 top-1/3 -translate-y-1/2 lg:w-2/3 w-full h-[400px] lg:h-[1200px] bg-[#3FAC55] rounded-full blur-3xl opacity-20"></div>
+
+        <Left className=" z-30">
           <Image src="/roadmap/Finished Building.png" alt="How it works" />
         </Left>
         <Right className="pr-24 pb-8 relative">
-          <div className="absolute left-1/6 z-10 top-1/2 -translate-y-1/2 lg:w-full w-full h-[400px] lg:h-[700px] bg-[#3FAC55] rounded-full blur-3xl opacity-20"></div>
+          {/* <div className="absolute left-1/6 z-10 top-1/2 -translate-y-1/2 lg:w-full w-full h-[400px] lg:h-[700px] bg-[#3FAC55] rounded-full blur-3xl opacity-20"></div> */}
 
           <RightWrap>
             <ul className="customList  ">
-              <div className="pb-8">
+              <div className="pb-8 z-10">
                 <motion.li
                   variants={outToInVariantsRight}
                   initial="hidden"
@@ -44,7 +46,7 @@ export const HouseDetails = () => {
                 </motion.li>
               </div>
 
-              <div className="pb-8">
+              <div className="pb-8 z-10">
                 <motion.li
                   variants={outToInVariantsRight}
                   initial="hidden"
@@ -73,7 +75,7 @@ export const HouseDetails = () => {
                 </motion.li>
               </div>
 
-              <div className="pb-8">
+              <div className="pb-8 z-10">
                 <motion.li
                   variants={outToInVariantsRight}
                   initial="hidden"
@@ -104,7 +106,7 @@ export const HouseDetails = () => {
                 </motion.li>
               </div>
 
-              <div className="pb-0">
+              <div className="pb-0 z-10">
                 <motion.li
                   variants={outToInVariantsRight}
                   initial="hidden"

@@ -8,7 +8,7 @@ const WalletPopup = () => {
       <h2 className="text-3xl md:text-[36px] font-bold mb-4">Need A Wallet</h2>
       
       {/* Description */}
-      <p className="text-sm md:text-base max-w-l mx-auto mb-6">
+      <p className="text-sm md:text-[16px] font-base max-w-l mx-auto mb-6">
       Phantom Wallet is secure, easy to use, and essential for Web3 presales. It lets you store tokens, connect to platforms, and participate seamlessly on Solana.
       </p>
       

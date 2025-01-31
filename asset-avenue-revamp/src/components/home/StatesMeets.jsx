@@ -2,21 +2,21 @@ import React from "react";
 
 const StatesMeets = () => {
   return (
-    <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between px-4 lg:px-24 gap-4 py-12 bg-black text-white relative">
+    <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between px-4 lg:px-24 gap-4 py-12 md:py-4 bg-black text-white relative">
       {/* Background Radial Gradient */}
-      <div className="absolute left-1/6 top-1/2 -translate-y-1/2 lg:w-1/2 w-full h-[400px] lg:h-[700px] bg-[#3FAC55] rounded-full blur-3xl opacity-20"></div>
+      {/* <div className="absolute left-1/6 top-1/3 z-30 -translate-y-1/2 lg:w-1/2 w-full h-[400px] lg:h-[700px] bg-[#3FAC55] rounded-full blur-3xl opacity-20"></div> */}
 
       {/* Left Column */}
       <div className="relative lg:w-1/2 w-full mb-8 lg:mb-0 flex flex-col items-center lg:items-start">
         <h1 className="md:text-[36px] text-3xl font-bold mb-4 font-helvetica text-center lg:text-left">
           Asset Avenue <span className="text-[#16A34A]">DAO</span>
         </h1>
-        <p className="text-[18px] mb-6 text-center tracking-normal lg:text-left">
+        <p className="text-[16px] mb-6 text-center tracking-normal lg:text-left">
           Facilitating worldwide real estate transactions with cryptocurrency,
           ensuring the highest level of security and complete transparency in
           ownership and investment opportunities through blockchain technology.
         </p>
-        <ul className="list-disc list-inside space-y-2 text-[18px] text-center lg:text-left">
+        <ul className="list-disc list-inside space-y-2 text-[16px] text-center lg:text-left">
           <li>NFT Property Rights</li>
           <li>Staking for Governance</li>
           <li>Smart Contract Payouts</li>
@@ -29,7 +29,7 @@ const StatesMeets = () => {
       </div>
 
       {/* Right Column */}
-      <div className="lg:w-1/2 w-full flex justify-center">
+      <div className="lg:w-[500px] w-full flex justify-center">
         <video
           src="/public/world.mp4"
           autoPlay

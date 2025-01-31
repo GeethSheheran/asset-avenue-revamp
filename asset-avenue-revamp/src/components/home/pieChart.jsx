@@ -17,13 +17,15 @@ const PieChart = () => {
 
       {/* Pie Chart Section */}
       <div className="relative w-full px-4 md:px-24 flex justify-center items-center">
-        <div className="absolute inset-0 flex justify-center items-center">
+        {/* <div className="absolute inset-0 flex justify-center items-center">
           <img
             src="/Ellipse.png"
             alt="Background Left"
             className="absolute w-65 z-20 right-[0%] opacity-100"
           />
-        </div>
+        </div> */}
+      <div className="absolute left-1/6 z-10 top-1/2 -translate-y-1/2 lg:w-2/3 w-full h-[400px] lg:h-[600px] bg-[#3FAC55] rounded-full blur-3xl opacity-20"></div>
+
 
         {/* Pie Chart Animation */}
         <motion.div

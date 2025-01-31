@@ -76,31 +76,31 @@ const PassiveIncome = () => {
               </span>
             </div>
             <div className="p-4">
-              <h2 className="font-semibold text-white text-lg mb-2 text-center">{project.title}</h2>
-              <p className="text-sm text-white mb-4 text-center">{project.location}</p>
+              <h2 className="font-semibold text-white text-[18px] mb-2 text-center">{project.title}</h2>
+              <p className="text-[16px] text-white mb-4 text-center">{project.location}</p>
               <div className="grid grid-cols-4 gap-2 text-sm mb-4 text-center">
-                <div>
-                  <p className="font-bold text-white">Price:</p>
-                  <p className='font-bold text-lg'>{project.price} </p>
-                  <p className='text-white'>USDT</p>
+                <div className='space-y-1'>
+                  <p className="font-bold text-[16px] text-white">Price:</p>
+                  <p className='font-bold text-[18px]'>{project.price} </p>
+                  <p className='text-white text-[16px]'>USDT</p>
                 </div>
-                <div>
-                  <p className="font-bold text-white">Available:</p>
-                  <p className='font-bold text-lg'>{project.available} </p>
-                  <p className='text-white'>SHARES</p>
+                <div className='space-y-1'>
+                  <p className="font-bold text-white text-[16px]">Available:</p>
+                  <p className='font-bold text-[18px]'>{project.available} </p>
+                  <p className='text-white text-[16px]'>SHARES</p>
                 </div>
-                <div>
-                  <p className="font-bold text-white">Price/Share:</p>
-                  <p className='font-bold text-lg'>{project.pricePerShare} </p>
-                  <p className='text-white'>USDT</p>
+                <div className='space-y-1'>
+                  <p className="font-bold text-white text-[16px]">Price/Share:</p>
+                  <p className='font-bold text-[18px]'>{project.pricePerShare} </p>
+                  <p className='text-white text-[16px]'>USDT</p>
                 </div>
-                <div>
-                  <p className="font-bold text-white">APR:</p>
-                  <p className='font-bold text-lg'>{project.apr} </p>
-                  <p className='text-white'>PERCENT</p>
+                <div className='space-y-1'>
+                  <p className="font-bold text-white text-[16px]">APR:</p>
+                  <p className='font-bold text-[18px]'>{project.apr} </p>
+                  <p className='text-white text-[16px]'>PERCENT</p>
                 </div>
               </div>
-              <div className="w-full bg-gray-200 rounded-full h-6 flex items-center justify-center relative">
+              <div className="w-full bg-gray-200 rounded-[6px] h-6 flex items-center justify-center relative">
                 <div
                   className="bg-[green-500] w-full h-8 rounded text-[#3FAC55] text-xs flex items-center justify-center"
                   style={{ width: `${project.sold}%` }}
@@ -108,7 +108,7 @@ const PassiveIncome = () => {
                   {project.sold}%
                 </div>
               </div>
-              <p className="text-center text-sm font-semibold text-black mt-4">
+              <p className="text-center text-[11px] font-semibold text-black mt-4">
                 Coming Soon
               </p>
             </div>

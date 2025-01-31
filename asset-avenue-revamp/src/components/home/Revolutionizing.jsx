@@ -31,7 +31,7 @@ const Revolutionizing = () => {
           Revolutionizing <span className="text-[#3FAC55]">Real Estate Investment</span> With <span className="text-[#3FAC55]">Blockchain & AI</span>
         </motion.h1>
         <motion.p
-          className="text-center md:text-[18px] text-gray-300 mb-8 max-w-6xl mx-auto"
+          className="text-center md:text-[16px] text-gray-300 mb-8 max-w-6xl mx-auto"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.2 }}
@@ -57,16 +57,16 @@ const Revolutionizing = () => {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <div className="absolute -z-20 inset-0 bg-[#3FAC55] opacity-20 rounded-full w-[120%] h-[250%] top-1/6 -left-1/5 blur-3xl"></div>
+              <div className="absolute -z-20 inset-0 bg-[#3FAC55] opacity-20 rounded-full w-[120%] h-[150%] top-1/6 -left-1/5 blur-3xl"></div>
               <img
                 src={`./state/${img}`}
                 alt="Real Estate"
                 className="w-full h-40 object-cover mb-4 rounded-[20px] rounded-tl-none mx-auto"
               />
-              <h2 className="text-[18px] font-bold mb-2">
+              <h2 className="text-[16px] font-bold mb-2">
                 {index === 0 ? "The Problem" : index === 1 ? "Our Vision" : "The Power of $AAV"}
               </h2>
-              <p className="text-gray-300">
+              <p className="text-gray-300 text-[16px]">
                 {index === 0
                   ? "The $235 trillion real estate market remains outdated, plagued by inefficiencies, high fees, and limited access for investors."
                   : index === 1

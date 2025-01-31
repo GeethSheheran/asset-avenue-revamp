@@ -22,7 +22,7 @@ const WalletConnect = () => {
             <h2 className="text-white text-2xl font-bold text-center mb-4">
               Connect A Wallet
             </h2>
-            <p className="text-gray-300 text-sm text-center mb-4">
+            <p className="text-gray-300 text-[16px] text-center mb-4">
               Lorem Ipsum is simply dummy text of the printing and typesetting industry.
             </p>
 
@@ -47,7 +47,7 @@ const WalletConnect = () => {
 
             {/* "I don’t have a wallet" Button */}
             <button
-              className="mt-4 w-full border border-[#FBE279] text-[#FBE279] font-semibold py-3 px-4 rounded-lg flex items-center justify-center"
+              className="mt-4 w-full border border-[#FBE279] text-[#FBE279] font-bold text-[12px] py-3 px-4 rounded-lg flex items-center justify-center"
               onClick={() => setShowWalletPopup(false)} // Switch Popup
             >
               <img src="popup/Mask group.png" alt="Wallet" className="w-5 h-5 mr-2" />
