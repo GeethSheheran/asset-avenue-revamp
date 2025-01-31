@@ -294,7 +294,11 @@ const HeroSection = ({ language }) => {
 
       {/* Modal Component */}
       {isModalOpen && (
-        <div
+        <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.8 }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
           className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-80 flex justify-center items-center z-50"
           onClick={handleCloseModal}
         >
@@ -312,7 +316,7 @@ const HeroSection = ({ language }) => {
               </button> */}
             </div>
           </div>
-        </div>
+        </motion.div>
       )}
       {isCardModalOpen && (
         <motion.div
