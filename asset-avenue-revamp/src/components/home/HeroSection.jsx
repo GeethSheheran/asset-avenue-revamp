@@ -294,15 +294,16 @@ const HeroSection = ({ language }) => {
 
       {/* Modal Component */}
       {isModalOpen && (
-        <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.8 }}
+        <div
+        
         transition={{ duration: 0.3, ease: "easeOut" }}
           className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-80 flex justify-center items-center z-50"
           onClick={handleCloseModal}
         >
-          <div
+          <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
             className=" p-8 rounded-xl w-full md:w-1/3"
             onClick={(e) => e.stopPropagation()} // Prevent modal close when clicking inside the modal
           >
@@ -315,19 +316,19 @@ const HeroSection = ({ language }) => {
                 Close
               </button> */}
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       )}
       {isCardModalOpen && (
-        <motion.div
+        <div
+          className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-80 flex justify-center items-center z-50"
+          onClick={handleCloseCardModal}
+        >
+          <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-80 flex justify-center items-center z-50"
-          onClick={handleCloseCardModal}
-        >
-          <div
             className=" p-8 rounded-xl w-full md:w-1/3"
             onClick={(e) => e.stopPropagation()} // Prevent modal close when clicking inside the modal
           >
@@ -340,8 +341,8 @@ const HeroSection = ({ language }) => {
                 Close
               </button> */}
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       )}
     </div>
   );
