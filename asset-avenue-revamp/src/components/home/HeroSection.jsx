@@ -3,7 +3,7 @@ import ImageSlider from "./ImageSlider";
 import axios from "axios";
 import TokenPresalePopup from "./presalePopup";
 import PresalePopup from "./presalePopup";
-import WalletPopup from "./walletPop";
+import WalletPopup from "./walletPop";import { motion } from "framer-motion";
 
 const HeroSection = ({ language }) => {
   const [translations, setTranslations] = useState({});
@@ -135,18 +135,18 @@ const HeroSection = ({ language }) => {
       <img
         src="hero/token.png"
         alt="Center Graphic"
-        className="absolute top-1/3 right-[40%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-3/5 sm:w-2/5 md:w-[250px] hidden sm:block animate-floating"
+        className="absolute top-2/5 right-[45%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-3/5 sm:w-2/5 md:w-[200px] hidden sm:block animate-floating"
       />
 
       <img
         src="hero/token.png"
         alt="Center Graphic"
-        className="absolute top-[65%] right-[38%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-1/2 sm:w-2/5 md:w-[100px] hidden sm:block animate-floating"
+        className="absolute top-[70%] right-[40%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-1/2 sm:w-2/5 md:w-[80px] hidden sm:block animate-floating"
       />
       <img
         src="hero/token.png"
         alt="Center Graphic"
-        className="absolute top-[20%] right-[36%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-1/2 sm:w-2/5 md:w-[100px] hidden sm:block animate-floating"
+        className="absolute top-[22%] right-[38%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-1/2 sm:w-2/5 md:w-[80px] hidden sm:block animate-floating"
       />
 
       <div className="relative z-20 flex flex-col md:flex-row w-full max-w-7xl">
@@ -155,7 +155,7 @@ const HeroSection = ({ language }) => {
             Asset Avenue <br />
             <span className="text-[#22C55E] md:text-[60px]">Presale</span>
           </h1>
-          <p className="text-lg md:text-[20px] font-light">
+          <p className="text-lg md:text-[24px] font-light">
             Redefining Real Estate with Blockchain
           </p>
           <div className="flex items-center justify-center md:justify-start space-x-8 pt-16">
@@ -290,7 +290,11 @@ const HeroSection = ({ language }) => {
         </div>
       )}
        {isCardModalOpen && (
-        <div
+        <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
           className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-80 flex justify-center items-center z-50"
           onClick={handleCloseCardModal}
         >
@@ -308,7 +312,7 @@ const HeroSection = ({ language }) => {
               </button> */}
             </div>
           </div>
-        </div>
+        </motion.div>
       )}
     </div>
   );
