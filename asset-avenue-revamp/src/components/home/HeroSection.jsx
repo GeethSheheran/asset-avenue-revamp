@@ -161,7 +161,7 @@ const HeroSection = ({ language }) => {
             Asset Avenue <br />
             <span className="text-[#22C55E] md:text-[64px]">Presale</span>
           </h1>
-          <p className="text-lg md:text-[16px] font-light">
+          <p className="text-lg md:text-[20px] font-light">
           Redefining Real Estate with Blockchain & Ai
           </p>
           <div className="flex items-center justify-center md:justify-start space-x-8 md:pt-16">
