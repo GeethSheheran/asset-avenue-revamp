@@ -187,7 +187,7 @@ const HeroSection = ({ language }) => {
             </h2>
             
 
-            <div className="text-center font-medium mb-6 border border-[#22C55E] border-[4px] rounded-[30px] rounded-tl-none p-0 z-10 relative">
+            <div className="text-center font-medium mb-6 border border-[#22C55E] border-[4px] rounded-[30px] rounded-tl-none pb-2 z-10 relative">
               <p className="text-sm md:text-base text-center bg-gradient-to-l from-[#B8934D] to-[#FBE279] py-2 w-full text-black rounded-[20px] rounded-tl-none inline-block mb-0 z-10 relative">
                 {translations.priceInfo || "Price will increase gradually."}
               </p>
