@@ -164,7 +164,7 @@ const HeroSection = ({ language }) => {
           <p className="text-lg md:text-[32px] font-light">
             Redefining Real Estate with Blockchain
           </p>
-          <div className="flex items-center justify-center md:justify-start space-x-8 pt-16">
+          <div className="flex items-center justify-center md:justify-start space-x-8 md:pt-16">
             <ImageSlider />
           </div>
         </div>
