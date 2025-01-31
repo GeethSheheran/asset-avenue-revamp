@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import WalletConnect from "./Connect";
+import WalletConnect from "./home/Connect";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

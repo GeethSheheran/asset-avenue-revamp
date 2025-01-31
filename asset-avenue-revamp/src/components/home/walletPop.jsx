@@ -8,13 +8,13 @@ const WalletPopup = () => {
       <h2 className="text-3xl md:text-[36px] font-bold mb-4">Need A Wallet</h2>
       
       {/* Description */}
-      <p className="text-sm md:text-base max-w-md mx-auto mb-6">
+      <p className="text-sm md:text-base max-w-l mx-auto mb-6">
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
       </p>
       
       {/* Image */}
       <div className="flex justify-center mb-6">
-        <img src="/popup/pop.png" alt="Wallet Preview" className="w-64 rounded-lg shadow-lg" />
+        <img src="/popup/pop.png" alt="Wallet Preview" className="w-40 rounded-lg shadow-lg" />
       </div>
       
       {/* Steps */}
