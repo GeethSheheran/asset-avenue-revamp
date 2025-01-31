@@ -171,7 +171,7 @@ const HeroSection = ({ language }) => {
 
         <div className="w-full md:w-1/3 mt-0 md:mt-16 ">
           <div className="flex justify-center items-center ">
-            <p className="text-sm md:text-[20px] text-center shadow-[0_2px_85px_#56C46C9C]  bg-gradient-to-l from-[#B8934D] to-[#FBE279] p-2 w-4/5 text-white italic font-bold rounded-[20px] rounded-tl-none inline-block mb-8 z-10 relative ">
+            <p className="text-sm md:text-[20px] text-center shadow-[0_2px_85px_#56C46C9C]  bg-gradient-to-l from-[#B8934D] to-[#FBE279] p-3 w-4/5 text-white italic font-bold rounded-[20px] rounded-tl-none inline-block mb-8 z-10 relative ">
               {translations.priceInfo2 || "304% Staking Rewards"}
             </p>
           </div>
@@ -276,7 +276,7 @@ const HeroSection = ({ language }) => {
 
             <p
               onClick={handleOpenCardModal} // Trigger modal on click
-              className="text-xs text-center mt-6 z-10 relative cursor-pointer"
+              className="text-xs text-center underline font-thin mt-6 z-10 relative cursor-pointer"
             >
               {translations.dontHaveWallet || "Don't have a wallet?"}
             </p>
@@ -285,7 +285,7 @@ const HeroSection = ({ language }) => {
               <img
                 src="/logo/contract.png"
                 alt="Auditor Logo"
-                className="w-[100px] h-auto object-contain"
+                className="w-[150px] h-auto object-contain"
               />
             </div>
           </div>
