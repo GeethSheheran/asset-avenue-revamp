@@ -141,7 +141,7 @@ const HeroSection = ({ language }) => {
       <img
         src="hero/token.png"
         alt="Center Graphic"
-        className="absolute top-2/5 right-[45%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-3/5 sm:w-2/5 md:w-[200px] hidden sm:block animate-floating"
+        className="absolute top-2/5 right-[42%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-3/5 sm:w-2/5 md:w-[200px] hidden sm:block animate-floating"
       />
 
       <img
@@ -157,11 +157,11 @@ const HeroSection = ({ language }) => {
 
       <div className="relative z-20 flex flex-col md:flex-row w-full max-w-7xl">
         <div className="w-full md:w-2/3 mt-16 items-center justify-center space-y-6 text-center md:pt-16 md:text-left">
-          <h1 className="text-[40px] font-helvetica sm:text-6xl md:text-[60px] font-bold">
+          <h1 className="text-[40px] font-helvetica sm:text-6xl md:text-[80px] font-bold">
             Asset Avenue <br />
-            <span className="text-[#22C55E] md:text-[60px]">Presale</span>
+            <span className="text-[#22C55E] md:text-[80px]">Presale</span>
           </h1>
-          <p className="text-lg md:text-[24px] font-light">
+          <p className="text-lg md:text-[32px] font-light">
             Redefining Real Estate with Blockchain
           </p>
           <div className="flex items-center justify-center md:justify-start space-x-8 pt-16">
@@ -305,6 +305,7 @@ const HeroSection = ({ language }) => {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
+
             className=" p-8 rounded-xl w-full md:w-1/3"
             onClick={(e) => e.stopPropagation()} // Prevent modal close when clicking inside the modal
           >

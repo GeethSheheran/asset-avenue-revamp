@@ -35,7 +35,7 @@ const ImageSlider = () => {
   }, []);
 
   return (
-    <div className="overflow-hidden w-full md:w-[48%] flex justify-start mt-4 md:mt-16 pb-16">
+    <div className="overflow-hidden w-full md:w-[62%] flex justify-start mt-4 md:mt-16 pb-16">
       <div ref={sliderRef} className="flex" style={{ width: "max-content" }}>
         {images.concat(images).map((image, index) => (
           <div key={index} className="flex-none w-1/3 flex justify-center">
