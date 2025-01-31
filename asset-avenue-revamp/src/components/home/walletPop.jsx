@@ -3,7 +3,11 @@ import React from "react";
 const WalletPopup = () => {
   return (
     <div className="w-full md:w-full bg-[#05350F] p-8 rounded-[36px] rounded-tl-none shadow-[0_4px_145px_0_#56C46C9C] relative text-white text-center">
-      
+      <img
+            src="hero/widget.png"
+            alt="Card Background"
+            className="absolute top-0 left-0 w-full h-full object-cover rounded-[36px] z-0"
+          />
       {/* Header */}
       <h2 className="text-3xl md:text-[36px] font-bold mb-4">Need A Wallet</h2>
       
