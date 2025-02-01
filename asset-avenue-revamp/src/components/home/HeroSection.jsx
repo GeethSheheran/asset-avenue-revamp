@@ -153,6 +153,16 @@ const HeroSection = ({ language }) => {
         alt="Center Graphic"
         className="absolute top-[22%] right-[38%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-1/2 sm:w-2/5 md:w-[80px] hidden sm:block animate-floating"
       />
+      <img
+        src="hero/side1.png"
+        alt="Center Graphic"
+        className="absolute top-[0%] right-[0%] z-10 w-1/2 h-100vh sm:w-2/5 md:w-[auto] hidden sm:block"
+      />
+       <img
+        src="hero/side2.png"
+        alt="Center Graphic"
+        className="absolute top-[0%] left-[0%] z-10 w-1/2 h-100vh sm:w-2/5 md:w-[auto] hidden sm:block"
+      />
 
       <div className="relative z-20 flex flex-col md:flex-row w-full max-w-7xl">
         <div className="w-full md:w-2/3 mt-16 items-center justify-center space-y-6 text-center md:pt-16 md:text-left">

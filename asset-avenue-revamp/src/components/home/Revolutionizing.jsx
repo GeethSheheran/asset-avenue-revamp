@@ -68,10 +68,10 @@ const Revolutionizing = () => {
               </h2>
               <p className="text-gray-300 text-[16px]">
                 {index === 0
-                  ? "The $235 trillion real estate market remains outdated, plagued by inefficiencies, high fees, and limited access for investors."
+                  ? "The $235 trillion real estate market remains outdated, plagued by inefficiencies, high fees, and limited access for investors. Traditional methods keep this valuable asset class suppressed and inaccessible."
                   : index === 1
-                  ? "Asset Avenue leverages blockchain and AI to modernize real estate investing, unlocking global opportunities for all."
-                  : "The $AAV token is your gateway to a smarter real estate market, enabling seamless investments and passive income."}
+                  ? "Asset Avenue leverages blockchain and AI to modernize real estate investing. With fractional ownership, transparent transactions, and real-time insights, we simplify investing and unlock global opportunities for all."
+                  : "The $AAV token is your gateway to a smarter real estate market. Invest in premium properties, earn passive income, and trade assets seamlessly, all powered by $AAV ecosystem. "}
               </p>
             </motion.div>
           ))}
