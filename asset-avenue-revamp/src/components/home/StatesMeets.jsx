@@ -48,7 +48,7 @@ const StatesMeets = () => {
         viewport={{ once: true }}
       >
         <motion.video
-          src="/public/world.mp4"
+          src="/video/world.mp4"
           autoPlay
           loop
           muted
