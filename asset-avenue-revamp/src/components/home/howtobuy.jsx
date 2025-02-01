@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const HowToBuy = () => {
   return (
-    <div className="relative bg-black text-white flex flex-col items-center pt-24 px-6 md:px-24 overflow-hidden">
+    <div className="relative bg-black text-white flex flex-col items-center py-24 px-6 md:px-24 overflow-hidden">
       {/* Animated Title */}
       <motion.h1
         className="text-[36px] font-helvetica font-bold mb-2 text-center"

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const PieChart = () => {
   return (
-    <div className="min-h-screen bg-black flex flex-col md:mt-4 justify-center items-center relative z-10 py-16 md:py-0">
+    <div className="mb-8 bg-black flex flex-col justify-center items-center relative z-10 md:py-16 md:py-0">
       {/* Topic Header Animation */}
       <motion.h1
         className="text-white font-helvetica text-[36px] font-bold mb-4"

@@ -29,7 +29,7 @@ const StatesMeets = () => {
         </ul>
         <a href="https://your-dao-link.com" target="_blank" rel="noopener noreferrer">
   <motion.button
-    className="md:absolute mt-12 uppercase px-6 py-3 md:text-[11px] text-white font-semibold rounded-[10px] bg-[#16A34A] hover:bg-[#11823B] transition md:ml-[80%]"
+    className="md:absolute mt-12 md:w-1/5 uppercase px-6 py-3 md:text-[11px] text-white font-semibold rounded-[10px] bg-[#16A34A] hover:bg-[#11823B] transition md:ml-[90%]"
     whileInView={{ opacity: 1, x: 0 }} // Fade-in when in view
     initial={{ opacity: 0, x: 0 }} // Initially hidden
     transition={{ duration: 1 }} // Delay for better timing
