@@ -3,7 +3,7 @@ import { motion } from "framer-motion"; // Import framer-motion
 
 const StatesMeets = () => {
   return (
-    <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between px-4 lg:px-24 gap-4 py-12 md:py-4 bg-black text-white relative">
+    <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between px-4 lg:px-24 gap-4 py-12 mb-12 md:py-4 bg-black text-white relative">
       {/* Left Column */}
       <motion.div 
         className="relative lg:w-1/2 w-full mb-8 lg:mb-0 flex flex-col items-center lg:items-start"
@@ -27,16 +27,18 @@ const StatesMeets = () => {
           <li>Decentralized Decisions</li>
           <li>Legal Compliance</li>
         </ul>
-        <motion.button
-          className="mt-6 uppercase px-6 py-3 md:text-[11px] text-white font-semibold rounded-[10px] bg-[#16A34A] hover:bg-[#11823B] transition self-center lg:self-end"
-          whileInView={{ opacity: 1 , x:0}} // Fade-in when in view
-          initial={{ opacity: 0, x: 0 }} // Initially hidden
-          transition={{ duration: 1 }} // Delay for better timing
-        viewport={{ once: true }} // Animation happens once when it enters the viewport
+        <a href="https://your-dao-link.com" target="_blank" rel="noopener noreferrer">
+  <motion.button
+    className="md:absolute mt-12 uppercase px-6 py-3 md:text-[11px] text-white font-semibold rounded-[10px] bg-[#16A34A] hover:bg-[#11823B] transition md:ml-[80%]"
+    whileInView={{ opacity: 1, x: 0 }} // Fade-in when in view
+    initial={{ opacity: 0, x: 0 }} // Initially hidden
+    transition={{ duration: 1 }} // Delay for better timing
+    viewport={{ once: true }} // Animation happens once when it enters the viewport
+  >
+    ACCESS DAO
+  </motion.button>
+</a>
 
-        >
-          ACCESS DAO
-        </motion.button>
       </motion.div>
 
       {/* Right Column */}
