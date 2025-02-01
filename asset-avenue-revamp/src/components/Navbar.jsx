@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 import WalletConnect from "./home/Connect";
 import { motion } from "framer-motion";
 
-
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("EN");
@@ -25,7 +24,10 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (walletPopupRef.current && !walletPopupRef.current.contains(event.target)) {
+      if (
+        walletPopupRef.current &&
+        !walletPopupRef.current.contains(event.target)
+      ) {
         setIsWalletPopupOpen(false);
       }
     };
@@ -47,19 +49,46 @@ const Navbar = () => {
         </a>
 
         <ul className="hidden md:flex space-x-6 text-white text-[10px] font-bold">
-          {["HOME", "PRESALE", "STAKING", "MY HOUSE", "DASHBOARD", "DAO"].map((item) => (
-            <li key={item}>
-              <a href="#" className="hover:text-[#3FAC55] md:text-[10px]">{item}</a>
-            </li>
-          ))}
-          <li className="relative group">
-            <a href="#" className="hover:text-[#3FAC55] md:text-[10px] flex items-center">
+          {["HOME", "PRESALE", "STAKING", "MY HOUSE", "DASHBOARD", "DAO"].map(
+            (item) => (
+              <li key={item}>
+                <a href="#" className="hover:text-[#3FAC55] md:text-[10px]">
+                  {item}
+                </a>
+              </li>
+            )
+          )}
+          <li
+            className="relative group"
+            onMouseEnter={() => setIsMenuOpen(true)}
+            onMouseLeave={() => setIsMenuOpen(false)}
+          >
+            <a
+              href="#"
+              className="hover:text-[#3FAC55] md:text-[10px] flex items-center "
+            >
               MORE <span className="ml-1">▼</span>
             </a>
-            <ul className="absolute -left-16 mt-1 hidden group-hover:block bg-black text-white text-[10px] font-bold space-y-2 p-2 shadow-lg rounded-lg  w-64">
-              {["PASSIVE INCOME ASSETS", "INVESTOR RESELL ASSETS", "CONTACT US"].map((item) => (
+
+            <ul
+              className={`absolute -left-20 mt-1 bg-black text-white text-[10px] font-bold space-y-2 p-2 shadow-lg rounded-lg w-64 transition-all duration-500 ease-in-out ${
+                isMenuOpen
+                  ? "opacity-100 visible translate-y-0"
+                  : "opacity-0 invisible translate-y-2"
+              }`}
+            >
+              {[
+                "PASSIVE INCOME ASSETS",
+                "INVESTOR RESELL ASSETS",
+                "CONTACT US",
+              ].map((item) => (
                 <li key={item}>
-                  <a href="#" className="block px-8 py-2 hover:text-[#3FAC55]">{item}</a>
+                  <a
+                    href="#"
+                    className="block px-4 py-2 hover:text-[#3FAC55] text-center"
+                  >
+                    {item}
+                  </a>
                 </li>
               ))}
             </ul>
@@ -86,63 +115,101 @@ const Navbar = () => {
             className="bg-[#FBE279] text-black font-medium rounded-lg text-sm px-4 py-2"
           >
             <option value="EN">EN 🇬🇧</option>
-<option value="ES">ES 🇪🇸</option>
-<option value="FR">FR 🇫🇷</option>
-<option value="AR">AR 🇦🇪</option>
-<option value="DE">DE 🇩🇪</option>
-<option value="IT">IT 🇮🇹</option>
-<option value="PT">PT 🇵🇹</option>
-<option value="RU">RU 🇷🇺</option>
-<option value="ZH">ZH 🇨🇳</option>
-<option value="JP">JP 🇯🇵</option>
-<option value="KR">KR 🇰🇷</option>
-<option value="TR">TR 🇹🇷</option>
-<option value="NL">NL 🇳🇱</option>
-<option value="PL">PL 🇵🇱</option>
-<option value="ID">ID 🇮🇩</option>
-<option value="TH">TH 🇹🇭</option>
-<option value="VN">VN 🇻🇳</option>
-<option value="HI">HI 🇮🇳</option>
-<option value="FA">FA 🇮🇷</option>
-<option value="HE">HE 🇮🇱</option>
-<option value="SW">SW 🇰🇪</option>
-<option value="BN">BN 🇧🇩</option>
-<option value="UK">UK 🇺🇦</option>
-<option value="RO">RO 🇷🇴</option>
-<option value="HU">HU 🇭🇺</option>
-<option value="CS">CS 🇨🇿</option>
-<option value="DA">DA 🇩🇰</option>
-<option value="FI">FI 🇫🇮</option>
-<option value="SV">SV 🇸🇪</option>
-<option value="NO">NO 🇳🇴</option>
-<option value="EL">EL 🇬🇷</option>
-<option value="MS">MS 🇲🇾</option>
-<option value="TL">TL 🇵🇭</option>
-
+            <option value="ES">ES 🇪🇸</option>
+            <option value="FR">FR 🇫🇷</option>
+            <option value="AR">AR 🇦🇪</option>
+            <option value="DE">DE 🇩🇪</option>
+            <option value="IT">IT 🇮🇹</option>
+            <option value="PT">PT 🇵🇹</option>
+            <option value="RU">RU 🇷🇺</option>
+            <option value="ZH">ZH 🇨🇳</option>
+            <option value="JP">JP 🇯🇵</option>
+            <option value="KR">KR 🇰🇷</option>
+            <option value="TR">TR 🇹🇷</option>
+            <option value="NL">NL 🇳🇱</option>
+            <option value="PL">PL 🇵🇱</option>
+            <option value="ID">ID 🇮🇩</option>
+            <option value="TH">TH 🇹🇭</option>
+            <option value="VN">VN 🇻🇳</option>
+            <option value="HI">HI 🇮🇳</option>
+            <option value="FA">FA 🇮🇷</option>
+            <option value="HE">HE 🇮🇱</option>
+            <option value="SW">SW 🇰🇪</option>
+            <option value="BN">BN 🇧🇩</option>
+            <option value="UK">UK 🇺🇦</option>
+            <option value="RO">RO 🇷🇴</option>
+            <option value="HU">HU 🇭🇺</option>
+            <option value="CS">CS 🇨🇿</option>
+            <option value="DA">DA 🇩🇰</option>
+            <option value="FI">FI 🇫🇮</option>
+            <option value="SV">SV 🇸🇪</option>
+            <option value="NO">NO 🇳🇴</option>
+            <option value="EL">EL 🇬🇷</option>
+            <option value="MS">MS 🇲🇾</option>
+            <option value="TL">TL 🇵🇭</option>
           </select>
           <button
             type="button"
             onClick={toggleMenu}
             className="md:hidden p-2 text-white"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4 6h16M4 12h16m-7 6h7"
+              />
             </svg>
           </button>
         </div>
       </div>
 
-      <div className={`fixed top-0 left-0 w-full bg-black text-white z-40 transition-transform duration-500 ease-in-out ${isMenuOpen ? "translate-y-0" : "-translate-y-full"} md:hidden h-screen flex flex-col items-center justify-center space-y-0`}>
+      <div
+        className={`fixed top-0 left-0 w-full bg-black text-white z-40 transition-transform duration-500 ease-in-out ${
+          isMenuOpen ? "translate-y-0" : "-translate-y-full"
+        } md:hidden h-screen flex flex-col items-center justify-center space-y-0`}
+      >
         <button onClick={toggleMenu} className="absolute top-5 right-5 p-2">
-          <svg className="w-8 h-8" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+          <svg
+            className="w-8 h-8"
+            fill="none"
+            stroke="white"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
           </svg>
         </button>
         <ul className="flex flex-col items-center space-y-4">
           <img src="logo/logo.webp" className="h-16 mb-2" alt="Asset Avenue" />
-          {["HOME", "PRESALE", "STAKING", "MY HOUSE", "DASHBOARD", "DAO", "PASSIVE INCOME ASSETS", "INVESTOR RESELL ASSETS", "CONTACT US"].map((item) => (
+          {[
+            "HOME",
+            "PRESALE",
+            "STAKING",
+            "MY HOUSE",
+            "DASHBOARD",
+            "DAO",
+            "PASSIVE INCOME ASSETS",
+            "INVESTOR RESELL ASSETS",
+            "CONTACT US",
+          ].map((item) => (
             <li key={item}>
-              <a href="#" className="block text-lg font-bold hover:text-[#3FAC55]">{item}</a>
+              <a
+                href="#"
+                className="block text-lg font-bold hover:text-[#3FAC55]"
+              >
+                {item}
+              </a>
             </li>
           ))}
           <li>
@@ -158,14 +225,15 @@ const Navbar = () => {
       </div>
 
       {isWalletPopupOpen && (
-        <div 
-        className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
-          <motion.div 
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.8 }}
-        transition={{ duration: 0.3, ease: "easeOut" }}
-          ref={walletPopupRef} className="px-6 rounded-lg shadow-lg md:w-1/3 w-full text-center">
+        <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            ref={walletPopupRef}
+            className="px-6 rounded-lg shadow-lg md:w-1/3 w-full text-center"
+          >
             <WalletConnect />
           </motion.div>
         </div>
