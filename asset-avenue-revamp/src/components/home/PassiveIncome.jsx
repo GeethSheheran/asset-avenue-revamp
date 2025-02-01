@@ -122,10 +122,10 @@ const PassiveIncome = () => {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-      >
+      > <a href='https://assetavenue.capital/market' target='_blank'>
         <button className="bg-[#16A34A] hover:bg-[#11823B] uppercase md:text-[11px] font-bold text-white px-6 py-3  rounded-[10px] ">
           BUY SHARES
-        </button>
+        </button></a>
       </motion.div>
     </div>
   );

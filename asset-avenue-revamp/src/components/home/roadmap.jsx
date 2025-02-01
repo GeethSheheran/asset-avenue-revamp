@@ -137,9 +137,10 @@ export const HouseDetails = () => {
             </ul>
             <div className="flex justify-center mb-8">
               {" "}
-              <button className="mt-0 uppercase px-6 md:text-[11px] item-center py-3 bg-[#16A34A] text-white font-semibold rounded-[10px] hover:bg-[#11823B] transition self-end">
+              <a href="https://assetavenue.gitbook.io/presale-whitepaper" target="_blank">
+              <button className="mt-16 uppercase px-6 md:text-[11px] item-center py-3 bg-[#16A34A] text-white font-semibold rounded-[10px] hover:bg-[#11823B] transition self-end">
                 MORE INFO
-              </button>
+              </button></a>
             </div>
           </RightWrap>
         </Right>
