@@ -55,8 +55,18 @@ const WalletConnect = () => {
             </button>
 
             {/* Logo */}
-            <div className="flex justify-center mt-4">
-              <img src="/logo/contract.png" alt="Auditor Logo" className="w-1/3 h-auto object-contain" />
+            <div className="flex justify-center mt-4 z-10 relative">
+              <a
+                href="https://contractwolf.io/projects/asset-avenue"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="/logo/contract.png"
+                  alt="Auditor Logo"
+                  className="w-[150px] h-auto object-contain"
+                />
+              </a>
             </div>
           </div>
         </div>

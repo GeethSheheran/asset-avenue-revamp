@@ -119,7 +119,6 @@ const HeroSection = ({ language }) => {
   const handleOpenCardModal = () => setIsCardModalOpen(true);
   const handleCloseCardModal = () => setIsCardModalOpen(false);
   const [progress, setProgress] = useState(0);
-  
 
   return (
     <div className="relative bg-black text-white min-h-screen flex flex-col md:flex-row items-center justify-center py-16 px-4 md:px-24 overflow-hidden">
@@ -162,7 +161,7 @@ const HeroSection = ({ language }) => {
             <span className="text-[#22C55E] md:text-[64px]">Presale</span>
           </h1>
           <p className="text-lg md:text-[20px] font-light">
-          Redefining Real Estate with Blockchain & Ai
+            Redefining Real Estate with Blockchain & Ai
           </p>
           <div className="flex items-center justify-center md:justify-start space-x-8 md:pt-16">
             <ImageSlider />
@@ -183,9 +182,10 @@ const HeroSection = ({ language }) => {
             />
 
             <h2 className="text-3xl md:text-[32px] text-center font-helvetica font-semibold mb-4  z-10 relative">
-             BUY $AAV<br/>TOKEN PRESALE!
+              BUY $AAV
+              <br />
+              TOKEN PRESALE!
             </h2>
-            
 
             <div className="text-center font-medium mb-6 border border-[#22C55E] border-[4px] rounded-[30px] rounded-tl-none pb-2 z-10 relative">
               <p className="text-sm md:text-[16px] text-center bg-gradient-to-l from-[#B8934D] to-[#FBE279] py-2 w-full text-black rounded-[20px] rounded-tl-none inline-block mb-0 z-10 relative">
@@ -225,17 +225,16 @@ const HeroSection = ({ language }) => {
               </span>
             </div>
             <div className="relative w-full bg-white rounded-full h-2.5 mb-3">
-            <div
-              className="bg-[#22C55E] h-2.5 rounded-full"
-              style={{ width: `${progress}%` }}
-            ></div>
-          </div>
+              <div
+                className="bg-[#22C55E] h-2.5 rounded-full"
+                style={{ width: `${progress}%` }}
+              ></div>
+            </div>
             <div className="flex justify-between text-[16px] md:text-sm mb-3 z-10 relative">
               <span>{translations.minBuy || "Min buy: 0.5 SOL"}</span>
               <span>{translations.maxBuy || "Max buy: 200 SOL"}</span>
             </div>
-            
-         
+
             <div className="relative flex items-center justify-center mb-3 z-10">
               <hr className="absolute w-1/6 left-0 border-t border-white" />
               <p className="z-10 px-2 text-[16px] md:text-sm">
@@ -282,11 +281,17 @@ const HeroSection = ({ language }) => {
             </p>
 
             <div className="flex justify-center mt-4 z-10 relative">
-              <img
-                src="/logo/contract.png"
-                alt="Auditor Logo"
-                className="w-[150px] h-auto object-contain"
-              />
+              <a
+                href="https://contractwolf.io/projects/asset-avenue"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="/logo/contract.png"
+                  alt="Auditor Logo"
+                  className="w-[150px] h-auto object-contain"
+                />
+              </a>
             </div>
           </div>
         </div>
@@ -295,17 +300,15 @@ const HeroSection = ({ language }) => {
       {/* Modal Component */}
       {isModalOpen && (
         <div
-        
-        transition={{ duration: 0.3, ease: "easeOut" }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
           className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-80 flex justify-center items-center z-50"
           onClick={handleCloseModal}
         >
           <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
-
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
             className=" p-8 rounded-xl w-full md:w-1/3"
             onClick={(e) => e.stopPropagation()} // Prevent modal close when clicking inside the modal
           >
@@ -327,10 +330,10 @@ const HeroSection = ({ language }) => {
           onClick={handleCloseCardModal}
         >
           <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
             className=" p-8 rounded-xl w-full md:w-1/3"
             onClick={(e) => e.stopPropagation()} // Prevent modal close when clicking inside the modal
           >

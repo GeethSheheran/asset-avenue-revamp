@@ -5,7 +5,7 @@ import { outToInVariantsRight } from "../home/animations";
 export const HouseDetails = () => {
   return (
     <Container className="z-10">
-      <h1 className="header text-[36px] z-20 font-bold  font-helvetica mt-16 md:mt-0">
+      <h1 className="header text-[36px] z-20 font-bold  font-helvetica mt-4 md:mt-0">
         Roadmap
       </h1>
       <Wrap className="relative">

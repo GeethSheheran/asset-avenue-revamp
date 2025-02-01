@@ -29,9 +29,11 @@ const StatesMeets = () => {
         </ul>
         <motion.button
           className="mt-6 uppercase px-6 py-3 bg-[#16A34A] md:text-[11px] text-white font-semibold rounded-[10px] hover:bg-[#11823B] transition self-center lg:self-end"
-          whileInView={{ opacity: 1 }} // Fade-in when in view
+          whileInView={{ opacity: 1 , x:0}} // Fade-in when in view
           initial={{ opacity: 0, x: 0 }} // Initially hidden
-          transition={{ delay: 0.5, duration: 1 }} // Delay for better timing
+          transition={{ duration: 1 }} // Delay for better timing
+        viewport={{ once: true }} // Animation happens once when it enters the viewport
+
         >
           ACCESS DAO
         </motion.button>
