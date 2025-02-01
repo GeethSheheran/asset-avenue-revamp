@@ -222,7 +222,7 @@ const Navbar = () => {
             href={item.link}
             target="_blank"
             rel="noopener noreferrer"
-            className={`block text-lg font-bold hover:text-[#3FAC55] transition ${
+            className={`block text-[12px] font-bold hover:text-[#3FAC55] transition ${
               item.highlight ? "text-[#3FAC55]" : "text-white"
             }`}
           >
@@ -236,7 +236,7 @@ const Navbar = () => {
         <button
           onClick={toggleWalletPopup}
           type="button"
-          className="text-white uppercase bg-[#3FAC55] hover:bg-[#11823B] font-medium rounded-lg text-lg px-6 py-2 font-bold"
+          className="text-white uppercase bg-[#3FAC55] hover:bg-[#11823B] font-medium rounded-lg text-[12px] px-6 py-2 font-bold"
         >
           CONNECT WALLET
         </button>
