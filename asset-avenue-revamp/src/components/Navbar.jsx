@@ -49,51 +49,62 @@ const Navbar = () => {
         </a>
 
         <ul className="hidden md:flex space-x-6 text-white text-[10px] font-bold">
-          {["HOME", "PRESALE", "STAKING", "MY HOUSE", "DASHBOARD", "DAO"].map(
-            (item) => (
-              <li key={item}>
-                <a href="#" className="hover:text-[#3FAC55] md:text-[10px]">
-                  {item}
-                </a>
-              </li>
-            )
-          )}
-          <li
-            className="relative group"
-            onMouseEnter={() => setIsMenuOpen(true)}
-            onMouseLeave={() => setIsMenuOpen(false)}
+      {[
+        { name: "HOME", link: "https://assetavenue.capital" },
+        { name: "PRESALE", link: "/", highlight: true }, // Green color
+        { name: "STAKING", link: "https://assetavenue.capital/stake" },
+        { name: "MY HOUSE", link: "https://assetavenue.capital/house" },
+        { name: "DASHBOARD", link: "https://dashboard.assetavenue.capital" },
+        { name: "DAO", link: "https://assetavenue.capital/dao" },
+      ].map((item) => (
+        <li key={item.name}>
+          <a
+            href={item.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`md:text-[10px] hover:text-[#3FAC55] transition ${
+              item.highlight ? "text-[#3FAC55]" : "text-white"
+            }`}
           >
-            <a
-              href="#"
-              className="hover:text-[#3FAC55] md:text-[10px] flex items-center "
-            >
-              MORE <span className="ml-1">▼</span>
-            </a>
+            {item.name}
+          </a>
+        </li>
+      ))}
 
-            <ul
-              className={`absolute -left-20 mt-1 bg-black text-white text-[10px] font-bold space-y-2 p-2 shadow-lg rounded-lg w-64 transition-all duration-500 ease-in-out ${
-                isMenuOpen
-                  ? "opacity-100 visible translate-y-0"
-                  : "opacity-0 invisible translate-y-2"
-              }`}
-            >
-              {[
-                "PASSIVE INCOME ASSETS",
-                "INVESTOR RESELL ASSETS",
-                "CONTACT US",
-              ].map((item) => (
-                <li key={item}>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 hover:text-[#3FAC55] text-center"
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </li>
+      {/* Dropdown Menu */}
+      <li
+        className="relative group"
+        onMouseEnter={() => setIsMenuOpen(true)}
+        onMouseLeave={() => setIsMenuOpen(false)}
+      >
+        <a href="#" className="hover:text-[#3FAC55] md:text-[10px] flex items-center">
+          MORE <span className="ml-1">▼</span>
+        </a>
+
+        <ul
+          className={`absolute -left-20 mt-1 bg-black text-white text-[10px] font-bold space-y-2 p-2 shadow-lg rounded-lg w-64 transition-all duration-500 ease-in-out ${
+            isMenuOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-2"
+          }`}
+        >
+          {[
+            { name: "PASSIVE INCOME ASSETS", link: "https://assetavenue.capital/market" },
+            { name: "INVESTOR RESELL ASSETS", link: "https://assetavenue.capital/resale" },
+            { name: "CONTACT US", link: "https://assetavenue.capital/contact" },
+          ].map((item) => (
+            <li key={item.name}>
+              <a
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block px-4 py-2 hover:text-[#3FAC55] text-center transition"
+              >
+                {item.name}
+              </a>
+            </li>
+          ))}
         </ul>
+      </li>
+    </ul>
 
         <div className="flex items-center space-x-3 md:space-x-2">
           <button
@@ -191,37 +202,46 @@ const Navbar = () => {
           </svg>
         </button>
         <ul className="flex flex-col items-center space-y-4">
-          <img src="logo/logo.webp" className="h-16 mb-2" alt="Asset Avenue" />
-          {[
-            "HOME",
-            "PRESALE",
-            "STAKING",
-            "MY HOUSE",
-            "DASHBOARD",
-            "DAO",
-            "PASSIVE INCOME ASSETS",
-            "INVESTOR RESELL ASSETS",
-            "CONTACT US",
-          ].map((item) => (
-            <li key={item}>
-              <a
-                href="#"
-                className="block text-lg font-bold hover:text-[#3FAC55]"
-              >
-                {item}
-              </a>
-            </li>
-          ))}
-          <li>
-            <button
-              onClick={toggleWalletPopup}
-              type="button"
-              className="text-white uppercase bg-[#3FAC55] hover:bg-[#11823B] font-medium rounded-lg text-lg px-6 py-2 font-bold"
-            >
-              CONNECT WALLET
-            </button>
-          </li>
-        </ul>
+      {/* Logo */}
+      <img src="logo/logo.webp" className="h-16 mb-2" alt="Asset Avenue" />
+
+      {/* Navigation Links */}
+      {[
+        { name: "HOME", link: "https://assetavenue.capital" },
+        { name: "PRESALE", link: "/", highlight: true }, // Green color
+        { name: "STAKING", link: "https://assetavenue.capital/stake" },
+        { name: "MY HOUSE", link: "https://assetavenue.capital/house" },
+        { name: "DASHBOARD", link: "https://dashboard.assetavenue.capital" },
+        { name: "DAO", link: "https://assetavenue.capital/dao" },
+        { name: "PASSIVE INCOME ASSETS", link: "https://assetavenue.capital/market" },
+        { name: "INVESTOR RESELL ASSETS", link: "https://assetavenue.capital/resale" },
+        { name: "CONTACT US", link: "https://assetavenue.capital/contact" },
+      ].map((item) => (
+        <li key={item.name}>
+          <a
+            href={item.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`block text-lg font-bold hover:text-[#3FAC55] transition ${
+              item.highlight ? "text-[#3FAC55]" : "text-white"
+            }`}
+          >
+            {item.name}
+          </a>
+        </li>
+      ))}
+
+      {/* Connect Wallet Button */}
+      <li>
+        <button
+          onClick={toggleWalletPopup}
+          type="button"
+          className="text-white uppercase bg-[#3FAC55] hover:bg-[#11823B] font-medium rounded-lg text-lg px-6 py-2 font-bold"
+        >
+          CONNECT WALLET
+        </button>
+      </li>
+    </ul>
       </div>
 
       {isWalletPopupOpen && (
