@@ -124,7 +124,7 @@ const HowToBuy = () => {
             </span>
           </div>
           <div className="flex items-center justify-center mb-4">
-            <img src="logo/Asset.png" alt="Stake" className="w-16 h-16" />
+            <img src="logo/asset.png" alt="Stake" className="w-16 h-16" />
           </div>
           <h2 className="text-[18px] text-center font-semibold mb-2">
             Buy & Stake
