@@ -6,14 +6,16 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("EN");
   const [isWalletPopupOpen, setIsWalletPopupOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const walletPopupRef = useRef(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const handleLanguageChange = (event) => {
-    setSelectedLanguage(event.target.value);
+  const handleLanguageChange = (language) => {
+    setSelectedLanguage(language);
+    setIsDropdownOpen(false); // Close dropdown after selection
   };
 
   const toggleWalletPopup = () => {
@@ -22,7 +24,6 @@ const Navbar = () => {
 
   const handleCloseWalletPopup = () => setIsWalletPopupOpen(false);
   const handleCloseCardModal = () => setIsCardModalOpen(false);
-
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -51,62 +52,79 @@ const Navbar = () => {
         </a>
 
         <ul className="hidden md:flex space-x-6 text-white text-[10px] font-bold">
-      {[
-        { name: "HOME", link: "https://assetavenue.capital" },
-        { name: "PRESALE", link: "/", highlight: true }, // Green color
-        { name: "STAKING", link: "https://assetavenue.capital/stake" },
-        { name: "MY HOUSE", link: "https://assetavenue.capital/house" },
-        { name: "DASHBOARD", link: "https://dashboard.assetavenue.capital" },
-        { name: "DAO", link: "https://assetavenue.capital/dao" },
-      ].map((item) => (
-        <li key={item.name}>
-          <a
-            href={item.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`md:text-[10px] hover:text-[#3FAC55] transition ${
-              item.highlight ? "text-[#3FAC55]" : "text-white"
-            }`}
-          >
-            {item.name}
-          </a>
-        </li>
-      ))}
-
-      {/* Dropdown Menu */}
-      <li
-        className="relative group"
-        onMouseEnter={() => setIsMenuOpen(true)}
-        onMouseLeave={() => setIsMenuOpen(false)}
-      >
-        <a href="#" className="hover:text-[#3FAC55] md:text-[10px] flex items-center">
-          MORE <span className="ml-1">▼</span>
-        </a>
-
-        <ul
-          className={`absolute -left-20 mt-1 bg-black text-white text-[10px] font-bold space-y-2 p-2 shadow-lg rounded-lg w-64 transition-all duration-500 ease-in-out ${
-            isMenuOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-2"
-          }`}
-        >
           {[
-            { name: "PASSIVE INCOME ASSETS", link: "https://assetavenue.capital/market" },
-            { name: "INVESTOR RESELL ASSETS", link: "https://assetavenue.capital/resale" },
-            { name: "CONTACT US", link: "https://assetavenue.capital/contact" },
+            { name: "HOME", link: "https://assetavenue.capital" },
+            { name: "PRESALE", link: "/", highlight: true }, // Green color
+            { name: "STAKING", link: "https://assetavenue.capital/stake" },
+            { name: "MY HOUSE", link: "https://assetavenue.capital/house" },
+            {
+              name: "DASHBOARD",
+              link: "https://dashboard.assetavenue.capital",
+            },
+            { name: "DAO", link: "https://assetavenue.capital/dao" },
           ].map((item) => (
             <li key={item.name}>
               <a
                 href={item.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block px-4 py-2 hover:text-[#3FAC55] text-center transition"
+                className={`md:text-[10px] hover:text-[#3FAC55] transition ${
+                  item.highlight ? "text-[#3FAC55]" : "text-white"
+                }`}
               >
                 {item.name}
               </a>
             </li>
           ))}
+
+          {/* Dropdown Menu */}
+          <li
+            className="relative group"
+            onMouseEnter={() => setIsMenuOpen(true)}
+            onMouseLeave={() => setIsMenuOpen(false)}
+          >
+            <a
+              href="#"
+              className="hover:text-[#3FAC55] md:text-[10px] flex items-center"
+            >
+              MORE <span className="ml-1">▼</span>
+            </a>
+
+            <ul
+              className={`absolute -left-20 mt-1 bg-black text-white text-[10px] font-bold space-y-2 p-2 shadow-lg rounded-lg w-64 transition-all duration-500 ease-in-out ${
+                isMenuOpen
+                  ? "opacity-100 visible translate-y-0"
+                  : "opacity-0 invisible translate-y-2"
+              }`}
+            >
+              {[
+                {
+                  name: "PASSIVE INCOME ASSETS",
+                  link: "https://assetavenue.capital/market",
+                },
+                {
+                  name: "INVESTOR RESELL ASSETS",
+                  link: "https://assetavenue.capital/resale",
+                },
+                {
+                  name: "CONTACT US",
+                  link: "https://assetavenue.capital/contact",
+                },
+              ].map((item) => (
+                <li key={item.name}>
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block px-4 py-2 hover:text-[#3FAC55] text-center transition"
+                  >
+                    {item.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </li>
         </ul>
-      </li>
-    </ul>
 
         <div className="flex items-center space-x-3 md:space-x-2">
           <button
@@ -122,45 +140,66 @@ const Navbar = () => {
           >
             CONNECT WALLET
           </button>
-          <select
-            value={selectedLanguage}
-            onChange={handleLanguageChange}
-            className="bg-[#FBE279] text-black font-medium rounded-lg text-sm px-4 py-2"
-          >
-            <option value="EN">EN 🇬🇧</option>
-            <option value="ES">ES 🇪🇸</option>
-            <option value="FR">FR 🇫🇷</option>
-            <option value="AR">AR 🇦🇪</option>
-            <option value="DE">DE 🇩🇪</option>
-            <option value="IT">IT 🇮🇹</option>
-            <option value="PT">PT 🇵🇹</option>
-            <option value="RU">RU 🇷🇺</option>
-            <option value="ZH">ZH 🇨🇳</option>
-            <option value="JP">JP 🇯🇵</option>
-            <option value="KR">KR 🇰🇷</option>
-            <option value="TR">TR 🇹🇷</option>
-            <option value="NL">NL 🇳🇱</option>
-            <option value="PL">PL 🇵🇱</option>
-            <option value="ID">ID 🇮🇩</option>
-            <option value="TH">TH 🇹🇭</option>
-            <option value="VN">VN 🇻🇳</option>
-            <option value="HI">HI 🇮🇳</option>
-            <option value="FA">FA 🇮🇷</option>
-            <option value="HE">HE 🇮🇱</option>
-            <option value="SW">SW 🇰🇪</option>
-            <option value="BN">BN 🇧🇩</option>
-            <option value="UK">UK 🇺🇦</option>
-            <option value="RO">RO 🇷🇴</option>
-            <option value="HU">HU 🇭🇺</option>
-            <option value="CS">CS 🇨🇿</option>
-            <option value="DA">DA 🇩🇰</option>
-            <option value="FI">FI 🇫🇮</option>
-            <option value="SV">SV 🇸🇪</option>
-            <option value="NO">NO 🇳🇴</option>
-            <option value="EL">EL 🇬🇷</option>
-            <option value="MS">MS 🇲🇾</option>
-            <option value="TL">TL 🇵🇭</option>
-          </select>
+
+          {/* Custom Dropdown for Language */}
+          <div className="relative">
+            <button
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="bg-[#FBE279] text-black font-bold rounded-lg text-[8px] py-2 px-3"
+            >
+              {selectedLanguage}{" "}
+              <span className="ml-1">{isDropdownOpen ? "▲" : "▼"}</span>
+            </button>
+
+            {isDropdownOpen && (
+              <ul className="absolute top-full mt-1 bg-[#FBE279]  text-black text-[8px] font-bold space-y-1 w-full p-2 shadow-lg rounded-lg z-10">
+                {[
+                  { value: "EN", label: "EN 🇬🇧" },
+                  { value: "ES", label: "ES 🇪🇸" },
+                  { value: "FR", label: "FR 🇫🇷" },
+                  { value: "AR", label: "AR 🇦🇪" },
+                  { value: "DE", label: "DE 🇩🇪" },
+                  { value: "IT", label: "IT 🇮🇹" },
+                  { value: "PT", label: "PT 🇵🇹" },
+                  { value: "RU", label: "RU 🇷🇺" },
+                  { value: "ZH", label: "ZH 🇨🇳" },
+                  { value: "JP", label: "JP 🇯🇵" },
+                  { value: "KR", label: "KR 🇰🇷" },
+                  { value: "TR", label: "TR 🇹🇷" },
+                  { value: "NL", label: "NL 🇳🇱" },
+                  { value: "PL", label: "PL 🇵🇱" },
+                  { value: "ID", label: "ID 🇮🇩" },
+                  { value: "TH", label: "TH 🇹🇭" },
+                  { value: "VN", label: "VN 🇻🇳" },
+                  { value: "HI", label: "HI 🇮🇳" },
+                  { value: "FA", label: "FA 🇮🇷" },
+                  { value: "HE", label: "HE 🇮🇱" },
+                  { value: "SW", label: "SW 🇰🇪" },
+                  { value: "BN", label: "BN 🇧🇩" },
+                  { value: "UK", label: "UK 🇺🇦" },
+                  { value: "RO", label: "RO 🇷🇴" },
+                  { value: "HU", label: "HU 🇭🇺" },
+                  { value: "CS", label: "CS 🇨🇿" },
+                  { value: "DA", label: "DA 🇩🇰" },
+                  { value: "FI", label: "FI 🇫🇮" },
+                  { value: "SV", label: "SV 🇸🇪" },
+                  { value: "NO", label: "NO 🇳🇴" },
+                  { value: "EL", label: "EL 🇬🇷" },
+                  { value: "MS", label: "MS 🇲🇾" },
+                  { value: "TL", label: "TL 🇵🇭" },
+                ].map((item) => (
+                  <li
+                    key={item.value}
+                    onClick={() => handleLanguageChange(item.value)}
+                    className="cursor-pointer hover:text-[#3FAC55] transition"
+                  >
+                    {item.label}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+
           <button
             type="button"
             onClick={toggleMenu}
@@ -204,52 +243,62 @@ const Navbar = () => {
           </svg>
         </button>
         <ul className="flex flex-col items-center space-y-4">
-      {/* Logo */}
-      <img src="logo/logo.webp" className="h-16 mb-2" alt="Asset Avenue" />
+          {/* Logo */}
+          <img src="logo/logo.webp" className="h-16 mb-2" alt="Asset Avenue" />
 
-      {/* Navigation Links */}
-      {[
-        { name: "HOME", link: "https://assetavenue.capital" },
-        { name: "PRESALE", link: "/", highlight: true }, // Green color
-        { name: "STAKING", link: "https://assetavenue.capital/stake" },
-        { name: "MY HOUSE", link: "https://assetavenue.capital/house" },
-        { name: "DASHBOARD", link: "https://dashboard.assetavenue.capital" },
-        { name: "DAO", link: "https://assetavenue.capital/dao" },
-        { name: "PASSIVE INCOME ASSETS", link: "https://assetavenue.capital/market" },
-        { name: "INVESTOR RESELL ASSETS", link: "https://assetavenue.capital/resale" },
-        { name: "CONTACT US", link: "https://assetavenue.capital/contact" },
-      ].map((item) => (
-        <li key={item.name}>
-          <a
-            href={item.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`block text-[12px] font-bold hover:text-[#3FAC55] transition ${
-              item.highlight ? "text-[#3FAC55]" : "text-white"
-            }`}
-          >
-            {item.name}
-          </a>
-        </li>
-      ))}
+          {/* Navigation Links */}
+          {[
+            { name: "HOME", link: "https://assetavenue.capital" },
+            { name: "PRESALE", link: "/", highlight: true }, // Green color
+            { name: "STAKING", link: "https://assetavenue.capital/stake" },
+            { name: "MY HOUSE", link: "https://assetavenue.capital/house" },
+            {
+              name: "DASHBOARD",
+              link: "https://dashboard.assetavenue.capital",
+            },
+            { name: "DAO", link: "https://assetavenue.capital/dao" },
+            {
+              name: "PASSIVE INCOME ASSETS",
+              link: "https://assetavenue.capital/market",
+            },
+            {
+              name: "INVESTOR RESELL ASSETS",
+              link: "https://assetavenue.capital/resale",
+            },
+            { name: "CONTACT US", link: "https://assetavenue.capital/contact" },
+          ].map((item) => (
+            <li key={item.name}>
+              <a
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`block text-[12px] font-bold hover:text-[#3FAC55] transition ${
+                  item.highlight ? "text-[#3FAC55]" : "text-white"
+                }`}
+              >
+                {item.name}
+              </a>
+            </li>
+          ))}
 
-      {/* Connect Wallet Button */}
-      <li>
-        <button
-          onClick={toggleWalletPopup}
-          type="button"
-          className="text-white uppercase bg-[#3FAC55] hover:bg-[#11823B] font-medium rounded-lg text-[12px] px-6 py-2 font-bold"
-        >
-          CONNECT WALLET
-        </button>
-      </li>
-    </ul>
+          {/* Connect Wallet Button */}
+          <li>
+            <button
+              onClick={toggleWalletPopup}
+              type="button"
+              className="text-white uppercase bg-[#3FAC55] hover:bg-[#11823B] font-medium rounded-lg text-[12px] px-6 py-2 font-bold"
+            >
+              CONNECT WALLET
+            </button>
+          </li>
+        </ul>
       </div>
 
       {isWalletPopupOpen && (
-        <div 
-        // onClick={handleCloseWalletPopup}
-        className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
+        <div
+          // onClick={handleCloseWalletPopup}
+          className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
+        >
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
