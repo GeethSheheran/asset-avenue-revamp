@@ -3,22 +3,7 @@ import { motion } from "framer-motion";
 
 const HowToBuy = () => {
   return (
-    <div className="relative  bg-black text-white flex flex-col items-center pt-24 px-6 md:px-24 overflow-hidden">
-      {/* Background Images - Hidden on mobile */}
-      {/* <div className="absolute inset-0 flex justify-center items-center sm:block hidden">
-        <img
-          src="/Ellipse.png"
-          alt="Background Left"
-          className="absolute left-0 top-16 w-1/3 opacity-100"
-        />
-        <img
-          src="/Ellipse.png"
-          alt="Background Right"
-          className="absolute right-16 -top-0 w-1/3 opacity-100"
-        />
-      </div> */}
-      {/* <div className="absolute left-1/6 z-10 top-1/2 -translate-y-1/2 lg:w-full w-full h-[400px] lg:h-[400px] bg-[#3FAC55] rounded-full blur-3xl opacity-20"></div> */}
-
+    <div className="relative bg-black text-white flex flex-col items-center pt-24 px-6 md:px-24 overflow-hidden">
       {/* Animated Title */}
       <motion.h1
         className="text-[36px] font-helvetica font-bold mb-2 text-center"
@@ -26,7 +11,6 @@ const HowToBuy = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-
       >
         How To Buy
       </motion.h1>
@@ -38,7 +22,6 @@ const HowToBuy = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-
       >
         The Contract Address:{" "}
         <span className="font-mono text-[16px]">
@@ -47,93 +30,61 @@ const HowToBuy = () => {
       </motion.p>
 
       <div className="flex flex-col md:flex-row items-center justify-center gap-12 w-full">
-        {/* Card 1 */}
-        <motion.div
-          className="bg-[#161D27]/80 rounded-2xl border-4 py-16 border-[#3FAC55] rounded-tl-none shadow-[0_4px_21px_-2px_#3FAC55] p-6 relative w-full max-w-sm"
-          initial={{ opacity: 0, y: 100 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
+        {/* Cards Wrapper */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-6xl">
+          {[
+            {
+              id: "01",
+              title: "Get a wallet",
+              description:
+                "You’re gonna need a wallet to hold your $AAV. There are lots of great ones that are compatible! We recommend Phantom Solana and Metamask for otherchains.",
+              images: ["logo/phantom.png", "logo/metamask.webp"],
+            },
+            {
+              id: "02",
+              title: "Fund Wallet",
+              description:
+                "Buy and send some SOL, ETH, USDT or BNB to pay for your $AAV tokens. Send a little extra to pay for gas fees. If you don’t understand please use our card payment instead.",
+              images: ["logo/solana.png"],
+            },
+            {
+              id: "03",
+              title: "Buy & Stake",
+              description:
+                "To purchase $AAV, connect your wallet to the site. Select payment method and amount to buy. Confirm the transaction. Stake your $AAV to earn huge rewards right away.",
+              images: ["asset.png"],
+            },
+          ].map((card, index) => (
+            <motion.div
+              key={index}
+              className="bg-[#161D27]/80 rounded-2xl border-4 border-[#3FAC55] rounded-tl-none shadow-[0_4px_21px_-2px_#3FAC55] p-6 relative flex flex-col h-full"
+              initial={{ opacity: 0, y: 100 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <div
+                className="absolute -left-3 top-16 bg-no-repeat bg-cover w-12 h-12"
+                style={{ backgroundImage: `url('/lable.png')` }}
+              >
+                <span className="flex justify-center items-center h-full w-full text-xl font-bold">
+                  {card.id}
+                </span>
+              </div>
 
-        >
-          <div
-            className="absolute -left-3 top-16 bg-no-repeat bg-cover w-12 h-12"
-            style={{ backgroundImage: `url('/lable.png')` }}
-          >
-            <span className="flex justify-center items-center h-full w-full text-xl font-bold">
-              01
-            </span>
-          </div>
-          <div className="flex items-center justify-center mb-4">
-            <img src="logo/phantom.png" alt="Phantom" className="w-16 h-16 mr-4" />
-            <img src="logo/metamask.webp" alt="Metamask" className="w-16 h-16" />
-          </div>
-          <h2 className="text-[18px] text-center font-semibold mb-2">
-            Get a wallet
-          </h2>
-          <p className="text-[16px] text-center">
-            You’re gonna need a wallet to hold your $AAV. We recommend Phantom
-            Solana and Metamask for otherchains.
-          </p>
-        </motion.div>
+              <div className="flex items-center justify-center mb-4">
+                {card.images.map((img, i) => (
+                  <img key={i} src={img} alt={card.title} className="w-16 h-16 mx-2" />
+                ))}
+              </div>
 
-        {/* Card 2 */}
-        <motion.div
-          className="bg-[#161D27]/80 rounded-2xl border-4 py-16 border-[#3FAC55] rounded-tl-none shadow-[0_4px_21px_-2px_#3FAC55] p-6 relative w-full max-w-sm"
-          initial={{ opacity: 0, y: 100 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-
-        >
-          <div
-            className="absolute -left-3 top-16 bg-no-repeat bg-cover w-12 h-12"
-            style={{ backgroundImage: `url('/lable.png')` }}
-          >
-            <span className="flex justify-center items-center h-full w-full text-xl font-bold">
-              02
-            </span>
-          </div>
-          <div className="flex items-center justify-center  mb-4">
-            <img src="logo/solana.png" alt="Solana" className="w-16 h-16" />
-          </div>
-          <h2 className="text-[18px] text-center font-semibold mb-2">
-            Fund Wallet
-          </h2>
-          <p className="text-[16px] text-center">
-            Buy and send some SOL, ETH, USDT or BNB to pay for your $AAV tokens.
-            Send a little extra for gas fees.
-          </p>
-        </motion.div>
-
-        {/* Card 3 */}
-        <motion.div
-          className="bg-[#161D27]/80 rounded-2xl border-4 py-16 border-[#3FAC55] rounded-tl-none shadow-[0_4px_21px_-2px_#3FAC55] p-6 relative w-full max-w-sm"
-          initial={{ opacity: 0, y: 100 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-
-        >
-          <div
-            className="absolute -left-3 top-16 bg-no-repeat bg-cover w-12 h-12"
-            style={{ backgroundImage: `url('/lable.png')` }}
-          >
-            <span className="flex justify-center items-center h-full w-full text-xl font-bold">
-              03
-            </span>
-          </div>
-          <div className="flex items-center justify-center mb-4">
-            <img src="asset.png" alt="Stake" className="w-16 h-16" />
-          </div>
-          <h2 className="text-[18px] text-center font-semibold mb-2">
-            Buy & Stake
-          </h2>
-          <p className="text-[16px] text-center">
-            To purchase $AAV, connect your wallet to the site, select a payment
-            method, and confirm the transaction.
-          </p>
-        </motion.div>
+              <h2 className="text-[18px] text-center font-semibold mb-2">
+                {card.title}
+              </h2>
+              <p className="text-[16px] text-center flex-grow">{card.description}</p>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </div>
   );
