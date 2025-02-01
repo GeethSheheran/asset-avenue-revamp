@@ -97,7 +97,7 @@ const PresalePopup = ({ translations, onClose }) => {
 
           <div className="relative pt-4 flex flex-col space-y-4 z-10">
             <button
-              onClick={() => setIsWalletPopupOpen(true)} // Open Wallet Popup & Close PresalePopup
+              // onClick={() => setIsWalletPopupOpen(true)} 
               className="uppercase z-10 text-black text-[12px] font-bold py-3 px-6 rounded-[10px] w-full bg-gradient-to-br from-[#958648] to-[#FBE279] hover:opacity-80"
             >
               {translations?.buyWithCrypto || "STAKE FOR 509% REWARDS"}
@@ -129,20 +129,30 @@ const PresalePopup = ({ translations, onClose }) => {
       ) : (
         // Wallet Popup
         <div
-          className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-80 z-50"
-          onClick={() => setIsWalletPopupOpen(false)} // Close WalletPopup
-        >
-          <motion.div
+        className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-80 z-50"
+        onClick={() => setIsWalletPopupOpen(false)} // Close WalletPopup
+      >
+        <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-            className="p-8 rounded-xl w-full md:w-1/3"
-            onClick={(e) => e.stopPropagation()} // Prevent background click closing the modal
+          className="p-8 rounded-xl w-full md:w-1/3"
+          onClick={(e) => e.stopPropagation()} // Prevent background click closing the modal
+        >
+          {/* Close Button */}
+          <button
+            onClick={() => setIsWalletPopupOpen(false)}
+            className="absolute top-[10%] right-1/3 text-white font-base text-xl hover:rotate-180 transform transition duration-300 ease-in-out"
           >
-            <WalletPopup onClose={() => setIsWalletPopupOpen(false)} />
-          </motion.div>
-        </div>
+            X
+          </button>
+      
+          {/* Wallet Popup Content */}
+          <WalletPopup onClose={() => setIsWalletPopupOpen(false)} />
+        </motion.div>
+      </div>
+      
       )}
     </>
   );

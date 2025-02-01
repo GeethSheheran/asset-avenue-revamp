@@ -134,38 +134,38 @@ const HeroSection = ({ language }) => {
       <img
         src="hero/left hero.png"
         alt="Image Below Video"
-        className="absolute top-2 left-1/2 transform -translate-x-1/2 mb-8 w-[90%] sm:w-[80%] md:w-4/5 z-20 "
+        className="absolute top-2 left-1/3 transform -translate-x-1/2 mb-8 w-[90%] sm:w-[80%] md:w-4/5 z-20 "
       />
 
       <img
         src="hero/token.png"
         alt="Center Graphic"
-        className="absolute top-2/5 right-[42%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-3/5 sm:w-2/5 md:w-[200px] hidden sm:block animate-floating"
+        className="absolute top-[44%] right-[42%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-3/5 sm:w-2/5 md:w-[180px] hidden sm:block animate-floating"
       />
 
       <img
         src="hero/token.png"
         alt="Center Graphic"
-        className="absolute top-[70%] right-[40%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-1/2 sm:w-2/5 md:w-[80px] hidden sm:block animate-floating"
+        className="absolute top-[74%] right-[40%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-1/2 sm:w-2/5 md:w-[70px] hidden sm:block animate-floating"
       />
       <img
         src="hero/token.png"
         alt="Center Graphic"
-        className="absolute top-[22%] right-[38%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-1/2 sm:w-2/5 md:w-[80px] hidden sm:block animate-floating"
+        className="absolute top-[30%] right-[38%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-1/2 sm:w-2/5 md:w-[70px] hidden sm:block animate-floating"
       />
       <img
         src="hero/side1.png"
         alt="Center Graphic"
         className="absolute top-[0%] right-[0%] z-10 w-1/2 h-100vh sm:w-2/5 md:w-[auto] hidden sm:block"
       />
-       <img
+      <img
         src="hero/side2.png"
         alt="Center Graphic"
         className="absolute top-[0%] left-[0%] z-10 w-1/2 h-100vh sm:w-2/5 md:w-[auto] hidden sm:block"
       />
 
       <div className="relative z-20 flex flex-col md:flex-row w-full max-w-7xl">
-        <div className="w-full md:w-2/3 mt-16 items-center justify-center space-y-6 text-center md:pt-16 md:text-left">
+        <div className="w-full md:w-2/3 mt-16 items-center justify-center space-y-6 text-center md:pt-28 md:text-left">
           <h1 className="text-[40px] font-helvetica sm:text-6xl md:text-[64px] font-bold">
             Asset Avenue <br />
             <span className="text-[#22C55E] md:text-[64px]">Presale</span>
@@ -310,30 +310,33 @@ const HeroSection = ({ language }) => {
       {/* Modal Component */}
       {isModalOpen && (
         <div
-          transition={{ duration: 0.3, ease: "easeOut" }}
           className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-80 flex justify-center items-center z-50"
-          onClick={handleCloseModal}
+          onClick={handleCloseModal} // Close modal on background click
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className=" p-8 rounded-xl w-full md:w-1/3"
+            className="p-8 rounded-xl w-full md:w-1/3 relative"
             onClick={(e) => e.stopPropagation()} // Prevent modal close when clicking inside the modal
           >
+            {/* Close button */}
+            <button
+              onClick={handleCloseModal}
+              className="absolute top-[10%] right-[0] text-white font-base text-xl z-10 transform transition duration-300 ease-in-out hover:rotate-180"
+            >
+              X
+            </button>
+
             <PresalePopup />
             <div className="flex justify-center space-x-4 mt-4">
-              {/* <button
-                className="bg-[#22C55E] text-white py-2 px-4 rounded-md"
-                onClick={handleCloseModal}
-              >
-                Close
-              </button> */}
+              {/* You can add other content here if necessary */}
             </div>
           </motion.div>
         </div>
       )}
+
       {isCardModalOpen && (
         <div
           className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-80 flex justify-center items-center z-50"
@@ -348,14 +351,12 @@ const HeroSection = ({ language }) => {
             onClick={(e) => e.stopPropagation()} // Prevent modal close when clicking inside the modal
           >
             <WalletPopup />
-            <div className="flex justify-center space-x-4 mt-4">
-              {/* <button
-                className="bg-[#22C55E] text-white py-2 px-4 rounded-md"
-                onClick={handleCloseModal}
-              >
-                Close
-              </button> */}
-            </div>
+            <button
+              onClick={handleCloseCardModal}
+              className="absolute top-[10%] right-1/3 text-white font-base text-xl z-10 transform transition duration-300 ease-in-out hover:rotate-180"
+            >
+              X
+            </button>
           </motion.div>
         </div>
       )}
