@@ -108,7 +108,7 @@ const PassiveIncome = () => {
                   {project.sold}%
                 </div>
               </div>
-              <p className="text-center text-[11px] font-semibold text-black mt-4">
+              <p className="text-center text-[11px]  font-semibold text-black mt-4">
                 Coming Soon
               </p>
             </div>
@@ -123,7 +123,7 @@ const PassiveIncome = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        <button className="bg-[#3FAC55] uppercase md:text-[11px] font-bold text-white px-6 py-3  rounded-[10px] hover:bg-green-600">
+        <button className="bg-[#16A34A] hover:bg-[#11823B] uppercase md:text-[11px] font-bold text-white px-6 py-3  rounded-[10px] ">
           BUY SHARES
         </button>
       </motion.div>

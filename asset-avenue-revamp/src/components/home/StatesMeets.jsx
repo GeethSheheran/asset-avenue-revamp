@@ -28,7 +28,7 @@ const StatesMeets = () => {
           <li>Legal Compliance</li>
         </ul>
         <motion.button
-          className="mt-6 uppercase px-6 py-3 bg-[#16A34A] md:text-[11px] text-white font-semibold rounded-[10px] hover:bg-[#11823B] transition self-center lg:self-end"
+          className="mt-6 uppercase px-6 py-3 md:text-[11px] text-white font-semibold rounded-[10px] bg-[#16A34A] hover:bg-[#11823B] transition self-center lg:self-end"
           whileInView={{ opacity: 1 , x:0}} // Fade-in when in view
           initial={{ opacity: 0, x: 0 }} // Initially hidden
           transition={{ duration: 1 }} // Delay for better timing
