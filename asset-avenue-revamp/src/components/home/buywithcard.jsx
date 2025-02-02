@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import WalletPopup from "./walletPop";
+import PresalePopup from "./presalePopup"; // Import the PresalePopup component
 import { motion } from "framer-motion";
-import Buywithcard from "./buywithcard";
 
-const PresalePopup = ({ translations, onClose }) => {
+const Buywithcard = ({ translations, onClose }) => {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -12,18 +12,10 @@ const PresalePopup = ({ translations, onClose }) => {
   });
   const [progress, setProgress] = useState(0);
   const [isWalletPopupOpen, setIsWalletPopupOpen] = useState(false);
-  const [isCardPopupOpen, setIsCardPopupOpen] = useState(false); // State for CardPopup
+  const [isCryptoOpen, setIsCryptoOpen] = useState(false); // State for crypto pop-up
   const [usdAmount, setUsdAmount] = useState("");
   const [bestReceive, setBestReceive] = useState("");
   const [error, setError] = useState("");
-
-  const handleStake = () => {
-    if (!usdAmount || !bestReceive) {
-      setError("Please fill in both fields.");
-      return;
-    }
-    // Handle stake logic here
-  };
 
   useEffect(() => {
     const targetDate = new Date("2025-08-01T00:00:00");
@@ -61,14 +53,30 @@ const PresalePopup = ({ translations, onClose }) => {
     return () => clearInterval(interval);
   }, []);
 
-  const openCardPopup = () => {
-    setIsCardPopupOpen(true);
+  const handleStake = () => {
+    if (!usdAmount || !bestReceive) {
+      setError("Please fill in both fields.");
+      return;
+    }
+    // Handle stake logic here
+  };
+
+  const openWalletPopup = () => {
+    setIsCryptoOpen(false); // Close crypto pop-up if open
+    setIsWalletPopupOpen(true); // Open wallet pop-up
+    onClose();
+  };
+
+  const openCryptoPopup = () => {
+    setIsWalletPopupOpen(false); // Close wallet pop-up if open
+    setIsCryptoOpen(true); // Open crypto pop-up
+    onClose();
   };
 
   return (
     <>
-      {!isWalletPopupOpen && !isCardPopupOpen ? (
-        <div className="w-full md:w-full rounded-tl-none bg-gradient-to-l from-[#05350F] to-[#05350F] px-8 py-6 rounded-[36px] shadow-[0_4px_145px_0_#56C46C9C] mt-0 md:mt-16 relative md:ml-auto">
+      {!isWalletPopupOpen && !isCryptoOpen ? (
+        <div className="w-full md:w-full rounded-tl-none bg-gradient-to-l from-[#05350F] to-[#05350F] px-8 py-6 rounded-[36px] shadow-[0_4px_145px_0_#56C46C9C] mt-0 md:mt-8 relative md:ml-auto">
           <img
             src="hero/widget.png"
             alt="Card Background"
@@ -124,29 +132,13 @@ const PresalePopup = ({ translations, onClose }) => {
           </div>
 
           <div className="relative pt-4 flex flex-col space-y-4 z-10">
-            <div className="flex items-center space-x-2">
-              <input
-                type="number"
-                placeholder="USD Amount to spend"
-                className="p-2 rounded-[10px] text-black text-sm border focus:border-green-900 focus:ring-1 focus:ring-green-500 outline-none flex-1"
-                value={usdAmount}
-                onChange={(e) => setUsdAmount(e.target.value)}
-              />
-
-              <div className="relative">
-                <select className="p-2 rounded-[10px] border text-black text-sm bg-white focus:border-green-900 focus:ring-1 focus:ring-green-500 outline-none">
-                  <option>
-                    <img src="/logo/solana.png" alt="USD" className="inline w-5 h-5 mr-2" />
-                    SOL
-                  </option>
-                  <option>
-                    <img src="/images/eur.png" alt="EUR" className="inline w-5 h-5 mr-2" />
-                    USD
-                  </option>
-                </select>
-              </div>
-            </div>
-
+            <input
+              type="number"
+              placeholder="USD Amount to spend"
+              className="p-2 rounded-[10px] text-black text-sm border focus:border-green-900 focus:ring-1 focus:ring-green-500 outline-none"
+              value={usdAmount}
+              onChange={(e) => setUsdAmount(e.target.value)}
+            />
             <input
               type="number"
               placeholder="Best you receive"
@@ -154,9 +146,7 @@ const PresalePopup = ({ translations, onClose }) => {
               value={bestReceive}
               onChange={(e) => setBestReceive(e.target.value)}
             />
-
             {error && <p className="text-red-500 text-sm">{error}</p>}
-
             <button
               onClick={handleStake}
               disabled={!usdAmount || !bestReceive}
@@ -165,16 +155,13 @@ const PresalePopup = ({ translations, onClose }) => {
               {translations?.buyWithCrypto || "STAKE FOR 509% REWARDS"}
             </button>
 
-            <button
-              onClick={openCardPopup}
-              className="uppercase z-10 font-bold bg-[#3FAC55] text-[12px] hover:bg-[#11823B] text-white py-3 px-4 rounded-[10px] w-full"
-            >
+            <button className="uppercase z-10 font-bold bg-[#3FAC55] text-[12px] hover:bg-[#11823B] text-white py-3 px-4 rounded-[10px] w-full">
               {translations?.buyWithCard || "BUY $AAV"}
             </button>
           </div>
 
           <p
-            onClick={() => setIsWalletPopupOpen(true)}
+            onClick={openWalletPopup}
             className="text-[11px] underline font-thin text-center mt-6 cursor-pointer z-10 relative"
           >
             {translations?.dontHaveWallet || "Don't have a wallet?"}
@@ -195,15 +182,19 @@ const PresalePopup = ({ translations, onClose }) => {
           </div>
           <p className="text-[11px] uppercase font-thin text-center z-10 relative">
             Want to pay with Crypto Instead?{" "}
-            <span onClick={openCardPopup} className="cursor-pointer text-[#B8934D]">
+            <span onClick={openCryptoPopup} className="cursor-pointer text-[#B8934D]">
               CLICK HERE
             </span>
           </p>
         </div>
-      ) : isWalletPopupOpen ? (
+      ) : (
+        // Wallet Popup or Crypto Popup
         <div
           className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-80 z-50"
-          // onClick={() => setIsWalletPopupOpen(false)}
+          onClick={() => {
+            setIsWalletPopupOpen(false);
+            setIsCryptoOpen(false);
+          }} // Close both pop-ups
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
@@ -211,31 +202,31 @@ const PresalePopup = ({ translations, onClose }) => {
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
             className="p-8 rounded-xl w-full md:w-1/3"
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e) => e.stopPropagation()} // Prevent background click closing the modal
           >
+            {/* Close Button */}
             <button
-              onClick={() => setIsWalletPopupOpen(false)}
+              onClick={() => {
+                setIsWalletPopupOpen(false);
+                setIsCryptoOpen(false);
+              }}
               className="absolute top-[10%] right-1/3 text-white font-base text-xl hover:rotate-180 transform transition duration-300 ease-in-out"
             >
               X
             </button>
-            <WalletPopup onClose={() => setIsWalletPopupOpen(false)} />
+
+            {/* Wallet Popup or Crypto Popup Content */}
+            {isWalletPopupOpen && (
+              <WalletPopup onClose={() => setIsWalletPopupOpen(false)} />
+            )}
+            {isCryptoOpen && (
+              <PresalePopup onClose={() => setIsCryptoOpen(false)} />
+            )}
           </motion.div>
         </div>
-      ) : (
-        <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            onClick={(e) => e.stopPropagation()}
-        >
-        <Buywithcard onClose={() => setIsCardPopupOpen(false)} />
-
-        </motion.div>
       )}
     </>
   );
 };
 
-export default PresalePopup;
+export default Buywithcard;

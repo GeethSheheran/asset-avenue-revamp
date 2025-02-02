@@ -4,6 +4,7 @@ import TokenPresalePopup from "./presalePopup";
 import PresalePopup from "./presalePopup";
 import WalletPopup from "./walletPop";
 import { motion } from "framer-motion";
+import Buywithcard from "./buywithcard";
 
 const HeroSection = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -14,6 +15,7 @@ const HeroSection = () => {
   });
   const [isModalOpen, setIsModalOpen] = useState(false); // State to control the modal visibility
   const [isCardModalOpen, setIsCardModalOpen] = useState(false);
+  const [isCardModal2Open, setIsCardModal2Open] = useState(false);
   const [progress, setProgress] = useState(0);
   const [totalSOLRaised, setTotalSOLRaised] = useState(0.000414747); // Initial SOL raised value
   const SOL_PRICE = 210; // Fixed SOL price in USD
@@ -100,6 +102,9 @@ const HeroSection = () => {
 
   const handleOpenCardModal = () => setIsCardModalOpen(true);
   const handleCloseCardModal = () => setIsCardModalOpen(false);
+
+  const handleOpenCardModal2 = () => setIsCardModal2Open(true);
+  const handleCloseCardModal2 = () => setIsCardModal2Open(false);
 
   return (
     <div className="relative bg-black text-white min-h-screen flex flex-col md:flex-row items-center justify-center py-16 px-4 md:px-24 overflow-hidden">
@@ -242,7 +247,10 @@ const HeroSection = () => {
                   alt="Visa"
                   className="absolute top-[-30px] -left-10 -md:left-[100px] right-0 w-full h-[30px] object-contain z-0 hidden sm:block"
                 />
-                <button className="relative uppercase z-10 font-bold md:text-[11px] bg-[#3FAC55] hover:bg-[#11823B] text-white py-3 px-4 rounded-[10px] w-full">
+                <button
+                  onClick={handleOpenCardModal2} // Trigger modal on click
+                  className="relative uppercase z-10 font-bold md:text-[11px] bg-[#3FAC55] hover:bg-[#11823B] text-white py-3 px-4 rounded-[10px] w-full"
+                >
                   {defaultText.buyWithCard}
                 </button>
               </div>
@@ -335,6 +343,30 @@ const HeroSection = () => {
             <WalletPopup />
             <button
               onClick={handleCloseCardModal}
+              className="absolute top-[10%] right-1/3 text-white font-base text-xl z-10 transform transition duration-300 ease-in-out hover:rotate-180"
+            >
+              X
+            </button>
+          </motion.div>
+        </div>
+      )}
+
+      {isCardModal2Open && (
+        <div
+          className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-80 flex justify-center items-center z-50"
+          onClick={handleCloseCardModal2}
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className=" p-8 rounded-xl w-full md:w-1/3"
+            onClick={(e) => e.stopPropagation()} // Prevent modal close when clicking inside the modal
+          >
+            <Buywithcard />
+            <button
+              onClick={handleCloseCardModal2}
               className="absolute top-[10%] right-1/3 text-white font-base text-xl z-10 transform transition duration-300 ease-in-out hover:rotate-180"
             >
               X
