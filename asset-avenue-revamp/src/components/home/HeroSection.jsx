@@ -15,6 +15,9 @@ const HeroSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // State to control the modal visibility
   const [isCardModalOpen, setIsCardModalOpen] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [totalSOLRaised, setTotalSOLRaised] = useState(0.000414747); // Initial SOL raised value
+  const SOL_PRICE = 210; // Fixed SOL price in USD
+  const MAX_SOL = 200; // Max SOL to be raised (progress completes at 200 SOL)
 
   const defaultText = {
     presaleButton: "BUY $AAV TOKEN PRESALE!",
@@ -61,14 +64,25 @@ const HeroSection = () => {
   // Update the countdown every second
   useEffect(() => {
     const interval = setInterval(calculateTimeLeft, 1000);
-    return () => clearInterval(interval); // Clean up interval on component unmount
+    return () => clearInterval(interval); 
   }, []);
 
+  // Simulate fetching total SOL raised (replace with real logic)
   useEffect(() => {
-    setProgress(30); // Simulate progress update, replace with real logic
+    const fetchTotalSOLRaised = async () => {
+      setTotalSOLRaised(0.00414747); // Replace with dynamic value
+    };
+
+    fetchTotalSOLRaised();
   }, []);
 
-  // Function to handle modal close
+  // Calculate progress bar value based on total SOL raised
+  useEffect(() => {
+    const progressValue = (totalSOLRaised / MAX_SOL) * 100;
+    setProgress(progressValue > 100 ? 100 : progressValue); 
+  }, [totalSOLRaised]);
+
+
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
@@ -191,7 +205,10 @@ const HeroSection = () => {
               </div>
             </div>
             <div className="flex justify-center text-[16px] font-bold md:text-sm mb-3 z-10 relative">
-              <span>{defaultText.totalSOL}</span>
+              <span>
+                TOTAL SOL RAISED: {totalSOLRaised.toFixed(6)} SOL ($
+                {(totalSOLRaised * SOL_PRICE).toFixed(2)})
+              </span>
             </div>
             <div className="relative w-full bg-white rounded-full h-2.5 mb-3">
               <div

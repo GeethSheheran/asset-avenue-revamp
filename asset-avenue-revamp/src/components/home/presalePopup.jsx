@@ -10,7 +10,9 @@ const PresalePopup = ({ translations, onClose }) => {
     seconds: 0,
   });
   const [progress, setProgress] = useState(0);
-  const [isWalletPopupOpen, setIsWalletPopupOpen] = useState(false); // Fixed state declaration
+  const [isWalletPopupOpen, setIsWalletPopupOpen] = useState(false);
+  const [totalSOLRaised, setTotalSOLRaised] = useState(0.000414747); // Example initial value
+  const SOL_PRICE = 210; // Price of SOL in USD
 
   useEffect(() => {
     const targetDate = new Date("2025-08-01T00:00:00");
@@ -43,6 +45,12 @@ const PresalePopup = ({ translations, onClose }) => {
 
     return () => clearInterval(interval);
   }, []);
+
+  // Calculate total USD raised
+  const totalUSDRaised = (totalSOLRaised * SOL_PRICE).toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
 
   return (
     <>
@@ -83,9 +91,12 @@ const PresalePopup = ({ translations, onClose }) => {
             <span>{translations?.maxBuy || "Max buy: 200 SOL"}</span>
           </div>
 
-          <div className="flex justify-center font-bold py-1 text-xs md:text-[16px] mb-3 relative z-10">
-            <span>{translations?.totalSOL || "TOTAL SOL RAISED: 0,000414747 SOL"}</span>
-          </div>
+          <div className="flex justify-center text-[14px] font-bold md:text-sm mb-3 z-10 relative">
+              <span>
+                TOTAL SOL RAISED: {totalSOLRaised.toFixed(6)} SOL ($
+                {(totalSOLRaised * SOL_PRICE).toFixed(2)})
+              </span>
+            </div>
 
           <div className="relative flex items-center justify-center mb-3 z-10">
             <hr className="absolute w-1/6 left-0 border-t border-white" />
@@ -97,7 +108,7 @@ const PresalePopup = ({ translations, onClose }) => {
 
           <div className="relative pt-4 flex flex-col space-y-4 z-10">
             <button
-              // onClick={() => setIsWalletPopupOpen(true)} 
+              // onClick={() => setIsWalletPopupOpen(true)}
               className="uppercase z-10 text-black text-[12px] font-bold py-3 px-6 rounded-[10px] w-full bg-gradient-to-br from-[#958648] to-[#FBE279] hover:opacity-80"
             >
               {translations?.buyWithCrypto || "STAKE FOR 509% REWARDS"}
@@ -108,51 +119,53 @@ const PresalePopup = ({ translations, onClose }) => {
             </button>
           </div>
 
-          <p onClick={() => setIsWalletPopupOpen(true)} className="text-[11px] underline font-thin text-center mt-6 cursor-pointer z-10 relative">
+          <p
+            onClick={() => setIsWalletPopupOpen(true)}
+            className="text-[11px] underline font-thin text-center mt-6 cursor-pointer z-10 relative"
+          >
             {translations?.dontHaveWallet || "Don't have a wallet?"}
           </p>
 
           <div className="flex justify-center mt-4 z-10 relative">
-              <a
-                href="https://contractwolf.io/projects/asset-avenue"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="/logo/contract.png"
-                  alt="Auditor Logo"
-                  className="w-[150px] h-auto object-contain"
-                />
-              </a>
-            </div>
+            <a
+              href="https://contractwolf.io/projects/asset-avenue"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="/logo/contract.png"
+                alt="Auditor Logo"
+                className="w-[150px] h-auto object-contain"
+              />
+            </a>
+          </div>
         </div>
       ) : (
         // Wallet Popup
         <div
-        className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-80 z-50"
-        onClick={() => setIsWalletPopupOpen(false)} // Close WalletPopup
-      >
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
-          className="p-8 rounded-xl w-full md:w-1/3"
-          onClick={(e) => e.stopPropagation()} // Prevent background click closing the modal
+          className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-80 z-50"
+          onClick={() => setIsWalletPopupOpen(false)} // Close WalletPopup
         >
-          {/* Close Button */}
-          <button
-            onClick={() => setIsWalletPopupOpen(false)}
-            className="absolute top-[10%] right-1/3 text-white font-base text-xl hover:rotate-180 transform transition duration-300 ease-in-out"
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="p-8 rounded-xl w-full md:w-1/3"
+            onClick={(e) => e.stopPropagation()} // Prevent background click closing the modal
           >
-            X
-          </button>
-      
-          {/* Wallet Popup Content */}
-          <WalletPopup onClose={() => setIsWalletPopupOpen(false)} />
-        </motion.div>
-      </div>
-      
+            {/* Close Button */}
+            <button
+              onClick={() => setIsWalletPopupOpen(false)}
+              className="absolute top-[10%] right-1/3 text-white font-base text-xl hover:rotate-180 transform transition duration-300 ease-in-out"
+            >
+              X
+            </button>
+
+            {/* Wallet Popup Content */}
+            <WalletPopup onClose={() => setIsWalletPopupOpen(false)} />
+          </motion.div>
+        </div>
       )}
     </>
   );
