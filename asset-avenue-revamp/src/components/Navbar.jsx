@@ -66,7 +66,7 @@ const Navbar = () => {
             <li key={item.name}>
               <a
                 href={item.link}
-                target="_blank"
+                // target="_blank"
                 rel="noopener noreferrer"
                 className={`md:text-[10px] hover:text-[#3FAC55] transition ${
                   item.highlight ? "text-[#3FAC55]" : "text-white"
@@ -114,7 +114,7 @@ const Navbar = () => {
                 <li key={item.name}>
                   <a
                     href={item.link}
-                    target="_blank"
+                    // target="_blank"
                     rel="noopener noreferrer"
                     className="block px-4 py-2 hover:text-[#3FAC55] text-center transition"
                   >
@@ -270,7 +270,7 @@ const Navbar = () => {
             <li key={item.name}>
               <a
                 href={item.link}
-                target="_blank"
+                // target="_blank"
                 rel="noopener noreferrer"
                 className={`block text-[12px] font-bold hover:text-[#3FAC55] transition ${
                   item.highlight ? "text-[#3FAC55]" : "text-white"
