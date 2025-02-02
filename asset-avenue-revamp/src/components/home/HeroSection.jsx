@@ -7,6 +7,8 @@ import { motion } from "framer-motion";
 import Buywithcard from "./buywithcard";
 import { useWertWidget } from '@wert-io/module-react-component';
 
+const PRIVATE_KEY = 'PRIVATE_KEY'
+
 const HeroSection = () => {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -104,22 +106,23 @@ const HeroSection = () => {
   const handleOpenCardModal = () => setIsCardModalOpen(true);
   const handleCloseCardModal = () => setIsCardModalOpen(false);
 
-  const handleOpenCardModal2 = () => {
-    try {
-      openWertWidget({ options: wertOptions });
-      console.log('Widget open status:', isWidgetOpen);
-    } catch (error) {
-      console.error('Failed to open Wert widget:', error);
-      // Handle error appropriately - maybe show a fallback UI or error message
-    }
+  const wertOptions = {
+    partner_id: 'PARTNER_ID',
+    origin: 'https://widget.wert.io',
+    container_id: 'wert-widget',
+    commodities: ['SOL'],
+    currency: 'USD',
+    commodity_amount: 0.5
   };
 
-  // Add Wert widget configuration
-  const wertOptions = {
-    partner_id: '01JJ1V4TWJ0VC304RC35ZFV3KV', // Replace with your actual partner ID
-    click_id: '', // Optional: Add if needed
-    origin: 'https://widget.wert.io', // Default origin
-    container_id: 'wert-widget',
+  const signData = {
+    address: 'YOUR_WALLET_ADDRESS',
+    commodity: 'SOL',
+    commodity_amount: 0.5,
+    pk_id: 'key1',
+    sc_id: 'spl_token', // For Solana tokens
+    sc_input_data: 'YOUR_ENCODED_DATA',
+    signature: PRIVATE_KEY // Using the private key for signature
   };
 
   const [reactiveOptions] = useState({
@@ -131,6 +134,18 @@ const HeroSection = () => {
   });
 
   const { open: openWertWidget, isWidgetOpen } = useWertWidget(reactiveOptions);
+
+  const handleOpenCardModal2 = () => {
+    try {
+      openWertWidget({ 
+        options: wertOptions,
+        signedData: signData
+      });
+      console.log('Widget open status:', isWidgetOpen);
+    } catch (error) {
+      console.error('Failed to open Wert widget:', error);
+    }
+  };
 
   return (
     <div className="relative bg-black text-white min-h-screen flex flex-col md:flex-row items-center justify-center py-16 px-4 md:px-24 overflow-hidden">
