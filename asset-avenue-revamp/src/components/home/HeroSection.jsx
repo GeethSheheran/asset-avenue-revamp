@@ -5,6 +5,7 @@ import PresalePopup from "./presalePopup";
 import WalletPopup from "./walletPop";
 import { motion } from "framer-motion";
 import Buywithcard from "./buywithcard";
+import { useWertWidget } from '@wert-io/module-react-component';
 
 const HeroSection = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -103,8 +104,33 @@ const HeroSection = () => {
   const handleOpenCardModal = () => setIsCardModalOpen(true);
   const handleCloseCardModal = () => setIsCardModalOpen(false);
 
-  const handleOpenCardModal2 = () => setIsCardModal2Open(true);
-  const handleCloseCardModal2 = () => setIsCardModal2Open(false);
+  const handleOpenCardModal2 = () => {
+    try {
+      openWertWidget({ options: wertOptions });
+      console.log('Widget open status:', isWidgetOpen);
+    } catch (error) {
+      console.error('Failed to open Wert widget:', error);
+      // Handle error appropriately - maybe show a fallback UI or error message
+    }
+  };
+
+  // Add Wert widget configuration
+  const wertOptions = {
+    partner_id: 'PARTNER_ID', // Replace with your actual partner ID
+    click_id: '', // Optional: Add if needed
+    origin: 'https://widget.wert.io', // Default origin
+    container_id: 'wert-widget',
+  };
+
+  const [reactiveOptions] = useState({
+    theme: 'dark',
+    listeners: {
+      'loaded': () => console.log('Wert widget loaded'),
+      'payment-status': (status) => console.log('Payment status:', status),
+    },
+  });
+
+  const { open: openWertWidget, isWidgetOpen } = useWertWidget(reactiveOptions);
 
   return (
     <div className="relative bg-black text-white min-h-screen flex flex-col md:flex-row items-center justify-center py-16 px-4 md:px-24 overflow-hidden">
@@ -248,7 +274,7 @@ const HeroSection = () => {
                   className="absolute top-[-30px] -left-10 -md:left-[100px] right-0 w-full h-[30px] object-contain z-0 hidden sm:block"
                 />
                 <button
-                  onClick={handleOpenCardModal2} // Trigger modal on click
+                  onClick={handleOpenCardModal2}
                   className="relative uppercase z-10 font-bold md:text-[11px] bg-[#3FAC55] hover:bg-[#11823B] text-white py-3 px-4 rounded-[10px] w-full"
                 >
                   {defaultText.buyWithCard}
