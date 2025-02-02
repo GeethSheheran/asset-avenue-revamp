@@ -17,7 +17,6 @@ const HeroSection = () => {
   const [progress, setProgress] = useState(0);
   const [totalSOLRaised, setTotalSOLRaised] = useState(0.000414747); // Initial SOL raised value
   const SOL_PRICE = 210; // Fixed SOL price in USD
-  const MAX_SOL = 200; // Max SOL to be raised (progress completes at 200 SOL)
 
   const defaultText = {
     presaleButton: "BUY $AAV TOKEN PRESALE!",
@@ -64,13 +63,19 @@ const HeroSection = () => {
   // Update the countdown every second
   useEffect(() => {
     const interval = setInterval(calculateTimeLeft, 1000);
-    return () => clearInterval(interval); 
+    return () => clearInterval(interval); // Clean up interval on component unmount
   }, []);
 
-  // Simulate fetching total SOL raised (replace with real logic)
+  // Calculate progress based on total SOL raised
   useEffect(() => {
+    // Simulate fetching total SOL raised (replace with real logic)
     const fetchTotalSOLRaised = async () => {
-      setTotalSOLRaised(0.00414747); // Replace with dynamic value
+      // Example: Fetch total SOL raised from an API or contract
+      // const response = await fetchTotalSOLFromAPI();
+      // setTotalSOLRaised(response.totalSOL);
+
+      // For now, we'll use a static value or increment it for demonstration
+      setTotalSOLRaised(0.000414747); // Replace with dynamic value
     };
 
     fetchTotalSOLRaised();
@@ -78,11 +83,12 @@ const HeroSection = () => {
 
   // Calculate progress bar value based on total SOL raised
   useEffect(() => {
-    const progressValue = (totalSOLRaised / MAX_SOL) * 100;
-    setProgress(progressValue > 100 ? 100 : progressValue); 
+    const maxSOL = 1000; // Example: Maximum SOL to be raised (adjust as needed)
+    const progressValue = (totalSOLRaised / maxSOL) * 100;
+    setProgress(progressValue);
   }, [totalSOLRaised]);
 
-
+  // Function to handle modal close
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
