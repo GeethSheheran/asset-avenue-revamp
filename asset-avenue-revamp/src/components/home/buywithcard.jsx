@@ -49,9 +49,10 @@ const Buywithcard = ({ translations, onClose }) => {
       setTimeLeft({ days, hours, minutes, seconds });
 
       const totalDuration = targetDate - startDate;
-      const progressPercentage = Math.floor(
-        ((currentTime - startDate) / totalDuration) * 100
-      );
+      const elapsedTime = currentTime - startDate;
+
+      // Start progress from 75% and add the remaining 25% based on elapsed time
+      const progressPercentage = 75 + (elapsedTime / totalDuration) * 25;
       setProgress(progressPercentage);
     };
 
@@ -182,7 +183,10 @@ const Buywithcard = ({ translations, onClose }) => {
           </div>
           <p className="text-[11px] uppercase font-thin text-center z-10 relative">
             Want to pay with Crypto Instead?{" "}
-            <span onClick={openCardPopup} className="cursor-pointer  text-[#B8934D]">
+            <span
+              onClick={openCardPopup}
+              className="cursor-pointer  text-[#B8934D]"
+            >
               CLICK HERE
             </span>
           </p>
@@ -211,15 +215,13 @@ const Buywithcard = ({ translations, onClose }) => {
         </div>
       ) : (
         <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            onClick={(e) => e.stopPropagation()}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          onClick={(e) => e.stopPropagation()}
         >
-      
           <PresalePopup onClose={() => setIsCardPopupOpen(false)} />
-
         </motion.div>
       )}
     </>

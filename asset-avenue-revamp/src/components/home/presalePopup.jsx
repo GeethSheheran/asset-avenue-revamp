@@ -49,9 +49,10 @@ const PresalePopup = ({ translations, onClose }) => {
       setTimeLeft({ days, hours, minutes, seconds });
 
       const totalDuration = targetDate - startDate;
-      const progressPercentage = Math.floor(
-        ((currentTime - startDate) / totalDuration) * 100
-      );
+      const elapsedTime = currentTime - startDate;
+
+      // Start progress from 75% and add the remaining 25% based on elapsed time
+      const progressPercentage = 75 + (elapsedTime / totalDuration) * 25;
       setProgress(progressPercentage);
     };
 
@@ -127,7 +128,7 @@ const PresalePopup = ({ translations, onClose }) => {
             <div className="flex items-center space-x-2">
               <input
                 type="number"
-                placeholder="USD Amount to spend"
+                placeholder="Amount to spend"
                 className="p-2 rounded-[10px] text-black text-sm border focus:border-green-900 focus:ring-1 focus:ring-green-500 outline-none flex-1"
                 value={usdAmount}
                 onChange={(e) => setUsdAmount(e.target.value)}
@@ -136,12 +137,20 @@ const PresalePopup = ({ translations, onClose }) => {
               <div className="relative">
                 <select className="p-2 rounded-[10px] border text-black text-sm bg-white focus:border-green-900 focus:ring-1 focus:ring-green-500 outline-none">
                   <option>
-                    <img src="/logo/solana.png" alt="USD" className="inline w-5 h-5 mr-2 " />
+                    <img
+                      src="/logo/solana.png"
+                      alt="USD"
+                      className="inline w-5 h-5 mr-2 "
+                    />
                     SOL
                   </option>
                   <option>
-                    <img src="/images/eur.png" alt="EUR" className="inline w-5 h-5 mr-2" />
-                    USD
+                    <img
+                      src="/images/eur.png"
+                      alt="EUR"
+                      className="inline w-5 h-5 mr-2"
+                    />
+                    USDC
                   </option>
                 </select>
               </div>
@@ -195,7 +204,10 @@ const PresalePopup = ({ translations, onClose }) => {
           </div>
           <p className="text-[11px] uppercase font-thin text-center z-10 relative">
             Want to pay with Crypto Instead?{" "}
-            <span onClick={openCardPopup} className="cursor-pointer text-[#B8934D]">
+            <span
+              onClick={openCardPopup}
+              className="cursor-pointer text-[#B8934D]"
+            >
               CLICK HERE
             </span>
           </p>
@@ -224,14 +236,13 @@ const PresalePopup = ({ translations, onClose }) => {
         </div>
       ) : (
         <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            onClick={(e) => e.stopPropagation()}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          onClick={(e) => e.stopPropagation()}
         >
-        <Buywithcard onClose={() => setIsCardPopupOpen(false)} />
-
+          <Buywithcard onClose={() => setIsCardPopupOpen(false)} />
         </motion.div>
       )}
     </>

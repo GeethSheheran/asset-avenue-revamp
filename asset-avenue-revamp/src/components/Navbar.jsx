@@ -145,14 +145,14 @@ const Navbar = () => {
           <div className="relative">
             <button
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              className="bg-[#FBE279] text-black font-bold rounded-lg text-[8px] py-2 px-3"
+              className="bg-[#FBE279] text-black font-bold rounded-lg text-[11px] py-2.5 px-4"
             >
               {selectedLanguage}{" "}
               <span className="ml-1">{isDropdownOpen ? "▲" : "▼"}</span>
             </button>
 
             {isDropdownOpen && (
-              <ul className="absolute top-full mt-1 bg-[#FBE279]  text-black text-[8px] font-bold space-y-1 w-full p-2 shadow-lg rounded-lg z-10">
+              <ul className="absolute top-full mt-1 bg-[#FBE279]  text-black text-[11px] font-bold space-y-1 w-full p-2 shadow-lg rounded-lg z-10">
                 {[
                   { value: "EN", label: "EN 🇬🇧" },
                   { value: "ES", label: "ES 🇪🇸" },

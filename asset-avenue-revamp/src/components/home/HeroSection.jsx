@@ -86,7 +86,7 @@ const HeroSection = () => {
   // Calculate progress bar value based on total SOL raised
   useEffect(() => {
     const maxSOL = 1000; // Example: Maximum SOL to be raised (adjust as needed)
-    const progressValue = (totalSOLRaised / maxSOL) * 100;
+    const progressValue = Math.min(75 + (totalSOLRaised / maxSOL) * 25, 100);
     setProgress(progressValue);
   }, [totalSOLRaised]);
 
