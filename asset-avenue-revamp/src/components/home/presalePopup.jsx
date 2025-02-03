@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import WalletPopup from "./walletPop";
 import { motion } from "framer-motion";
 import Buywithcard from "./buywithcard";
+import solanaLogo from "/logo/solana.png"; // Import the Solana logo
+import eurLogo from "/logo/usdc.png"; // Import the EUR logo
 
 const PresalePopup = ({ translations, onClose }) => {
   const [timeLeft, setTimeLeft] = useState({
@@ -16,6 +18,8 @@ const PresalePopup = ({ translations, onClose }) => {
   const [usdAmount, setUsdAmount] = useState("");
   const [bestReceive, setBestReceive] = useState("");
   const [error, setError] = useState("");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State for dropdown visibility
+  const [selectedOption, setSelectedOption] = useState("SOL"); // State for selected option
 
   const handleStake = () => {
     if (!usdAmount || !bestReceive) {
@@ -64,6 +68,15 @@ const PresalePopup = ({ translations, onClose }) => {
 
   const openCardPopup = () => {
     setIsCardPopupOpen(true);
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleOptionSelect = (option) => {
+    setSelectedOption(option);
+    setIsDropdownOpen(false);
   };
 
   return (
@@ -135,24 +148,39 @@ const PresalePopup = ({ translations, onClose }) => {
               />
 
               <div className="relative">
-                <select className="p-2 rounded-[10px] border text-black text-sm bg-white focus:border-green-900 focus:ring-1 focus:ring-green-500 outline-none">
-                  <option>
-                    <img
-                      src="/logo/solana.png"
-                      alt="USD"
-                      className="inline w-5 h-5 mr-2 "
-                    />
-                    SOL
-                  </option>
-                  <option>
-                    <img
-                      src="/images/eur.png"
-                      alt="EUR"
-                      className="inline w-5 h-5 mr-2"
-                    />
-                    USDC
-                  </option>
-                </select>
+                <div
+                  className="p-2 rounded-[10px] border text-black text-sm bg-white focus:border-green-900 focus:ring-1 focus:ring-green-500 outline-none appearance-none flex items-center cursor-pointer"
+                  onClick={toggleDropdown}
+                >
+                  <img
+                    src={selectedOption === "SOL" ? solanaLogo : eurLogo}
+                    alt={selectedOption}
+                    className="w-5 h-5 mr-2"
+                  />
+                  {selectedOption}
+                </div>
+                {isDropdownOpen && (
+                  <ul className="absolute mt-1 w-full bg-white border rounded-[10px] shadow-lg z-20">
+                    <li
+                      className="p-2 flex items-center text-[10px] text-black cursor-pointer border rounded-[10px] rounded-b-none hover:bg-gray-100"
+                      onClick={() => handleOptionSelect("SOL")}
+                    >
+                      <img
+                        src={solanaLogo}
+                        alt="SOL"
+                        className="w-5 h-5 mr-2"
+                      />
+                      SOL
+                    </li>
+                    <li
+                      className="p-2 text-black text-[10px] flex items-center cursor-pointer border rounded-[10px] rounded-t-none hover:bg-gray-100"
+                      onClick={() => handleOptionSelect("USDC")}
+                    >
+                      <img src={eurLogo} alt="USDC" className="w-5 h-5 mr-1" />
+                      USDC
+                    </li>
+                  </ul>
+                )}
               </div>
             </div>
 
