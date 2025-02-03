@@ -136,7 +136,7 @@ const PresalePopup = ({ translations, onClose }) => {
               <div className="relative">
                 <select className="p-2 rounded-[10px] border text-black text-sm bg-white focus:border-green-900 focus:ring-1 focus:ring-green-500 outline-none">
                   <option>
-                    <img src="/logo/solana.png" alt="USD" className="inline w-5 h-5 mr-2" />
+                    <img src="/logo/solana.png" alt="USD" className="inline w-5 h-5 mr-2 " />
                     SOL
                   </option>
                   <option>
