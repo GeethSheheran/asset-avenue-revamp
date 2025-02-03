@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import WalletPopup from "./walletPop";
 import { motion } from "framer-motion";
 import Buywithcard from "./buywithcard";
+import AnotherPopup from "./AnotherPopup"; // Import the new popup component
 import solanaLogo from "/logo/solana.png"; // Import the Solana logo
 import eurLogo from "/logo/usdc.png"; // Import the EUR logo
 
@@ -15,11 +16,12 @@ const PresalePopup = ({ translations, onClose }) => {
   const [progress, setProgress] = useState(0);
   const [isWalletPopupOpen, setIsWalletPopupOpen] = useState(false);
   const [isCardPopupOpen, setIsCardPopupOpen] = useState(false); // State for CardPopup
+  const [isAnotherPopupOpen, setIsAnotherPopupOpen] = useState(false); // State for the new popup
   const [usdAmount, setUsdAmount] = useState("");
   const [bestReceive, setBestReceive] = useState("");
   const [error, setError] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State for dropdown visibility
-  const [selectedOption, setSelectedOption] = useState("SOL"); 
+  const [selectedOption, setSelectedOption] = useState("SOL"); // State for selected option
 
   const handleStake = () => {
     if (!usdAmount || !bestReceive) {
@@ -71,8 +73,7 @@ const PresalePopup = ({ translations, onClose }) => {
   };
 
   const openAnotherPopup = () => {
-    // Logic to open another popup or perform any other action
-    console.log("Another popup opened!");
+    setIsAnotherPopupOpen(true); // Function to open the new popup
   };
 
   const toggleDropdown = () => {
@@ -86,7 +87,7 @@ const PresalePopup = ({ translations, onClose }) => {
 
   return (
     <>
-      {!isWalletPopupOpen && !isCardPopupOpen ? (
+      {!isWalletPopupOpen && !isCardPopupOpen && !isAnotherPopupOpen ? (
         <div className="w-full md:w-full rounded-tl-none bg-gradient-to-l from-[#05350F] to-[#05350F] px-8 py-6 rounded-[36px] shadow-[0_4px_145px_0_#56C46C9C] mt-0 md:mt-16 relative md:ml-auto">
           <img
             src="hero/widget.png"
@@ -152,7 +153,41 @@ const PresalePopup = ({ translations, onClose }) => {
                 onChange={(e) => setUsdAmount(e.target.value)}
               />
 
-           
+              <div className="relative">
+                <div
+                  className="p-2 rounded-[10px] border text-black text-sm bg-white focus:border-green-900 focus:ring-1 focus:ring-green-500 outline-none appearance-none flex items-center cursor-pointer"
+                  onClick={toggleDropdown}
+                >
+                  <img
+                    src={selectedOption === "SOL" ? solanaLogo : eurLogo}
+                    alt={selectedOption}
+                    className="w-5 h-5 mr-2"
+                  />
+                  {selectedOption}
+                </div>
+                {isDropdownOpen && (
+                  <ul className="absolute mt-1 w-full bg-white border rounded-[10px] shadow-lg z-20">
+                    <li
+                      className="p-2 flex items-center text-[10px] text-black cursor-pointer border rounded-[10px] rounded-b-none hover:bg-gray-100"
+                      onClick={() => handleOptionSelect("SOL")}
+                    >
+                      <img
+                        src={solanaLogo}
+                        alt="SOL"
+                        className="w-5 h-5 mr-2"
+                      />
+                      SOL
+                    </li>
+                    <li
+                      className="p-2 text-black text-[10px] flex items-center cursor-pointer border rounded-[10px] rounded-t-none hover:bg-gray-100"
+                      onClick={() => handleOptionSelect("USDC")}
+                    >
+                      <img src={eurLogo} alt="USDC" className="w-5 h-5 mr-1" />
+                      USDC
+                    </li>
+                  </ul>
+                )}
+              </div>
             </div>
 
             <div className="relative w-full">
@@ -240,6 +275,16 @@ const PresalePopup = ({ translations, onClose }) => {
             <WalletPopup onClose={() => setIsWalletPopupOpen(false)} />
           </motion.div>
         </div>
+      ) : isAnotherPopupOpen ? (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <AnotherPopup onClose={() => setIsAnotherPopupOpen(false)} />
+        </motion.div>
       ) : (
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
