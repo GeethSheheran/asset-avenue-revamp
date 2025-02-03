@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import WalletPopup from "./walletPop";
 import { motion } from "framer-motion";
-import Buywithcard from "./buywithcard";
+import PresalePopup from "./presalePopup";
 import AnotherPopup from "./AnotherPopup"; // Import the new popup component
 import solanaLogo from "/logo/solana.png"; // Import the Solana logo
 import eurLogo from "/logo/usdc.png"; // Import the EUR logo
 
-const PresalePopup = ({ translations, onClose }) => {
+const Buywithcard = ({ translations, onClose }) => {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -190,13 +190,20 @@ const PresalePopup = ({ translations, onClose }) => {
               </div>
             </div>
 
-            <input
-              type="number"
-              placeholder="Best you receive"
-              className="p-2 rounded-[10px] text-black text-sm border focus:border-green-900 focus:ring-1 focus:ring-green-500 outline-none"
-              value={bestReceive}
-              onChange={(e) => setBestReceive(e.target.value)}
-            />
+            <div className="relative w-full">
+              <input
+                type="number"
+                placeholder="Best you receive"
+                className="w-full p-2 pr-10 rounded-[10px] text-black text-sm border focus:border-green-900 focus:ring-1 focus:ring-green-500 outline-none"
+                value={bestReceive}
+                onChange={(e) => setBestReceive(e.target.value)}
+              />
+              <img
+                src="/logo/asset.png"
+                alt="icon"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5"
+              />
+            </div>
 
             {error && <p className="text-red-500 text-sm">{error}</p>}
 
@@ -286,11 +293,11 @@ const PresalePopup = ({ translations, onClose }) => {
           transition={{ duration: 0.3, ease: "easeOut" }}
           onClick={(e) => e.stopPropagation()}
         >
-          <Buywithcard onClose={() => setIsCardPopupOpen(false)} />
+          <PresalePopup onClose={() => setIsCardPopupOpen(false)} />
         </motion.div>
       )}
     </>
   );
 };
 
-export default PresalePopup;
+export default Buywithcard;

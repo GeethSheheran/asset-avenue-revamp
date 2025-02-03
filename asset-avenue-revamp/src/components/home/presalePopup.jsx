@@ -19,7 +19,7 @@ const PresalePopup = ({ translations, onClose }) => {
   const [bestReceive, setBestReceive] = useState("");
   const [error, setError] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State for dropdown visibility
-  const [selectedOption, setSelectedOption] = useState("SOL"); // State for selected option
+  const [selectedOption, setSelectedOption] = useState("SOL"); 
 
   const handleStake = () => {
     if (!usdAmount || !bestReceive) {
@@ -152,50 +152,23 @@ const PresalePopup = ({ translations, onClose }) => {
                 onChange={(e) => setUsdAmount(e.target.value)}
               />
 
-              <div className="relative">
-                <div
-                  className="p-2 rounded-[10px] border text-black text-sm bg-white focus:border-green-900 focus:ring-1 focus:ring-green-500 outline-none appearance-none flex items-center cursor-pointer"
-                  onClick={toggleDropdown}
-                >
-                  <img
-                    src={selectedOption === "SOL" ? solanaLogo : eurLogo}
-                    alt={selectedOption}
-                    className="w-5 h-5 mr-2"
-                  />
-                  {selectedOption}
-                </div>
-                {isDropdownOpen && (
-                  <ul className="absolute mt-1 w-full bg-white border rounded-[10px] shadow-lg z-20">
-                    <li
-                      className="p-2 flex items-center text-[10px] text-black cursor-pointer border rounded-[10px] rounded-b-none hover:bg-gray-100"
-                      onClick={() => handleOptionSelect("SOL")}
-                    >
-                      <img
-                        src={solanaLogo}
-                        alt="SOL"
-                        className="w-5 h-5 mr-2"
-                      />
-                      SOL
-                    </li>
-                    <li
-                      className="p-2 text-black text-[10px] flex items-center cursor-pointer border rounded-[10px] rounded-t-none hover:bg-gray-100"
-                      onClick={() => handleOptionSelect("USDC")}
-                    >
-                      <img src={eurLogo} alt="USDC" className="w-5 h-5 mr-1" />
-                      USDC
-                    </li>
-                  </ul>
-                )}
-              </div>
+           
             </div>
 
-            <input
-              type="number"
-              placeholder="Best you receive"
-              className="p-2 rounded-[10px] text-black text-sm border focus:border-green-900 focus:ring-1 focus:ring-green-500 outline-none"
-              value={bestReceive}
-              onChange={(e) => setBestReceive(e.target.value)}
-            />
+            <div className="relative w-full">
+              <input
+                type="number"
+                placeholder="Best you receive"
+                className="w-full p-2 pr-10 rounded-[10px] text-black text-sm border focus:border-green-900 focus:ring-1 focus:ring-green-500 outline-none"
+                value={bestReceive}
+                onChange={(e) => setBestReceive(e.target.value)}
+              />
+              <img
+                src="/logo/asset.png"
+                alt="icon"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5"
+              />
+            </div>
 
             {error && <p className="text-red-500 text-sm">{error}</p>}
 
