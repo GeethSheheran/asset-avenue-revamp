@@ -70,6 +70,11 @@ const PresalePopup = ({ translations, onClose }) => {
     setIsCardPopupOpen(true);
   };
 
+  const openAnotherPopup = () => {
+    // Logic to open another popup or perform any other action
+    console.log("Another popup opened!");
+  };
+
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
@@ -203,7 +208,7 @@ const PresalePopup = ({ translations, onClose }) => {
             </button>
 
             <button
-              onClick={openCardPopup}
+              onClick={openAnotherPopup}
               className="uppercase z-10 font-bold bg-[#3FAC55] text-[12px] hover:bg-[#11823B] text-white py-3 px-4 rounded-[10px] w-full"
             >
               {translations?.buyWithCard || "BUY $AAV"}

@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';  // Import motion
+import React from "react";
+import { motion } from "framer-motion"; // Import motion
 
 const projects = [
   {
@@ -49,7 +49,8 @@ const PassiveIncome = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        Available <span className="text-[#3FAC55]">Passive Income</span> Projects
+        Available <span className="text-[#3FAC55]">Passive Income</span>{" "}
+        Projects
       </motion.h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -76,28 +77,36 @@ const PassiveIncome = () => {
               </span>
             </div>
             <div className="p-4">
-              <h2 className="font-semibold text-white text-[18px] mb-2 text-center">{project.title}</h2>
-              <p className="text-[16px] text-white mb-4 text-center">{project.location}</p>
+              <h2 className="font-semibold text-white text-[18px] mb-2 text-center">
+                {project.title}
+              </h2>
+              <p className="text-[16px] text-white mb-4 text-center">
+                {project.location}
+              </p>
               <div className="grid grid-cols-4 gap-2 text-sm mb-4 text-center">
-                <div className='space-y-1'>
+                <div className="space-y-1">
                   <p className="font-bold text-[16px] text-white">Price:</p>
-                  <p className='font-bold text-[18px]'>{project.price} </p>
-                  <p className='text-white text-[16px]'>USDT</p>
+                  <p className="font-bold text-[18px]">{project.price} </p>
+                  <p className="text-white text-[16px]">USDT</p>
                 </div>
-                <div className='space-y-1'>
+                <div className="space-y-1">
                   <p className="font-bold text-white text-[16px]">Available:</p>
-                  <p className='font-bold text-[18px]'>{project.available} </p>
-                  <p className='text-white text-[16px]'>SHARES</p>
+                  <p className="font-bold text-[18px]">{project.available} </p>
+                  <p className="text-white text-[16px]">SHARES</p>
                 </div>
-                <div className='space-y-1'>
-                  <p className="font-bold text-white text-[16px]">Price/Share:</p>
-                  <p className='font-bold text-[18px]'>{project.pricePerShare} </p>
-                  <p className='text-white text-[16px]'>USDT</p>
+                <div className="space-y-1">
+                  <p className="font-bold text-white text-[16px]">
+                    Price/Share:
+                  </p>
+                  <p className="font-bold text-[18px]">
+                    {project.pricePerShare}{" "}
+                  </p>
+                  <p className="text-white text-[16px]">USDT</p>
                 </div>
-                <div className='space-y-1'>
+                <div className="space-y-1">
                   <p className="font-bold text-white text-[16px]">APR:</p>
-                  <p className='font-bold text-[18px]'>{project.apr} </p>
-                  <p className='text-white text-[16px]'>PERCENT</p>
+                  <p className="font-bold text-[18px]">{project.apr} </p>
+                  <p className="text-white text-[16px]">PERCENT</p>
                 </div>
               </div>
               <div className="w-full bg-gray-200 rounded-[6px] h-6 flex items-center justify-center relative">
@@ -122,10 +131,13 @@ const PassiveIncome = () => {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-      > <a href='https://assetavenue.capital/market' target='_blank'>
-        <button className="bg-[#16A34A] hover:bg-[#11823B] uppercase md:text-[11px] font-bold text-white px-6 py-3  rounded-[10px] ">
-          BUY SHARES
-        </button></a>
+      >
+        {" "}
+        <a href="https://assetavenue.capital/market" target="_blank">
+          <button className="bg-[#16A34A] hover:bg-[#11823B] uppercase md:text-[11px] font-bold text-white px-6 py-3  rounded-[10px] ">
+            BUY SHARES
+          </button>
+        </a>
       </motion.div>
     </div>
   );

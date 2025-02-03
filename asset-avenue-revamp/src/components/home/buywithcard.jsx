@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import WalletPopup from "./walletPop";
 import { motion } from "framer-motion";
 import PresalePopup from "./presalePopup";
+import AnotherPopup from "./anotherPopup"; // Import the new popup component
 
 const Buywithcard = ({ translations, onClose }) => {
   const [timeLeft, setTimeLeft] = useState({
@@ -12,7 +13,8 @@ const Buywithcard = ({ translations, onClose }) => {
   });
   const [progress, setProgress] = useState(0);
   const [isWalletPopupOpen, setIsWalletPopupOpen] = useState(false);
-  const [isCardPopupOpen, setIsCardPopupOpen] = useState(false); // State for CardPopup
+  const [isCardPopupOpen, setIsCardPopupOpen] = useState(false);
+  const [isAnotherPopupOpen, setIsAnotherPopupOpen] = useState(false); // State for the new popup
   const [usdAmount, setUsdAmount] = useState("");
   const [bestReceive, setBestReceive] = useState("");
   const [error, setError] = useState("");
@@ -66,9 +68,13 @@ const Buywithcard = ({ translations, onClose }) => {
     setIsCardPopupOpen(true);
   };
 
+  const openAnotherPopup = () => {
+    setIsAnotherPopupOpen(true); // Function to open the new popup
+  };
+
   return (
     <>
-      {!isWalletPopupOpen && !isCardPopupOpen ? (
+      {!isWalletPopupOpen && !isCardPopupOpen && !isAnotherPopupOpen ? (
         <div className="w-full md:w-full rounded-tl-none bg-gradient-to-l from-[#05350F] to-[#05350F] px-8 py-6 rounded-[36px] shadow-[0_4px_145px_0_#56C46C9C] mt-0 md:mt-16 relative md:ml-auto">
           <img
             src="hero/widget.png"
@@ -154,7 +160,7 @@ const Buywithcard = ({ translations, onClose }) => {
             </button>
 
             <button
-              onClick={openCardPopup}
+              onClick={openAnotherPopup}
               className="uppercase z-10 font-bold bg-[#3FAC55] text-[12px] hover:bg-[#11823B] text-white py-3 px-4 rounded-[10px] w-full"
             >
               {translations?.buyWithCard || "BUY $AAV"}
@@ -213,7 +219,7 @@ const Buywithcard = ({ translations, onClose }) => {
             <WalletPopup onClose={() => setIsWalletPopupOpen(false)} />
           </motion.div>
         </div>
-      ) : (
+      ) : isCardPopupOpen ? (
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -222,6 +228,16 @@ const Buywithcard = ({ translations, onClose }) => {
           onClick={(e) => e.stopPropagation()}
         >
           <PresalePopup onClose={() => setIsCardPopupOpen(false)} />
+        </motion.div>
+      ) : (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <AnotherPopup onClose={() => setIsAnotherPopupOpen(false)} />
         </motion.div>
       )}
     </>

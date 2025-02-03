@@ -5,6 +5,7 @@ import PresalePopup from "./presalePopup";
 import WalletPopup from "./walletPop";
 import { motion } from "framer-motion";
 import Buywithcard from "./buywithcard";
+import WalletConnect from "./Connect";
 
 const HeroSection = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -319,7 +320,8 @@ const HeroSection = () => {
               X
             </button>
 
-            <PresalePopup />
+            {/* <PresalePopup /> */}
+            <WalletConnect/>
             <div className="flex justify-center space-x-4 mt-4">
               {/* You can add other content here if necessary */}
             </div>
