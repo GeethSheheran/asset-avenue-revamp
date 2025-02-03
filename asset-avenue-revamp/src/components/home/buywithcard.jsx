@@ -182,7 +182,7 @@ const Buywithcard = ({ translations, onClose }) => {
           </div>
           <p className="text-[11px] uppercase font-thin text-center z-10 relative">
             Want to pay with Crypto Instead?{" "}
-            <span onClick={openCardPopup} className="cursor-pointer text-[#B8934D]">
+            <span onClick={openCardPopup} className="cursor-pointer  text-[#B8934D]">
               CLICK HERE
             </span>
           </p>
