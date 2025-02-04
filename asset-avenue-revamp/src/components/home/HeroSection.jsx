@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import ImageSlider from "./ImageSlider";
-import TokenPresalePopup from "./Pop-up/presalePopup";
-import PresalePopup from "./Pop-up/presalePopup";
-import WalletPopup from "./Pop-up/walletPop";
+import TokenPresalePopup from "./presalePopup";
+import PresalePopup from "./presalePopup";
+import WalletPopup from "./walletPop";
 import { motion } from "framer-motion";
-import Buywithcard from "./Pop-up/buywithcard";
-import WalletConnect from "./Pop-up/Connect";
+import Buywithcard from "./buywithcard";
+import { getPresaleInfo } from "../../utils/presale.ts";
+import { useWallet } from "@solana/wallet-adapter-react";
 
 const HeroSection = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -14,12 +15,29 @@ const HeroSection = () => {
     minutes: 0,
     seconds: 0,
   });
-  const [isModalOpen, setIsModalOpen] = useState(false);
+    const { publicKey, connected,wallet } = useWallet();
+  
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to control the modal visibility
   const [isCardModalOpen, setIsCardModalOpen] = useState(false);
   const [isCardModal2Open, setIsCardModal2Open] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [totalSOLRaised, setTotalSOLRaised] = useState(0.000414747);
-  const SOL_PRICE = 210;
+  const [totalSOLRaised, setTotalSOLRaised] = useState(0.000414747); // Initial SOL raised value
+  const SOL_PRICE = 210; // Fixed SOL price in USD
+  const [presaleData, setPresaleData] = useState("");
+
+ useEffect(() => {
+    if (connected) {
+      fetchPresaleData();
+    }
+  }, [connected]);
+
+  const fetchPresaleData = async () => {
+    const data = await getPresaleInfo(publicKey);
+    console.log(Number(data.solAmountRaised));
+    if (data) {
+      setPresaleData(data);
+    }
+  };
 
   const defaultText = {
     presaleButton: "BUY $AAV TOKEN PRESALE!",
@@ -78,7 +96,7 @@ const HeroSection = () => {
       // setTotalSOLRaised(response.totalSOL);
 
       // For now, we'll use a static value or increment it for demonstration
-      setTotalSOLRaised(0.000414747); // Replace with dynamic value
+      setTotalSOLRaised(Number(presaleData.solAmountRaised)/1e9); // Replace with dynamic value
     };
 
     fetchTotalSOLRaised();
@@ -86,10 +104,10 @@ const HeroSection = () => {
 
   // Calculate progress bar value based on total SOL raised
   useEffect(() => {
-    const maxSOL = 1000; // Example: Maximum SOL to be raised (adjust as needed)
-    const progressValue = Math.min(75 + (totalSOLRaised / maxSOL) * 25, 100);
+    const maxSOL = 1; // Example: Maximum SOL to be raised (adjust as needed)
+    const progressValue = (Number(presaleData.solAmountRaised)/1e9 / maxSOL) * 100;
     setProgress(progressValue);
-  }, [totalSOLRaised]);
+  }, []);
 
   // Function to handle modal close
   const handleCloseModal = () => {
@@ -218,10 +236,8 @@ const HeroSection = () => {
             </div>
             <div className="flex justify-center text-[16px] font-bold md:text-sm mb-3 z-10 relative">
               <span>
-                TOTAL USD RAISED: {totalSOLRaised.toFixed(6)} SOL
-                {/* ($
-                {(totalSOLRaised * SOL_PRICE).toFixed(2)}
-                ) */}
+                TOTAL SOL RAISED: {Number(presaleData.solAmountRaised)/1e9 } SOL ($
+                {(Number(presaleData.solAmountRaised)/1e9 * SOL_PRICE ).toFixed(2)})
               </span>
             </div>
             <div className="relative w-full bg-white rounded-full h-2.5 mb-3">
@@ -238,7 +254,7 @@ const HeroSection = () => {
             <div className="relative flex items-center justify-center mb-3 z-10">
               <hr className="absolute w-1/6 left-0 border-t border-white" />
               <p className="z-10 px-2 text-[16px] md:text-sm">
-                {defaultText.price}
+                {"1 AAV = " + Number(presaleData?.pricePerTokenInSol)/1e9 + " SOL" }
               </p>
               <hr className="absolute w-1/6 right-0 border-t border-white" />
             </div>
@@ -322,8 +338,7 @@ const HeroSection = () => {
               X
             </button>
 
-            {/* <PresalePopup /> */}
-            <WalletConnect />
+            <PresalePopup />
             <div className="flex justify-center space-x-4 mt-4">
               {/* You can add other content here if necessary */}
             </div>
