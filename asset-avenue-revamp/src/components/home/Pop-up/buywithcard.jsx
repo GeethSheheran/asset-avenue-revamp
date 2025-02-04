@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import WalletPopup from "./walletPop";
 import { motion } from "framer-motion";
 import PresalePopup from "./presalePopup";
-import AnotherPopup from "./AnotherPopup"; // Import the new popup component
-import solanaLogo from "/logo/solana.png"; // Import the Solana logo
-import eurLogo from "/logo/usdc.png"; // Import the EUR logo
+import AnotherPopup from "./AnotherPopup";
+import solanaLogo from "/logo/solana.png";
+import eurLogo from "/logo/usdc.png";
+import WornPopup from "./WornPopup";
 
 const Buywithcard = ({ translations, onClose }) => {
   const [timeLeft, setTimeLeft] = useState({
@@ -15,13 +16,13 @@ const Buywithcard = ({ translations, onClose }) => {
   });
   const [progress, setProgress] = useState(0);
   const [isWalletPopupOpen, setIsWalletPopupOpen] = useState(false);
-  const [isCardPopupOpen, setIsCardPopupOpen] = useState(false); // State for CardPopup
-  const [isAnotherPopupOpen, setIsAnotherPopupOpen] = useState(false); // State for the new popup
+  const [isCardPopupOpen, setIsCardPopupOpen] = useState(false);
+  const [isAnotherPopupOpen, setIsAnotherPopupOpen] = useState(false);
   const [usdAmount, setUsdAmount] = useState("");
   const [bestReceive, setBestReceive] = useState("");
   const [error, setError] = useState("");
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State for dropdown visibility
-  const [selectedOption, setSelectedOption] = useState("SOL"); // State for selected option
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("SOL");
 
   const handleStake = () => {
     if (!usdAmount || !bestReceive) {
@@ -131,7 +132,7 @@ const Buywithcard = ({ translations, onClose }) => {
 
           <div className="flex justify-center font-bold py-1 text-xs md:text-[16px] mb-3 relative z-10">
             <span>
-              {translations?.totalSOL || "TOTAL SOL RAISED: 0,000414747 SOL"}
+              {translations?.totalSOL || "TOTAL USD RAISED: 0,000414747 SOL"}
             </span>
           </div>
 
@@ -153,7 +154,7 @@ const Buywithcard = ({ translations, onClose }) => {
                 onChange={(e) => setUsdAmount(e.target.value)}
               />
 
-              <div className="relative">
+              <div className="relative  w-[100px] ">
                 <div
                   className="p-2 rounded-[10px] border text-black text-sm bg-white focus:border-green-900 focus:ring-1 focus:ring-green-500 outline-none appearance-none flex items-center cursor-pointer"
                   onClick={toggleDropdown}
@@ -168,7 +169,7 @@ const Buywithcard = ({ translations, onClose }) => {
                 {isDropdownOpen && (
                   <ul className="absolute mt-1 w-full bg-white border rounded-[10px] shadow-lg z-20">
                     <li
-                      className="p-2 flex items-center text-[10px] text-black cursor-pointer border rounded-[10px] rounded-b-none hover:bg-gray-100"
+                      className="p-2 flex items-center text-[11px] text-black cursor-pointer border rounded-[10px] rounded-b-none hover:bg-gray-100"
                       onClick={() => handleOptionSelect("SOL")}
                     >
                       <img
@@ -179,7 +180,7 @@ const Buywithcard = ({ translations, onClose }) => {
                       SOL
                     </li>
                     <li
-                      className="p-2 text-black text-[10px] flex items-center cursor-pointer border rounded-[10px] rounded-t-none hover:bg-gray-100"
+                      className="p-2 text-black text-[11px] flex items-center cursor-pointer border rounded-[10px] rounded-t-none hover:bg-gray-100"
                       onClick={() => handleOptionSelect("USDC")}
                     >
                       <img src={eurLogo} alt="USDC" className="w-5 h-5 mr-1" />

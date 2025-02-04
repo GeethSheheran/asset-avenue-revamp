@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import ImageSlider from "./ImageSlider";
-import TokenPresalePopup from "./presalePopup";
-import PresalePopup from "./presalePopup";
-import WalletPopup from "./walletPop";
+import TokenPresalePopup from "./Pop-up/presalePopup";
+import PresalePopup from "./Pop-up/presalePopup";
+import WalletPopup from "./Pop-up/walletPop";
 import { motion } from "framer-motion";
-import Buywithcard from "./buywithcard";
-import WalletConnect from "./Connect";
+import Buywithcard from "./Pop-up/buywithcard";
+import WalletConnect from "./Pop-up/Connect";
 
 const HeroSection = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -14,12 +14,12 @@ const HeroSection = () => {
     minutes: 0,
     seconds: 0,
   });
-  const [isModalOpen, setIsModalOpen] = useState(false); // State to control the modal visibility
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCardModalOpen, setIsCardModalOpen] = useState(false);
   const [isCardModal2Open, setIsCardModal2Open] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [totalSOLRaised, setTotalSOLRaised] = useState(0.000414747); // Initial SOL raised value
-  const SOL_PRICE = 210; // Fixed SOL price in USD
+  const [totalSOLRaised, setTotalSOLRaised] = useState(0.000414747);
+  const SOL_PRICE = 210;
 
   const defaultText = {
     presaleButton: "BUY $AAV TOKEN PRESALE!",
@@ -33,7 +33,7 @@ const HeroSection = () => {
     },
     minBuy: "Min buy: 0.5 SOL",
     maxBuy: "Max buy: 200 SOL",
-    totalSOL: "TOTAL SOL RAISED: 0,000414747 SOL",
+    totalSOL: "TOTAL USD RAISED: 0,000414747 SOL",
     price: "1 AAV = 0.000368664 SOL",
     buyWithCard: "Buy With Card",
     buyWithCrypto: "Buy With Crypto",
@@ -218,8 +218,10 @@ const HeroSection = () => {
             </div>
             <div className="flex justify-center text-[16px] font-bold md:text-sm mb-3 z-10 relative">
               <span>
-                TOTAL SOL RAISED: {totalSOLRaised.toFixed(6)} SOL ($
-                {(totalSOLRaised * SOL_PRICE).toFixed(2)})
+                TOTAL USD RAISED: {totalSOLRaised.toFixed(6)} SOL
+                {/* ($
+                {(totalSOLRaised * SOL_PRICE).toFixed(2)}
+                ) */}
               </span>
             </div>
             <div className="relative w-full bg-white rounded-full h-2.5 mb-3">
@@ -321,7 +323,7 @@ const HeroSection = () => {
             </button>
 
             {/* <PresalePopup /> */}
-            <WalletConnect/>
+            <WalletConnect />
             <div className="flex justify-center space-x-4 mt-4">
               {/* You can add other content here if necessary */}
             </div>
@@ -369,7 +371,7 @@ const HeroSection = () => {
             <Buywithcard />
             <button
               onClick={handleCloseCardModal2}
-              className="absolute top-[10%] right-1/3 text-white font-base text-xl z-10 transform transition duration-300 ease-in-out hover:rotate-180"
+              className="absolute md:top-[10%] md:right-1/3 right-1 top-[2%] text-white font-base text-xl z-10 transform transition duration-300 ease-in-out hover:rotate-180"
             >
               X
             </button>

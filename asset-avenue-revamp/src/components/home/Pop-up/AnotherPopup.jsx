@@ -10,7 +10,7 @@ const AnotherPopup = ({ onClose }) => {
       setVisible(false);
       setShowWornPopup(true);
       if (onClose) onClose();
-    }, 770);
+    }, 500);
 
     return () => clearTimeout(timer);
   }, [onClose]);
@@ -41,12 +41,12 @@ const AnotherPopup = ({ onClose }) => {
       <p className="text-sm md:text-[16px] font-base max-w-l mx-auto mb-6">
         Please wait while we are initializing the <br /> wert widget
       </p>
-      <button
+      {/* <button
         className="bg-[#CC3300] hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg text-[11px] uppercase"
         onClick={handleClose}
       >
         Cancel initializing
-      </button>
+      </button> */}
     </div>
   );
 };

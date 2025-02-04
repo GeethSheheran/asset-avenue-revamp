@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import WalletConnect from "./home/Connect";
+import WalletConnect from "./home/Pop-up/Connect";
 import { motion } from "framer-motion";
 
 const Navbar = () => {
@@ -15,7 +15,7 @@ const Navbar = () => {
 
   const handleLanguageChange = (language) => {
     setSelectedLanguage(language);
-    setIsDropdownOpen(false); // Close dropdown after selection
+    setIsDropdownOpen(false);
   };
 
   const toggleWalletPopup = () => {
@@ -47,7 +47,7 @@ const Navbar = () => {
   return (
     <nav className="bg-black fixed w-full z-50 top-0">
       <div className="max-w-screen-xl flex items-center justify-between mx-auto py-4">
-        <a href="/" className="flex items-center">
+        <a href="https://assetavenue.capital/" className="flex items-center">
           <img src="logo/logo.webp" className="h-10" alt="Asset Avenue" />
         </a>
 
