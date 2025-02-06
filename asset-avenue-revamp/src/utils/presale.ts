@@ -4,12 +4,13 @@ import { getAssociatedTokenAddress, TOKEN_PROGRAM_ID } from "@solana/spl-token";
 
 import * as idl from "./presale_idl.json"; // Replace with your actual IDL file
 import { ASSOCIATED_PROGRAM_ID } from "@project-serum/anchor/dist/cjs/utils/token";
-const PROGRAM_ID = new PublicKey("HhcgRB6qCDqJW94QC5QKg6tsETKhy4zoVB31L3Y17jDM"); // Your contract address
+const PROGRAM_ID = new PublicKey("4YC2UoumMNHUsdN2gdWbGLBwyopNyPExXznjBKu2P24K"); // Your contract address
 const PRESALE_SEED = "solana_presale";
 const DATA_SEED = "my_data";
 const STAKING_SEED = "solana_staking";
 const STAKING_DATA_SEED = "staking_user_data";
 const TOKEN_MINT = new PublicKey("HtcmNSmpM6xGWLH7TcUiyjXQcej32qc15wyzawJYKNMn");
+const USDC_MINT = new PublicKey("4Fa3EWgea8bYwFjRdAxn9b7FhzFSYZR41Tnkn39SvSLX");
 const getProvider = (wallet: Wallet) => {
   const connection = new Connection("https://api.devnet.solana.com", "confirmed"); // Change to mainnet-beta for production
   const provider = new AnchorProvider(connection, wallet, { preflightCommitment: "processed" });
