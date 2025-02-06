@@ -218,7 +218,7 @@ const HeroSection = () => {
             </div>
             <div className="flex justify-center text-[16px] font-bold md:text-sm mb-3 z-10 relative">
               <span>
-                TOTAL USD RAISED: {totalSOLRaised.toFixed(6)} SOL
+                TOTAL USD RAISED: 24.317$ / 25.318$
                 {/* ($
                 {(totalSOLRaised * SOL_PRICE).toFixed(2)}
                 ) */}
