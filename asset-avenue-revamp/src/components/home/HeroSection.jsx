@@ -262,6 +262,10 @@ const HeroSection = () => {
               <p className="z-10 px-2 text-[16px] md:text-sm">
                 {"1 AAV = " + Number(presaleData?.pricePerTokenInSol)/1e9 + " SOL" }
               </p>
+              <p className="z-10 px-2 text-xs md:text-[12px]">
+
+              {"1 AAV = " + Number(presaleData?.pricePerTokenInUsdc)/1e6 + " USDC" }
+               </p>
               <hr className="absolute w-1/6 right-0 border-t border-white" />
             </div>
 

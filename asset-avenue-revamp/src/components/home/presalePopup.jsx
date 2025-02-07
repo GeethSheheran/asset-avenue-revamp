@@ -115,7 +115,22 @@ const PresalePopup = ({ translations, onClose }) => {
   const openCardPopup = () => {
     setIsCardPopupOpen(true);
   };
+function setAmountAndBestRecieve(e){
+  setAmount(e.target.value);
+  let rate = 0;
+  if (currency == "SOL"){
+    rate = Number(presaleData?.pricePerTokenInSol)/1e9
+  }else{
+      rate = Number(presaleData?.pricePerTokenInUsdc)/1e6
+    }
+  setBestReceive(Number(e.target.value)/rate)
+}
 
+function setCurrencyState(e){
+  setCurrency(e.target.value)
+  setBestReceive(0)
+  setAmount(0)
+}
   return (
     <>
       {!isWalletPopupOpen && !isCardPopupOpen ? (
@@ -177,6 +192,10 @@ const PresalePopup = ({ translations, onClose }) => {
             <p className="z-10 px-2 text-xs md:text-[12px]">
             {"1 AAV = " + Number(presaleData?.pricePerTokenInSol)/1e9 + " SOL" }
             </p>
+            <p className="z-10 px-2 text-xs md:text-[12px]">
+
+            {"1 AAV = " + Number(presaleData?.pricePerTokenInUsdc)/1e6 + " USDC" }
+              </p>
             <hr className="absolute w-1/6 right-0 border-t border-white" />
           </div>
 
@@ -187,11 +206,11 @@ const PresalePopup = ({ translations, onClose }) => {
                 placeholder={`${currency} Amount to spend`}
                 className="p-2 rounded-[10px] text-black text-sm border focus:border-green-900 focus:ring-1 focus:ring-green-500 outline-none flex-1"
                 value={amount}
-                onChange={(e) => setAmount(e.target.value)}
+                onChange={(e) => setAmountAndBestRecieve(e)}
               />
 
               <div className="relative">
-                <select onChange={(e)=>setCurrency(e.target.value)} className="p-2 rounded-[10px] border text-black text-sm bg-white focus:border-green-900 focus:ring-1 focus:ring-green-500 outline-none">
+                <select onChange={(e)=>setCurrencyState(e)} className="p-2 rounded-[10px] border text-black text-sm bg-white focus:border-green-900 focus:ring-1 focus:ring-green-500 outline-none">
                 <option >
                     <img src="/logo/solana.png" alt="USD" className="inline w-5 h-5 mr-2" />
                     SOL
@@ -209,7 +228,7 @@ const PresalePopup = ({ translations, onClose }) => {
               placeholder="Best you receive"
               className="p-2 rounded-[10px] text-black text-sm border focus:border-green-900 focus:ring-1 focus:ring-green-500 outline-none"
               value={bestReceive}
-              onChange={() => setBestReceive(Number(0.5)/(Number(presaleData?.pricePerTokenInSol)/1e9))}
+              
             />
 
             {error && <p className="text-red-500 text-sm">{error}</p>}
