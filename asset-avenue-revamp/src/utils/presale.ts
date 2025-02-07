@@ -11,13 +11,19 @@ const STAKING_SEED = "solana_staking";
 const STAKING_DATA_SEED = "staking_user_data";
 const TOKEN_MINT = new PublicKey("HtcmNSmpM6xGWLH7TcUiyjXQcej32qc15wyzawJYKNMn");
 const USDC_MINT = new PublicKey("4Fa3EWgea8bYwFjRdAxn9b7FhzFSYZR41Tnkn39SvSLX");
-const getProvider = (wallet: Wallet) => {
+const getProvider = (wallet: Wallet | null) => {
+  
   const connection = new Connection("https://api.devnet.solana.com", "confirmed"); // Change to mainnet-beta for production
+  // ✅ If no wallet is connected, return a provider without a wallet signer
+  if (!wallet) {
+    return new AnchorProvider(connection, { publicKey: PublicKey.default,  signTransaction: async (tx: Transaction) => tx, // Dummy function
+      signAllTransactions: async (txs: Transaction[]) => txs,  }, { preflightCommitment: "processed" });
+  }
   const provider = new AnchorProvider(connection, wallet, { preflightCommitment: "processed" });
   return provider;
 };
 
-export const getProgram = (wallet: Wallet) => {
+export const getProgram = (wallet: Wallet  | null = null) => {
   const provider = getProvider(wallet);
   return new Program(idl as any, PROGRAM_ID, provider);
 };
@@ -227,7 +233,7 @@ console.log(Number(amount))
 export const getStakingInfo = async (wallet: any) => {
   try {
     const program = getProgram(wallet);
-    const [stakingPda] = await PublicKey.findProgramAddress([Buffer.from(STAKING_SEED)], PROGRAM_ID);
+    const [stakingPda] =  PublicKey.findProgramAddressSync([Buffer.from(STAKING_SEED)], PROGRAM_ID);
     const stakingData = await program.account.stakingInfo.fetch(stakingPda);
     return stakingData;
   } catch (error) {

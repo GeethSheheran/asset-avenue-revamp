@@ -15,7 +15,7 @@ const HeroSection = () => {
     minutes: 0,
     seconds: 0,
   });
-    const { publicKey, connected,wallet } = useWallet();
+    const { publicKey, connected } = useWallet();
   
   const [isModalOpen, setIsModalOpen] = useState(false); // State to control the modal visibility
   const [isCardModalOpen, setIsCardModalOpen] = useState(false);
@@ -110,6 +110,8 @@ const HeroSection = () => {
     console.log("totalRaised",totalRaised)
     const progressValue = (totalRaised / maxSOL) * 100;
     setProgress(progressValue);
+    setPresaleData(presaleData);
+
   }, []);
 
   // Function to handle modal close
@@ -119,6 +121,10 @@ const HeroSection = () => {
 
   // Function to handle modal open
   const handleOpenModal = () => {
+    if (!connected) {
+      alert("Please connect your wallet first.");
+      return;
+    }
     setIsModalOpen(true);
   };
 
