@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import WalletConnect from "./home/Pop-up/Connect";
 import { motion } from "framer-motion";
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -133,13 +134,15 @@ const Navbar = () => {
           >
             Buy & Stake Now
           </button>
-          <button
+          {/* <button
             type="button"
             onClick={toggleWalletPopup}
             className="hidden sm:block uppercase text-white bg-[#3FAC55] hover:bg-[#11823B] font-bold md:text-[11px] rounded-lg text-sm px-6 py-2"
           >
             CONNECT WALLET
-          </button>
+            
+          </button> */}
+          <WalletMultiButton/>             
 
           {/* Custom Dropdown for Language */}
           <div className="relative">
