@@ -103,9 +103,12 @@ const HeroSection = () => {
   }, []);
 
   // Calculate progress bar value based on total SOL raised
-  useEffect(() => {
-    const maxSOL = 1; // Example: Maximum SOL to be raised (adjust as needed)
-    const progressValue = (Number(presaleData.solAmountRaised)/1e9 / maxSOL) * 100;
+  useEffect(async() => {
+    const presaleData = await getPresaleInfo(publicKey);
+    const maxSOL = 10; // Example: Maximum SOL to be raised (adjust as needed)
+    let totalRaised = Number(Number(presaleData.solAmountRaised)/1e9) + Number(Number(presaleData.usdcAmountRaised)/1e6 / SOL_PRICE) 
+    console.log("totalRaised",totalRaised)
+    const progressValue = (totalRaised / maxSOL) * 100;
     setProgress(progressValue);
   }, []);
 
@@ -262,10 +265,16 @@ const HeroSection = () => {
               <p className="z-10 px-2 text-[16px] md:text-sm">
                 {"1 AAV = " + Number(presaleData?.pricePerTokenInSol)/1e9 + " SOL" }
               </p>
+              
+              <hr className="absolute w-1/6 right-0 border-t border-white" />
+            </div>
+            <div className="relative flex items-center justify-center mb-3 z-10">
+              <hr className="absolute w-1/6 left-0 border-t border-white" />
               <p className="z-10 px-2 text-xs md:text-[12px]">
 
               {"1 AAV = " + Number(presaleData?.pricePerTokenInUsdc)/1e6 + " USDC" }
                </p>
+              
               <hr className="absolute w-1/6 right-0 border-t border-white" />
             </div>
 
