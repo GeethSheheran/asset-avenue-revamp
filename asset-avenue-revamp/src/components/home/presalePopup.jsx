@@ -166,7 +166,12 @@ const PresalePopup = ({ translations, onClose }) => {
               {(Number(presaleData.solAmountRaised)/1e9 * SOL_PRICE ).toFixed(2)})           
                </span>
           </div>
+          <div className="flex justify-center font-bold py-1 text-xs md:text-[16px] mb-3 relative z-10">
 
+          <span>
+                TOTAL USDC RAISED: {Number(presaleData.usdcAmountRaised)/1e6 } USDC
+              </span>
+</div>
           <div className="relative flex items-center justify-center mb-3 z-10">
             <hr className="absolute w-1/6 left-0 border-t border-white" />
             <p className="z-10 px-2 text-xs md:text-[12px]">

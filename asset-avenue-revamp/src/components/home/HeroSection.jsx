@@ -239,6 +239,12 @@ const HeroSection = () => {
                 TOTAL SOL RAISED: {Number(presaleData.solAmountRaised)/1e9 } SOL ($
                 {(Number(presaleData.solAmountRaised)/1e9 * SOL_PRICE ).toFixed(2)})
               </span>
+              </div>
+              <div className="flex justify-center text-[16px] font-bold md:text-sm mb-3 z-10 relative">
+
+              <span>
+                TOTAL USDC RAISED: {Number(presaleData.usdcAmountRaised)/1e6 } USDC
+              </span>
             </div>
             <div className="relative w-full bg-white rounded-full h-2.5 mb-3">
               <div
