@@ -132,7 +132,7 @@ const Buywithcard = ({ translations, onClose }) => {
 
           <div className="flex justify-center font-bold py-1 text-xs md:text-[16px] mb-3 relative z-10">
             <span>
-              {translations?.totalSOL || "TOTAL USD RAISED: 0,000414747 SOL"}
+              {translations?.totalSOL || "TOTAL USD RAISED: 24.317$ / 25.318$"}
             </span>
           </div>
 
@@ -194,7 +194,7 @@ const Buywithcard = ({ translations, onClose }) => {
             <div className="relative w-full">
               <input
                 type="number"
-                placeholder="Best you receive"
+                placeholder="AAV you receive"
                 className="w-full p-2 pr-10 rounded-[10px] text-black text-sm border focus:border-green-900 focus:ring-1 focus:ring-green-500 outline-none"
                 value={bestReceive}
                 onChange={(e) => setBestReceive(e.target.value)}
