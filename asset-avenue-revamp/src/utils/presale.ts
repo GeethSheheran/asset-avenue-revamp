@@ -4,7 +4,7 @@ import { getAssociatedTokenAddress, TOKEN_PROGRAM_ID } from "@solana/spl-token";
 
 import * as idl from "./presale_idl.json"; // Replace with your actual IDL file
 import { ASSOCIATED_PROGRAM_ID } from "@project-serum/anchor/dist/cjs/utils/token";
-const PROGRAM_ID = new PublicKey("4YC2UoumMNHUsdN2gdWbGLBwyopNyPExXznjBKu2P24K"); // Your contract address
+const PROGRAM_ID = new PublicKey("3nnfTx68bKCRXZdZfKoFFfryWbnR3asFGmfLsXNPtXxK"); // Your contract address
 const PRESALE_SEED = "solana_presale";
 const DATA_SEED = "my_data";
 const STAKING_SEED = "solana_staking";
@@ -23,7 +23,7 @@ export const getProgram = (wallet: Wallet) => {
 };
 
 // Function to invest SOL in presale
-export const investSol = async (publicKey:PublicKey,wallet: Wallet, amount: number) => {
+export const investSol = async (publicKey:PublicKey,wallet: Wallet, amount: number,currency:"SOL"|"USD") => {
   try {
     const program = getProgram(wallet);
     const signer = publicKey;
@@ -50,15 +50,44 @@ console.log("signer",signer);
       presalePda,
       true
     );
+    const usdc_presale_ata = await getAssociatedTokenAddress(
+      USDC_MINT,
+      presalePda,
+      true
+    );
+    const usdc_reciever_ata = await getAssociatedTokenAddress(
+      USDC_MINT,
+      signer,
+      true
+    );
     console.log("presalePda",presalePda.toString())
     console.log("presale_ata",presale_ata.toString())
-
+/**
+ *  const context = {
+      data:dataPda,
+      from:account2.publicKey,
+      signer:account2.publicKey,
+      presale:presalePda,
+      investor_usdc_account:userUsdcTokenAccount.address,
+      presaleUsdcAccount:presale_usdc_ata.address,
+      usdcMint:usdc,
+      presaleTokenAccount:presale_ata,
+      tokenMint:mint,
+      signerTokenAccount:reciever_ata,
+      systemProgram: anchor.web3.SystemProgram.programId,
+      tokenProgram: anchor.utils.token.TOKEN_PROGRAM_ID,
+      associatedTokenProgram: anchor.utils.token.ASSOCIATED_PROGRAM_ID,
+    }
+ */
   
     const context = {
       data:dataPda,
       from:signer,
-      presale:presalePda,
       signer:signer,
+      presale:presalePda,
+      signerUsdcAccount:usdc_reciever_ata    ,
+      presaleUsdcAccount:usdc_presale_ata,
+      usdcMint:USDC_MINT,
       presaleTokenAccount:presale_ata,
       tokenMint:TOKEN_MINT,
       signerTokenAccount:reciever_ata,
@@ -66,12 +95,16 @@ console.log("signer",signer);
       tokenProgram: TOKEN_PROGRAM_ID,
       associatedTokenProgram: ASSOCIATED_PROGRAM_ID,
     }
-
+    if (currency == "SOL"){
     // Convert SOL to lamports
-    const lamports = new BN(amount * web3.LAMPORTS_PER_SOL);
+    amount = new BN(amount * web3.LAMPORTS_PER_SOL);
+    }else{
 
+    amount = new BN(amount * 1000000);
+    }
+    console.log(Number(amount))
     const tx = await program.methods
-      .investSol(lamports)
+      .invest(amount,currency=="SOL"?0:1)
       .accounts(context)
       .rpc();
 
@@ -100,7 +133,7 @@ export const getPresaleInfo = async (wallet: any) => {
 };
 
 
-export const stakeTokens = async (publicKey:PublicKey,wallet: any, amount: number) => {
+export const buyAndStakeTokens = async (publicKey:PublicKey,wallet: any, amount: number,currency:"SOL"|"USD") => {
   try {
     const program = getProgram(wallet);
     const signer = publicKey
@@ -115,7 +148,10 @@ export const stakeTokens = async (publicKey:PublicKey,wallet: any, amount: numbe
           PROGRAM_ID
         );
       
-
+        const [presalePda] = PublicKey.findProgramAddressSync(
+          [Buffer.from(PRESALE_SEED)],
+          PROGRAM_ID
+        );
         const signer_ata = await getAssociatedTokenAddress(
           TOKEN_MINT,   // The mint address of the SPL token
           signer,  // The receiver's wallet public key
@@ -126,21 +162,55 @@ export const stakeTokens = async (publicKey:PublicKey,wallet: any, amount: numbe
           stakingPda,
           true
         );
-    // Convert amount to proper decimals
-    const lamports = new BN(amount * 10 ** 5); // Assuming 5 decimals in the token
+        const presale_ata = await getAssociatedTokenAddress(
+          TOKEN_MINT,
+          presalePda,
+          true
+        );
+        const [dataPda] = PublicKey.findProgramAddressSync(
+          [Buffer.from(DATA_SEED),signer.toBuffer()],
+          PROGRAM_ID
+        );
+        const usdc_presale_ata = await getAssociatedTokenAddress(
+          USDC_MINT,
+          presalePda,
+          true
+        );
+        const usdc_reciever_ata = await getAssociatedTokenAddress(
+          USDC_MINT,
+          signer,
+          true
+        );
+        if (currency == "SOL"){
+          // Convert SOL to lamports
+          amount = new BN(amount * web3.LAMPORTS_PER_SOL);
+          }else{
+      
+          amount = new BN(amount * 1000000);
+          }
 
+        
+
+console.log(Number(amount))
     const tx = await program.methods
-      .stake(lamports)
+      .buyAndStake(amount,currency=="SOL"?0:1)
       .accounts({
+        investmentData:dataPda,
         stakingData: stakingDataPda,
-        from: signer,
+        presale:presalePda,
         staking: stakingPda,
+        from: signer,
+        signer: signer,
         tokenMint:TOKEN_MINT,
+        presaleTokenAccount:presale_ata,
         stakingTokenAccount:staking_ata,
         signerTokenAccount:signer_ata,
-      systemProgram: SystemProgram.programId,
-      tokenProgram: TOKEN_PROGRAM_ID,
-      associatedTokenProgram: ASSOCIATED_PROGRAM_ID,
+        usdcMint:USDC_MINT,
+        presaleUsdcAccount:usdc_presale_ata,
+        signerUsdcAccount:usdc_reciever_ata,
+        systemProgram: SystemProgram.programId,
+        tokenProgram: TOKEN_PROGRAM_ID,
+        associatedTokenProgram: ASSOCIATED_PROGRAM_ID,
           })
       .rpc();
 
