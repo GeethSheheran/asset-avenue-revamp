@@ -5,7 +5,7 @@ import PresalePopup from "./presalePopup";
 import WalletPopup from "./walletPop";
 import { motion } from "framer-motion";
 import Buywithcard from "./buywithcard";
-import { getPresaleInfo } from "../../utils/presale.ts";
+import { getPresaleInfo,getStakingInfo } from "../../utils/presale.ts";
 import { useWallet } from "@solana/wallet-adapter-react";
 
 const HeroSection = () => {
@@ -15,7 +15,7 @@ const HeroSection = () => {
     minutes: 0,
     seconds: 0,
   });
-    const { publicKey, connected,wallet } = useWallet();
+    const { publicKey, connected } = useWallet();
   
   const [isModalOpen, setIsModalOpen] = useState(false); // State to control the modal visibility
   const [isCardModalOpen, setIsCardModalOpen] = useState(false);
@@ -24,6 +24,7 @@ const HeroSection = () => {
   const [totalSOLRaised, setTotalSOLRaised] = useState(0.000414747); // Initial SOL raised value
   const SOL_PRICE = 210; // Fixed SOL price in USD
   const [presaleData, setPresaleData] = useState("");
+  const [stakingData, setStakingData] = useState("");
 
  useEffect(() => {
     if (connected) {
@@ -33,10 +34,15 @@ const HeroSection = () => {
 
   const fetchPresaleData = async () => {
     const data = await getPresaleInfo(publicKey);
+    const stakingData = await getStakingInfo(publicKey);
     console.log(Number(data.solAmountRaised));
     if (data) {
       setPresaleData(data);
     }
+    if (stakingData) {
+      setStakingData(stakingData);
+    }
+    console.log((stakingData));
   };
 
   const defaultText = {
@@ -110,6 +116,11 @@ const HeroSection = () => {
     console.log("totalRaised",totalRaised)
     const progressValue = (totalRaised / maxSOL) * 100;
     setProgress(progressValue);
+    setPresaleData(presaleData);
+    const stakingData = await getStakingInfo(publicKey);
+
+    setStakingData(stakingData);
+
   }, []);
 
   // Function to handle modal close
@@ -119,6 +130,10 @@ const HeroSection = () => {
 
   // Function to handle modal open
   const handleOpenModal = () => {
+    if (!connected) {
+      alert("Please connect your wallet first.");
+      return;
+    }
     setIsModalOpen(true);
   };
 
@@ -189,7 +204,7 @@ const HeroSection = () => {
         <div className="w-full md:w-1/3 mt-0 md:mt-16  ">
           <div className="flex justify-center items-center ">
             <p className="text-sm md:text-[24px] text-center shadow-[0_2px_85px_#56C46C9C]  bg-gradient-to-l from-[#B8934D] to-[#FBE279] p-3 w-4/5 text-white italic font-bold rounded-[20px] rounded-tl-none inline-block mb-4 z-10 relative ">
-              {defaultText.priceInfo2}
+              {Math.floor(50_000/(Number(stakingData?.totalTokensStaked)/1e5)*100)} % Staking Rewards
             </p>
           </div>
           <div className="bg-gradient-to-l from-[#05350F] to-[#05350F] p-8 rounded-[36px] rounded-tl-none shadow-[0_4px_145px_0_#56C46C9C] relative md:ml-auto">

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Buywithcard from "./buywithcard";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { investSol,getPresaleInfo } from "../../utils/presale.ts";
-import { buyAndStakeTokens } from "../../utils/presale.ts";
+import { buyAndStakeTokens,getStakingInfo } from "../../utils/presale.ts";
 
 const PresalePopup = ({ translations, onClose }) => {
   const [timeLeft, setTimeLeft] = useState({
@@ -24,6 +24,7 @@ const PresalePopup = ({ translations, onClose }) => {
   const [error, setError] = useState("");
   const [presaleData, setPresaleData] = useState("");
   const SOL_PRICE = 210; // Fixed SOL price in USD
+  const [stakingData, setStakingData] = useState("");
 
   const handleBuy = async () => {
     console.log("publicKey, connected",publicKey, connected,wallet)
@@ -50,7 +51,6 @@ const PresalePopup = ({ translations, onClose }) => {
     const tx = await buyAndStakeTokens(publicKey, wallet.adapter,amount,currency);
     if (tx) {
       alert(`Staking successful! Transaction ID: ${tx}`);
-      fetchStakingData(); // Refresh data after staking
     } else {
       alert("Staking failed.");
     }
@@ -71,13 +71,21 @@ const PresalePopup = ({ translations, onClose }) => {
 
   const fetchPresaleData = async () => {
     const data = await getPresaleInfo(publicKey);
+    const stakingData = await getStakingInfo(publicKey);
     if (data) {
       setPresaleData(data);
+    }
+    if (stakingData) {
+      setStakingData(stakingData);
     }
   };
 
      useEffect(async() => {
        const presaleData = await getPresaleInfo(publicKey);
+       const stakingData = await getStakingInfo(publicKey);
+       setPresaleData(data);
+       setStakingData(stakingData);
+
        const maxSOL = 10; // Example: Maximum SOL to be raised (adjust as needed)
        let totalRaised = Number(Number(presaleData.solAmountRaised)/1e9) + Number(Number(presaleData.usdcAmountRaised)/1e6 / SOL_PRICE) 
        console.log("totalRaised",totalRaised)
@@ -247,7 +255,7 @@ function setCurrencyState(e){
               onClick={handleBuy}
               className="uppercase z-10 text-black text-[12px] font-bold py-3 px-6 rounded-[10px] w-full bg-gradient-to-br from-[#958648] to-[#FBE279] hover:opacity-80 disabled:opacity-50"
             >
-              {translations?.buyWithCrypto || "STAKE FOR 509% REWARDS"}
+              {"STAKE FOR " + Math.floor(50_000/(Number(stakingData?.totalTokensStaked)/1e5)*100) +" % Rewards" || "STAKE FOR 509% REWARDS"}
             </button>
 
             <button
