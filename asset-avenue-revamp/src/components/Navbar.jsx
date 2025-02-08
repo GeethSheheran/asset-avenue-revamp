@@ -142,7 +142,7 @@ const Navbar = () => {
             CONNECT WALLET
             
           </button> */}
-          <WalletMultiButton>Connect Wallet</WalletMultiButton>             
+          <WalletMultiButton/>             
 
           {/* Custom Dropdown for Language */}
           <div className="relative">

@@ -115,11 +115,12 @@ const HeroSection = () => {
     let totalRaised = Number(Number(presaleData.solAmountRaised)/1e9) + Number(Number(presaleData.usdcAmountRaised)/1e6 / SOL_PRICE) 
     console.log("totalRaised",totalRaised)
     const progressValue = (totalRaised / maxSOL) * 100;
-    setProgress(progressValue);
-    setPresaleData(presaleData);
+  
     const stakingData = await getStakingInfo(publicKey);
 
+    setProgress(progressValue);
     setStakingData(stakingData);
+    setPresaleData(presaleData);
 
   }, []);
 

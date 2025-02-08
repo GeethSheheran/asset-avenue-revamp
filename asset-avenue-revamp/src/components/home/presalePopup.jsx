@@ -83,14 +83,15 @@ const PresalePopup = ({ translations, onClose }) => {
      useEffect(async() => {
        const presaleData = await getPresaleInfo(publicKey);
        const stakingData = await getStakingInfo(publicKey);
-       setPresaleData(data);
-       setStakingData(stakingData);
+  
 
-       const maxSOL = 10; // Example: Maximum SOL to be raised (adjust as needed)
-       let totalRaised = Number(Number(presaleData.solAmountRaised)/1e9) + Number(Number(presaleData.usdcAmountRaised)/1e6 / SOL_PRICE) 
-       console.log("totalRaised",totalRaised)
-       const progressValue = (totalRaised / maxSOL) * 100;
-       setProgress(progressValue);
+           const maxSOL = 10; // Example: Maximum SOL to be raised (adjust as needed)
+           let totalRaised = Number(Number(presaleData.solAmountRaised)/1e9) + Number(Number(presaleData.usdcAmountRaised)/1e6 / SOL_PRICE) 
+           console.log("totalRaised",totalRaised)
+           const progressValue = (totalRaised / maxSOL) * 100;
+           setProgress(progressValue);
+           setPresaleData(data);
+           setStakingData(stakingData);
      }, []);
 
      const targetDate = new Date("2025-12-31T00:00:00Z");
@@ -139,7 +140,7 @@ function setAmountAndBestRecieve(e){
 }
 
 function setCurrencyState(e){
-  setCurrency(e.target.value)
+  setCurrency(e.target.value == "SOL"?"SOL":"USD");
   setBestReceive(0)
   setAmount(0)
 }
@@ -235,7 +236,7 @@ function setCurrencyState(e){
                   </option>
                   <option >
                     <img src="/images/eur.png" alt="EUR" className="inline w-5 h-5 mr-2" />
-                    USD
+                    USDC
                   </option>
                 </select>
               </div>
