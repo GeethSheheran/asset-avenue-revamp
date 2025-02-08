@@ -259,12 +259,12 @@ const HeroSection = () => {
                 {(Number(presaleData.solAmountRaised)/1e9 * SOL_PRICE ).toFixed(2)})
               </span>
               </div>
-              <div className="flex justify-center text-[16px] font-bold md:text-sm mb-3 z-10 relative">
+              {/* <div className="flex justify-center text-[16px] font-bold md:text-sm mb-3 z-10 relative">
 
               <span>
                 TOTAL USDC RAISED: {Number(presaleData.usdcAmountRaised)/1e6 } USDC
               </span>
-            </div>
+            </div> */}
             <div className="relative w-full bg-white rounded-full h-2.5 mb-3">
               <div
                 className="bg-[#22C55E] h-2.5 rounded-full"
@@ -276,11 +276,11 @@ const HeroSection = () => {
               <span>{defaultText.maxBuy}</span>
               
             </div>
-            <div className="flex justify-between text-[16px] md:text-sm mb-3 z-10 relative">
+            {/* <div className="flex justify-between text-[16px] md:text-sm mb-3 z-10 relative">
               <span>Min buy: 100 USDC</span>
               <span>Max buy: 20,000 USDC</span>
               
-            </div>
+            </div> */}
 
             <div className="relative flex items-center justify-center mb-3 z-10">
               <hr className="absolute w-1/6 left-0 border-t border-white" />
@@ -290,7 +290,7 @@ const HeroSection = () => {
               
               <hr className="absolute w-1/6 right-0 border-t border-white" />
             </div>
-            <div className="relative flex items-center justify-center mb-3 z-10">
+            {/* <div className="relative flex items-center justify-center mb-3 z-10">
               <hr className="absolute w-1/6 left-0 border-t border-white" />
               <p className="z-10 px-2 text-xs md:text-[12px]">
 
@@ -298,7 +298,7 @@ const HeroSection = () => {
                </p>
               
               <hr className="absolute w-1/6 right-0 border-t border-white" />
-            </div>
+            </div> */}
 
             <div className="relative pt-4 flex flex-col md:flex-row justify-between space-y-4 md:space-y-0 md:space-x-4 z-10 relative">
               <div className="relative w-full  md:w-1/2">

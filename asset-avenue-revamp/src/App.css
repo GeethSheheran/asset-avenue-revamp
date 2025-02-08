@@ -38,7 +38,7 @@
   background-color: #3FAC55 !important; /* Green background */
   font-size: 11px !important;
   border-radius: 8px !important;
-  padding: 8px 16px !important;
+  padding: 0px 26px !important;
   text-transform: uppercase !important;
   transition: background-color 0.3s ease;
   
@@ -48,3 +48,15 @@
   background-color: #11823B !important;
 }
 
+.wallet-adapter-modal-wrapper{
+  background-color: #05350F !important;
+  border-radius: 0px 40px 40px 40px !important; 
+}
+
+.wallet-adapter-modal-button-close {
+  background: #034f1f !important;
+}
+
+.wallet-adapter-button:hover{
+  background-color: #034f1f !important;
+}

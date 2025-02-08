@@ -141,7 +141,7 @@ const Buywithcard = ({ translations, onClose }) => {
             />
             <input
               type="number"
-              placeholder="Best you receive"
+              placeholder="AAV you receive"
               className="p-2 rounded-[10px] text-black text-sm border focus:border-green-900 focus:ring-1 focus:ring-green-500 outline-none"
               value={bestReceive}
               onChange={(e) => setBestReceive(e.target.value)}
