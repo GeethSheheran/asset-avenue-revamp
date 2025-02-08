@@ -274,6 +274,12 @@ const HeroSection = () => {
             <div className="flex justify-between text-[16px] md:text-sm mb-3 z-10 relative">
               <span>{defaultText.minBuy}</span>
               <span>{defaultText.maxBuy}</span>
+              
+            </div>
+            <div className="flex justify-between text-[16px] md:text-sm mb-3 z-10 relative">
+              <span>Min buy: 100 USDC</span>
+              <span>Max buy: 20,000 USDC</span>
+              
             </div>
 
             <div className="relative flex items-center justify-center mb-3 z-10">

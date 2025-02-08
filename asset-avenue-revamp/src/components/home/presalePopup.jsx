@@ -211,7 +211,11 @@ function setCurrencyState(e){
             <span>{translations?.minBuy || "Min buy: 0.5 SOL"}</span>
             <span>{translations?.maxBuy || "Max buy: 200 SOL"}</span>
           </div>
-
+          <div className="flex justify-between text-xs md:text-[12px] mb-3 relative z-10">
+              <span>Min buy: 100 USDC</span>
+              <span>Max buy: 20,000 USDC</span>
+              
+            </div>
           <div className="flex justify-center font-bold py-1 text-xs md:text-[16px] mb-3 relative z-10">
             <span>
             TOTAL SOL RAISED: {Number(presaleData.solAmountRaised)/1e9 } SOL ($
