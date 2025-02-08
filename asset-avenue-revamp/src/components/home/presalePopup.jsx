@@ -37,16 +37,41 @@ const PresalePopup = ({ translations, onClose }) => {
       alert("Investment must be between 0.5 SOL and 200 SOL.");
       return;
     }
+  }else{
+    if (!amount || parseFloat(amount) < 100 || parseFloat(amount) > 20_000) {
+      alert("Investment must be between 100 USDC and 20,000 USDC.");
+      return;
+    }
+  }
     const tx = await investSol(publicKey,wallet.adapter, parseFloat(amount),currency);
     if (tx) {
       alert(`Investment successful! Transaction ID: ${tx}`);
     } else {
       alert("Investment failed.");
     }
-  }else{
-    if (!amount || parseFloat(amount) < 100 || parseFloat(amount) > 20_000) {
-      alert("Investment must be between 100 USDC and 20,000 USDC.");
+ 
+
+   
+  };
+
+
+  const handleBuyAndStake = async () => {
+    console.log("publicKey, connected",publicKey, connected,wallet)
+    if (!connected) {
+      alert("Please connect your wallet first.");
       return;
+    }
+ 
+    if(currency == "SOL"){
+      if (!amount || parseFloat(amount) < 0.5 || parseFloat(amount) > 200) {
+        alert("Investment must be between 0.5 SOL and 200 SOL.");
+        return;
+      }
+    }else{
+      if (!amount || parseFloat(amount) < 100 || parseFloat(amount) > 20_000) {
+        alert("Investment must be between 100 USDC and 20,000 USDC.");
+        return;
+      }
     }
     const tx = await buyAndStakeTokens(publicKey, wallet.adapter,amount,currency);
     if (tx) {
@@ -54,7 +79,6 @@ const PresalePopup = ({ translations, onClose }) => {
     } else {
       alert("Staking failed.");
     }
-  }
 
    
   };
@@ -253,7 +277,7 @@ function setCurrencyState(e){
             {error && <p className="text-red-500 text-sm">{error}</p>}
 
             <button
-              onClick={handleBuy}
+              onClick={handleBuyAndStake}
               className="uppercase z-10 text-black text-[12px] font-bold py-3 px-6 rounded-[10px] w-full bg-gradient-to-br from-[#958648] to-[#FBE279] hover:opacity-80 disabled:opacity-50"
             >
               {"STAKE FOR " + Math.floor(50_000/(Number(stakingData?.totalTokensStaked)/1e5)*100) +" % Rewards" || "STAKE FOR 509% REWARDS"}
