@@ -128,12 +128,12 @@ const Navbar = () => {
         </ul>
 
         <div className="flex items-center space-x-3 md:space-x-2">
-          <button
+          {/* <button
             type="button"
             className="hidden sm:block uppercase text-white bg-[#3FAC55] hover:bg-[#11823B] font-bold md:text-[11px] rounded-lg text-sm px-6 py-[14px]"
           >
             Buy & Stake Now
-          </button>
+          </button> */}
           {/* <button
             type="button"
             onClick={toggleWalletPopup}
@@ -142,7 +142,7 @@ const Navbar = () => {
             CONNECT WALLET
             
           </button> */}
-          <WalletMultiButton/>             
+          <WalletMultiButton style={{ height: "36px" }} />
 
           {/* Custom Dropdown for Language */}
           <div className="relative">
