@@ -298,7 +298,7 @@ const PresalePopup = ({ translations, onClose }) => {
               onClick={handleBuyAndStake}
               className="uppercase z-10 text-black text-[12px] font-bold py-3 px-6 rounded-[10px] w-full bg-gradient-to-br from-[#958648] to-[#FBE279] hover:opacity-80 disabled:opacity-50"
             >
-              {"STAKE FOR " +
+              {"BUY & STAKE FOR " +
                 Math.floor(
                   (50_000 / (Number(stakingData?.totalTokensStaked) / 1e5)) *
                     100

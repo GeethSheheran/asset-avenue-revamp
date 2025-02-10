@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './App.css';
 import Navbar from './components/Navbar'
 import InvestingMode from './components/home/InvestingMode'
@@ -13,6 +13,11 @@ import HeroSection from './components/home/HeroSection'
 import PieChart from './components/home/pieChart';
 
 function App() {
+  useEffect(() => {
+    // Clear localStorage
+    localStorage.clear();
+
+  }, []);
   return (
     <div className='bg-black overflow-x-hidden'>
       <Navbar/>
