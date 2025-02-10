@@ -5,7 +5,7 @@ import PresalePopup from "./presalePopup";
 import WalletPopup from "./walletPop";
 import { motion } from "framer-motion";
 import Buywithcard from "./buywithcard";
-import { getPresaleInfo,getStakingInfo } from "../../utils/presale.ts";
+import { getPresaleInfo, getStakingInfo } from "../../utils/presale.ts";
 import { useWallet } from "@solana/wallet-adapter-react";
 
 const HeroSection = () => {
@@ -15,8 +15,8 @@ const HeroSection = () => {
     minutes: 0,
     seconds: 0,
   });
-    const { publicKey, connected } = useWallet();
-  
+  const { publicKey, connected } = useWallet();
+
   const [isModalOpen, setIsModalOpen] = useState(false); // State to control the modal visibility
   const [isCardModalOpen, setIsCardModalOpen] = useState(false);
   const [isCardModal2Open, setIsCardModal2Open] = useState(false);
@@ -26,7 +26,7 @@ const HeroSection = () => {
   const [presaleData, setPresaleData] = useState("");
   const [stakingData, setStakingData] = useState("");
 
- useEffect(() => {
+  useEffect(() => {
     if (connected) {
       fetchPresaleData();
     }
@@ -42,7 +42,7 @@ const HeroSection = () => {
     if (stakingData) {
       setStakingData(stakingData);
     }
-    console.log((stakingData));
+    console.log(stakingData);
   };
 
   const defaultText = {
@@ -102,26 +102,27 @@ const HeroSection = () => {
       // setTotalSOLRaised(response.totalSOL);
 
       // For now, we'll use a static value or increment it for demonstration
-      setTotalSOLRaised(Number(presaleData.solAmountRaised)/1e9); // Replace with dynamic value
+      setTotalSOLRaised(Number(presaleData.solAmountRaised) / 1e9); // Replace with dynamic value
     };
 
     fetchTotalSOLRaised();
   }, []);
 
   // Calculate progress bar value based on total SOL raised
-  useEffect(async() => {
+  useEffect(async () => {
     const presaleData = await getPresaleInfo(publicKey);
     const maxSOL = 10; // Example: Maximum SOL to be raised (adjust as needed)
-    let totalRaised = Number(Number(presaleData.solAmountRaised)/1e9) + Number(Number(presaleData.usdcAmountRaised)/1e6 / SOL_PRICE) 
-    console.log("totalRaised",totalRaised)
+    let totalRaised =
+      Number(Number(presaleData.solAmountRaised) / 1e9) +
+      Number(Number(presaleData.usdcAmountRaised) / 1e6 / SOL_PRICE);
+    console.log("totalRaised", totalRaised);
     const progressValue = (totalRaised / maxSOL) * 100;
-  
+
     const stakingData = await getStakingInfo(publicKey);
 
     setProgress(progressValue);
     setStakingData(stakingData);
     setPresaleData(presaleData);
-
   }, []);
 
   // Function to handle modal close
@@ -205,7 +206,10 @@ const HeroSection = () => {
         <div className="w-full md:w-1/3 mt-0 md:mt-16  ">
           <div className="flex justify-center items-center ">
             <p className="text-sm md:text-[24px] text-center shadow-[0_2px_85px_#56C46C9C]  bg-gradient-to-l from-[#B8934D] to-[#FBE279] p-3 w-4/5 text-white italic font-bold rounded-[20px] rounded-tl-none inline-block mb-4 z-10 relative ">
-              {Math.floor(50_000/(Number(stakingData?.totalTokensStaked)/1e5)*100)} % Staking Rewards
+              {Math.floor(
+                (50_000 / (Number(stakingData?.totalTokensStaked) / 1e5)) * 100
+              )}{" "}
+              % Staking Rewards
             </p>
           </div>
           <div className="bg-gradient-to-l from-[#05350F] to-[#05350F] p-8 rounded-[36px] rounded-tl-none shadow-[0_4px_145px_0_#56C46C9C] relative md:ml-auto">
@@ -255,11 +259,16 @@ const HeroSection = () => {
             </div>
             <div className="flex justify-center text-[16px] font-bold md:text-sm mb-3 z-10 relative">
               <span>
-                TOTAL SOL RAISED: {Number(presaleData.solAmountRaised)/1e9 } SOL ($
-                {(Number(presaleData.solAmountRaised)/1e9 * SOL_PRICE ).toFixed(2)})
+                TOTAL SOL RAISED: {Number(presaleData.solAmountRaised) / 1e9}{" "}
+                SOL ($
+                {(
+                  (Number(presaleData.solAmountRaised) / 1e9) *
+                  SOL_PRICE
+                ).toFixed(2)}
+                )
               </span>
-              </div>
-              {/* <div className="flex justify-center text-[16px] font-bold md:text-sm mb-3 z-10 relative">
+            </div>
+            {/* <div className="flex justify-center text-[16px] font-bold md:text-sm mb-3 z-10 relative">
 
               <span>
                 TOTAL USDC RAISED: {Number(presaleData.usdcAmountRaised)/1e6 } USDC
@@ -274,7 +283,6 @@ const HeroSection = () => {
             <div className="flex justify-between text-[16px] md:text-sm mb-3 z-10 relative">
               <span>{defaultText.minBuy}</span>
               <span>{defaultText.maxBuy}</span>
-              
             </div>
             {/* <div className="flex justify-between text-[16px] md:text-sm mb-3 z-10 relative">
               <span>Min buy: 100 USDC</span>
@@ -285,9 +293,11 @@ const HeroSection = () => {
             <div className="relative flex items-center justify-center mb-3 z-10">
               <hr className="absolute w-1/6 left-0 border-t border-white" />
               <p className="z-10 px-2 text-[16px] md:text-sm">
-                {"1 AAV = " + Number(presaleData?.pricePerTokenInSol)/1e9 + " SOL" }
+                {"1 AAV = " +
+                  Number(presaleData?.pricePerTokenInSol) / 1e9 +
+                  " SOL"}
               </p>
-              
+
               <hr className="absolute w-1/6 right-0 border-t border-white" />
             </div>
             {/* <div className="relative flex items-center justify-center mb-3 z-10">
@@ -424,7 +434,11 @@ const HeroSection = () => {
             className=" p-8 rounded-xl w-full md:w-1/3"
             onClick={(e) => e.stopPropagation()} // Prevent modal close when clicking inside the modal
           >
-            <Buywithcard />
+            <Buywithcard
+              onClose={handleCloseCardModal2}
+              isWalletPopupOpen={isCardModalOpen}
+              setIsWalletPopupOpen={setIsCardModalOpen}
+            />
             <button
               onClick={handleCloseCardModal2}
               className="absolute md:top-[10%] md:right-1/3 right-1 top-[2%] text-white font-base text-xl z-10 transform transition duration-300 ease-in-out hover:rotate-180"

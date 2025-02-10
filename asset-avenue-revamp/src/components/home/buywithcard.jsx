@@ -3,7 +3,12 @@ import WalletPopup from "./walletPop";
 import PresalePopup from "./presalePopup"; // Import the PresalePopup component
 import { motion } from "framer-motion";
 
-const Buywithcard = ({ translations, onClose }) => {
+const Buywithcard = ({
+  translations,
+  onClose,
+  isWalletPopupOpen,
+  setIsWalletPopupOpen,
+}) => {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -11,7 +16,6 @@ const Buywithcard = ({ translations, onClose }) => {
     seconds: 0,
   });
   const [progress, setProgress] = useState(0);
-  const [isWalletPopupOpen, setIsWalletPopupOpen] = useState(false);
   const [isCryptoOpen, setIsCryptoOpen] = useState(false); // State for crypto pop-up
   const [usdAmount, setUsdAmount] = useState("");
   const [bestReceive, setBestReceive] = useState("");
@@ -182,7 +186,10 @@ const Buywithcard = ({ translations, onClose }) => {
           </div>
           <p className="text-[11px] uppercase font-thin text-center z-10 relative">
             Want to pay with Crypto Instead?{" "}
-            <span onClick={openCryptoPopup} className="cursor-pointer text-[#B8934D]">
+            <span
+              onClick={openCryptoPopup}
+              className="cursor-pointer text-[#B8934D]"
+            >
               CLICK HERE
             </span>
           </p>
