@@ -43,7 +43,12 @@ const PresalePopup = ({ translations, onClose }) => {
         return;
       }
     }
-    const tx = await investSol(publicKey, wallet.adapter, parseFloat(amount), currency);
+    const tx = await investSol(
+      publicKey,
+      wallet.adapter,
+      parseFloat(amount),
+      currency
+    );
     if (tx) {
       alert(`Investment successful! Transaction ID: ${tx}`);
     } else {
@@ -67,7 +72,12 @@ const PresalePopup = ({ translations, onClose }) => {
         return;
       }
     }
-    const tx = await buyAndStakeTokens(publicKey, wallet.adapter, amount, currency);
+    const tx = await buyAndStakeTokens(
+      publicKey,
+      wallet.adapter,
+      amount,
+      currency
+    );
     if (tx) {
       alert(`Staking successful! Transaction ID: ${tx}`);
     } else {
@@ -97,7 +107,9 @@ const PresalePopup = ({ translations, onClose }) => {
       const presaleData = await getPresaleInfo(publicKey);
       const stakingData = await getStakingInfo(publicKey);
       const maxSOL = 10;
-      let totalRaised = Number(Number(presaleData.solAmountRaised) / 1e9) + Number(Number(presaleData.usdcAmountRaised) / 1e6 / SOL_PRICE);
+      let totalRaised =
+        Number(Number(presaleData.solAmountRaised) / 1e9) +
+        Number(Number(presaleData.usdcAmountRaised) / 1e6 / SOL_PRICE);
       const progressValue = (totalRaised / maxSOL) * 100;
       setProgress(progressValue);
       setPresaleData(presaleData);
@@ -113,7 +125,9 @@ const PresalePopup = ({ translations, onClose }) => {
     const difference = targetDate - now;
     if (difference > 0) {
       const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const hours = Math.floor(
+        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
       const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((difference % (1000 * 60)) / 1000);
       setTimeLeft({ days, hours, minutes, seconds });
@@ -195,15 +209,22 @@ const PresalePopup = ({ translations, onClose }) => {
 
           <div className="flex justify-center font-bold py-1 text-xs md:text-[16px] mb-3 relative z-10">
             <span>
-              TOTAL SOL RAISED: {Number(presaleData.solAmountRaised) / 1e9} SOL ($
-              {(Number(presaleData.solAmountRaised) / 1e9 * SOL_PRICE).toFixed(2)})
+              TOTAL SOL RAISED: {Number(presaleData.solAmountRaised) / 1e9} SOL
+              ($
+              {(
+                (Number(presaleData.solAmountRaised) / 1e9) *
+                SOL_PRICE
+              ).toFixed(2)}
+              )
             </span>
           </div>
 
           <div className="relative flex items-center justify-center mb-1 z-10">
             <hr className="absolute w-1/6 left-0 border-t border-white" />
             <p className="z-10 px-2 text-xs md:text-[12px]">
-              {"1 AAV = " + Number(presaleData?.pricePerTokenInSol) / 1e9 + " SOL"}
+              {"1 AAV = " +
+                Number(presaleData?.pricePerTokenInSol) / 1e9 +
+                " SOL"}
             </p>
             <hr className="absolute w-1/6 right-0 border-t border-white" />
           </div>
@@ -232,14 +253,22 @@ const PresalePopup = ({ translations, onClose }) => {
                       className="p-2 hover:bg-gray-100 rounded-[10px] hover:rounded-b-none text-sm cursor-pointer flex items-center"
                       onClick={() => setCurrencyState("SOL")}
                     >
-                      <img src="/logo/solana.png" alt="SOL" className="w-5 h-5 mr-2" />
+                      <img
+                        src="/logo/solana.png"
+                        alt="SOL"
+                        className="w-5 h-5 mr-2"
+                      />
                       SOL
                     </li>
                     <li
                       className="p-2 hover:bg-gray-100 cursor-pointer rounded-[10px] hover:rounded-t-none text-sm flex items-center"
                       onClick={() => setCurrencyState("USD")}
                     >
-                      <img src="/logo/usdc.png" alt="USDC" className="w-5 h-5 mr-2" />
+                      <img
+                        src="/logo/usdc.png"
+                        alt="USDC"
+                        className="w-5 h-5 mr-2"
+                      />
                       USDC
                     </li>
                   </ul>
@@ -248,7 +277,6 @@ const PresalePopup = ({ translations, onClose }) => {
             </div>
 
             <div className="relative">
-             
               <input
                 type="number"
                 placeholder="Best you receive"
@@ -256,7 +284,7 @@ const PresalePopup = ({ translations, onClose }) => {
                 value={bestReceive}
                 readOnly
               />
-               <img
+              <img
                 src="/logo/asset.png" // Replace with your token image path
                 alt="Token"
                 className="absolute right-2 top-1/2 transform -translate-y-1/2 w-5 h-5"
@@ -269,7 +297,12 @@ const PresalePopup = ({ translations, onClose }) => {
               onClick={handleBuyAndStake}
               className="uppercase z-10 text-black text-[12px] font-bold py-3 px-6 rounded-[10px] w-full bg-gradient-to-br from-[#958648] to-[#FBE279] hover:opacity-80 disabled:opacity-50"
             >
-              {"STAKE FOR " + Math.floor(50_000 / (Number(stakingData?.totalTokensStaked) / 1e5) * 100) + " % Rewards" || "STAKE FOR 509% REWARDS"}
+              {"STAKE FOR " +
+                Math.floor(
+                  (50_000 / (Number(stakingData?.totalTokensStaked) / 1e5)) *
+                    100
+                ) +
+                " % Rewards" || "STAKE FOR 509% REWARDS"}
             </button>
 
             <button
@@ -302,7 +335,10 @@ const PresalePopup = ({ translations, onClose }) => {
           </div>
           <p className="text-[11px] uppercase font-thin text-center z-10 relative">
             Want to pay with Crypto Instead?{" "}
-            <span onClick={openCardPopup} className="cursor-pointer text-[#B8934D]">
+            <span
+              onClick={openCardPopup}
+              className="cursor-pointer text-[#B8934D]"
+            >
               CLICK HERE
             </span>
           </p>
@@ -348,7 +384,11 @@ const PresalePopup = ({ translations, onClose }) => {
             >
               X
             </button>
-            <Buywithcard onClose={() => setIsCardPopupOpen(false)} />
+            <Buywithcard
+              onClose={() => setIsCardPopupOpen(false)}
+              isWalletPopupOpen={isWalletPopupOpen}
+              setIsWalletPopupOpen={setIsWalletPopupOpen}
+            />
           </motion.div>
         </div>
       )}

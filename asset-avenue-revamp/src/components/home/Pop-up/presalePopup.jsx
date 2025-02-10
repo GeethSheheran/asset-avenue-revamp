@@ -255,7 +255,11 @@ const PresalePopup = ({ translations, onClose }) => {
           transition={{ duration: 0.3, ease: "easeOut" }}
           onClick={(e) => e.stopPropagation()}
         >
-          <Buywithcard onClose={() => setIsCardPopupOpen(false)} />
+          <Buywithcard
+            onClose={() => setIsCardPopupOpen(false)}
+            isWalletPopupOpen={isWalletPopupOpen}
+            setIsWalletPopupOpen={setIsWalletPopupOpen}
+          />
         </motion.div>
       )}
     </>
