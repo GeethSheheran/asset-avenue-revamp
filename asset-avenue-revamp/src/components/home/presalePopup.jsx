@@ -5,6 +5,7 @@ import Buywithcard from "./buywithcard";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { investSol, getPresaleInfo } from "../../utils/presale.ts";
 import { buyAndStakeTokens, getStakingInfo } from "../../utils/presale.ts";
+import { IoMdClose } from "react-icons/io";
 
 const PresalePopup = ({ translations, onClose }) => {
   const [timeLeft, setTimeLeft] = useState({
@@ -358,9 +359,9 @@ const PresalePopup = ({ translations, onClose }) => {
           >
             <button
               onClick={() => setIsWalletPopupOpen(false)}
-              className="absolute top-[10%] right-1/3 text-white font-base text-xl hover:rotate-180 transform transition duration-300 ease-in-out"
+              className="absolute top-[10%] right-1/3  bg-green-500 rounded-full p-2 font-base text-xl hover:rotate-180 transform transition duration-300 ease-in-out"
             >
-              X
+             <IoMdClose className="h-5 w-5 text-white" />
             </button>
             <WalletPopup onClose={() => setIsWalletPopupOpen(false)} />
           </motion.div>
@@ -380,14 +381,16 @@ const PresalePopup = ({ translations, onClose }) => {
           >
             <button
               onClick={() => setIsCardPopupOpen(false)}
-              className="absolute top-[10%] right-1/3 text-white font-base text-xl hover:rotate-180 transform transition duration-300 ease-in-out"
+              className="absolute top-[10%] right-1/3  bg-green-500 rounded-full p-2font-base text-xl hover:rotate-180 transform transition duration-300 ease-in-out"
             >
-              X
+               <IoMdClose className="h-5 w-5 text-white" />
             </button>
             <Buywithcard
               onClose={() => setIsCardPopupOpen(false)}
               isWalletPopupOpen={isWalletPopupOpen}
               setIsWalletPopupOpen={setIsWalletPopupOpen}
+              isCryptoOpen={isCardPopupOpen}
+              setIsCryptoOpen={setIsCardPopupOpen}
             />
           </motion.div>
         </div>

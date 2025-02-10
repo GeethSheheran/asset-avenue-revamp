@@ -6,6 +6,7 @@ import AnotherPopup from "./AnotherPopup";
 import solanaLogo from "/logo/solana.png";
 import eurLogo from "/logo/usdc.png";
 import WornPopup from "./WornPopup";
+import { IoMdClose } from "react-icons/io";
 
 const Buywithcard = ({ translations, onClose }) => {
   const [timeLeft, setTimeLeft] = useState({
@@ -269,9 +270,9 @@ const Buywithcard = ({ translations, onClose }) => {
           >
             <button
               onClick={() => setIsWalletPopupOpen(false)}
-              className="absolute top-[10%] right-1/3 text-white font-base text-xl hover:rotate-180 transform transition duration-300 ease-in-out"
+              className="absolute top-[10%] right-1/3  bg-green-500 rounded-full p-2 font-base text-xl hover:rotate-180 transform transition duration-300 ease-in-out"
             >
-              X
+               <IoMdClose className="h-5 w-5 text-white" />
             </button>
             <WalletPopup onClose={() => setIsWalletPopupOpen(false)} />
           </motion.div>

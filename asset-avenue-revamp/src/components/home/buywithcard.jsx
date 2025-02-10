@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import WalletPopup from "./walletPop";
 import PresalePopup from "./presalePopup"; // Import the PresalePopup component
 import { motion } from "framer-motion";
+import { IoMdClose } from "react-icons/io";
 
 const Buywithcard = ({
   translations,
   onClose,
   isWalletPopupOpen,
   setIsWalletPopupOpen,
+  isCryptoOpen,
+  setIsCryptoOpen,
 }) => {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -16,7 +19,6 @@ const Buywithcard = ({
     seconds: 0,
   });
   const [progress, setProgress] = useState(0);
-  const [isCryptoOpen, setIsCryptoOpen] = useState(false); // State for crypto pop-up
   const [usdAmount, setUsdAmount] = useState("");
   const [bestReceive, setBestReceive] = useState("");
   const [error, setError] = useState("");
@@ -217,9 +219,9 @@ const Buywithcard = ({
                 setIsWalletPopupOpen(false);
                 setIsCryptoOpen(false);
               }}
-              className="absolute top-[10%] right-1/3 text-white font-base text-xl hover:rotate-180 transform transition duration-300 ease-in-out"
+              className="absolute top-[10%] right-1/3  bg-green-500 rounded-full p-2 font-base text-xl hover:rotate-180 transform transition duration-300 ease-in-out"
             >
-              X
+              <IoMdClose className="h-5 w-5 text-white" />
             </button>
 
             {/* Wallet Popup or Crypto Popup Content */}

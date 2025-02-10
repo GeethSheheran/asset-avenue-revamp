@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import WalletConnect from "./home/Pop-up/Connect";
 import { motion } from "framer-motion";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+import { IoMdClose } from "react-icons/io";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -312,9 +313,9 @@ const Navbar = () => {
           >
             <button
               onClick={handleCloseWalletPopup}
-              className="absolute top-[10%] right-1/3 text-white font-base text-xl z-10 transform transition duration-300 ease-in-out hover:rotate-180"
+              className="absolute top-[10%] right-1/3  bg-green-500 rounded-full p-2 font-base text-xl z-10 transform transition duration-300 ease-in-out hover:rotate-180"
             >
-              X
+              <IoMdClose className="h-5 w-5 text-white" />
             </button>
             <WalletConnect />
           </motion.div>

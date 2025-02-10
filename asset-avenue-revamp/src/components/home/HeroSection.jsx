@@ -7,6 +7,9 @@ import { motion } from "framer-motion";
 import Buywithcard from "./buywithcard";
 import { getPresaleInfo, getStakingInfo } from "../../utils/presale.ts";
 import { useWallet } from "@solana/wallet-adapter-react";
+import {
+  IoMdClose,
+} from "react-icons/io";
 
 const HeroSection = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -384,9 +387,9 @@ const HeroSection = () => {
             {/* Close button */}
             <button
               onClick={handleCloseModal}
-              className="absolute top-[10%] right-[0] text-white font-base text-xl z-10 transform transition duration-300 ease-in-out hover:rotate-180"
+              className="absolute top-[10%] right-[0] bg-green-500 rounded-full p-2 font-base text-xl z-10 transform transition duration-300 ease-in-out hover:rotate-180"
             >
-              X
+              <IoMdClose className="h-5 w-5 text-white" />
             </button>
 
             <PresalePopup />
@@ -413,9 +416,9 @@ const HeroSection = () => {
             <WalletPopup />
             <button
               onClick={handleCloseCardModal}
-              className="absolute top-[10%] right-1/3 text-white font-base text-xl z-10 transform transition duration-300 ease-in-out hover:rotate-180"
+              className="absolute top-[10%] right-1/3 bg-green-500 rounded-full p-2 font-base text-xl z-10 transform transition duration-300 ease-in-out hover:rotate-180"
             >
-              X
+              <IoMdClose className="h-5 w-5 text-white" />
             </button>
           </motion.div>
         </div>
@@ -438,12 +441,14 @@ const HeroSection = () => {
               onClose={handleCloseCardModal2}
               isWalletPopupOpen={isCardModalOpen}
               setIsWalletPopupOpen={setIsCardModalOpen}
+              isCryptoOpen={isModalOpen}
+              setIsCryptoOpen={setIsModalOpen}
             />
             <button
               onClick={handleCloseCardModal2}
-              className="absolute md:top-[10%] md:right-1/3 right-1 top-[2%] text-white font-base text-xl z-10 transform transition duration-300 ease-in-out hover:rotate-180"
+              className="absolute md:top-[10%] md:right-1/3 right-1 top-[2%] bg-green-500 rounded-full p-2 font-base text-xl z-10 transform transition duration-300 ease-in-out hover:rotate-180"
             >
-              X
+              <IoMdClose className="h-5 w-5 text-white" />
             </button>
           </motion.div>
         </div>
