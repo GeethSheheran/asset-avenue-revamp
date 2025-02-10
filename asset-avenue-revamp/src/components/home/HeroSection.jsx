@@ -7,9 +7,7 @@ import { motion } from "framer-motion";
 import Buywithcard from "./buywithcard";
 import { getPresaleInfo, getStakingInfo } from "../../utils/presale.ts";
 import { useWallet } from "@solana/wallet-adapter-react";
-import {
-  IoMdClose,
-} from "react-icons/io";
+import { IoMdClose } from "react-icons/io";
 
 const HeroSection = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -381,18 +379,24 @@ const HeroSection = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="p-8 rounded-xl w-full md:w-1/3 relative"
+            className="p-8 rounded-xl w-full md:w-1/3 relative flex flex-col"
             onClick={(e) => e.stopPropagation()} // Prevent modal close when clicking inside the modal
           >
             {/* Close button */}
             <button
               onClick={handleCloseModal}
-              className="absolute top-[10%] right-[0] bg-green-500 rounded-full p-2 font-base text-xl z-10 transform transition duration-300 ease-in-out hover:rotate-180"
+              className="bg-green-500 rounded-full p-2 self-end -me-10 font-base text-xl z-10 transform transition duration-300 ease-in-out hover:rotate-180"
             >
               <IoMdClose className="h-5 w-5 text-white" />
             </button>
 
-            <PresalePopup />
+            <PresalePopup
+              onClose={handleCloseModal}
+              isWalletPopupOpen={isCardModalOpen}
+              setIsWalletPopupOpen={setIsCardModalOpen}
+              isCardPopupOpen={isCardModal2Open}
+              setIsCardPopupOpen={setIsCardModal2Open}
+            />
             <div className="flex justify-center space-x-4 mt-4">
               {/* You can add other content here if necessary */}
             </div>
@@ -410,16 +414,16 @@ const HeroSection = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className=" p-8 rounded-xl w-full md:w-1/3"
+            className=" p-8 rounded-xl w-full md:w-1/3 flex flex-col"
             onClick={(e) => e.stopPropagation()} // Prevent modal close when clicking inside the modal
           >
-            <WalletPopup />
             <button
               onClick={handleCloseCardModal}
-              className="absolute top-[10%] right-1/3 bg-green-500 rounded-full p-2 font-base text-xl z-10 transform transition duration-300 ease-in-out hover:rotate-180"
+              className="bg-green-500 rounded-full p-2 self-end -me-10 font-base text-xl z-10 transform transition duration-300 ease-in-out hover:rotate-180"
             >
               <IoMdClose className="h-5 w-5 text-white" />
             </button>
+            <WalletPopup />
           </motion.div>
         </div>
       )}
@@ -434,9 +438,15 @@ const HeroSection = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className=" p-8 rounded-xl w-full md:w-1/3"
+            className="p-8 rounded-xl w-full md:w-1/3 flex flex-col"
             onClick={(e) => e.stopPropagation()} // Prevent modal close when clicking inside the modal
           >
+            <button
+              onClick={handleCloseCardModal2}
+              className="bg-green-500 rounded-full p-2 self-end -me-10 font-base text-xl z-10 transform transition duration-300 ease-in-out hover:rotate-180"
+            >
+              <IoMdClose className="h-5 w-5 text-white" />
+            </button>
             <Buywithcard
               onClose={handleCloseCardModal2}
               isWalletPopupOpen={isCardModalOpen}
@@ -444,12 +454,6 @@ const HeroSection = () => {
               isCryptoOpen={isModalOpen}
               setIsCryptoOpen={setIsModalOpen}
             />
-            <button
-              onClick={handleCloseCardModal2}
-              className="absolute md:top-[10%] md:right-1/3 right-1 top-[2%] bg-green-500 rounded-full p-2 font-base text-xl z-10 transform transition duration-300 ease-in-out hover:rotate-180"
-            >
-              <IoMdClose className="h-5 w-5 text-white" />
-            </button>
           </motion.div>
         </div>
       )}
