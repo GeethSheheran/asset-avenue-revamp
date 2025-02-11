@@ -244,8 +244,13 @@ const PresalePopup = ({
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               className="p-2 w-[100px] rounded-[10px] border text-black text-sm bg-white focus:border-green-900 focus:ring-1 focus:ring-green-500 outline-none flex items-center"
             >
+              <img
+                src={`/logo/${currency === "SOL" ? "solana" : "usdc"}.png`}
+                alt="SOL"
+                className="w-5 h-5 mr-2"
+              />
               {currency}
-              <span className="ml-8">▼</span>
+              <span className="ml-4">▼</span>
             </button>
             {isDropdownOpen && (
               <ul className="absolute mt-1 w-full bg-white border text-black text-sm rounded-[10px] shadow-lg z-20">
@@ -279,7 +284,7 @@ const PresalePopup = ({
         <div className="relative">
           <input
             type="number"
-            placeholder="Best you receive"
+            placeholder="AAV you will receive"
             className="p-2 rounded-[10px] text-black text-sm border focus:border-green-900 focus:ring-1 focus:ring-green-500 outline-none w-full"
             value={bestReceive}
             readOnly
