@@ -112,12 +112,13 @@ const HeroSection = () => {
   // Calculate progress bar value based on total SOL raised
   useEffect(async () => {
     const presaleData = await getPresaleInfo(publicKey);
-    const maxSOL = 18; // Example: Maximum SOL to be raised (adjust as needed)
+    // const maxSOL = 18; // Example: Maximum SOL to be raised (adjust as needed)
+    const maxUsd = 10_000
     let totalRaised =
-      Number(Number(presaleData.solAmountRaised) / 1e9) +
-      Number(Number(presaleData.usdcAmountRaised) / 1e6 / SOL_PRICE);
+      Number(Number(presaleData.solAmountRaised) / 1e9 * SOL_PRICE) +
+      Number(Number(presaleData.usdcAmountRaised) / 1e6 );
     console.log("totalRaised", totalRaised);
-    const progressValue = (totalRaised / maxSOL) * 100;
+    const progressValue = (totalRaised / maxUsd) * 100;
 
     const stakingData = await getStakingInfo(publicKey);
 

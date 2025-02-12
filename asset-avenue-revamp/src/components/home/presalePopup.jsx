@@ -108,11 +108,11 @@ const PresalePopup = ({
     const fetchData = async () => {
       const presaleData = await getPresaleInfo(publicKey);
       const stakingData = await getStakingInfo(publicKey);
-      const maxSOL = 10;
+      const maxUsd = 10_000
       let totalRaised =
-        Number(Number(presaleData.solAmountRaised) / 1e9) +
-        Number(Number(presaleData.usdcAmountRaised) / 1e6 / SOL_PRICE);
-      const progressValue = (totalRaised / maxSOL) * 100;
+        Number(Number(presaleData.solAmountRaised) / 1e9) * SOL_PRICE+
+        Number(Number(presaleData.usdcAmountRaised) / 1e6 );
+      const progressValue = (totalRaised / maxUsd) * 100;
       setProgress(progressValue);
       setPresaleData(presaleData);
       setStakingData(stakingData);
