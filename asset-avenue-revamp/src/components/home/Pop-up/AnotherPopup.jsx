@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import WornPopup from "./WornPopup"; // Import WornPopup
 
 const AnotherPopup = ({ onClose }) => {
@@ -41,12 +41,6 @@ const AnotherPopup = ({ onClose }) => {
       <p className="text-sm md:text-[16px] font-base max-w-l mx-auto mb-6">
         Please wait while we are initializing the <br /> wert widget
       </p>
-      {/* <button
-        className="bg-[#CC3300] hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg text-[11px] uppercase"
-        onClick={handleClose}
-      >
-        Cancel initializing
-      </button> */}
     </div>
   );
 };
