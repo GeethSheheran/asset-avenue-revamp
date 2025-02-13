@@ -9,6 +9,12 @@ import { getPresaleInfo, getStakingInfo } from "../../utils/presale.ts";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { IoMdClose } from "react-icons/io";
 
+const breakpoints = [
+  25318, 31647, 39387, 48446, 58729, 70150, 82637, 96130, 110573, 125911,
+  142092, 159067, 176791, 195222, 214315, 234027, 254316, 275144, 296473,
+  318267, 340490, 363107, 386085, 409391,
+];
+
 const HeroSection = () => {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -110,22 +116,24 @@ const HeroSection = () => {
   }, []);
 
   // Calculate progress bar value based on total SOL raised
-  useEffect(async () => {
-    const presaleData = await getPresaleInfo(publicKey);
-    // const maxSOL = 18; // Example: Maximum SOL to be raised (adjust as needed)
-    const maxUsd = 10_000
-    let totalRaised =
-      Number(Number(presaleData.solAmountRaised) / 1e9 * SOL_PRICE) +
-      Number(Number(presaleData.usdcAmountRaised) / 1e6 );
-    console.log("totalRaised", totalRaised);
-    const progressValue = (totalRaised / maxUsd) * 100;
+  useEffect(() => {
+    async function fetchData() {
+      const presaleData = await getPresaleInfo(publicKey);
+      let totalRaised =
+        Number((Number(presaleData.solAmountRaised) / 1e9) * SOL_PRICE) +
+        Number(Number(presaleData.usdcAmountRaised) / 1e6);
+      const maxUsd = breakpoints.filter((value) => value > totalRaised)[0];
 
-    const stakingData = await getStakingInfo(publicKey);
+      const progressValue = (totalRaised / maxUsd) * 100;
+      const stakingData = await getStakingInfo(publicKey);
 
-    setProgress(progressValue);
-    setStakingData(stakingData);
-    setPresaleData(presaleData);
-  }, []);
+      setProgress(progressValue);
+      setStakingData(stakingData);
+      setPresaleData(presaleData);
+    }
+
+    fetchData();
+  }, [publicKey]);
 
   // Function to handle modal close
   const handleCloseModal = () => {
@@ -304,10 +312,11 @@ const HeroSection = () => {
             <div className="relative flex items-center justify-center mb-3 z-10">
               <hr className="absolute w-1/6 left-0 border-t border-white" />
               <p className="z-10 px-2 text-xs md:text-[12px]">
+                {"1 AAV = " +
+                  Number(presaleData?.pricePerTokenInUsdc) / 1e6 +
+                  " USDC"}
+              </p>
 
-              {"1 AAV = " + Number(presaleData?.pricePerTokenInUsdc)/1e6 + " USDC" }
-               </p>
-              
               <hr className="absolute w-1/6 right-0 border-t border-white" />
             </div>
 
