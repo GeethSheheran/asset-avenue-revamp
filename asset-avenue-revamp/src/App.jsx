@@ -11,6 +11,7 @@ import Logos from "./components/home/logos";
 import Footer from "./components/Footer";
 import HeroSection from "./components/home/HeroSection";
 import PieChart from "./components/home/pieChart";
+import { ToastContainer, Bounce } from "react-toastify";
 
 function App() {
   useEffect(() => {
@@ -30,6 +31,20 @@ function App() {
       <HouseDetails />
       <Logos />
       <Footer />
+
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+        transition={Bounce}
+      />
     </div>
   );
 }
