@@ -1,7 +1,10 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { investSol, getPresaleInfo } from "../../utils/presale.ts";
 import { buyAndStakeTokens, getStakingInfo } from "../../utils/presale.ts";
+import { toast } from "react-toastify";
 
 const PresalePopup = ({
   translations,
@@ -21,7 +24,6 @@ const PresalePopup = ({
   const { publicKey, connected, wallet } = useWallet();
   const [amount, setAmount] = useState("");
   const [currency, setCurrency] = useState("SOL");
-  const [startTime, setStartTime] = useState("");
   const [bestReceive, setBestReceive] = useState(0);
   const [error, setError] = useState("");
   const [presaleData, setPresaleData] = useState("");
@@ -31,17 +33,17 @@ const PresalePopup = ({
 
   const handleBuy = async () => {
     if (!connected) {
-      alert("Please connect your wallet first.");
+      toast.error("Please connect your wallet first.");
       return;
     }
     if (currency == "SOL") {
       if (!amount || parseFloat(amount) < 0.5 || parseFloat(amount) > 200) {
-        alert("Investment must be between 0.5 SOL and 200 SOL.");
+        toast.error("Investment must be between 0.5 SOL and 200 SOL.");
         return;
       }
     } else {
       if (!amount || parseFloat(amount) < 100 || parseFloat(amount) > 20_000) {
-        alert("Investment must be between 100 USDC and 20,000 USDC.");
+        toast.error("Investment must be between 100 USDC and 20,000 USDC.");
         return;
       }
     }
@@ -52,25 +54,25 @@ const PresalePopup = ({
       currency
     );
     if (tx) {
-      alert(`Investment successful! Transaction ID: ${tx}`);
+      toast.success(`Investment successful! Transaction ID: ${tx}`);
     } else {
-      alert("Investment failed.");
+      toast.error("Investment failed.");
     }
   };
 
   const handleBuyAndStake = async () => {
     if (!connected) {
-      alert("Please connect your wallet first.");
+      toast.error("Please connect your wallet first.");
       return;
     }
     if (currency == "SOL") {
       if (!amount || parseFloat(amount) < 0.5 || parseFloat(amount) > 200) {
-        alert("Investment must be between 0.5 SOL and 200 SOL.");
+        toast.error("Investment must be between 0.5 SOL and 200 SOL.");
         return;
       }
     } else {
       if (!amount || parseFloat(amount) < 100 || parseFloat(amount) > 20_000) {
-        alert("Investment must be between 100 USDC and 20,000 USDC.");
+        toast.error("Investment must be between 100 USDC and 20,000 USDC.");
         return;
       }
     }
@@ -81,9 +83,9 @@ const PresalePopup = ({
       currency
     );
     if (tx) {
-      alert(`Staking successful! Transaction ID: ${tx}`);
+      toast.success(`Staking successful! Transaction ID: ${tx}`);
     } else {
-      alert("Staking failed.");
+      toast.error("Staking failed.");
     }
   };
 
@@ -108,10 +110,10 @@ const PresalePopup = ({
     const fetchData = async () => {
       const presaleData = await getPresaleInfo(publicKey);
       const stakingData = await getStakingInfo(publicKey);
-      const maxUsd = 10_000
+      const maxUsd = 10_000;
       let totalRaised =
-        Number(Number(presaleData.solAmountRaised) / 1e9) * SOL_PRICE+
-        Number(Number(presaleData.usdcAmountRaised) / 1e6 );
+        Number(Number(presaleData.solAmountRaised) / 1e9) * SOL_PRICE +
+        Number(Number(presaleData.usdcAmountRaised) / 1e6);
       const progressValue = (totalRaised / maxUsd) * 100;
       setProgress(progressValue);
       setPresaleData(presaleData);

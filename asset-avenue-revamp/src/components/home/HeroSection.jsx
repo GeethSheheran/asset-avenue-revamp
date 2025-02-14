@@ -8,6 +8,7 @@ import Buywithcard from "./buywithcard";
 import { getPresaleInfo, getStakingInfo } from "../../utils/presale.ts";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { IoMdClose } from "react-icons/io";
+import { toast } from "react-toastify";
 
 const breakpoints = [
   25318, 31647, 39387, 48446, 58729, 70150, 82637, 96130, 110573, 125911,
@@ -143,7 +144,7 @@ const HeroSection = () => {
   // Function to handle modal open
   const handleOpenModal = () => {
     if (!connected) {
-      alert("Please connect your wallet first.");
+      toast.error("Please connect your wallet first.");
       return;
     }
     setIsModalOpen(true);
@@ -287,7 +288,7 @@ const HeroSection = () => {
             <div className="relative w-full bg-white rounded-full h-2.5 mb-3">
               <div
                 className="bg-[#22C55E] h-2.5 rounded-full"
-                style={{ width: `${progress}%` }}
+                style={{ width: `${progress < 75 ? 75 : progress}%` }}
               ></div>
             </div>
             <div className="flex justify-between text-[16px] md:text-sm mb-3 z-10 relative">
