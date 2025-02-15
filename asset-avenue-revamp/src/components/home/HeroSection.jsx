@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable no-unused-vars */
+import { useState, useEffect } from "react";
 import ImageSlider from "./ImageSlider";
-import TokenPresalePopup from "./presalePopup";
-import PresalePopup from "./presalePopup";
 import WalletPopup from "./walletPop";
 import { motion } from "framer-motion";
 import Buywithcard from "./buywithcard";
@@ -9,6 +8,7 @@ import { getPresaleInfo, getStakingInfo } from "../../utils/presale.ts";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { IoMdClose } from "react-icons/io";
 import { toast } from "react-toastify";
+import PresalePopupForm from "./presalePopupForm'.jsx";
 
 const breakpoints = [
   25318, 31647, 39387, 48446, 58729, 70150, 82637, 96130, 110573, 125911,
@@ -135,11 +135,6 @@ const HeroSection = () => {
 
     fetchData();
   }, [publicKey]);
-
-  // Function to handle modal close
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
 
   // Function to handle modal open
   const handleOpenModal = () => {
@@ -268,6 +263,7 @@ const HeroSection = () => {
                 </div>
               </div>
             </div>
+
             <div className="flex justify-center text-[16px] font-bold md:text-sm mb-3 z-10 relative">
               <span>
                 TOTAL SOL RAISED: {Number(presaleData.solAmountRaised) / 1e9}{" "}
@@ -291,128 +287,98 @@ const HeroSection = () => {
                 style={{ width: `${progress < 75 ? 75 : progress}%` }}
               ></div>
             </div>
-            <div className="flex justify-between text-[16px] md:text-sm mb-3 z-10 relative">
-              <span>{defaultText.minBuy}</span>
-              <span>{defaultText.maxBuy}</span>
-            </div>
-            <div className="flex justify-between text-[16px] md:text-sm mb-3 z-10 relative">
-              <span>Min buy: 100 USDC</span>
-              <span>Max buy: 20,000 USDC</span>
-            </div>
+            {!isModalOpen && (
+              <>
+                <div className="flex justify-between text-[16px] md:text-sm mb-3 z-10 relative">
+                  <span>{defaultText.minBuy}</span>
+                  <span>{defaultText.maxBuy}</span>
+                </div>
+                <div className="flex justify-between text-[16px] md:text-sm mb-3 z-10 relative">
+                  <span>Min buy: 100 USDC</span>
+                  <span>Max buy: 20,000 USDC</span>
+                </div>
 
-            <div className="relative flex items-center justify-center mb-3 z-10">
-              <hr className="absolute w-1/6 left-0 border-t border-white" />
-              <p className="z-10 px-2 text-[16px] md:text-sm">
-                {"1 AAV = " +
-                  Number(presaleData?.pricePerTokenInSol) / 1e9 +
-                  " SOL"}
-              </p>
+                <div className="relative flex items-center justify-center mb-3 z-10">
+                  <hr className="absolute w-1/6 left-0 border-t border-white" />
+                  <p className="z-10 px-2 text-[16px] md:text-sm">
+                    {"1 AAV = " +
+                      Number(presaleData?.pricePerTokenInSol) / 1e9 +
+                      " SOL"}
+                  </p>
 
-              <hr className="absolute w-1/6 right-0 border-t border-white" />
-            </div>
-            <div className="relative flex items-center justify-center mb-3 z-10">
-              <hr className="absolute w-1/6 left-0 border-t border-white" />
-              <p className="z-10 px-2 text-xs md:text-[12px]">
-                {"1 AAV = " +
-                  Number(presaleData?.pricePerTokenInUsdc) / 1e6 +
-                  " USDC"}
-              </p>
+                  <hr className="absolute w-1/6 right-0 border-t border-white" />
+                </div>
+                <div className="relative flex items-center justify-center mb-3 z-10">
+                  <hr className="absolute w-1/6 left-0 border-t border-white" />
+                  <p className="z-10 px-2 text-xs md:text-[12px]">
+                    {"1 AAV = " +
+                      Number(presaleData?.pricePerTokenInUsdc) / 1e6 +
+                      " USDC"}
+                  </p>
 
-              <hr className="absolute w-1/6 right-0 border-t border-white" />
-            </div>
+                  <hr className="absolute w-1/6 right-0 border-t border-white" />
+                </div>
 
-            <div className="relative pt-4 flex flex-col md:flex-row justify-between space-y-4 md:space-y-0 md:space-x-4 z-10 relative">
-              <div className="relative w-full  md:w-1/2">
-                <img
-                  src="/hero/1.png"
-                  alt="Visa"
-                  className="absolute top-[-30px] -left-10 -md:left-[100px] right-0 w-full h-[30px] object-contain z-0 hidden sm:block"
-                />
-                <button
-                  onClick={handleOpenCardModal2} // Trigger modal on click
-                  className="relative uppercase z-10 font-bold md:text-[11px] bg-[#3FAC55] hover:bg-[#11823B] text-white py-3 px-4 rounded-[10px] w-full"
+                <div className="relative pt-4 flex flex-col md:flex-row justify-between space-y-4 md:space-y-0 md:space-x-4 z-10">
+                  <div className="relative w-full  md:w-1/2">
+                    <img
+                      src="/hero/1.png"
+                      alt="Visa"
+                      className="absolute top-[-30px] -left-10 -md:left-[100px] right-0 w-full h-[30px] object-contain z-0 hidden sm:block"
+                    />
+                    <button
+                      onClick={handleOpenCardModal2} // Trigger modal on click
+                      className="relative uppercase z-10 font-bold md:text-[11px] bg-[#3FAC55] hover:bg-[#11823B] text-white py-3 px-4 rounded-[10px] w-full"
+                    >
+                      {defaultText.buyWithCard}
+                    </button>
+                  </div>
+                  <div className="relative w-full md:w-1/2">
+                    <img
+                      src="hero/3.png"
+                      alt="Crypto"
+                      className="absolute top-[-25px] md:left-[40px]  left-10 right-0 w-full h-[30px] object-contain z-0 hidden sm:block"
+                    />
+                    <button
+                      onClick={handleOpenModal} // Trigger modal on click
+                      className="relative uppercase z-10  md:text-[11px] text-black font-bold py-3 px-6 rounded-[10px] w-full bg-gradient-to-br from-[#958648] to-[#FBE279] hover:opacity-80"
+                      style={{
+                        background:
+                          "linear-gradient(212.98deg, #958648 -92.97%, #FBE279 187.71%)",
+                      }}
+                    >
+                      {defaultText.buyWithCrypto}
+                    </button>
+                  </div>
+                </div>
+
+                <p
+                  onClick={handleOpenCardModal} // Trigger modal on click
+                  className="text-[12px] text-center underline font-thin mt-6 z-10 relative cursor-pointer"
                 >
-                  {defaultText.buyWithCard}
-                </button>
-              </div>
-              <div className="relative w-full md:w-1/2">
-                <img
-                  src="hero/3.png"
-                  alt="Crypto"
-                  className="absolute top-[-25px] md:left-[40px]  left-10 right-0 w-full h-[30px] object-contain z-0 hidden sm:block"
-                />
-                <button
-                  onClick={handleOpenModal} // Trigger modal on click
-                  className="relative uppercase z-10  md:text-[11px] text-black font-bold py-3 px-6 rounded-[10px] w-full bg-gradient-to-br from-[#958648] to-[#FBE279] hover:opacity-80"
-                  style={{
-                    background:
-                      "linear-gradient(212.98deg, #958648 -92.97%, #FBE279 187.71%)",
-                  }}
-                >
-                  {defaultText.buyWithCrypto}
-                </button>
-              </div>
-            </div>
+                  {defaultText.dontHaveWallet}
+                </p>
 
-            <p
-              onClick={handleOpenCardModal} // Trigger modal on click
-              className="text-[12px] text-center underline font-thin mt-6 z-10 relative cursor-pointer"
-            >
-              {defaultText.dontHaveWallet}
-            </p>
+                <div className="flex justify-center mt-4 z-10 relative">
+                  <a
+                    href="https://contractwolf.io/projects/asset-avenue"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="/logo/contract.png"
+                      alt="Auditor Logo"
+                      className="w-[150px] h-auto object-contain"
+                    />
+                  </a>
+                </div>
+              </>
+            )}
 
-            <div className="flex justify-center mt-4 z-10 relative">
-              <a
-                href="https://contractwolf.io/projects/asset-avenue"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="/logo/contract.png"
-                  alt="Auditor Logo"
-                  className="w-[150px] h-auto object-contain"
-                />
-              </a>
-            </div>
+            {isModalOpen && <PresalePopupForm />}
           </div>
         </div>
       </div>
-
-      {/* Modal Component */}
-      {isModalOpen && (
-        <div
-          className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-80 flex justify-center items-center z-50"
-          onClick={handleCloseModal} // Close modal on background click
-        >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="p-8 rounded-xl w-full md:w-1/3 relative flex flex-col"
-            onClick={(e) => e.stopPropagation()} // Prevent modal close when clicking inside the modal
-          >
-            {/* Close button */}
-            <button
-              onClick={handleCloseModal}
-              className="bg-green-500 rounded-full p-2 self-end -me-10 font-base text-xl z-10 transform transition duration-300 ease-in-out hover:rotate-180"
-            >
-              <IoMdClose className="h-5 w-5 text-white" />
-            </button>
-
-            <PresalePopup
-              onClose={handleCloseModal}
-              isWalletPopupOpen={isCardModalOpen}
-              setIsWalletPopupOpen={setIsCardModalOpen}
-              isCardPopupOpen={isCardModal2Open}
-              setIsCardPopupOpen={setIsCardModal2Open}
-            />
-            <div className="flex justify-center space-x-4 mt-4">
-              {/* You can add other content here if necessary */}
-            </div>
-          </motion.div>
-        </div>
-      )}
 
       {isCardModalOpen && (
         <div
