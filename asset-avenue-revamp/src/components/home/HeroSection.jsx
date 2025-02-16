@@ -284,7 +284,7 @@ const HeroSection = () => {
             <div className="relative w-full bg-white rounded-full h-2.5 mb-3">
               <div
                 className="bg-[#22C55E] h-2.5 rounded-full"
-                style={{ width: `${progress < 75 ? 75 : progress}%` }}
+                style={{ width: `${75 + progress / 4}%` }}
               ></div>
             </div>
             {!isModalOpen && (
