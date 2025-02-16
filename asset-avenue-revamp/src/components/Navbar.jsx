@@ -143,7 +143,9 @@ const Navbar = () => {
             CONNECT WALLET
             
           </button> */}
-          <WalletMultiButton style={{ height: "36px" }} />
+          <WalletMultiButton style={{ height: "36px" }}>
+            Connect Wallet
+          </WalletMultiButton>
 
           {/* Custom Dropdown for Language */}
           <div className="relative">

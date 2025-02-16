@@ -11,7 +11,7 @@ const PresalePopupForm = ({ translations }) => {
   const { publicKey, connected, wallet } = useWallet();
   const [amount, setAmount] = useState("");
   const [currency, setCurrency] = useState("SOL");
-  const [bestReceive, setBestReceive] = useState(0);
+  const [bestReceive, setBestReceive] = useState(null);
   const [error, setError] = useState("");
   const [presaleData, setPresaleData] = useState("");
   const [isSuccessShow, setIsSuccessShow] = useState(false);
