@@ -123,6 +123,7 @@ const HeroSection = () => {
       let totalRaised =
         Number((Number(presaleData.solAmountRaised) / 1e9) * SOL_PRICE) +
         Number(Number(presaleData.usdcAmountRaised) / 1e6);
+      totalRaised = totalRaised + 24317;
       const maxUsd = breakpoints.filter((value) => value > totalRaised)[0];
 
       const progressValue = (totalRaised / maxUsd) * 100;
@@ -266,25 +267,26 @@ const HeroSection = () => {
 
             <div className="flex justify-center text-[16px] font-bold md:text-sm mb-3 z-10 relative">
               <span>
-                TOTAL SOL RAISED: {Number(presaleData.solAmountRaised) / 1e9}{" "}
-                SOL ($
+                Total USD raised : $
                 {(
-                  (Number(presaleData.solAmountRaised) / 1e9) *
-                  SOL_PRICE
-                ).toFixed(2)}
-                )
-              </span>
-            </div>
-            <div className="flex justify-center text-[16px] font-bold md:text-sm mb-3 z-10 relative">
-              <span>
-                TOTAL USDC RAISED: {Number(presaleData.usdcAmountRaised) / 1e6}{" "}
-                USDC
+                  (Number(presaleData.solAmountRaised) / 1e9) * SOL_PRICE +
+                  24317
+                ).toFixed(2)}{" "}
+                / $
+                {breakpoints
+                  .filter(
+                    (value) =>
+                      value >
+                      (Number(presaleData.solAmountRaised) / 1e9) * SOL_PRICE +
+                        24317
+                  )[0]
+                  ?.toFixed(2)}
               </span>
             </div>
             <div className="relative w-full bg-white rounded-full h-2.5 mb-3">
               <div
                 className="bg-[#22C55E] h-2.5 rounded-full"
-                style={{ width: `${75 + progress / 4}%` }}
+                style={{ width: `${progress}%` }}
               ></div>
             </div>
             {!isModalOpen && (
@@ -293,10 +295,6 @@ const HeroSection = () => {
                   <span>{defaultText.minBuy}</span>
                   <span>{defaultText.maxBuy}</span>
                 </div>
-                <div className="flex justify-between text-[16px] md:text-sm mb-3 z-10 relative">
-                  <span>Min buy: 100 USDC</span>
-                  <span>Max buy: 20,000 USDC</span>
-                </div>
 
                 <div className="relative flex items-center justify-center mb-3 z-10">
                   <hr className="absolute w-1/6 left-0 border-t border-white" />
@@ -304,16 +302,6 @@ const HeroSection = () => {
                     {"1 AAV = " +
                       Number(presaleData?.pricePerTokenInSol) / 1e9 +
                       " SOL"}
-                  </p>
-
-                  <hr className="absolute w-1/6 right-0 border-t border-white" />
-                </div>
-                <div className="relative flex items-center justify-center mb-3 z-10">
-                  <hr className="absolute w-1/6 left-0 border-t border-white" />
-                  <p className="z-10 px-2 text-xs md:text-[12px]">
-                    {"1 AAV = " +
-                      Number(presaleData?.pricePerTokenInUsdc) / 1e6 +
-                      " USDC"}
                   </p>
 
                   <hr className="absolute w-1/6 right-0 border-t border-white" />
@@ -337,8 +325,9 @@ const HeroSection = () => {
                     <img
                       src="hero/3.png"
                       alt="Crypto"
-                      className="absolute top-[-25px] md:left-[40px]  left-10 right-0 w-full h-[30px] object-contain z-0 hidden sm:block"
+                      className="absolute sr-only top-[-25px] md:left-[40px]  left-10 right-0 w-full h-[30px] object-contain z-0 hidden sm:block"
                     />
+
                     <button
                       onClick={handleOpenModal} // Trigger modal on click
                       className="relative uppercase z-10  md:text-[11px] text-black font-bold py-3 px-6 rounded-[10px] w-full bg-gradient-to-br from-[#958648] to-[#FBE279] hover:opacity-80"
@@ -376,6 +365,19 @@ const HeroSection = () => {
             )}
 
             {isModalOpen && <PresalePopupForm />}
+            {isModalOpen && (
+              <div className="mt-3 flex justify-center text-xs font-medium">
+                <button
+                  onClick={() => {
+                    setIsModalOpen(false);
+                    setIsCardModal2Open(true);
+                  }}
+                  className="z-[99999]"
+                >
+                  {defaultText.buyWithCard}
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
