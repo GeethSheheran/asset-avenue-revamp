@@ -5,17 +5,16 @@ import { useWallet } from "@solana/wallet-adapter-react";
 import { investSol, getPresaleInfo } from "../../utils/presale.ts";
 import { buyAndStakeTokens, getStakingInfo } from "../../utils/presale.ts";
 import { toast } from "react-toastify";
+import TransactionHash from "./alert/TransactionHash.jsx";
 
-const PresalePopupForm = ({
-  translations,
-}) => {
+const PresalePopupForm = ({ translations }) => {
   const { publicKey, connected, wallet } = useWallet();
   const [amount, setAmount] = useState("");
   const [currency, setCurrency] = useState("SOL");
   const [bestReceive, setBestReceive] = useState(0);
   const [error, setError] = useState("");
   const [presaleData, setPresaleData] = useState("");
-  const SOL_PRICE = 210;
+  const [isSuccessShow, setIsSuccessShow] = useState(false);
   const [stakingData, setStakingData] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -42,7 +41,7 @@ const PresalePopupForm = ({
       currency
     );
     if (tx) {
-      toast.success(`Investment successful! Transaction ID: ${tx}`);
+      setIsSuccessShow(true);
     } else {
       toast.error("Investment failed.");
     }
@@ -71,7 +70,7 @@ const PresalePopupForm = ({
       currency
     );
     if (tx) {
-      toast.success(`Staking successful! Transaction ID: ${tx}`);
+      setIsSuccessShow(true);
     } else {
       toast.error("Staking failed.");
     }
@@ -124,6 +123,15 @@ const PresalePopupForm = ({
 
   return (
     <div className="relative pt-4 flex flex-col space-y-4 z-10">
+      {isSuccessShow && (
+        <TransactionHash
+          onClose={() => setIsSuccessShow(false)}
+          rewards={Math.floor(
+            (50_000 / (Number(stakingData?.totalTokensStaked) / 1e5)) * 100
+          )}
+        />
+      )}
+
       <div className="flex items-center space-x-2">
         <input
           type="number"
