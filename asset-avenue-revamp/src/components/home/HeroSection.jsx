@@ -271,7 +271,7 @@ const HeroSection = () => {
                 {(
                   (Number(presaleData.solAmountRaised) / 1e9) * SOL_PRICE +
                   24317
-                ).toFixed(2)}{" "}
+                )?.toLocaleString()}
                 / $
                 {breakpoints
                   .filter(
@@ -279,8 +279,8 @@ const HeroSection = () => {
                       value >
                       (Number(presaleData.solAmountRaised) / 1e9) * SOL_PRICE +
                         24317
-                  )[0]
-                  ?.toFixed(2)}
+                  )?.[0]
+                  ?.toLocaleString()}
               </span>
             </div>
             <div className="relative w-full bg-white rounded-full h-2.5 mb-3">
