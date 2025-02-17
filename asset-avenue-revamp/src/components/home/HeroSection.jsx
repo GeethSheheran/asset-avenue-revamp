@@ -5,10 +5,11 @@ import WalletPopup from "./walletPop";
 import { motion } from "framer-motion";
 import Buywithcard from "./buywithcard";
 import { getPresaleInfo, getStakingInfo } from "../../utils/presale.ts";
-import { useWallet} from "@solana/wallet-adapter-react";
+import { useWallet } from "@solana/wallet-adapter-react";
 import { IoMdClose } from "react-icons/io";
 import { toast } from "react-toastify";
 import PresalePopupForm from "./presalePopupForm'.jsx";
+import { useWalletModal } from "@solana/wallet-adapter-react-ui";
 
 const breakpoints = [
   25318, 31647, 39387, 48446, 58729, 70150, 82637, 96130, 110573, 125911,
@@ -150,6 +151,15 @@ const HeroSection = () => {
   const handleOpenCardModal2 = () => setIsCardModal2Open(true);
   const handleCloseCardModal2 = () => setIsCardModal2Open(false);
 
+  const { setVisible } = useWalletModal();
+
+  const handleBuyClick = () => {
+    if (!connected) {
+      // If wallet is not connected, trigger the WalletMultiButton modal
+      setVisible(true);
+    }
+  };
+
   return (
     <div className="relative bg-black text-white min-h-screen flex flex-col md:flex-row items-center justify-center py-16 px-4 md:px-24 overflow-hidden">
       <video
@@ -212,7 +222,8 @@ const HeroSection = () => {
           <div className="flex justify-center items-center ">
             <p className="text-sm md:text-[24px] text-center shadow-[0_2px_85px_#56C46C9C]  bg-gradient-to-l from-[#B8934D] to-[#FBE279] p-3 w-4/5 text-white italic font-bold rounded-[20px] rounded-tl-none inline-block mb-4 z-10 relative ">
               {Math.floor(
-                (50_000 / (Number(stakingData?.totalTokensStaked) / 1e5)) * 100
+                (5_000_000 / (Number(stakingData?.totalTokensStaked) / 1e5)) *
+                  100
               )}{" "}
               % Staking Rewards
             </p>
@@ -327,7 +338,7 @@ const HeroSection = () => {
                     />
 
                     <button
-                      onClick={handleOpenModal} // Trigger modal on click
+                      onClick={connected ? handleOpenModal : handleBuyClick} // Trigger modal on click
                       className="relative uppercase z-10  md:text-[11px] text-black font-bold py-3 px-6 rounded-[10px] w-full bg-gradient-to-br from-[#958648] to-[#FBE279] hover:opacity-80"
                       style={{
                         background:
