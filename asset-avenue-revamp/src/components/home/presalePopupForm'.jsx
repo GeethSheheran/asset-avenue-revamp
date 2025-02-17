@@ -127,7 +127,7 @@ const PresalePopupForm = ({ translations }) => {
         <TransactionHash
           onClose={() => setIsSuccessShow(false)}
           rewards={Math.floor(
-            (50_000 / (Number(stakingData?.totalTokensStaked) / 1e5)) * 100
+            (5_000_000 / (Number(stakingData?.totalTokensStaked) / 1e5)) * 100
           )}
         />
       )}
@@ -202,7 +202,7 @@ const PresalePopupForm = ({ translations }) => {
       >
         {"BUY & STAKE FOR " +
           Math.floor(
-            (50_000 / (Number(stakingData?.totalTokensStaked) / 1e5)) * 100
+            (5_000_000 / (Number(stakingData?.totalTokensStaked) / 1e5)) * 100
           ) +
           " % Rewards" || "STAKE FOR 509% REWARDS"}
       </button>
