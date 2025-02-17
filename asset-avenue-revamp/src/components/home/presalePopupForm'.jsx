@@ -135,7 +135,7 @@ const PresalePopupForm = ({ translations }) => {
       <div className="flex items-center space-x-2">
         <input
           type="number"
-          placeholder={`${currency} Amount to spend`}
+          placeholder={`${currency} amount to spend`}
           className="p-2 rounded-[10px] text-black text-sm border focus:border-green-900 focus:ring-1 focus:ring-green-500 outline-none flex-1"
           value={amount}
           onChange={(e) => setAmountAndBestRecieve(e)}
