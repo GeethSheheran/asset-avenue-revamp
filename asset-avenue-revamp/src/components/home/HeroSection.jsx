@@ -9,6 +9,13 @@ import { useWallet } from "@solana/wallet-adapter-react";
 import { IoMdClose } from "react-icons/io";
 import { toast } from "react-toastify";
 import PresalePopupForm from "./presalePopupForm'.jsx";
+import { useWertWidget } from "@wert-io/module-react-component";
+import FullPageLoader from "./FullPageLoader.jsx";
+import PaymentSuccess from "./wert/PaymentSuccess.jsx";
+import { AXIOS_INSTANCE } from "../../db/index.js";
+import { useAuthStore } from "../../store/index.js";
+import InfoBar from "./wert/InfoBar.jsx";
+import Disclaimer from "./wert/Disclaimer.jsx";
 
 const breakpoints = [
   25318, 31647, 39387, 48446, 58729, 70150, 82637, 96130, 110573, 125911,
@@ -25,6 +32,9 @@ const HeroSection = () => {
   });
   const { publicKey, connected } = useWallet();
 
+  const { user, setUser, shownWertSuccessModal, setShownWertSuccessModal } =
+    useAuthStore();
+
   const [isModalOpen, setIsModalOpen] = useState(false); // State to control the modal visibility
   const [isCardModalOpen, setIsCardModalOpen] = useState(false);
   const [isCardModal2Open, setIsCardModal2Open] = useState(false);
@@ -33,12 +43,72 @@ const HeroSection = () => {
   const SOL_PRICE = 210; // Fixed SOL price in USD
   const [presaleData, setPresaleData] = useState("");
   const [stakingData, setStakingData] = useState("");
+  const [wertOrderId, setWertOrderId] = useState("");
+  const [reactiveOptions] = useState({
+    theme: "dark",
+    color_buttons: "#3FAC55",
+    listeners: {
+      loaded: () => {
+        console.log("Wert widget loaded");
+        setLoadingWert(false);
+        // Initial check and setup of iframe visibility
+        handleIframeVisibility();
+      },
+      "payment-status": (response) => {
+        console.log("Payment status:", response);
+        createOrder(response?.order_id);
+        setWertOrderId(response?.order_id);
+        setWertPaymentStatus(response?.status);
+      },
+    },
+  });
+  const [loadingWert, setLoadingWert] = useState(false);
+  const [wertPaymentStatus, setWertPaymentStatus] = useState("");
+  const [wertPaymentSuccess, setWertPaymentSuccess] = useState(false);
+  const [disclaimer, setDisclaimer] = useState(false);
+  const {
+    open: openWertWidget,
+    isWidgetOpen,
+    close: closeWertWidget,
+  } = useWertWidget(reactiveOptions);
 
   useEffect(() => {
     if (connected) {
       fetchPresaleData();
+      createUser();
     }
   }, [connected]);
+
+  const createUser = async () => {
+    try {
+      const response = await AXIOS_INSTANCE.post("/auth/user", {
+        walletAddress: publicKey?.toString(),
+      });
+      console.log(response?.data);
+      setUser(response?.data?.result);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const createOrder = async (orderId) => {
+    try {
+      const response = await AXIOS_INSTANCE.post(
+        "/order/create",
+        {
+          wertOrderId: orderId,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${user?.access_token}`,
+          },
+        }
+      );
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const fetchPresaleData = async () => {
     const data = await getPresaleInfo(publicKey);
@@ -148,9 +218,85 @@ const HeroSection = () => {
 
   const handleOpenCardModal = () => setIsCardModalOpen(true);
   const handleCloseCardModal = () => setIsCardModalOpen(false);
-
-  const handleOpenCardModal2 = () => setIsCardModal2Open(true);
   const handleCloseCardModal2 = () => setIsCardModal2Open(false);
+
+  // Add Wert widget configuration
+  const wertOptions = {
+    partner_id: import.meta.env.VITE_WERT_PARTNER_ID,
+    origin: import.meta.env.VITE_WERT_ORIGIN,
+    commodity: import.meta.env.VITE_WERT_COMMODITY,
+    network: import.meta.env.VITE_WERT_NETWORK,
+    commodities: JSON.stringify([
+      {
+        commodity: import.meta.env.VITE_WERT_COMMODITY,
+        network: import.meta.env.VITE_WERT_NETWORK,
+      },
+    ]),
+    address: import.meta.env.VITE_WERT_DEPOSIT_ADDRESS,
+  };
+
+  const handleOpenCardModal2 = () => {
+    if (!connected) {
+      alert("Please connect your wallet first.");
+      return;
+    }
+    setDisclaimer(true);
+  };
+
+  const handleShowWertDisclaimer = () => {
+    setDisclaimer(false);
+    setLoadingWert(true);
+    openWertWidget({ options: wertOptions });
+  };
+
+  useEffect(() => {
+    if (
+      isWidgetOpen === false &&
+      wertPaymentStatus === "success" &&
+      shownWertSuccessModal === false
+    ) {
+      setWertPaymentSuccess(true);
+      setShownWertSuccessModal(true);
+    }
+  }, [isWidgetOpen, wertPaymentStatus, shownWertSuccessModal]);
+
+  useEffect(() => {
+    if (isWidgetOpen === false) {
+      setLoadingWert(false);
+      setWertPaymentStatus("");
+      setShownWertSuccessModal(false);
+      showIframeVisibility();
+    }
+  }, [isWidgetOpen]);
+
+  // Add new function to handle iframe visibility
+  const handleIframeVisibility = () => {
+    const solflareIframe = document.querySelector(
+      ".solflare-metamask-wallet-adapter-iframe"
+    );
+    if (solflareIframe) {
+      solflareIframe.style.display =
+        window.innerWidth <= 768 ? "none" : "block";
+    }
+  };
+
+  const showIframeVisibility = () => {
+    console.log("showIframeVisibility");
+    const solflareIframe = document.querySelector(
+      ".solflare-metamask-wallet-adapter-iframe"
+    );
+    if (solflareIframe) {
+      solflareIframe.style.display = "block";
+    }
+  };
+
+  // Add resize event listener
+  useEffect(() => {
+    window.addEventListener("resize", handleIframeVisibility);
+    return () => {
+      window.removeEventListener("resize", handleIframeVisibility);
+    };
+  }, []);
 
   return (
     <div className="relative bg-black text-white min-h-screen flex flex-col md:flex-row items-center justify-center py-16 px-4 md:px-24 overflow-hidden">
@@ -434,6 +580,26 @@ const HeroSection = () => {
             />
           </motion.div>
         </div>
+      )}
+
+      {loadingWert && <FullPageLoader />}
+
+      {wertPaymentSuccess && (
+        <PaymentSuccess
+          onClose={() => setWertPaymentSuccess(false)}
+          walletAddress={publicKey?.toString()}
+          presaleData={presaleData}
+          wertOrderId={wertOrderId}
+        />
+      )}
+
+      {wertPaymentStatus === "pending" && <InfoBar />}
+
+      {disclaimer && (
+        <Disclaimer
+          setDisclaimer={setDisclaimer}
+          handleShowWertDisclaimer={handleShowWertDisclaimer}
+        />
       )}
     </div>
   );
