@@ -5,7 +5,7 @@ import WalletPopup from "./walletPop";
 import { motion } from "framer-motion";
 import Buywithcard from "./buywithcard";
 import { getPresaleInfo, getStakingInfo } from "../../utils/presale.ts";
-import { useWallet } from "@solana/wallet-adapter-react";
+import { useWallet} from "@solana/wallet-adapter-react";
 import { IoMdClose } from "react-icons/io";
 import { toast } from "react-toastify";
 import PresalePopupForm from "./presalePopupForm'.jsx";
@@ -43,14 +43,12 @@ const HeroSection = () => {
   const fetchPresaleData = async () => {
     const data = await getPresaleInfo(publicKey);
     const stakingData = await getStakingInfo(publicKey);
-    console.log(Number(data.solAmountRaised));
     if (data) {
       setPresaleData(data);
     }
     if (stakingData) {
       setStakingData(stakingData);
     }
-    console.log(stakingData);
   };
 
   const defaultText = {
@@ -232,7 +230,7 @@ const HeroSection = () => {
               TOKEN PRESALE!
             </h2>
 
-            <div className="text-center font-medium mb-6 border border-[#22C55E] border-[4px] rounded-[30px] rounded-tl-none pb-2 z-10 relative">
+            <div className="text-center font-medium mb-6 border-[#22C55E] border-[4px] rounded-[30px] rounded-tl-none pb-2 z-10 relative">
               <p className="text-sm md:text-[16px] text-center bg-gradient-to-l from-[#B8934D] to-[#FBE279] py-2 w-full text-black rounded-[20px] rounded-tl-none inline-block mb-0 z-10 relative">
                 {defaultText.priceInfo}
               </p>
@@ -271,7 +269,7 @@ const HeroSection = () => {
                 {(
                   (Number(presaleData.solAmountRaised) / 1e9) * SOL_PRICE +
                   24317
-                )?.toLocaleString()}
+                )?.toLocaleString()}{" "}
                 / $
                 {breakpoints
                   .filter(
@@ -325,7 +323,7 @@ const HeroSection = () => {
                     <img
                       src="hero/3.png"
                       alt="Crypto"
-                      className="absolute sr-only top-[-25px] md:left-[40px]  left-10 right-0 w-full h-[30px] object-contain z-0 hidden sm:block"
+                      className="absolute top-[-25px] md:left-[40px]  left-10 right-0 w-full h-[30px] object-contain z-0 hidden sm:block"
                     />
 
                     <button
@@ -366,15 +364,16 @@ const HeroSection = () => {
 
             {isModalOpen && <PresalePopupForm />}
             {isModalOpen && (
-              <div className="mt-3 flex justify-center text-xs font-medium">
+              <div className="mt-4 flex justify-center text-xs font-medium">
+                Want to pay with card instead?
                 <button
                   onClick={() => {
                     setIsModalOpen(false);
                     setIsCardModal2Open(true);
                   }}
-                  className="z-[99999]"
+                  className="z-[99999] underline ms-1"
                 >
-                  {defaultText.buyWithCard}
+                  Click here
                 </button>
               </div>
             )}

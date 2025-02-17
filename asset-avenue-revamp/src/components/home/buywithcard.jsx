@@ -138,7 +138,7 @@ const Buywithcard = ({
       <div className="relative pt-4 flex flex-col space-y-4 z-10">
         <input
           type="number"
-          placeholder="USD Amount to spend"
+          placeholder="USD amount to spend"
           className="p-2 rounded-[10px] text-black text-sm border focus:border-green-900 focus:ring-1 focus:ring-green-500 outline-none"
           value={usdAmount}
           onChange={(e) => setUsdAmount(e.target.value)}

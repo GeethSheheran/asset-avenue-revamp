@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import WalletConnect from "./home/Pop-up/Connect";
 import { motion } from "framer-motion";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
@@ -25,7 +25,6 @@ const Navbar = () => {
   };
 
   const handleCloseWalletPopup = () => setIsWalletPopupOpen(false);
-  const handleCloseCardModal = () => setIsCardModalOpen(false);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -143,7 +142,9 @@ const Navbar = () => {
             CONNECT WALLET
             
           </button> */}
-          <WalletMultiButton style={{ height: "36px" }}>
+          <WalletMultiButton style={{ height: "36px" }}
+          onClick={toggleWalletPopup}
+          >
             Connect Wallet
           </WalletMultiButton>
 
