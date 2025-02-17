@@ -142,9 +142,7 @@ const Navbar = () => {
             CONNECT WALLET
             
           </button> */}
-          <WalletMultiButton style={{ height: "36px" }}
-          onClick={toggleWalletPopup}
-          >
+          <WalletMultiButton style={{ height: "36px" }}>
             Connect Wallet
           </WalletMultiButton>
 
