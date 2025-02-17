@@ -1,56 +1,85 @@
-import { Connection, PublicKey, SystemProgram, Transaction } from "@solana/web3.js";
-import { Program, AnchorProvider, web3, BN, Wallet } from "@project-serum/anchor";
+import {
+  Connection,
+  PublicKey,
+  SystemProgram,
+  Transaction,
+} from "@solana/web3.js";
+import {
+  Program,
+  AnchorProvider,
+  web3,
+  BN,
+  Wallet,
+} from "@project-serum/anchor";
 import { getAssociatedTokenAddress, TOKEN_PROGRAM_ID } from "@solana/spl-token";
 
 import * as idl from "./presale_idl.json"; // Replace with your actual IDL file
 import { ASSOCIATED_PROGRAM_ID } from "@project-serum/anchor/dist/cjs/utils/token";
-const PROGRAM_ID = new PublicKey("3nnfTx68bKCRXZdZfKoFFfryWbnR3asFGmfLsXNPtXxK"); // Your contract address
+const PROGRAM_ID = new PublicKey(
+  "3nnfTx68bKCRXZdZfKoFFfryWbnR3asFGmfLsXNPtXxK"
+); // Your contract address
 const PRESALE_SEED = "solana_presale";
 const DATA_SEED = "my_data";
 const STAKING_SEED = "solana_staking";
 const STAKING_DATA_SEED = "staking_user_data";
-const TOKEN_MINT = new PublicKey("HtcmNSmpM6xGWLH7TcUiyjXQcej32qc15wyzawJYKNMn");
+const TOKEN_MINT = new PublicKey(
+  "HtcmNSmpM6xGWLH7TcUiyjXQcej32qc15wyzawJYKNMn"
+);
 const USDC_MINT = new PublicKey("4Fa3EWgea8bYwFjRdAxn9b7FhzFSYZR41Tnkn39SvSLX");
 const getProvider = (wallet: Wallet | null) => {
-  
-  const connection = new Connection("https://api.devnet.solana.com", "confirmed"); // Change to mainnet-beta for production
+  const connection = new Connection(
+    "https://api.devnet.solana.com",
+    "confirmed"
+  ); // Change to mainnet-beta for production
   // ✅ If no wallet is connected, return a provider without a wallet signer
   if (!wallet) {
-    return new AnchorProvider(connection, { publicKey: PublicKey.default,  signTransaction: async (tx: Transaction) => tx, // Dummy function
-      signAllTransactions: async (txs: Transaction[]) => txs,  }, { preflightCommitment: "processed" });
+    return new AnchorProvider(
+      connection,
+      {
+        publicKey: PublicKey.default,
+        signTransaction: async (tx: Transaction) => tx, // Dummy function
+        signAllTransactions: async (txs: Transaction[]) => txs,
+      },
+      { preflightCommitment: "processed" }
+    );
   }
-  const provider = new AnchorProvider(connection, wallet, { preflightCommitment: "processed" });
+  const provider = new AnchorProvider(connection, wallet, {
+    preflightCommitment: "processed",
+  });
   return provider;
 };
 
-export const getProgram = (wallet: Wallet  | null = null) => {
+export const getProgram = (wallet: Wallet | null = null) => {
   const provider = getProvider(wallet);
   return new Program(idl as any, PROGRAM_ID, provider);
 };
 
 // Function to invest SOL in presale
-export const investSol = async (publicKey:PublicKey,wallet: Wallet, amount: number,currency:"SOL"|"USD") => {
+export const investSol = async (
+  publicKey: PublicKey,
+  wallet: Wallet,
+  amount: number,
+  currency: "SOL" | "USD"
+) => {
   try {
     const program = getProgram(wallet);
     const signer = publicKey;
-console.log("signer",signer);
+    console.log("signer", signer);
     // Derive PDA for presale and user data
     const [presalePda] = PublicKey.findProgramAddressSync(
       [Buffer.from(PRESALE_SEED)],
       PROGRAM_ID
     );
     const [dataPda] = PublicKey.findProgramAddressSync(
-      [Buffer.from(DATA_SEED),signer.toBuffer()],
+      [Buffer.from(DATA_SEED), signer.toBuffer()],
       PROGRAM_ID
     );
-  
-  
-   
+
     const reciever_ata = await getAssociatedTokenAddress(
-      TOKEN_MINT,   // The mint address of the SPL token
-      signer,  // The receiver's wallet public key
-      true   // Set to `true` if the account needs to be created as a PDA
-  );
+      TOKEN_MINT, // The mint address of the SPL token
+      signer, // The receiver's wallet public key
+      true // Set to `true` if the account needs to be created as a PDA
+    );
     const presale_ata = await getAssociatedTokenAddress(
       TOKEN_MINT,
       presalePda,
@@ -66,9 +95,9 @@ console.log("signer",signer);
       signer,
       true
     );
-    console.log("presalePda",presalePda.toString())
-    console.log("presale_ata",presale_ata.toString())
-/**
+    console.log("presalePda", presalePda.toString());
+    console.log("presale_ata", presale_ata.toString());
+    /**
  *  const context = {
       data:dataPda,
       from:account2.publicKey,
@@ -85,32 +114,31 @@ console.log("signer",signer);
       associatedTokenProgram: anchor.utils.token.ASSOCIATED_PROGRAM_ID,
     }
  */
-  
+
     const context = {
-      data:dataPda,
-      from:signer,
-      signer:signer,
-      presale:presalePda,
-      signerUsdcAccount:usdc_reciever_ata    ,
-      presaleUsdcAccount:usdc_presale_ata,
-      usdcMint:USDC_MINT,
-      presaleTokenAccount:presale_ata,
-      tokenMint:TOKEN_MINT,
-      signerTokenAccount:reciever_ata,
+      data: dataPda,
+      from: signer,
+      signer: signer,
+      presale: presalePda,
+      signerUsdcAccount: usdc_reciever_ata,
+      presaleUsdcAccount: usdc_presale_ata,
+      usdcMint: USDC_MINT,
+      presaleTokenAccount: presale_ata,
+      tokenMint: TOKEN_MINT,
+      signerTokenAccount: reciever_ata,
       systemProgram: SystemProgram.programId,
       tokenProgram: TOKEN_PROGRAM_ID,
       associatedTokenProgram: ASSOCIATED_PROGRAM_ID,
+    };
+    if (currency == "SOL") {
+      // Convert SOL to lamports
+      amount = new BN(amount * web3.LAMPORTS_PER_SOL);
+    } else {
+      amount = new BN(amount * 1000000);
     }
-    if (currency == "SOL"){
-    // Convert SOL to lamports
-    amount = new BN(amount * web3.LAMPORTS_PER_SOL);
-    }else{
-
-    amount = new BN(amount * 1000000);
-    }
-    console.log(Number(amount))
+    console.log(Number(amount));
     const tx = await program.methods
-      .invest(amount,currency=="SOL"?0:1)
+      .invest(amount, currency == "SOL" ? 0 : 1)
       .accounts(context)
       .rpc();
 
@@ -129,7 +157,7 @@ export const getPresaleInfo = async (wallet: any) => {
     const [presalePda] = PublicKey.findProgramAddressSync(
       [Buffer.from(PRESALE_SEED)],
       PROGRAM_ID
-    );    
+    );
     const presaleData = await program.account.presaleInfo.fetch(presalePda);
     return presaleData;
   } catch (error) {
@@ -138,86 +166,87 @@ export const getPresaleInfo = async (wallet: any) => {
   }
 };
 
-
-export const buyAndStakeTokens = async (publicKey:PublicKey,wallet: any, amount: number,currency:"SOL"|"USD") => {
+export const buyAndStakeTokens = async (
+  publicKey: PublicKey,
+  wallet: any,
+  amount: number,
+  currency: "SOL" | "USD"
+) => {
   try {
     const program = getProgram(wallet);
-    const signer = publicKey
+    const signer = publicKey;
 
     // Derive PDA for staking and user data
     const [stakingPda] = PublicKey.findProgramAddressSync(
-          [Buffer.from(STAKING_SEED)],
-          PROGRAM_ID
-        );
+      [Buffer.from(STAKING_SEED)],
+      PROGRAM_ID
+    );
     const [stakingDataPda] = PublicKey.findProgramAddressSync(
-          [Buffer.from(STAKING_DATA_SEED),signer.toBuffer()],
-          PROGRAM_ID
-        );
-      
-        const [presalePda] = PublicKey.findProgramAddressSync(
-          [Buffer.from(PRESALE_SEED)],
-          PROGRAM_ID
-        );
-        const signer_ata = await getAssociatedTokenAddress(
-          TOKEN_MINT,   // The mint address of the SPL token
-          signer,  // The receiver's wallet public key
-          true   // Set to `true` if the account needs to be created as a PDA
-      );
-        const staking_ata = await getAssociatedTokenAddress(
-          TOKEN_MINT,
-          stakingPda,
-          true
-        );
-        const presale_ata = await getAssociatedTokenAddress(
-          TOKEN_MINT,
-          presalePda,
-          true
-        );
-        const [dataPda] = PublicKey.findProgramAddressSync(
-          [Buffer.from(DATA_SEED),signer.toBuffer()],
-          PROGRAM_ID
-        );
-        const usdc_presale_ata = await getAssociatedTokenAddress(
-          USDC_MINT,
-          presalePda,
-          true
-        );
-        const usdc_reciever_ata = await getAssociatedTokenAddress(
-          USDC_MINT,
-          signer,
-          true
-        );
-        if (currency == "SOL"){
-          // Convert SOL to lamports
-          amount = new BN(amount * web3.LAMPORTS_PER_SOL);
-          }else{
-      
-          amount = new BN(amount * 1000000);
-          }
+      [Buffer.from(STAKING_DATA_SEED), signer.toBuffer()],
+      PROGRAM_ID
+    );
 
-        
+    const [presalePda] = PublicKey.findProgramAddressSync(
+      [Buffer.from(PRESALE_SEED)],
+      PROGRAM_ID
+    );
+    const signer_ata = await getAssociatedTokenAddress(
+      TOKEN_MINT, // The mint address of the SPL token
+      signer, // The receiver's wallet public key
+      true // Set to `true` if the account needs to be created as a PDA
+    );
+    const staking_ata = await getAssociatedTokenAddress(
+      TOKEN_MINT,
+      stakingPda,
+      true
+    );
+    const presale_ata = await getAssociatedTokenAddress(
+      TOKEN_MINT,
+      presalePda,
+      true
+    );
+    const [dataPda] = PublicKey.findProgramAddressSync(
+      [Buffer.from(DATA_SEED), signer.toBuffer()],
+      PROGRAM_ID
+    );
+    const usdc_presale_ata = await getAssociatedTokenAddress(
+      USDC_MINT,
+      presalePda,
+      true
+    );
+    const usdc_reciever_ata = await getAssociatedTokenAddress(
+      USDC_MINT,
+      signer,
+      true
+    );
+    if (currency == "SOL") {
+      // Convert SOL to lamports
+      amount = new BN(amount * web3.LAMPORTS_PER_SOL);
+    } else {
+      amount = new BN(amount * 1000000);
+    }
 
-console.log(Number(amount))
+    console.log(Number(amount));
     const tx = await program.methods
-      .buyAndStake(amount,currency=="SOL"?0:1)
+      .buyAndStake(amount, currency == "SOL" ? 0 : 1)
       .accounts({
-        investmentData:dataPda,
+        investmentData: dataPda,
         stakingData: stakingDataPda,
-        presale:presalePda,
+        presale: presalePda,
         staking: stakingPda,
         from: signer,
         signer: signer,
-        tokenMint:TOKEN_MINT,
-        presaleTokenAccount:presale_ata,
-        stakingTokenAccount:staking_ata,
-        signerTokenAccount:signer_ata,
-        usdcMint:USDC_MINT,
-        presaleUsdcAccount:usdc_presale_ata,
-        signerUsdcAccount:usdc_reciever_ata,
+        tokenMint: TOKEN_MINT,
+        presaleTokenAccount: presale_ata,
+        stakingTokenAccount: staking_ata,
+        signerTokenAccount: signer_ata,
+        usdcMint: USDC_MINT,
+        presaleUsdcAccount: usdc_presale_ata,
+        signerUsdcAccount: usdc_reciever_ata,
         systemProgram: SystemProgram.programId,
         tokenProgram: TOKEN_PROGRAM_ID,
         associatedTokenProgram: ASSOCIATED_PROGRAM_ID,
-          })
+      })
       .rpc();
 
     console.log("Staking Transaction Successful:", tx);
@@ -228,12 +257,14 @@ console.log(Number(amount))
   }
 };
 
-
 // Function to Fetch Staking Info
 export const getStakingInfo = async (wallet: any) => {
   try {
     const program = getProgram(wallet);
-    const [stakingPda] =  PublicKey.findProgramAddressSync([Buffer.from(STAKING_SEED)], PROGRAM_ID);
+    const [stakingPda] = PublicKey.findProgramAddressSync(
+      [Buffer.from(STAKING_SEED)],
+      PROGRAM_ID
+    );
     const stakingData = await program.account.stakingInfo.fetch(stakingPda);
     return stakingData;
   } catch (error) {
